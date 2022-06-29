@@ -1,17 +1,18 @@
 [tool.poetry]
-name = "wayout-site"
+name = "wayout"
 version = "0.1.0"
 description = ""
 authors = ["Flict-dev <zhdanom.maksi@gmail.com>"]
-license = "NIT"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = "^0.78.0"
-uvicorn = {extras = ["standard"], version = "^0.18.2"}
-alembic = "^1.8.0"
+uvicorn = "^0.18.2"
 psycopg2 = "^2.9.3"
 tortoise-orm = "^0.19.1"
+python-dotenv = "^0.20.0"
+aerich = "^0.6.3"
 
 
 [tool.poetry.dev-dependencies]

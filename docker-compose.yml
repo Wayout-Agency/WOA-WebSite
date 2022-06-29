@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  main-db:
+    image: postgres:14.4
+    environment:
+      POSTGRES_DB: "wayout"
+      POSTGRES_USER: "wayout"
+      POSTGRES_PASSWORD: "wayout"
+    ports:
+      - 5432:5432
