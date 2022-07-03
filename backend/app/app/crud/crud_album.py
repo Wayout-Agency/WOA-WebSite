@@ -1,7 +1,6 @@
 from models.albums import Album, GetAlbum
 from crud.base import CRUDBase
 from schemas.album import UpdateAlbum, CreateAlbum, AlbumBase, DeleteAlbum
-from tortoise.models import Model
 from typing import List
 
 
