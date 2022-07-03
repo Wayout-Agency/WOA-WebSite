@@ -1,10 +1,21 @@
 version: '3.9'
 services:
-  main-db:
+  db:
     image: postgres:14.4
     environment:
       POSTGRES_DB: "wayout"
       POSTGRES_USER: "wayout"
       POSTGRES_PASSWORD: "wayout"
+    container_name: postgres_db
     ports:
       - 5432:5432
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pgadmin4@pgadmin.org"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - 8080:80
