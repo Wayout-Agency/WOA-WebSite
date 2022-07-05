@@ -8,8 +8,8 @@ class CRUDUser(CRUDBase):
     def __init__(self, model: User) -> None:
         self.model = model
 
-    async def create(self, shema: CreateUser) -> UserBase:
-        user = await self.model.create(**shema)
+    async def create(self, schema: CreateUser) -> UserBase:
+        user = await self.model.create(**schema)
         return await GetUser.from_tortoise_orm(user)
 
     async def read(self, id: int) -> UserBase:
@@ -19,3 +19,6 @@ class CRUDUser(CRUDBase):
     async def delete(self, id: int) -> DeleteUser:
         await self.model.delete(id=id)
         return DeleteUser(succces=True)
+
+
+user = CRUDUser(User)

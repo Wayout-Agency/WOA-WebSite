@@ -8,8 +8,8 @@ class CRUDAlbum(CRUDBase):
     def __init__(self, model: Album) -> None:
         self.model = model
 
-    async def create(self, shema: CreateAlbum) -> AlbumBase:
-        album = await self.model.create(**shema.dict())
+    async def create(self, schema: CreateAlbum) -> AlbumBase:
+        album = await self.model.create(**schema.dict())
         return await GetAlbum.from_tortoise_orm(album)
 
     async def get_all(self) -> List[AlbumBase]:
@@ -20,8 +20,8 @@ class CRUDAlbum(CRUDBase):
         album = await self.model.get_or_none(id=id)
         return await GetAlbum.from_tortoise_orm(album)
 
-    async def update(self, id: int, shema: UpdateAlbum) -> AlbumBase:
-        album = await self.model.filter(id=id).update(**shema.dict())
+    async def update(self, id: int, schema: UpdateAlbum) -> AlbumBase:
+        album = await self.model.filter(id=id).update(**schema.dict())
         return await GetAlbum.from_tortoise_orm(album)
 
     async def delete(self, id: int) -> DeleteAlbum:
