@@ -2,6 +2,10 @@ from pydantic import BaseSettings
 from functools import lru_cache
 import secrets
 from dotenv import dotenv_values
+from pathlib import Path
+
+BASEDIR = Path(__file__).resolve().parent.parent.parent.parent.parent
+AERICH_BASEDIR = Path(__file__).resolve().parent.parent.parent.parent
 
 
 class Settings(BaseSettings):
@@ -19,6 +23,6 @@ class Settings(BaseSettings):
 
 
 @lru_cache()
-def get_settings() -> Settings:
-    config = dotenv_values("../../../config/.env")
+def get_settings(aerich: bool = False) -> Settings:
+    config = dotenv_values(BASEDIR / "config" / ".env")
     return Settings(**config)

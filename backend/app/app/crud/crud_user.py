@@ -1,7 +1,6 @@
 from models.users import User, GetUser
 from crud.base import CRUDBase
 from schemas.user import UserBase, CreateUser, DeleteUser
-from typing import List
 
 
 class CRUDUser(CRUDBase):
