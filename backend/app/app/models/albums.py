@@ -1,28 +1,21 @@
 from tortoise.models import Model
 from tortoise import fields
+from tortoise.contrib.pydantic import pydantic_model_creator
 
 
-class Almbum(Model):
+class Album(Model):
     id = fields.IntField(pk=True)
     title = fields.CharField(max_length=300)
     description = fields.TextField()
     new_price = fields.IntField()
     old_price = fields.IntField()
     sale_text = fields.CharField(max_length=300)
-    link = fields.CharField(max_length=200)
+    slug = fields.CharField(max_length=200)
+    price_include = fields.CharField(max_length=500)
+    model_description = fields.CharField(max_length=500)
+
+    def __str__(self):
+        return self.title
 
 
-class PriceInclude(Model):
-    id = fields.IntField(pk=True)
-    text = fields.CharField(max_length=500)
-    album_id: fields.ForeignKeyRelation[Almbum] = fields.ForeignKeyField(
-        model_name="models.Album", related_name="price_includes"
-    )
-
-
-class AlbumDeskription(Model):
-    id = fields.IntField(pk=True)
-    text = fields.CharField(max_length=500)
-    album_id: fields.ForeignKeyRelation[Almbum] = fields.ForeignKeyField(
-        model_name="models.Album", related_name="album_deskriptions"
-    )
+GetAlbum = pydantic_model_creator(Album, name="GetAlbum")
