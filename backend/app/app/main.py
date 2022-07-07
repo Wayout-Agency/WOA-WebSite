@@ -1,7 +1,7 @@
-from fastapi import FastAPI
 from api.api_v1.api import api_router
-from core.database import init_db
 from core.config import get_settings
+from core.database import init_db
+from fastapi import FastAPI
 from tortoise import Tortoise
 
 settings = get_settings()

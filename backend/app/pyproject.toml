@@ -1,4 +1,44 @@
+[tool.poetry]
+name = "wayout"
+version = "0.1.0"
+description = ""
+authors = ["Flict-dev <zhdanom.maksi@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.78.0"
+uvicorn = "^0.18.2"
+psycopg2 = "^2.9.3"
+tortoise-orm = "^0.19.1"
+python-dotenv = "^0.20.0"
+aerich = "^0.6.3"
+passlib = { extras = ["bcrypt"], version = "^1.7.4" }
+asyncpg = "^0.25.0"
+python-jose = "^3.3.0"
+
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.19.0"
+mypy = "^0.961"
+black = "^22.6.0"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
 [tool.aerich]
 tortoise_orm = "app.core.database.TORTOISE_ORM"
 location = "./migrations"
 src_folder = "./."
+
+
+[tool.black]
+line-length = 109
+target-version = ['py37']
+
+[tool.isort]
+profile = "black"

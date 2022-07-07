@@ -2,4 +2,10 @@ from pydantic import BaseModel
 
 
 class Token(BaseModel):
-    token: str
+    value: str
+
+
+class TokenPair(BaseModel):
+    access: str
+    refresh: str
+    expire: int

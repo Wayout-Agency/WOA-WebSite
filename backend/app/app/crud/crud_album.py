@@ -1,7 +1,8 @@
-from models.albums import Album, GetAlbum
-from crud.base import CRUDBase
-from schemas.album import UpdateAlbum, CreateAlbum, AlbumBase, DeleteAlbum
 from typing import List
+
+from crud.base import CRUDBase
+from models.albums import Album, GetAlbum
+from schemas.album import AlbumBase, CreateAlbum, DeleteAlbum, UpdateAlbum
 
 
 class CRUDAlbum(CRUDBase):

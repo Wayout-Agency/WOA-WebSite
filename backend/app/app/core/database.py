@@ -1,11 +1,20 @@
 from tortoise import Tortoise
+
 from .config import get_settings
+
+settings = get_settings()
+DB_URL = "postgres://{}:{}@{}:{}/{}".format(
+    settings.POSTGRES_USER,
+    settings.POSTGRES_PASSWORD,
+    settings.DB_HOST,
+    settings.DB_PORT,
+    settings.POSTGRES_DB,
+)
 
 
 async def init_db():
-    settings = get_settings()
     await Tortoise.init(
-        db_url=f"postgres://{settings.POSTGRES_DB}:{settings.POSTGRES_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.POSTGRES_USER}",
+        db_url=DB_URL,
         modules={
             "models": [
                 "models.albums",
@@ -17,11 +26,8 @@ async def init_db():
     )
 
 
-settings = get_settings(False)
 TORTOISE_ORM = {
-    "connections": {
-        "default": f"postgres://{settings.POSTGRES_DB}:{settings.POSTGRES_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.POSTGRES_USER}"
-    },
+    "connections": {"default": DB_URL},
     "apps": {
         "models": {
             "models": [

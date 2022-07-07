@@ -1,6 +1,6 @@
-from models.users import User, GetUser
 from crud.base import CRUDBase
-from schemas.user import UserBase, CreateUser, DeleteUser
+from models.users import GetUser, User
+from schemas.user import CreateUser, DeleteUser, UserBase
 
 
 class CRUDUser(CRUDBase):
@@ -11,7 +11,11 @@ class CRUDUser(CRUDBase):
         user = await self.model.create(**schema)
         return await GetUser.from_tortoise_orm(user)
 
-    async def read(self, id: int) -> UserBase:
+    async def get_by_login(self, login: str) -> UserBase:
+        user = await self.model.get_or_none(login=login)
+        return await GetUser.from_tortoise_orm(user)
+
+    async def get_by_id(self, id: int) -> UserBase:
         user = await self.model.get_or_none(id=id)
         return await GetUser.from_tortoise_orm(user)
 

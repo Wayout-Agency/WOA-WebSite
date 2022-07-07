@@ -1,8 +1,8 @@
-from tkinter import N
-from tortoise.models import Model
-from tortoise.contrib.pydantic import pydantic_model_creator
-from tortoise import fields
 from datetime import datetime
+
+from tortoise import fields
+from tortoise.contrib.pydantic import pydantic_model_creator
+from tortoise.models import Model
 
 
 class Article(Model):

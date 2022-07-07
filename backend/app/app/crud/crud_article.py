@@ -1,12 +1,8 @@
-from models.articles import Article, GetArticle
-from crud.base import CRUDBase
 from typing import List
-from schemas.article import (
-    ArticleBase,
-    CreateArticle,
-    DeleteArticle,
-    UpdateArticle,
-)
+
+from crud.base import CRUDBase
+from models.articles import Article, GetArticle
+from schemas.article import ArticleBase, CreateArticle, DeleteArticle, UpdateArticle
 
 
 class CRUDarticle(CRUDBase):

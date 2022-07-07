@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from .endpoints import albums
 
 api_router = APIRouter()

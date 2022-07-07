@@ -1,7 +1,8 @@
-from fastapi import APIRouter
-from crud.crud_album import album
-from schemas.album import AlbumBase, CreateAlbum, UpdateAlbum, DeleteAlbum
 from typing import List
+
+from crud.crud_album import album
+from fastapi import APIRouter
+from schemas.album import AlbumBase, CreateAlbum, DeleteAlbum, UpdateAlbum
 
 router = APIRouter()
 
