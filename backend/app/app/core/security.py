@@ -70,7 +70,7 @@ hashed_password: str
 plain_password: str
 
 
-def get_password_hash(plain_password) -> hashed_password:
+def get_password_hash(plain_password) -> str:
     return bcrypt.hash(plain_password)
 
 

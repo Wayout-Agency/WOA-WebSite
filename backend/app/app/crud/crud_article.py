@@ -10,7 +10,7 @@ class CRUDarticle(CRUDBase):
         self.model = model
 
     async def create(self, schema: CreateArticle) -> ArticleBase:
-        article = await self.model.create(**schema)
+        article = await self.model.create(**schema.dict())
         return await GetArticle.from_tortoise_orm(article)
 
     async def get_all(self) -> List[ArticleBase]:
@@ -26,7 +26,7 @@ class CRUDarticle(CRUDBase):
         return await GetArticle.from_tortoise_orm(album)
 
     async def delete(self, id: int) -> ArticleBase:
-        await self.model.delete(id=id)
+        await self.model.filter(id=id).delete()
         return DeleteArticle(succces=True)
 
 

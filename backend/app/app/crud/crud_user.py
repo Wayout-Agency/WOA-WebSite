@@ -8,19 +8,19 @@ class CRUDUser(CRUDBase):
         self.model = model
 
     async def create(self, schema: CreateUser) -> UserBase:
-        user = await self.model.create(**schema)
+        user = await self.model.create(**schema.dict())
         return await GetUser.from_tortoise_orm(user)
 
     async def get_by_login(self, login: str) -> UserBase:
         user = await self.model.get_or_none(login=login)
         return await GetUser.from_tortoise_orm(user)
 
-    async def get_by_id(self, id: int) -> UserBase:
-        user = await self.model.get_or_none(id=id)
-        return await GetUser.from_tortoise_orm(user)
+    async def get_all(self) -> UserBase:
+        users = await self.model.all()
+        return [await GetUser.from_tortoise_orm(user) for user in users]
 
-    async def delete(self, id: int) -> DeleteUser:
-        await self.model.delete(id=id)
+    async def delete(self, login: str) -> DeleteUser:
+        await self.model.filter(login=login).delete()
         return DeleteUser(succces=True)
 
 

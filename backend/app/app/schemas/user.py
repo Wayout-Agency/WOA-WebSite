@@ -15,4 +15,4 @@ class CreateUser(User):
 
 
 class DeleteUser(BaseModel):
-    succes: bool
+    succces: bool
