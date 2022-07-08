@@ -13,10 +13,10 @@ class Settings(BaseSettings):
     API_V1_STR = "/api/v1"
     SECRET_KEY: str
     ALGORITHM = "HS256"
-    # 60 minutes * 24 hours * 8 days = 8 days
-    ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 8
-    # 60 minutes * 2 hours = 2 hours
-    REFRESH_TOKEN_EXPIRE_MINUTES = 60 * 2
+    # 4 hours
+    ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 60 * 4
+    # 4 days
+    REFRESH_TOKEN_EXPIRE_MINUTES = 60 * 60 * 24 * 4
     POSTGRES_DB: str
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str

@@ -1,30 +1,17 @@
-from datetime import datetime, timedelta
 from enum import Enum
+from time import time
 from typing import TypedDict
 
 from crud.crud_user import user
-from fastapi import HTTPException, status
 from jose import JWTError, jwt
 from passlib.hash import bcrypt
+from schemas.auth import OAuth2Schema
 from schemas.token import TokenPair
-from schemas.user import User
 
 from .config import get_settings
+from .errors import Errors
 
 settings = get_settings()
-
-
-class Payload(TypedDict):
-    expire: int
-
-
-async def authenticate_user(schema: User):
-    userdata = await user.get_by_login(login=schema.login)
-    if not _verify_password(schema.password, userdata.password):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Could not validate credentials",
-        )
 
 
 class TokenType(Enum):
@@ -32,33 +19,38 @@ class TokenType(Enum):
     refresh = "refresh"
 
 
+class Payload(TypedDict):
+    expire: float
+    token_type: TokenType
+
+
+async def authenticate_user(data: OAuth2Schema):
+    userdata = await user.get_by_login(login=data.login)
+    if not _verify_password(data.password, userdata.password):
+        raise Errors.credentials
+
+
 def create_token(token_type: TokenType) -> str:
     match token_type:
         case TokenType.access:
-            expire_minutes = settings.ACCESS_TOKEN_EXPIRE_MINUTES
+            expire_seconds = settings.ACCESS_TOKEN_EXPIRE_MINUTES
         case TokenType.refresh:
-            expire_minutes = settings.REFRESH_TOKEN_EXPIRE_MINUTES
-    payload = Payload(expire=datetime.utcnow() + timedelta(minutes=expire_minutes))
+            expire_seconds = settings.REFRESH_TOKEN_EXPIRE_MINUTES
+    payload = Payload(expire=time() + expire_seconds, token_type=token_type.value)
     return jwt.encode(payload, settings.SECRET_KEY, settings.ALGORITHM)
 
 
-def verify_token(token: str):
+def verify_token(token: str, token_type: TokenType):
     try:
         payload: Payload = jwt.decode(token, settings.SECRET_KEY, settings.ALGORITHM)
-        if payload["expire"] < datetime.utcnow():
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Outdated token",
-            )
+        if payload["expire"] < time() or token_type.value != payload["token_type"]:
+            raise Errors.out_token
     except JWTError:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token",
-        )
+        raise Errors.inv_token
 
 
 def create_new_pair() -> TokenPair:
-    expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    expire = time() + settings.ACCESS_TOKEN_EXPIRE_MINUTES
     return TokenPair(
         access=create_token(TokenType.access),
         refresh=(create_token(TokenType.refresh)),

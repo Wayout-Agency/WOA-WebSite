@@ -1,8 +1,10 @@
 from typing import List
 
+from core.errors import Errors
 from crud.base import CRUDBase
 from models.albums import Album, GetAlbum
 from schemas.album import AlbumBase, CreateAlbum, DeleteAlbum, UpdateAlbum
+from tortoise.exceptions import DoesNotExist
 
 
 class CRUDAlbum(CRUDBase):
@@ -18,12 +20,15 @@ class CRUDAlbum(CRUDBase):
         return [await GetAlbum.from_tortoise_orm(album) for album in albums]
 
     async def get_by_id(self, id: int) -> AlbumBase:
-        album = await self.model.get_or_none(id=id)
-        return await GetAlbum.from_tortoise_orm(album)
+        try:
+            album = await self.model.get(id=id)
+            return await GetAlbum.from_tortoise_orm(album)
+        except DoesNotExist:
+            raise Errors.not_found
 
     async def update(self, id: int, schema: UpdateAlbum) -> AlbumBase:
-        album = await self.model.filter(id=id).update(**schema.dict())
-        return await GetAlbum.from_tortoise_orm(album)
+        await self.model.filter(id=id).update(**schema.dict())
+        return await self.get_by_id(id)
 
     async def delete(self, id: int) -> DeleteAlbum:
         await self.model.filter(id=id).delete()

@@ -1,7 +1,8 @@
 from typing import List
 
+from api.deps import check_root_user
 from crud.crud_album import album
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from schemas.album import AlbumBase, CreateAlbum, DeleteAlbum, UpdateAlbum
 
 router = APIRouter()
@@ -13,7 +14,7 @@ async def get_all():
 
 
 @router.post("/", response_model=AlbumBase)
-async def create_album(schema: CreateAlbum):
+async def create_album(schema: CreateAlbum, oauth=Depends(check_root_user)):
     return await album.create(schema)
 
 
@@ -23,10 +24,10 @@ async def get_album(id: int):
 
 
 @router.put("/{id}", response_model=AlbumBase)
-async def update_album(id: int, schema: UpdateAlbum):
+async def update_album(id: int, schema: UpdateAlbum, oauth=Depends(check_root_user)):
     return await album.update(id, schema)
 
 
 @router.delete("/{id}", response_model=DeleteAlbum)
-async def delete_album(id: int):
+async def delete_album(id: int, oauth=Depends(check_root_user)):
     return await album.delete(id)
