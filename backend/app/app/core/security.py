@@ -30,13 +30,14 @@ async def authenticate_user(data: OAuth2Schema):
         raise Errors.credentials
 
 
-def create_token(token_type: TokenType) -> str:
+def create_token(token_type: TokenType, test_time: float | None = None) -> str:
+    exp_time = test_time if test_time else time()
     match token_type:
         case TokenType.access:
             expire_seconds = settings.ACCESS_TOKEN_EXPIRE_MINUTES
         case TokenType.refresh:
             expire_seconds = settings.REFRESH_TOKEN_EXPIRE_MINUTES
-    payload = Payload(expire=time() + expire_seconds, token_type=token_type.value)
+    payload = Payload(expire=exp_time + expire_seconds, token_type=token_type.value)
     return jwt.encode(payload, settings.SECRET_KEY, settings.ALGORITHM)
 
 
@@ -51,11 +52,9 @@ def verify_token(token: str, token_type: TokenType):
 
 def create_new_pair() -> TokenPair:
     expire = time() + settings.ACCESS_TOKEN_EXPIRE_MINUTES
-    return TokenPair(
-        access=create_token(TokenType.access),
-        refresh=(create_token(TokenType.refresh)),
-        expire=expire,
-    )
+    refresh = create_token(TokenType.refresh)
+    access = create_token(TokenType.access)
+    return TokenPair(access=access, refresh=refresh, expire=expire)
 
 
 hashed_password: str
@@ -67,4 +66,7 @@ def get_password_hash(plain_password) -> str:
 
 
 def _verify_password(plain_password, hashed_password) -> bool:
-    return bcrypt.verify(plain_password, hashed_password)
+    try:
+        return bcrypt.verify(plain_password, hashed_password)
+    except ValueError:
+        raise Errors.password_validation

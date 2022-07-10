@@ -14,12 +14,12 @@ class CRUDtoken(CRUDBase):
         return await GetToken.from_tortoise_orm(token)
 
     async def update(self, value: str, new_value: str) -> TokenBase:
-        await self.model.filter(value=value).update(value=new_value)
         try:
-            token = self.model.get(value=new_value)
-            return await GetToken.from_tortoise_orm(token)
+            await self.model.get(value=value)
+            await self.model.filter(value=value).update(value=new_value)
+            return TokenBase(value=new_value)
         except DoesNotExist:
-            raise Errors.not_found
+            raise Errors.out_token
 
     async def delete(self, value: str) -> TokenBase:
         token = await self.model.filter(value=value).delete()

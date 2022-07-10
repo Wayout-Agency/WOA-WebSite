@@ -25,6 +25,15 @@ class Settings(BaseSettings):
     DB_PORT: int
 
 
+class TestSettings(Settings):
+    pass
+
+
 @lru_cache()
 def get_settings() -> Settings:
     return Settings(**dotenv_values(BASEDIR / "config" / ".env"))
+
+
+@lru_cache()
+def get_test_settings() -> TestSettings:
+    return TestSettings(**dotenv_values(BASEDIR / "config" / ".env.test"))

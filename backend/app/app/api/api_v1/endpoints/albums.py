@@ -14,20 +14,20 @@ async def get_all():
 
 
 @router.post("/", response_model=AlbumBase)
-async def create_album(schema: CreateAlbum, oauth=Depends(check_root_user)):
+async def create_album(schema: CreateAlbum, _=Depends(check_root_user)):
     return await album.create(schema)
 
 
-@router.get("/{id}", response_model=AlbumBase)
+@router.get("/{id}/", response_model=AlbumBase)
 async def get_album(id: int):
     return await album.get_by_id(id)
 
 
-@router.put("/{id}", response_model=AlbumBase)
-async def update_album(id: int, schema: UpdateAlbum, oauth=Depends(check_root_user)):
+@router.put("/{id}/", response_model=AlbumBase)
+async def update_album(id: int, schema: UpdateAlbum, _=Depends(check_root_user)):
     return await album.update(id, schema)
 
 
-@router.delete("/{id}", response_model=DeleteAlbum)
-async def delete_album(id: int, oauth=Depends(check_root_user)):
+@router.delete("/{id}/", response_model=DeleteAlbum)
+async def delete_album(id: int, _=Depends(check_root_user)):
     return await album.delete(id)

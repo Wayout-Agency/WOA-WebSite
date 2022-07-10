@@ -19,3 +19,12 @@ services:
       PGADMIN_DEFAULT_PASSWORD: "admin"
     ports:
       - 8080:80
+  test_db:
+    image: postgres:14.4
+    environment:
+      POSTGRES_DB: "wayout_test"
+      POSTGRES_USER: "wayout_test"
+      POSTGRES_PASSWORD: "wayout_test"
+    container_name: postgres_test_db
+    ports:
+      - 7878:5432

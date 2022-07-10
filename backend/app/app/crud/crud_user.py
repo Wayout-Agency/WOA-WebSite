@@ -1,6 +1,8 @@
+from core.errors import Errors
 from crud.base import CRUDBase
 from models.users import GetUser, User
 from schemas.user import CreateUser, DeleteUser, UserBase
+from tortoise.exceptions import DoesNotExist
 
 
 class CRUDUser(CRUDBase):
@@ -12,8 +14,11 @@ class CRUDUser(CRUDBase):
         return await GetUser.from_tortoise_orm(user)
 
     async def get_by_login(self, login: str) -> UserBase:
-        user = await self.model.get_or_none(login=login)
-        return await GetUser.from_tortoise_orm(user)
+        try:
+            user = await self.model.get(login=login)
+            return await GetUser.from_tortoise_orm(user)
+        except DoesNotExist:
+            raise Errors.not_found
 
     async def get_all(self) -> UserBase:
         users = await self.model.all()
