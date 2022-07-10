@@ -1,6 +1,5 @@
 import random
 from string import ascii_lowercase
-from typing import NamedTuple
 
 import pytest
 from core.security import TokenPair, create_new_pair, get_password_hash

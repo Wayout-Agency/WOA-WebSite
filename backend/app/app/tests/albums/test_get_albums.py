@@ -1,10 +1,11 @@
 import pytest
 from crud.crud_album import album
 from httpx import AsyncClient
+from schemas.album import CreateAlbum
 
 
 @pytest.mark.anyio
-async def test_get_all(client: AsyncClient, get_album_data):
+async def test_get_all(client: AsyncClient, get_album_data: CreateAlbum):
     album_obj = await album.create(get_album_data)
     response = await client.get("/api/v1/albums/")
     assert response.status_code == 200
@@ -12,7 +13,7 @@ async def test_get_all(client: AsyncClient, get_album_data):
 
 
 @pytest.mark.anyio
-async def test_get_one(client: AsyncClient, get_album_data):
+async def test_get_one(client: AsyncClient, get_album_data: CreateAlbum):
     album_obj = await album.create(get_album_data)
     response = await client.get(f"/api/v1/albums/{album_obj.id}/")
     assert response.status_code == 200
