@@ -46,7 +46,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
     
       - name: Copy .env.test file
-        run: cp ./config/.env.test.example .env.test
+        run: cp ./config/.env.test.example .env.test && cp ./config/.env.example .env
         
       - name: Test with pytest
         run: cd backend/app/app && poetry run pytest
