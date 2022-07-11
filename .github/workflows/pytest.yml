@@ -1,0 +1,55 @@
+name: PyTest
+on:
+  push:
+    branches: [master, develop, ci]
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14.4
+        env:
+          POSTGRES_USER: wayout_test
+          POSTGRES_PASSWORD: wayout_test
+          POSTGRES_DB: wayout_test
+        ports:
+          - 7878:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 10s --health-retries 8
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+      
+      - name: Cache Poetry virtualenv
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.virtualenvs
+          key: poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            poetry-${{ hashFiles('**/poetry.lock') }}
+        
+      - name: Install Dependencies
+        run: poetry install
+        if: steps.cache.outputs.cache-hit != 'true'
+    
+      - name: Copy .env.test file
+        run: cp ./config/.env.test.example .env.test
+        
+      - name: Test with pytest
+        env:
+          DJANGO_SETTINGS_MODULE: project.settings
+          SECRETS_FILE: .confidential/ci.json
+        run: poetry run pytest --cov . -n 2
