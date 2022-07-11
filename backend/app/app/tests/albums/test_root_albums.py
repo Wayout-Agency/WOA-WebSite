@@ -34,7 +34,7 @@ async def test_create_album(
         json=dict(album_obj),
         headers={"Authorization": f"Bearer {tokens.access}"},
     )
-    assert response.status_code == int(HTTPStatus.OK)
+    assert response.status_code == int(HTTPStatus.CREATED)
     assert response.json()["title"] == album_obj.title
 
 
