@@ -32,7 +32,7 @@ class CRUDAlbum(CRUDBase):
 
     async def delete(self, id: int) -> DeleteAlbum:
         await self.model.filter(id=id).delete()
-        return DeleteAlbum(succces=True)
+        return DeleteAlbum(success=True)
 
 
 album = CRUDAlbum(Album)

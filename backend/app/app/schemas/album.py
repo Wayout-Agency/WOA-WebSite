@@ -25,4 +25,8 @@ class UpdateAlbum(Album):
 
 
 class DeleteAlbum(BaseModel):
-    succces: bool
+    success: bool
+
+
+class AlbumTestData(BaseModel):
+    value: CreateAlbum

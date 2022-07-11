@@ -3,22 +3,23 @@ from datetime import date
 from pydantic import BaseModel
 
 
-class Article(BaseModel):
+class Case(BaseModel):
     title: str
-    author: str
+    description: str
     created_at: date
     time_to_read: int
     slug: str
-    text: str
+    task: str
+    process: str
 
 
-class ArticleBase(Article):
+class CaseBase(Case):
     id: int
 
 
-class CreateArticle(Article):
+class CreateCase(Case):
     pass
 
 
-class UpdateArticle(Article):
+class UpdateCase(Case):
     pass

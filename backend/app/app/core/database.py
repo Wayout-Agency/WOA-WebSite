@@ -21,6 +21,7 @@ async def init_db():
                 "models.users",
                 "models.tokens",
                 "models.articles",
+                "models.cases",
             ]
         },
     )
@@ -32,6 +33,7 @@ TORTOISE_ORM = {
         "models": {
             "models": [
                 "app.models.articles",
+                "app.models.cases",
                 "app.models.albums",
                 "app.models.users",
                 "app.models.tokens",

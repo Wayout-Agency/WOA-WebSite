@@ -5,6 +5,7 @@ from tortoise.models import Model
 
 class Token(Model):
     id = fields.IntField(pk=True)
+    owner = fields.CharField(max_length=200)
     value = fields.CharField(max_length=600)
 
 

@@ -15,7 +15,7 @@ router = APIRouter()
 async def get_token(data: OAuth2Schema, request: Request):
     await authenticate_user(data)
     pair = create_new_pair()
-    await token.create(pair.refresh)
+    await token.create(data.login, pair.refresh)
     return pair
 
 

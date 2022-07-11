@@ -8,7 +8,6 @@ from schemas.token import TokenBase, TokenPair
 @pytest.mark.anyio
 async def test_update_token(client: AsyncClient, create_auth_pair: TokenPair):
     tokens = create_auth_pair
-    print(tokens.refresh)
     response = await client.post(
         "/api/v1/token/refresh/", json={"value": tokens.refresh}
     )

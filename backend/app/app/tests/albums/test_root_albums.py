@@ -25,7 +25,7 @@ async def test_update_album(
 
 @pytest.mark.anyio
 async def test_create_album(
-    client: AsyncClient, get_album_data, create_auth_pair: TokenPair
+    client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair
 ):
     tokens = create_auth_pair
     album_obj = get_album_data
@@ -40,7 +40,7 @@ async def test_create_album(
 
 @pytest.mark.anyio
 async def test_delete_album(
-    client: AsyncClient, get_album_data, create_auth_pair: TokenPair
+    client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair
 ):
     tokens: TokenPair = create_auth_pair
     album_obj = await album.create(get_album_data)

@@ -9,8 +9,9 @@ class CRUDtoken(CRUDBase):
     def __init__(self, model: Token) -> None:
         self.model = model
 
-    async def create(self, value: str) -> TokenBase:
-        token = await self.model.create(value=value)
+    async def create(self, owner: str, value: str) -> TokenBase:
+        await self.model.filter(owner=owner).delete()
+        token = await self.model.create(owner=owner, value=value)
         return await GetToken.from_tortoise_orm(token)
 
     async def update(self, value: str, new_value: str) -> TokenBase:

@@ -42,14 +42,15 @@ def auth_data() -> OAuth2Schema:
 
 @pytest.fixture()
 async def create_auth_pair() -> TokenPair:
+    rand_login = "".join(random.choice(ascii_lowercase) for _ in range(5))
     await user.create(
         CreateUser(
-            login="".join(random.choice(ascii_lowercase) for _ in range(5)),
+            login=rand_login,
             password=get_password_hash("Test123456"),
         )
     )
     tokens = create_new_pair()
-    await token.create(tokens.refresh)
+    await token.create(rand_login, tokens.refresh)
     return tokens
 
 
