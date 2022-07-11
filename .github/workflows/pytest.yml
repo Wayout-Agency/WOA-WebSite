@@ -49,4 +49,4 @@ jobs:
         run: cp ./config/.env.test.example .env.test
         
       - name: Test with pytest
-        run: cd backend/app/app && pytest
+        run: cd backend/app/app && poetry run pytest
