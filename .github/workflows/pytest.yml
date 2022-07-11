@@ -42,14 +42,11 @@ jobs:
             poetry-${{ hashFiles('**/poetry.lock') }}
         
       - name: Install Dependencies
-        run: poetry install
+        run: cd backend/app/ && poetry install
         if: steps.cache.outputs.cache-hit != 'true'
     
       - name: Copy .env.test file
-        run: cp ./config/.env.test.example .env.test
+        run: cp ./config/.env.test.example ./config/.env.test && cp ./config/.env.example ./config/.env
         
       - name: Test with pytest
-        env:
-          DJANGO_SETTINGS_MODULE: project.settings
-          SECRETS_FILE: .confidential/ci.json
-        run: poetry run pytest --cov . -n 2
+        run: cd backend/app/app && poetry run pytest
