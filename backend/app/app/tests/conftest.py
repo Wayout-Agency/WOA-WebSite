@@ -32,6 +32,7 @@ async def init_db() -> Generator:
             "models": [
                 "models.albums",
                 "models.articles",
+                "models.cases",
                 "models.users",
                 "models.tokens",
             ]

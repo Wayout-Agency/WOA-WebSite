@@ -9,8 +9,8 @@ class Case(Model):
     description = fields.CharField(max_length=200)
     created_at = fields.DateField()
     time_to_read = fields.SmallIntField()
-    link = fields.CharField(max_length=200)
-    slug = fields.CharField(max_length=500)
+    slug = fields.CharField(max_length=200)
+    task = fields.CharField(max_length=500)
     process = fields.CharField(max_length=500)
 
     def __str__(self) -> str:

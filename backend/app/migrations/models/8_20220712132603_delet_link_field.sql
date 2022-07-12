@@ -1,0 +1,8 @@
+-- upgrade --
+ALTER TABLE "case" ADD "task" VARCHAR(500) NOT NULL;
+ALTER TABLE "case" DROP COLUMN "link";
+ALTER TABLE "case" ALTER COLUMN "slug" TYPE VARCHAR(200) USING "slug"::VARCHAR(200);
+-- downgrade --
+ALTER TABLE "case" ADD "link" VARCHAR(200) NOT NULL;
+ALTER TABLE "case" DROP COLUMN "task";
+ALTER TABLE "case" ALTER COLUMN "slug" TYPE VARCHAR(500) USING "slug"::VARCHAR(500);
