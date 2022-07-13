@@ -35,6 +35,7 @@ async def init_db() -> Generator:
                 "models.cases",
                 "models.users",
                 "models.tokens",
+                "models.questions_services",
             ]
         },
     )

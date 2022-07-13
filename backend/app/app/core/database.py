@@ -22,6 +22,7 @@ async def init_db():
                 "models.tokens",
                 "models.articles",
                 "models.cases",
+                "models.questions_services",
             ]
         },
     )
@@ -37,6 +38,7 @@ TORTOISE_ORM = {
                 "app.models.albums",
                 "app.models.users",
                 "app.models.tokens",
+                "app.models.questions_services",
                 "aerich.models",
             ],
             "default_connection": "default",

@@ -2,7 +2,7 @@ from typing import List
 
 from api.deps import check_root_user
 from crud.crud_album import album
-from fastapi import APIRouter, Depends, Request, status
+from fastapi import APIRouter, Depends, status
 from schemas.album import AlbumBase, CreateAlbum, DeleteAlbum, UpdateAlbum
 
 router = APIRouter()
