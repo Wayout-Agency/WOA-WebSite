@@ -1,8 +1,11 @@
+from copy import copy
+from operator import le
 from typing import List
 
 from api.deps import check_root_user
+from core.file_manager import delete_files, save_files, update_files
 from crud.crud_album import album
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, File, Request, UploadFile, status
 from schemas.album import AlbumBase, CreateAlbum, DeleteAlbum, UpdateAlbum
 
 router = APIRouter()
@@ -31,3 +34,31 @@ async def update_album(id: int, schema: UpdateAlbum, _=Depends(check_root_user))
 @router.delete("/{id}/", response_model=DeleteAlbum, status_code=status.HTTP_200_OK)
 async def delete_album(id: int, _=Depends(check_root_user)):
     return await album.delete(id)
+
+
+@router.post("/{id}/file/", status_code=status.HTTP_201_CREATED)
+async def upload_files(
+    id: int,
+    files: List[UploadFile],
+):
+    await save_files(files, "albums", id)
+
+
+def _rename_files(files: List[UploadFile], indexes: str) -> List[UploadFile]:
+    list_indexes = list(map(lambda i: int(i), indexes))
+    for i in range(len(files)):
+        file_data = files[i].filename.split(".")
+        file_data[0] = f"{list_indexes[i]}_file"
+        files[i].filename = ".".join(file_data)
+    return files
+
+
+@router.put("/{id}/file/")
+async def change_files(id: int, indexes: str, files: List[UploadFile]):
+    files = _rename_files(files, indexes)
+    await update_files(files, "albums", id)
+
+
+@router.delete("/{id}/file/")
+async def remove_files(id: int):
+    delete_files("albums", id)

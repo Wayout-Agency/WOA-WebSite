@@ -24,6 +24,8 @@ class Settings(BaseSettings):
     DB_HOST: str
     DB_PORT: int
 
+    UPLOAD_DIRECTORY = BASEDIR / "media"
+
 
 class TestSettings(Settings):
     pass

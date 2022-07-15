@@ -1,6 +1,7 @@
 from api.api_v1.api import api_router
 from core.config import get_settings
 from core.database import init_db
+from core.file_manager import init_media
 from fastapi import FastAPI
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -17,6 +18,7 @@ settings = get_settings()
 
 @app.on_event("startup")
 async def db_load():
+    init_media()
     await init_db()
 
 
