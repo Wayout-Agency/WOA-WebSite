@@ -12,7 +12,7 @@ from schemas.user import CreateUser
 
 @pytest.fixture()
 def path() -> str:
-    return rf"{os.path.dirname(os.path.abspath(__file__))}\example\img0.jpg"
+    return rf"{os.path.dirname(os.path.abspath(__file__))}/example/img0.jpg"
 
 
 @pytest.fixture()
