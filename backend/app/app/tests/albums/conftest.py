@@ -1,3 +1,4 @@
+import os
 import random
 from string import ascii_lowercase
 
@@ -7,6 +8,11 @@ from crud.crud_token import token
 from crud.crud_user import user
 from schemas.album import CreateAlbum
 from schemas.user import CreateUser
+
+
+@pytest.fixture()
+def path() -> str:
+    return rf"{os.path.dirname(os.path.abspath(__file__))}\example\img0.jpg"
 
 
 @pytest.fixture()

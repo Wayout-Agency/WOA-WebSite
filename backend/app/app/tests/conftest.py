@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Generator
 
 import pytest
+from fastapi.testclient import TestClient
 from httpx import AsyncClient
 from tortoise import Tortoise
 
@@ -51,6 +52,14 @@ async def clean_test_data():
 async def client():
     async with AsyncClient(app=app, base_url="http://test") as client:
         yield client
+
+
+@pytest.fixture(scope="session")
+def sync_client():
+    s_client = TestClient(app)
+    yield s_client
+    # with AsyncClient(app=app, base_url="http://test") as client:
+    #     y
 
 
 @pytest.fixture(scope="session", autouse=True)

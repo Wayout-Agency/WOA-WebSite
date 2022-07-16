@@ -3,9 +3,7 @@ from typing import List
 
 from api.deps import check_root_user
 from crud.crud_post import post
-from fastapi import APIRouter, Depends, Request, status
-from models.articles import Article
-from models.cases import Case
+from fastapi import APIRouter, Depends, status
 from schemas.post import CreatePost, DeletePost, PostBase, PostType, UpdatePost
 
 

@@ -36,5 +36,10 @@ class Errors(NamedTuple):
 
     crit = HTTPException(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        detail="Bad data",
+        detail="Invalid data",
+    )
+
+    bad_req = HTTPException(
+        status_code=status.HTTP_400_BAD_REQUEST,
+        detail="Files with this id does not exist",
     )
