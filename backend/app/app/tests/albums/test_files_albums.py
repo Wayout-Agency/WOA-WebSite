@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 import pytest
+from core.file_manager import init_media
 from fastapi.testclient import TestClient
 from schemas.token import TokenPair
 
@@ -9,6 +10,7 @@ from schemas.token import TokenPair
 async def test_upload_file(
     sync_client: TestClient, path: str, create_auth_pair: TokenPair
 ):
+    init_media()
     tokens = create_auth_pair
     response = sync_client.post(
         f"/api/v1/albums/7878/file/",
