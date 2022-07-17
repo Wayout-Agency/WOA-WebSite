@@ -7,8 +7,8 @@ from .case import *
 
 
 class PostType(Enum):
-    case = "case"
-    article = "article"
+    case = "cases"
+    article = "articles"
 
 
 class Post(BaseModel):

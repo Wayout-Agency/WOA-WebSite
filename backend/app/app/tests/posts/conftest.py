@@ -1,3 +1,4 @@
+import os
 import random
 from string import ascii_lowercase
 
@@ -50,7 +51,8 @@ def json_article_data():
             "created_at": "2022-07-14",
             "time_to_read": 10,
             "slug": "Article test slug",
-            "text": "Article test text",
+            "introduction": "Article test introduction text",
+            "blocks": "Article test block",
         }
     }
 
@@ -64,7 +66,8 @@ def db_article_data() -> CreatePost:
             created_at="2022-07-14",
             time_to_read=10,
             slug="Article test slug",
-            text="Article test text",
+            introduction="Article test text",
+            blocks="Article test block",
         )
     )
 
@@ -81,3 +84,8 @@ async def create_auth_pair() -> TokenPair:
     tokens = create_new_pair()
     await token.create(rand_login, tokens.refresh)
     return tokens
+
+
+@pytest.fixture()
+def path() -> str:
+    return rf"{os.path.dirname(os.path.abspath(__file__))}/example/img0.jpg"

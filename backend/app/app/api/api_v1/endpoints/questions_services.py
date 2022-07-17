@@ -6,7 +6,6 @@ from fastapi import APIRouter, Depends, status
 from schemas.questions_services import (
     CreateQuestionService,
     DeleteQuestionService,
-    QSType,
     QuestionServiceBase,
     UpdateQuestionService,
 )

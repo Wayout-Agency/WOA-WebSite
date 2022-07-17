@@ -9,7 +9,8 @@ class Article(BaseModel):
     created_at: date
     time_to_read: int
     slug: str
-    text: str
+    introduction: str
+    blocks: str
 
 
 class ArticleBase(Article):

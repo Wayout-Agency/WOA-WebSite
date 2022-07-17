@@ -10,7 +10,8 @@ class Article(Model):
     created_at = fields.DateField()
     time_to_read = fields.SmallIntField()
     slug = fields.CharField(max_length=200)
-    text = fields.TextField()
+    introduction = fields.TextField()
+    blocks = fields.TextField()
 
     def __str__(self) -> str:
         return self.title
