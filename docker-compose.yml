@@ -7,8 +7,13 @@ services:
       POSTGRES_USER: "wayout"
       POSTGRES_PASSWORD: "wayout"
     container_name: postgres_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    networks:
+      - webnet
+
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
@@ -19,6 +24,9 @@ services:
       PGADMIN_DEFAULT_PASSWORD: "admin"
     ports:
       - 8080:80
+    networks:
+      - webnet
+
   test_db:
     image: postgres:14.4
     environment:
@@ -28,3 +36,25 @@ services:
     container_name: postgres_test_db
     ports:
       - 7878:5432
+
+  wayout-backend:
+    container_name: wayout-backend
+    image: "wayout:dev"
+    build: ./backend
+    ports:
+      - 8000:8000
+    volumes:
+      - media:/var/www/media
+    depends_on:
+      - db
+    networks:
+      - webnet
+    env_file: ./config/.env
+    
+networks:
+  webnet:
+
+
+volumes:
+  pgdata:
+  media:

@@ -26,6 +26,7 @@ async def init_db():
             ]
         },
     )
+    await Tortoise.generate_schemas()
 
 
 TORTOISE_ORM = {
@@ -33,12 +34,12 @@ TORTOISE_ORM = {
     "apps": {
         "models": {
             "models": [
-                "app.models.articles",
-                "app.models.cases",
-                "app.models.albums",
-                "app.models.users",
-                "app.models.tokens",
-                "app.models.questions_services",
+                "models.articles",
+                "models.cases",
+                "models.albums",
+                "models.users",
+                "models.tokens",
+                "models.questions_services",
                 "aerich.models",
             ],
             "default_connection": "default",

@@ -1,9 +1,8 @@
-from re import S
 from typing import List
 
 from core.errors import Errors
 from crud.base import CRUDBase
-from models.questions_services import QSType, QuestionService
+from models.questions_services import QuestionService
 from schemas.questions_services import (
     CreateQuestionService,
     DeleteQuestionService,

@@ -1,14 +1,20 @@
 import sys
+from os import environ, path
 from pathlib import Path
 from typing import Generator
 
 import pytest
+from dotenv import load_dotenv
 from fastapi.testclient import TestClient
 from httpx import AsyncClient
 from tortoise import Tortoise
 
+BASEDIR = Path(__file__).resolve().parent.parent.parent.parent.parent
+
+load_dotenv(BASEDIR / "config" / ".env.test")
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from core.config import get_test_settings
+from core.config import get_settings
 from main import app
 from models.albums import Album
 from models.articles import Article
@@ -17,7 +23,7 @@ from models.users import User
 
 
 async def init_db() -> Generator:
-    test_settings = get_test_settings()
+    test_settings = get_settings()
 
     TEST_DB_URL = "postgres://{}:{}@{}:{}/{}".format(
         test_settings.POSTGRES_USER,
@@ -58,8 +64,6 @@ async def client():
 def sync_client():
     s_client = TestClient(app)
     yield s_client
-    # with AsyncClient(app=app, base_url="http://test") as client:
-    #     y
 
 
 @pytest.fixture(scope="session", autouse=True)

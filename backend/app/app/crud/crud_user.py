@@ -18,7 +18,7 @@ class CRUDUser(CRUDBase):
             user = await self.model.get(login=login)
             return await GetUser.from_tortoise_orm(user)
         except DoesNotExist:
-            raise Errors.not_found
+            raise Errors.credentials
 
     async def get_all(self) -> UserBase:
         users = await self.model.all()

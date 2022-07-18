@@ -82,7 +82,7 @@ async def test_update_article_with_token(
 
 
 @pytest.mark.anyio
-async def test_update_album_with_token(
+async def test_update_case_with_token(
     client: AsyncClient, db_case_data: PostBase, create_auth_pair: TokenPair
 ):
     tokens = create_auth_pair
@@ -95,7 +95,7 @@ async def test_update_album_with_token(
 
 
 @pytest.mark.anyio
-async def test_delete_album_with_token(
+async def test_delete_article_with_token(
     client: AsyncClient, db_article_data: PostBase, create_auth_pair: TokenPair
 ):
     tokens = create_auth_pair
@@ -159,7 +159,7 @@ async def test_update_article_without_token(
 
 
 @pytest.mark.anyio
-async def test_update_album_without_token(client: AsyncClient, db_case_data: PostBase):
+async def test_update_case_without_token(client: AsyncClient, db_case_data: PostBase):
     obj: PostBase = await post.create(PostType.case, db_case_data)
     response = await client.delete(
         f"/api/v1/posts/{PostType.case.value}/{obj.value.id}/"
@@ -168,7 +168,7 @@ async def test_update_album_without_token(client: AsyncClient, db_case_data: Pos
 
 
 @pytest.mark.anyio
-async def test_delete_album_without_token(
+async def test_delete_article_without_token(
     client: AsyncClient, db_article_data: PostBase
 ):
     obj: PostBase = await post.create(PostType.article, db_article_data)

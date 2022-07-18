@@ -1,14 +1,13 @@
 import asyncio
 import sys
-from ast import For
 from enum import Enum
 from pathlib import Path
 from typing import NamedTuple
 
 from colorama import Fore, Style
+from core.config import get_settings
 from core.security import get_password_hash
 from crud.crud_user import user
-from dotenv import dotenv_values
 from schemas.user import CreateUser
 from tortoise import Tortoise
 
@@ -22,15 +21,8 @@ class DBConfig(NamedTuple):
     SECRET_KEY: str
 
 
-BASEDIR = Path(__file__).resolve().parent.parent.parent.parent
-
-
-def _get_settings() -> DBConfig:
-    return DBConfig(**dotenv_values(BASEDIR / "config" / ".env"))
-
-
 async def init_db():
-    db = _get_settings()
+    db = get_settings()
 
     await Tortoise.init(
         db_url="postgres://{}:{}@{}:{}/{}".format(

@@ -1,5 +1,3 @@
-from copy import copy
-from operator import le
 from typing import List
 
 from api.deps import check_root_user

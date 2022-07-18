@@ -4,9 +4,10 @@ from signal import raise_signal
 from typing import List
 
 import aiofiles
-from core.config import get_settings
-from core.errors import Errors
 from fastapi import UploadFile
+
+from .config import get_settings
+from .errors import Errors
 
 settings = get_settings()
 
