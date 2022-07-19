@@ -7,7 +7,7 @@
 </p>
 
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Flict-dev/Wayout-site/Tests?label=build) ![License](https://img.shields.io/github/license/Flict-dev/Wayout-site) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Flict-dev/Wayout-site/PyTest?label=build) ![License](https://img.shields.io/github/license/Flict-dev/Wayout-site) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 ## Features
 - **[FastAPI](https://fastapi.tiangolo.com/)** (Python 3.10)
 - **[Tortoise](https://tortoise.github.io/index.html)** for ORM
