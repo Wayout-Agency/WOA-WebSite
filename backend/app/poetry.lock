@@ -561,7 +561,7 @@ diagrams = ["railroad-diagrams", "jinja2"]
 
 [[package]]
 name = "pypika-tortoise"
-version = "0.1.5"
+version = "0.1.6"
 description = "Forked from pypika and streamline just for tortoise-orm"
 category = "main"
 optional = false
@@ -766,7 +766,7 @@ python-versions = ">=3.6,<4.0"
 
 [[package]]
 name = "tortoise-orm"
-version = "0.19.1"
+version = "0.19.2"
 description = "Easy async ORM for python, built with relations in mind"
 category = "main"
 optional = false
@@ -775,7 +775,7 @@ python-versions = ">=3.7,<4.0"
 [package.dependencies]
 aiosqlite = ">=0.16.0,<0.18.0"
 iso8601 = ">=1.0.2,<2.0.0"
-pypika-tortoise = ">=0.1.5,<0.2.0"
+pypika-tortoise = ">=0.1.6,<0.2.0"
 pytz = "*"
 
 [package.extras]
@@ -843,7 +843,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "f01ae6a149a608048da21807a2b7d631bc25667628e6f842ff59f92db1347169"
+content-hash = "9a426b5ac99b5d611c44dd64289bf427c97d4bf06338f7ca0a9d8a44801c0052"
 
 [metadata.files]
 aerich = [
@@ -1228,8 +1228,8 @@ pyparsing = [
     {file = "pyparsing-3.0.9.tar.gz", hash = "sha256:2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"},
 ]
 pypika-tortoise = [
-    {file = "pypika-tortoise-0.1.5.tar.gz", hash = "sha256:2e2f747bfc645a25e097485651278cd7d920b709686ce54e43387ba1c9294048"},
-    {file = "pypika_tortoise-0.1.5-py3-none-any.whl", hash = "sha256:23d993558e3005ac7f7f2865d9add3d8168097f45246f8844fa46d6682a99d90"},
+    {file = "pypika-tortoise-0.1.6.tar.gz", hash = "sha256:d802868f479a708e3263724c7b5719a26ad79399b2a70cea065f4a4cadbebf36"},
+    {file = "pypika_tortoise-0.1.6-py3-none-any.whl", hash = "sha256:2d68bbb7e377673743cff42aa1059f3a80228d411fbcae591e4465e173109fd8"},
 ]
 pytest = [
     {file = "pytest-7.1.2-py3-none-any.whl", hash = "sha256:13d0e3ccfc2b6e26be000cb6568c832ba67ba32e719443bfe725814d3c42433c"},
@@ -1330,8 +1330,8 @@ tomlkit = [
     {file = "tomlkit-0.11.0.tar.gz", hash = "sha256:71ceb10c0eefd8b8f11fe34e8a51ad07812cb1dc3de23247425fbc9ddc47b9dd"},
 ]
 tortoise-orm = [
-    {file = "tortoise-orm-0.19.1.tar.gz", hash = "sha256:0ff278d76bec2e41beb14ea63f99ea6d473ee9d50fef68224a51954e5b38d39f"},
-    {file = "tortoise_orm-0.19.1-py3-none-any.whl", hash = "sha256:a89fef639d24cfabf1bcc43eb0b4657dbe9c277d01378a90eb2d370fb9dc03dd"},
+    {file = "tortoise-orm-0.19.2.tar.gz", hash = "sha256:bff4d79abfca7fb805972bb2438e8e0cd2e6590bc2cfd7593a803518a027bbf0"},
+    {file = "tortoise_orm-0.19.2-py3-none-any.whl", hash = "sha256:a99b8c9f42d5cd49493c70471b5c9a5df8ecf49cc624f2f41b9dc75bba993ac5"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.2.0-py3-none-any.whl", hash = "sha256:6657594ee297170d19f67d55c05852a874e7eb634f4f753dbd667855e07c1708"},
