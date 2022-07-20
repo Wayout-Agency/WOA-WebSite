@@ -10,7 +10,7 @@ python = "^3.10"
 fastapi = "^0.79.0"
 uvicorn = "^0.18.2"
 psycopg2 = "^2.9.3"
-tortoise-orm = "^0.19.1"
+tortoise-orm = "^0.19.2"
 python-dotenv = "^0.20.0"
 aerich = "^0.6.3"
 passlib = { extras = ["bcrypt"], version = "^1.7.4" }
