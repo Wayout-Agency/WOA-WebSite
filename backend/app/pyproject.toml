@@ -14,7 +14,7 @@ tortoise-orm = "^0.19.1"
 python-dotenv = "^0.20.0"
 aerich = "^0.6.3"
 passlib = { extras = ["bcrypt"], version = "^1.7.4" }
-asyncpg = "^0.25.0"
+asyncpg = "^0.26.0"
 python-jose = "^3.3.0"
 colorama = "^0.4.5"
 python-multipart = "^0.0.5"
