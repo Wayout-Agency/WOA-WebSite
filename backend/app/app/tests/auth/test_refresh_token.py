@@ -6,6 +6,15 @@ from schemas.token import TokenBase, TokenPair
 
 
 @pytest.mark.anyio
+async def test_verify_token(client: AsyncClient, create_auth_pair: TokenPair):
+    tokens = create_auth_pair
+    response = await client.get(
+        "/api/v1/token/", headers={"Authorization": f"Bearer {tokens.access}"}
+    )
+    assert response.status_code == int(HTTPStatus.OK)
+
+
+@pytest.mark.anyio
 async def test_update_token(client: AsyncClient, create_auth_pair: TokenPair):
     tokens = create_auth_pair
     response = await client.post(
