@@ -7,14 +7,14 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.78.0"
+fastapi = "^0.79.0"
 uvicorn = "^0.18.2"
 psycopg2 = "^2.9.3"
-tortoise-orm = "^0.19.1"
+tortoise-orm = "^0.19.2"
 python-dotenv = "^0.20.0"
 aerich = "^0.6.3"
 passlib = { extras = ["bcrypt"], version = "^1.7.4" }
-asyncpg = "^0.25.0"
+asyncpg = "^0.26.0"
 python-jose = "^3.3.0"
 colorama = "^0.4.5"
 python-multipart = "^0.0.5"
@@ -23,7 +23,7 @@ aiofiles = "^0.8.0"
 
 
 [tool.poetry.dev-dependencies]
-pre-commit = "^2.19.0"
+pre-commit = "^2.20.0"
 mypy = "^0.961"
 black = "^22.6.0"
 flake8 = "^4.0.1"
