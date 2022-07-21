@@ -1,0 +1,10 @@
+.input {
+  padding: 32px 35px;
+  border: 2px solid var(--border);
+  width: 100%;
+}
+
+::-webkit-input-placeholder {
+  color: var(--text);
+  opacity: 0.3;
+}
