@@ -1,5 +1,5 @@
 import cn from "classnames";
-import styles from "./input.module.scss";
+import styles from "./Input.module.scss";
 
 const Input = ({ type = "text", placeholder, value, className }) => (
   <input

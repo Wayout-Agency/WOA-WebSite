@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bgLayout);
+  padding: 24px 50px;
+  padding-bottom: 19px;
+  padding-right: 20px;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.link,
+.active {
+  margin: 0 30px;
+  color: var(--navLink);
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+}
+
+.active {
+  color: var(--navLinkActive);
+}
