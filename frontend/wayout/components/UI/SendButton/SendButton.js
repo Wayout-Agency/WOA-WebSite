@@ -1,6 +1,7 @@
-import cn from "classnames";
 import styles from "./SendButton.module.scss";
 
-const SendButton = ({ onClick }) => pass;
+const SendButton = () => {
+  return <input type="submit" className={styles.button} value="Обновить" />;
+};
 
 export default SendButton;

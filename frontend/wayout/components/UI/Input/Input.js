@@ -1,12 +1,19 @@
 import cn from "classnames";
 import styles from "./Input.module.scss";
 
-const Input = ({ type = "text", placeholder, value, className }) => (
+const Input = ({
+  type = "text",
+  placeholder,
+  value,
+  className = " ",
+  onChange,
+}) => (
   <input
     value={value}
     type={type}
     placeholder={placeholder}
-    className={cn(styles.input, className)}
+    className={`${styles.input} ${className}`}
+    onChange={onChange}
   />
 );
 

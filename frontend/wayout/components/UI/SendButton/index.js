@@ -1,3 +1,3 @@
-import Input from "./SendButton";
+import SendButton from "./SendButton";
 
-export default Input;
+export default SendButton;
