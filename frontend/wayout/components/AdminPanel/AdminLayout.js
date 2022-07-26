@@ -8,10 +8,12 @@ const AdminLayout = ({ children }) => {
 
   const fetcher = async () => {
     const client = await rootWayoutAPI();
-    await client.get(verifyEndpoint);
+    let response = await client.get(verifyEndpoint);
+    return response.data.message;
   };
 
-  const { error } = useSWR(verifyEndpoint, fetcher);
+  const { data, error } = useSWR(verifyEndpoint, fetcher);
+  if (!data) return <AuthForm />;
   if (error) return <AuthForm />;
 
   return (
