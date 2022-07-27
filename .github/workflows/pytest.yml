@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -18,7 +17,11 @@ jobs:
           POSTGRES_DB: wayout_test
         ports:
           - 7878:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 10s --health-retries 8
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Check out repository code
@@ -31,7 +34,7 @@ jobs:
 
       - name: Install and configure Poetry
         uses: snok/install-poetry@v1
-      
+
       - name: Cache Poetry virtualenv
         uses: actions/cache@v1
         id: cache
@@ -40,13 +43,17 @@ jobs:
           key: poetry-${{ hashFiles('**/poetry.lock') }}
           restore-keys: |
             poetry-${{ hashFiles('**/poetry.lock') }}
-        
+
       - name: Install Dependencies
         run: cd backend/app/ && poetry install
         if: steps.cache.outputs.cache-hit != 'true'
-    
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Copy .env.test file
         run: cp ./config/.env.test.example ./config/.env.test && cp ./config/.env.example ./config/.env
-        
+
       - name: Test with pytest
         run: cd backend/app/app && poetry run pytest
