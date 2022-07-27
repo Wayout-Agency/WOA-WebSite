@@ -8,7 +8,7 @@ const AdminHeader = () => {
     <div className={styles.adminHeader}>
       <Link href={"/admin"}>
         <a>
-          <h2 className={panelStyles.title}>Главная:</h2>
+          <h2 className={styles.title}>Админ панель:</h2>
         </a>
       </Link>
     </div>

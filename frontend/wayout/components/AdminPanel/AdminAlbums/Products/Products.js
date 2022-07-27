@@ -1,27 +1,12 @@
 import albumsStyles from "../AdminAlbums.module.scss";
 import Link from "next/link";
-import wayoutAPI from "services/wayoutApi";
-import useSWR from "swr";
+
 const Products = ({
   productTitle,
   productType,
-  productApiUrl,
   productUrl,
-  responseType = "card",
+  data,
 }) => {
-  const fetcher = async () => {
-    let response = await wayoutAPI.get(productApiUrl);
-    if (responseType === "card") return response.data;
-    if (responseType === "question")
-      return response.data.filter(({ type }) => type === "question");
-    if (responseType === "service")
-      return response.data.filter(({ type }) => type === "service");
-  };
-
-  const { data } = useSWR(productApiUrl, fetcher);
-
-  if (!data) return <></>;
-
   return (
     <div className={albumsStyles.albumsDataWrapper}>
       <h3 className={albumsStyles.dataTitle}>{productTitle}</h3>
