@@ -6,7 +6,7 @@ on:
     branches: [master, develop]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -47,12 +47,9 @@ jobs:
       - name: Install Dependencies
         run: cd backend/app/ && poetry install
         if: steps.cache.outputs.cache-hit != 'true'
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+      
       - name: Copy .env.test file
         run: cp ./config/.env.test.example ./config/.env.test && cp ./config/.env.example ./config/.env
       - name: Test with pytest
         run: cd backend/app/app && poetry run pytest
+      
