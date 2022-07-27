@@ -54,6 +54,5 @@ jobs:
     steps:
       - name: Copy .env.test file
         run: cp ./config/.env.test.example ./config/.env.test && cp ./config/.env.example ./config/.env
-
       - name: Test with pytest
         run: cd backend/app/app && poetry run pytest
