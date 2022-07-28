@@ -24,6 +24,7 @@ const AdminAlbums = () => {
   };
 
   const albums = useSWR(albumsApiUrl, albumsFetcher);
+  
   const questionServices = useSWR(
     questionServicesApiUrl,
     questionServicesFetcher
@@ -37,20 +38,20 @@ const AdminAlbums = () => {
       <Products
         productTitle="Товары"
         productType="Карточку"
-        productUrl="/card"
+        productUrl="/admin/albums/card"
         data={albums.data}
       />
       <Products
         productTitle="Вопросы"
         productType="Вопрос"
-        productUrl="/question"
+        productUrl="/admin/albums/question"
         responseType="question"
         data={questionServices.data.questions}
       />
       <Products
         productTitle="Доп. услуги"
         productType="Услугу"
-        productUrl="/service"
+        productUrl="/admin/albums/service"
         responseType="service"
         data={questionServices.data.services}
       />

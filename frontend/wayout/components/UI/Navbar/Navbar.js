@@ -10,14 +10,14 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <a className={styles.logo}>
+        <a>
           <Image
             src="/static/img/logo.svg"
             width="220px"
             height="45px"
             className={styles.logoImg}
             alt="logo"
-          />
+          />  
         </a>
       </Link>
       <div className={styles.links}>

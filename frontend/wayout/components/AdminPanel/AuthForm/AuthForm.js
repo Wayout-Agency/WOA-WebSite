@@ -9,11 +9,12 @@ const AuthForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     await wayoutAPI
       .post("/token/", { login: login, password: password })
       .then((res) => {
         setTokens(res.data);
-        window.location.reload();
+        window.location.reload(); 
       })
       .catch((_) => {
         setLogin("А МОЖЕТ ТЫ ВООБЩЕ НЕ АДМИН");

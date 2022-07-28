@@ -13,6 +13,7 @@ const AdminLayout = ({ children }) => {
   };
 
   const { data, error } = useSWR(verifyEndpoint, fetcher);
+
   if (!data) return <AuthForm />;
   if (error) return <AuthForm />;
 
