@@ -1,4 +1,4 @@
-import albumsStyles from "../AdminAlbums.module.scss";
+import albumsStyles from "../Albums.module.scss";
 import Link from "next/link";
 
 const Products = ({

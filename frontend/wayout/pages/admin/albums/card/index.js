@@ -1,9 +1,9 @@
 import AdminLayout from "@/components/AdminPanel/AdminLayout";
-import AdminAlbumsCard from "@/components/AdminPanel/AdminAlbumsCard";
+import AlbumsCard from "@/components/AdminPanel/AlbumsCard";
 export default function Card() {
   return (
     <AdminLayout>
-      <AdminAlbumsCard />
+      <AlbumsCard />
     </AdminLayout>
   );
 }

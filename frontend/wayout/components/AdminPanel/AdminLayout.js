@@ -1,4 +1,4 @@
-import AdminHeader from "./AdminHeader";
+import AdminHeader from "./Header";
 import useSWR from "swr";
 import AuthForm from "./AuthForm";
 import { rootWayoutAPI } from "services/wayoutApi";

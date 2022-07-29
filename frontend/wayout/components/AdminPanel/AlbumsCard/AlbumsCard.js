@@ -1,9 +1,9 @@
-import styles from "./AdminAlbumsCard.module.scss";
+import styles from "./AlbumsCard.module.scss";
 import panelStyles from "../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";
 
-const AdminAlbumsCard = () => {
+const AlbumsCard = () => {
   const albumsApiUrl = "/albums/";
 
   return (
@@ -12,4 +12,4 @@ const AdminAlbumsCard = () => {
     </div>
   );
 };
-export default AdminAlbumsCard;
+export default AlbumsCard;

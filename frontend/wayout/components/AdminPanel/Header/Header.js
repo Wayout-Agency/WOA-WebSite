@@ -1,9 +1,8 @@
 import Link from "next/link";
-import styles from "./AdminHeader.module.scss";
-import panelStyles from "../AdminPanel.module.scss";
+import styles from "./Header.module.scss";
 
 
-const AdminHeader = () => {
+const Header = () => {
   return (
     <div className={styles.adminHeader}>
       <Link href={"/admin"}>
@@ -15,4 +14,4 @@ const AdminHeader = () => {
   );
 };
 
-export default AdminHeader;
+export default Header;

@@ -1,10 +1,10 @@
-import styles from "./AdminAlbums.module.scss";
+import styles from "./Albums.module.scss";
 import panelStyles from "../AdminPanel.module.scss";
 import wayoutAPI from "services/wayoutApi";
 import useSWR from "swr";
 
 import Products from "./Products";
-const AdminAlbums = () => {
+const Albums = () => {
   const albumsApiUrl = "/albums/";
   const questionServicesApiUrl = "/questions-services/";
 
@@ -58,4 +58,4 @@ const AdminAlbums = () => {
     </div>
   );
 };
-export default AdminAlbums;
+export default Albums;

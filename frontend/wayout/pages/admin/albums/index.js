@@ -1,9 +1,9 @@
 import AdminLayout from "@/components/AdminPanel/AdminLayout";
-import AdminAlbums from "@/components/AdminPanel/AdminAlbums";
+import Albums from "@/components/AdminPanel/Albums";
 const Albums = () => {
   return (
     <AdminLayout>
-      <AdminAlbums />
+      <Albums />
     </AdminLayout>
   );
 };
