@@ -2,11 +2,16 @@ from functools import lru_cache
 from os import environ
 from pathlib import Path
 
+from dotenv import load_dotenv
 from pydantic import BaseSettings
 
 BASEDIR = Path(__file__).resolve().parent.parent.parent.parent.parent
 
-# Generate SECRET_KEY by secrets.token_urlsafe(32)
+"""
+In prod use secrets.token_urlsafe(32) for SECRET_KEY
+
+In dev mode use load_dotenv(BASEDIR / "config" / ".env.dev")
+"""
 
 
 class Settings(BaseSettings):

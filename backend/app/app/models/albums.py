@@ -13,6 +13,7 @@ class Album(Model):
     slug = fields.CharField(max_length=200)
     price_include = fields.CharField(max_length=500)
     model_description = fields.CharField(max_length=500)
+    separation = fields.SmallIntField()
 
     def __str__(self):
         return self.title

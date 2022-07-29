@@ -41,7 +41,6 @@ tortoise_orm = "app.core.database.TORTOISE_ORM"
 location = "./migrations"
 src_folder = "./."
 
-
 [tool.black]
 line-length = 109
 target-version = ['py37']

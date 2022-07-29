@@ -21,6 +21,24 @@ async def test_upload_file(
     assert response.json() == {"success": True}
 
 
+"""Test get files"""
+
+
+@pytest.mark.anyio
+async def test_get_file(sync_client: TestClient):
+    response = sync_client.get(f"/api/v1/albums/7878/file/0/")
+    assert response.status_code == HTTPStatus.OK
+
+
+@pytest.mark.anyio
+async def test_get_nonexistent_file(sync_client: TestClient):
+    response = sync_client.get(f"/api/v1/albums/7878/file/1337/")
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
+"""Test change files"""
+
+
 @pytest.mark.anyio
 async def test_change_file(
     sync_client: TestClient, path: str, create_auth_pair: TokenPair

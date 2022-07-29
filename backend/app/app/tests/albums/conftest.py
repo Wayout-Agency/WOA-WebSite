@@ -26,6 +26,7 @@ def get_album_data() -> CreateAlbum:
         slug="slug",
         price_include="text",
         model_description="desc",
+        separation=0,
     )
 
 

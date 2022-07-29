@@ -1,6 +1,5 @@
 import os
 import shutil
-from signal import raise_signal
 from typing import List
 
 import aiofiles
@@ -36,6 +35,23 @@ def _rename_files(files: List[UploadFile], indexes: str) -> List[UploadFile]:
         file_data[0] = f"{list_indexes[i]}_file"
         files[i].filename = ".".join(file_data)
     return files
+
+
+def get_files_info(dy_type: str, id: int) -> int:
+    try:
+        return len(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))
+    except FileNotFoundError:
+        raise Errors.bad_req
+
+
+def get_filename(dy_type: str, id: int, file_id: int) -> str:
+    try:
+        name = sorted(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))[
+            file_id
+        ]
+        return name
+    except (FileNotFoundError, IndexError):
+        raise Errors.bad_req
 
 
 async def save_files(files: List[UploadFile], dy_type: str, id: int):
