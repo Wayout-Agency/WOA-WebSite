@@ -1,10 +1,10 @@
 import AdminLayout from "@/components/AdminPanel/AdminLayout";
 import Albums from "@/components/AdminPanel/Albums";
-const Albums = () => {
+const AdminAlbums = () => {
   return (
     <AdminLayout>
       <Albums />
     </AdminLayout>
   );
 };
-export default Albums;
+export default AdminAlbums;
