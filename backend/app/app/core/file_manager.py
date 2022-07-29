@@ -72,8 +72,22 @@ async def update_files(files: List[UploadFile], dy_type: str, id: int, indexes: 
         await _save_file(file, file_path / file.filename)
 
 
-def delete_files(dy_type: str, id: int):
-    try:
-        shutil.rmtree(settings.UPLOAD_DIRECTORY / dy_type / str(id))
-    except FileNotFoundError:
-        raise Errors.bad_req
+def _update_file_order_after_delete(dy_type: str, id: int):
+    files = os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))
+    files_dir = settings.UPLOAD_DIRECTORY / dy_type / str(id)
+    for i in range(len(files)):
+        extension = files[i].split(".")[1]
+        os.rename(files_dir / files[i], files_dir / f"{i}_file.{extension}")
+
+
+def delete_files(dy_type: str, id: int, indexes: str | None):
+    if indexes:
+        files = [get_filename(dy_type, id, int(i)) for i in indexes]
+        for file in files:
+            os.remove(settings.UPLOAD_DIRECTORY / dy_type / str(id) / file)
+        _update_file_order_after_delete(dy_type, id)
+    else:
+        try:
+            shutil.rmtree(settings.UPLOAD_DIRECTORY / dy_type / str(id))
+        except FileNotFoundError:
+            raise Errors.bad_req

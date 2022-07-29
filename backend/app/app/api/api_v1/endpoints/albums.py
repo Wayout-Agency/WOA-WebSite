@@ -1,4 +1,3 @@
-from fileinput import filename
 from typing import List
 
 from api.deps import check_root_user
@@ -87,6 +86,6 @@ async def change_files(
 
 
 @router.delete("/{id}/file/")
-def remove_files(id: int, _=Depends(check_root_user)):
-    delete_files("albums", id)
+def remove_files(id: int, indexes: str | None = None, _=Depends(check_root_user)):
+    delete_files("albums", id, indexes)
     return {"success": True}
