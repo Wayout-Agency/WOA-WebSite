@@ -113,6 +113,8 @@ async def change_files(
 
 
 @router.delete("/{post_type}/{id}/file/")
-def remove_files(post_type: Post, id: int, _=Depends(check_root_user)):
-    delete_files(post_type.value, id)
+def remove_files(
+    post_type: Post, id: int, indexes: str | None = None, _=Depends(check_root_user)
+):
+    delete_files(post_type.value, id, indexes)
     return {"success": True}
