@@ -24,6 +24,21 @@ async def test_upload_case_file(
     assert response.json() == {"success": True}
 
 
+"""Test get case files"""
+
+
+@pytest.mark.anyio
+async def test_get_case_file(sync_client: TestClient):
+    response = sync_client.get(f"/api/v1/posts/{PostType.case.value}/7878/file/0/")
+    assert response.status_code == HTTPStatus.OK
+
+
+@pytest.mark.anyio
+async def test_get_nonexistent_case_file(sync_client: TestClient):
+    response = sync_client.get(f"/api/v1/posts/{PostType.case.value}/7878/file/1337/")
+    assert response.status_code == HTTPStatus.BAD_REQUEST
+
+
 @pytest.mark.anyio
 async def test_change_case_file(
     sync_client: TestClient, path: str, create_auth_pair: TokenPair
@@ -66,6 +81,23 @@ async def test_upload_article_file(
     )
     assert response.status_code == HTTPStatus.CREATED
     assert response.json() == {"success": True}
+
+
+"""Test get article files"""
+
+
+@pytest.mark.anyio
+async def test_get_article_file(sync_client: TestClient):
+    response = sync_client.get(f"/api/v1/posts/{PostType.article.value}/7878/file/0/")
+    assert response.status_code == HTTPStatus.OK
+
+
+@pytest.mark.anyio
+async def test_get_nonexistent_article_file(sync_client: TestClient):
+    response = sync_client.get(
+        f"/api/v1/posts/{PostType.article.value}/7878/file/1337/"
+    )
+    assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
 @pytest.mark.anyio

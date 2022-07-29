@@ -41,7 +41,7 @@ def get_files_info(dy_type: str, id: int) -> int:
     try:
         return len(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))
     except FileNotFoundError:
-        raise Errors.bad_req
+        return 0
 
 
 def get_filename(dy_type: str, id: int, file_id: int) -> str:

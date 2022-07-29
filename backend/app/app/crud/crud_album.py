@@ -4,7 +4,7 @@ from core.errors import Errors
 from crud.base import CRUDBase
 from models.albums import Album, GetAlbum
 from schemas.album import AlbumBaseData, CreateAlbum, DeleteAlbum, UpdateAlbum
-from tortoise.exceptions import DoesNotExist
+from tortoise.exceptions import DoesNotExist, ValidationError
 
 
 class CRUDAlbum(CRUDBase):
@@ -12,8 +12,11 @@ class CRUDAlbum(CRUDBase):
         self.model = model
 
     async def create(self, schema: CreateAlbum) -> AlbumBaseData:
-        album = await self.model.create(**schema.dict())
-        return await GetAlbum.from_tortoise_orm(album)
+        try:
+            album = await self.model.create(**schema.dict())
+            return await GetAlbum.from_tortoise_orm(album)
+        except ValidationError:
+            raise Errors.valid_error
 
     async def get_all(self) -> List[AlbumBaseData]:
         albums = await self.model.all()
@@ -27,8 +30,11 @@ class CRUDAlbum(CRUDBase):
             raise Errors.not_found
 
     async def update(self, id: int, schema: UpdateAlbum) -> AlbumBaseData:
-        await self.model.filter(id=id).update(**schema.dict())
-        return await self.get_by_id(id)
+        try:
+            await self.model.filter(id=id).update(**schema.dict())
+            return await self.get_by_id(id)
+        except ValidationError:
+            raise Errors.valid_error
 
     async def delete(self, id: int) -> DeleteAlbum:
         await self.model.filter(id=id).delete()
