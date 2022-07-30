@@ -1,7 +1,7 @@
 import styles from "./LeadCatchForm.module.scss";
 import panelStyles from "../AdminPanel.module.scss";
 import Input from "@/components/UI/Input";
-import SendButton from "@/components/UI/SendButton/";
+import SendButton from "@/components/UI/SendButton";
 import { useState, useEffect } from "react";
 import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 

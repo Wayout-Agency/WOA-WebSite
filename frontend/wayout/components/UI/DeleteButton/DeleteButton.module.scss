@@ -5,10 +5,16 @@
   line-height: 40px;
   text-align: center;
   letter-spacing: 0.015em;
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
   width: 45%;
   float: right;
   height: 120px;
   cursor: pointer;
+  opacity: 0.3;
+  border: 2px solid #000000;
+}
+
+.button::placeholder {
+  opacity: 0.4;
 }

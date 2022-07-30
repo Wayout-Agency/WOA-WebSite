@@ -5,6 +5,7 @@ const Input = ({
   placeholder,
   value,
   className = " ",
+  name,
   onChange,
 }) => (
   <input
@@ -13,6 +14,7 @@ const Input = ({
     placeholder={placeholder}
     className={`${styles.input} ${className}`}
     onChange={onChange}
+    name={name}
   />
 );
 
