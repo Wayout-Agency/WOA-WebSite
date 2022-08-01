@@ -13,7 +13,6 @@ export const rootWayoutAPI = async () => {
   return axios.create({
     baseURL: config.apiUrl,
     headers: {
-      "Content-Type": "application/json;charset=utf-8",
       "Authorization": `Bearer ${await getSession()}`,
     },
   });

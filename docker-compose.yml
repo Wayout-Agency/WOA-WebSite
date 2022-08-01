@@ -44,7 +44,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - media:/var/www/media
+      - media:/var/www/media/
     depends_on:
       - db
     networks:

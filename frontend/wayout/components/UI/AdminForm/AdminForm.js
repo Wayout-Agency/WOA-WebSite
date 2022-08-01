@@ -2,7 +2,7 @@ import styles from "./AdminForm.module.scss";
 import Input from "../Input";
 import SendButton from "../SendButton";
 import DeleteButton from "../DeleteButton";
-
+import Image from "next/image";
 import { useState } from "react";
 
 const AdminForm = ({
@@ -14,11 +14,18 @@ const AdminForm = ({
 }) => {
   const [inputs, setInputs] = useState(optional_data);
 
-  const addButton = (e, index) => {
+  const removeBlock = (e, index) => {
+    e.preventDefault();
+    let current_data = [...inputs];
+    current_data[index].inputs.pop();
+    setInputs(current_data);
+  };
+
+  const addBlock = (e, index, sampleIndex) => {
     e.preventDefault();
     let current_data = [...inputs];
     current_data[index].inputs.push(
-      blockSample(current_data[index].inputs.length)
+      blockSample(current_data[index].inputs.length, sampleIndex)
     );
     setInputs(current_data);
   };
@@ -29,17 +36,14 @@ const AdminForm = ({
         <div className={styles.requiredWrapper}>
           <h3 className={styles.subTitle}>Обязательные данные</h3>
           {required_data.map(
-            (
-              { type, placeholder, value, className, onChange, name },
-              index
-            ) => {
+            ({ type, placeholder, value, onChange, name }, index) => {
               return (
                 <Input
                   key={index}
                   type={type}
                   placeholder={placeholder}
                   value={value}
-                  className={className}
+                  className={styles.addInput}
                   onChange={onChange}
                   name={name}
                 />
@@ -49,30 +53,41 @@ const AdminForm = ({
         </div>
         <div className={styles.optionalWrapper}>
           <h3 className={styles.subTitle}>Дополнительные данные</h3>
-          {inputs.map(({ inputs, title }, index) => {
+          {inputs.map(({ inputs, title, sampleIndex }, index) => {
             return (
               <div className={styles.optionalComponenet} key={index}>
                 <div className={styles.optionalTitleWrapper}>
                   <h4 className={styles.optionalTitle}>{title}</h4>
-                  <button
-                    onClick={(e) => {
-                      addButton(e, index);
-                    }}
-                    className={styles.optionalBtn}
-                  >
-                    +
-                  </button>
+                  <div className={styles.optionalTitleWrapper}>
+                    <button
+                      onClick={(e) => {
+                        addBlock(e, index, sampleIndex);
+                      }}
+                      className={styles.optionalBtn}
+                    >
+                      <Image
+                        src={"/static/img/plus.svg"}
+                        height={55}
+                        width={55}
+                      />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        removeBlock(e, index);
+                      }}
+                      className={styles.optionalBtn}
+                    >
+                      <Image
+                        src={"/static/img/minus.svg"}
+                        height={50}
+                        width={50}
+                      />
+                    </button>
+                  </div>
                 </div>
                 {inputs.map((block, index) => {
                   return block.map(
-                    ({
-                      type,
-                      placeholder,
-                      value,
-                      className,
-                      onChange,
-                      name,
-                    }) => {
+                    ({ type, placeholder, value, onChange, name }) => {
                       return (
                         <Input
                           key={index}
@@ -92,8 +107,17 @@ const AdminForm = ({
           })}
         </div>
         <div className={styles.buttonsWrapper}>
-          <DeleteButton />
-          <SendButton value="Отправить" />
+          <DeleteButton onClick={handleDelete} />
+          <SendButton
+            value="Отправить"
+            onClick={(e) => {
+              let inputsLen = [];
+              inputs.map(({ inputs }) => {
+                inputsLen.push([...Array(inputs.length).keys()]);
+              });
+              handleSend(e, inputsLen);
+            }}
+          />
         </div>
       </form>
     </div>

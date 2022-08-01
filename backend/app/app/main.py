@@ -1,3 +1,5 @@
+import os
+
 from api.api_v1.api import api_router
 from core.config import get_settings
 from core.database import init_db

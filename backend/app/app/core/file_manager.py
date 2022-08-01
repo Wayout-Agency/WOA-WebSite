@@ -14,7 +14,7 @@ settings = get_settings()
 
 def init_media():
     try:
-        os.mkdir(settings.UPLOAD_DIRECTORY)
+        Path(settings.UPLOAD_DIRECTORY).mkdir(parents=True, exist_ok=True)
         for directory in ("albums", "cases", "articles"):
             Path(settings.UPLOAD_DIRECTORY / directory).mkdir(
                 parents=True, exist_ok=True
