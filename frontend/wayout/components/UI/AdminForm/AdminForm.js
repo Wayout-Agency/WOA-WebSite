@@ -11,10 +11,12 @@ const AdminForm = ({
   blockSample,
   handleSend,
   handleDelete,
+  globalOnChange,
+  customRemoveBlock,
 }) => {
   const [inputs, setInputs] = useState(optional_data);
 
-  const removeBlock = (e, index) => {
+  const defaultRemoveBlock = (e, index) => {
     e.preventDefault();
     let current_data = [...inputs];
     current_data[index].inputs.pop();
@@ -35,21 +37,19 @@ const AdminForm = ({
       <form name="my">
         <div className={styles.requiredWrapper}>
           <h3 className={styles.subTitle}>Обязательные данные</h3>
-          {required_data.map(
-            ({ type, placeholder, value, onChange, name }, index) => {
-              return (
-                <Input
-                  key={index}
-                  type={type}
-                  placeholder={placeholder}
-                  value={value}
-                  className={styles.addInput}
-                  onChange={onChange}
-                  name={name}
-                />
-              );
-            }
-          )}
+          {required_data.map(({ type, placeholder, value, name }, index) => {
+            return (
+              <Input
+                key={index}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                className={styles.addInput}
+                onChange={globalOnChange}
+                name={name}
+              />
+            );
+          })}
         </div>
         <div className={styles.optionalWrapper}>
           <h3 className={styles.subTitle}>Дополнительные данные</h3>
@@ -72,9 +72,15 @@ const AdminForm = ({
                       />
                     </button>
                     <button
-                      onClick={(e) => {
-                        removeBlock(e, index);
-                      }}
+                      onClick={
+                        customRemoveBlock
+                          ? (e) => {
+                              customRemoveBlock(e, index);
+                            }
+                          : (e) => {
+                              defaultRemoveBlock(e, index);
+                            }
+                      }
                       className={styles.optionalBtn}
                     >
                       <Image
@@ -86,21 +92,19 @@ const AdminForm = ({
                   </div>
                 </div>
                 {inputs.map((block, index) => {
-                  return block.map(
-                    ({ type, placeholder, value, onChange, name }) => {
-                      return (
-                        <Input
-                          key={index}
-                          type={type}
-                          placeholder={placeholder}
-                          value={value}
-                          className={styles.addInput}
-                          onChange={onChange}
-                          name={name}
-                        />
-                      );
-                    }
-                  );
+                  return block.map(({ type, placeholder, value, name }) => {
+                    return (
+                      <Input
+                        key={index}
+                        type={type}
+                        placeholder={placeholder}
+                        value={value}
+                        className={styles.addInput}
+                        onChange={globalOnChange}
+                        name={name}
+                      />
+                    );
+                  });
                 })}
               </div>
             );

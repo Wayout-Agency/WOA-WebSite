@@ -2,6 +2,7 @@ import { setCookie, getCookie } from "./cookies";
 import wayoutAPI from "services/wayoutApi";
 
 export const setTokens = ({ access, refresh, expire }) => {
+  document.cookie = "";
   setCookie("expire", expire);
   setCookie("session", access);
   localStorage.setItem("refresh", refresh);

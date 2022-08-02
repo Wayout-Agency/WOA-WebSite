@@ -1,10 +1,9 @@
-import styles from "./AlbumsCard.module.scss";
+import styles from "./AlbumsCreateCard.module.scss";
 import panelStyles from "../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminForm from "@/components/UI/AdminForm";
 
-const AlbumsCard = () => {
-  const albumsApiUrl = "/albums/";
+const AlbumsCreateCard = () => {
   const handleSend = async (e, inputsLen) => {
     e.preventDefault();
     let formElements = document.forms[0].elements;
@@ -13,9 +12,9 @@ const AlbumsCard = () => {
     let price_include = [];
     let model_description = [];
     try {
-      formData.append("files", formElements.namedItem("0_file").files[0]);
-
-      formData.append("files", formElements.namedItem("1_file").files[0]);
+      [...Array(4).keys()].map((i) => {
+        formData.append("files", formElements.namedItem(`${i}_file`).files[0]);
+      });
 
       inputsLen[0].map((i) => {
         formData.append(
@@ -24,16 +23,12 @@ const AlbumsCard = () => {
         );
       });
 
-      formData.append("files", formElements.namedItem("2_file").files[0]);
-
       inputsLen[1].map((i) => {
         formData.append(
           "files",
           formElements.namedItem(`2_file_${i}`).files[0]
         );
       });
-
-      formData.append("files", formElements.namedItem("3_file").files[0]);
 
       inputsLen[2].map((i) => {
         model_description.push(
@@ -51,10 +46,10 @@ const AlbumsCard = () => {
         new_price: formElements.namedItem("new_price").value,
         old_price: formElements.namedItem("old_price").value,
         sale_text: formElements.namedItem("sale_text").value,
-        slug: formElements.namedItem("sale_text").value,
+        slug: formElements.namedItem("slug").value,
         price_include: JSON.stringify(price_include),
         model_description: JSON.stringify(model_description),
-        separation: 2 + inputsLen[0].length,
+        separation: 4 + inputsLen[0].length,
       };
 
       if (!Object.values(data).every((item) => item)) {
@@ -71,7 +66,10 @@ const AlbumsCard = () => {
 
       await client
         .post(`/albums/${data_response.id}/file/`, formData)
-        .then((res) => form.reset())
+        .then((_) => {
+          form.reset();
+          alert("Всё ок");
+        })
         .catch((_) => {
           alert("Чёт пошло по бороде c файлами");
         });
@@ -83,7 +81,7 @@ const AlbumsCard = () => {
   };
   return (
     <div className={styles.albumsWrapper}>
-      <h2 className={panelStyles.title}>Добавление/ред. карточки</h2>
+      <h2 className={panelStyles.title}>Добавление карточки</h2>
       <AdminForm
         required_data={[
           { placeholder: "Название", name: "title" },
@@ -146,4 +144,4 @@ const AlbumsCard = () => {
     </div>
   );
 };
-export default AlbumsCard;
+export default AlbumsCreateCard;
