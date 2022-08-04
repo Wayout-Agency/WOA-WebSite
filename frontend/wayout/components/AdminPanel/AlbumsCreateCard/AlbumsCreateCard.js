@@ -2,55 +2,45 @@ import styles from "./AlbumsCreateCard.module.scss";
 import panelStyles from "../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
-
+import { useState } from "react";
+import { useRouter } from "next/router";
 const AlbumsCreateCard = () => {
-  
-  const handleSend = async (e, inputsLen) => {
+  const [separation, setSeparation] = useState(4);
+  const router = useRouter();
+  const handleSend = async (e) => {
     e.preventDefault();
-    let formElements = document.forms[0].elements;
-    let form = document.forms[0];
-    let formData = new FormData();
-    let price_include = [];
-    let model_description = [];
+
+    let form = {
+      formElementsArray: [...document.forms[0].elements],
+      formElements: document.forms[0].elements,
+      price_include: [],
+      model_description: [],
+      formData: new FormData(),
+    };
+
     try {
-      [...Array(4).keys()].map((i) => {
-        formData.append("files", formElements.namedItem(`${i}_file`).files[0]);
-      });
-
-      inputsLen[0].map((i) => {
-        formData.append(
-          "files",
-          formElements.namedItem(`1_file_${i}`).files[0]
-        );
-      });
-
-      inputsLen[1].map((i) => {
-        formData.append(
-          "files",
-          formElements.namedItem(`2_file_${i}`).files[0]
-        );
-      });
-
-      inputsLen[2].map((i) => {
-        model_description.push(
-          formElements.namedItem(`description_${i}`).value
-        );
-      });
-
-      inputsLen[3].map((i) => {
-        price_include.push(formElements.namedItem(`price_include_${i}`).value);
+      form.formElementsArray.map((el) => {
+        if (el.type === "file") {
+          if (el.files[0]) form.formData.append("files", el.files[0]);
+        }
+        if (el.name === "price_include") {
+          form.price_include.push(el.value);
+        }
+        if (el.name === "additional_description") {
+          form.model_description.push(el.value);
+        }
       });
 
       let data = {
-        title: formElements.namedItem("title").value,
-        description: formElements.namedItem("description").value,
-        new_price: formElements.namedItem("new_price").value,
-        old_price: formElements.namedItem("old_price").value,
-        sale_text: formElements.namedItem("sale_text").value,
-        slug: formElements.namedItem("slug").value,
-        price_include: JSON.stringify(price_include),
-        model_description: JSON.stringify(model_description),
-        separation: 4 + inputsLen[0].length,
+        title: form.formElements["title"].value,
+        description: form.formElements["description"].value,
+        new_price: form.formElements["new_price"].value,
+        old_price: form.formElements["old_price"].value,
+        sale_text: form.formElements["sale_text"].value,
+        slug: form.formElements["slug"].value,
+        price_include: JSON.stringify(form.price_include),
+        model_description: JSON.stringify(form.model_description),
+        separation: separation,
       };
 
       if (!Object.values(data).every((item) => item)) {
@@ -58,6 +48,7 @@ const AlbumsCreateCard = () => {
       }
 
       const client = await rootWayoutAPI();
+
       const data_response = await client
         .post("/albums/", data)
         .then((res) => res.data)
@@ -66,19 +57,23 @@ const AlbumsCreateCard = () => {
         });
 
       await client
-        .post(`/albums/${data_response.id}/file/`, formData)
+        .post(`/albums/${data_response.id}/file/`, form.formData)
         .then((_) => {
-          form.reset();
-          alert("Всё ок");
+          router.push("/admin/albums/");
         })
         .catch((_) => {
           alert("Чёт пошло по бороде c файлами");
         });
-    } catch (e) {
+    } catch (_) {
       alert(
         "Не все инпуты заполнены, а если и все, то дополнительные данные тоже должны быть!"
       );
     }
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    document.forms[0].reset();
   };
 
   return (
@@ -88,7 +83,7 @@ const AlbumsCreateCard = () => {
         required_data={[
           { placeholder: "Название", name: "title" },
           { placeholder: "Описание модели", name: "description" },
-          { placeholder: "Цена акутальная", name: "new_price", type: "number" },
+          { placeholder: "Цена актуальная", name: "new_price", type: "number" },
           { placeholder: "Цена старая", name: "old_price", type: "number" },
           { placeholder: "Текст про скидку", name: "sale_text" },
           { placeholder: "Ссылка (транслит)", name: "slug" },
@@ -126,22 +121,21 @@ const AlbumsCreateCard = () => {
             [
               {
                 placeholder: `Описание ${i}*`,
-                name: `description_${i}`,
+                name: "additional_description",
               },
             ],
             [
               {
                 placeholder: `В стоимость входит ${i}*`,
-                name: `price_include_${i}`,
+                name: "price_include",
               },
             ],
           ][sampleIndex];
         }}
         handleSend={handleSend}
-        handleDelete={(e) => {
-          e.preventDefault();
-          document.forms[0].reset();
-        }}
+        handleDelete={handleDelete}
+        separation={separation}
+        setSeparation={setSeparation}
       />
     </div>
   );

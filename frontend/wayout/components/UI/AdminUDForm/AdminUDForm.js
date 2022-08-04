@@ -9,7 +9,7 @@ import { useState } from "react";
 // Нужно добавить url для удаления (Функицю обработки минуса)
 // Разобраться с функцией on change
 // Добваить индексы файлов
-// Возможно стоит разбить required data и optioanal data на отдельные компоненты
+// Возможно стоит разбить required data и optional data на отдельные компоненты
 
 const AdminUDForm = ({
   required_data,
@@ -35,6 +35,12 @@ const AdminUDForm = ({
     e.preventDefault();
     let current_data = [...optionalInputs];
     let slice = current_data.slice(index + 1, current_data.length);
+    slice.map((block) => {
+      console.log(block);
+    });
+    // for (let block in slice) {
+    //   console.log(block);
+    // }
     console.log(slice);
 
     console.log(current_data);
