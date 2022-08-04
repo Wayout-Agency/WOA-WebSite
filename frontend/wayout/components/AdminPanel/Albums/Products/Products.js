@@ -1,15 +1,14 @@
 import albumsStyles from "../Albums.module.scss";
 import Link from "next/link";
 
-const Products = ({
-  productTitle,
-  productType,
-  productUrl,
-  data,
-}) => {
+const Products = ({ productTitle, productType, productUrl, data }) => {
   return (
     <div className={albumsStyles.albumsDataWrapper}>
-      <h3 className={albumsStyles.dataTitle}>{productTitle}</h3>
+      {productTitle ? (
+        <h3 className={albumsStyles.dataTitle}>{productTitle}</h3>
+      ) : (
+        <></>
+      )}
       <div className={albumsStyles.actionsWrapper}>
         <div>
           <p className={albumsStyles.actionsTitle}>Добавить</p>
