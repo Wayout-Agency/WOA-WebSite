@@ -1,22 +1,20 @@
-import styles from "./AdminForm.module.scss";
+import styles from "./AdminCreateForm.module.scss";
 import Input from "../Input";
 import SendButton from "../SendButton";
 import DeleteButton from "../DeleteButton";
 import Image from "next/image";
 import { useState } from "react";
 
-const AdminForm = ({
+const AdminCreateForm = ({
   required_data,
   optional_data,
   blockSample,
   handleSend,
   handleDelete,
-  globalOnChange,
-  customRemoveBlock,
 }) => {
   const [inputs, setInputs] = useState(optional_data);
 
-  const defaultRemoveBlock = (e, index) => {
+  const removeBlock = (e, index) => {
     e.preventDefault();
     let current_data = [...inputs];
     current_data[index].inputs.pop();
@@ -34,22 +32,24 @@ const AdminForm = ({
 
   return (
     <div className={styles.formWrapper}>
-      <form name="my">
+      <form>
         <div className={styles.requiredWrapper}>
           <h3 className={styles.subTitle}>Обязательные данные</h3>
-          {required_data.map(({ type, placeholder, value, name }, index) => {
-            return (
-              <Input
-                key={index}
-                type={type}
-                placeholder={placeholder}
-                value={value}
-                className={styles.addInput}
-                onChange={globalOnChange}
-                name={name}
-              />
-            );
-          })}
+          {required_data.map(
+            ({ type, placeholder, onChange, value, name }, index) => {
+              return (
+                <Input
+                  key={index}
+                  type={type}
+                  placeholder={placeholder}
+                  value={value}
+                  className={styles.addInput}
+                  onChange={onChange}
+                  name={name}
+                />
+              );
+            }
+          )}
         </div>
         <div className={styles.optionalWrapper}>
           <h3 className={styles.subTitle}>Дополнительные данные</h3>
@@ -72,15 +72,7 @@ const AdminForm = ({
                       />
                     </button>
                     <button
-                      onClick={
-                        customRemoveBlock
-                          ? (e) => {
-                              customRemoveBlock(e, index);
-                            }
-                          : (e) => {
-                              defaultRemoveBlock(e, index);
-                            }
-                      }
+                      onClick={(e) => removeBlock(e, index)}
                       className={styles.optionalBtn}
                     >
                       <Image
@@ -92,19 +84,21 @@ const AdminForm = ({
                   </div>
                 </div>
                 {inputs.map((block, index) => {
-                  return block.map(({ type, placeholder, value, name }) => {
-                    return (
-                      <Input
-                        key={index}
-                        type={type}
-                        placeholder={placeholder}
-                        value={value}
-                        className={styles.addInput}
-                        onChange={globalOnChange}
-                        name={name}
-                      />
-                    );
-                  });
+                  return block.map(
+                    ({ type, placeholder, onChnage, value, name }) => {
+                      return (
+                        <Input
+                          key={index}
+                          type={type}
+                          placeholder={placeholder}
+                          value={value}
+                          className={styles.addInput}
+                          onChange={onChnage}
+                          name={name}
+                        />
+                      );
+                    }
+                  );
                 })}
               </div>
             );
@@ -128,4 +122,4 @@ const AdminForm = ({
   );
 };
 
-export default AdminForm;
+export default AdminCreateForm;

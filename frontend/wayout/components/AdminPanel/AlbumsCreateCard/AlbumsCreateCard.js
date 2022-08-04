@@ -1,9 +1,10 @@
 import styles from "./AlbumsCreateCard.module.scss";
 import panelStyles from "../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
-import AdminForm from "@/components/UI/AdminForm";
+import AdminCreateForm from "@/components/UI/AdminCreateForm";
 
 const AlbumsCreateCard = () => {
+  
   const handleSend = async (e, inputsLen) => {
     e.preventDefault();
     let formElements = document.forms[0].elements;
@@ -79,10 +80,11 @@ const AlbumsCreateCard = () => {
       );
     }
   };
+
   return (
     <div className={styles.albumsWrapper}>
       <h2 className={panelStyles.title}>Добавление карточки</h2>
-      <AdminForm
+      <AdminCreateForm
         required_data={[
           { placeholder: "Название", name: "title" },
           { placeholder: "Описание модели", name: "description" },
