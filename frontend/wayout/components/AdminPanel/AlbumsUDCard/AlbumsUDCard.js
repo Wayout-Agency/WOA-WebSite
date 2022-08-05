@@ -2,15 +2,68 @@ import styles from "./AlbumsUDCard.module.scss";
 import panelStyles from "../AdminPanel.module.scss";
 import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";
-import { useState } from "react";
 import AdminUDForm from "@/components/UI/AdminUDForm";
+
 const AlbumsUDCard = ({ id }) => {
   const albumsApiUrl = `/albums/${id}/`;
-  const [indexes, setIndexes] = useState("");
+  const albumsApiFileUrl = `${albumsApiUrl}file/`;
 
-  const handleUpdate = async (e, data, indexes, files) => {
+  const handleUpdate = async (e, newSeparation) => {
     e.preventDefault();
-    console.log(indexes, data, files);
+
+    let form = {
+      formElementsArray: [...document.forms[0].elements],
+      formElements: document.forms[0].elements,
+      price_include: [],
+      model_description: [],
+      formData: new FormData(),
+    };
+
+    let indexes = "";
+
+    [...form.formElementsArray.filter((input) => input.type === "file")].map(
+      (el, index) => {
+        if (el.files[0]) {
+          form.formData.append("files", el.files[0]);
+          indexes = indexes + String(index);
+        }
+      }
+    );
+
+    form.formElementsArray.map((el) => {
+      if (el.name === "price_include") {
+        form.price_include.push(el.value);
+      }
+      if (el.name === "additional_description") {
+        form.model_description.push(el.value);
+      }
+    });
+
+    let newData = {
+      title: form.formElements["title"].value,
+      description: form.formElements["description"].value,
+      new_price: form.formElements["new_price"].value,
+      old_price: form.formElements["old_price"].value,
+      sale_text: form.formElements["sale_text"].value,
+      slug: form.formElements["slug"].value,
+      price_include: JSON.stringify(form.price_include),
+      model_description: JSON.stringify(form.model_description),
+      separation: newSeparation,
+    };
+    const client = await rootWayoutAPI();
+
+    await client.put(albumsApiUrl, newData).catch((e) => {
+      console.log(e);
+      alert("Какая-то херня с данными");
+    });
+
+    if (indexes)
+      await client
+        .put(albumsApiFileUrl, form.formData, { params: { indexes } })
+        .catch((e) => {
+          console.log(e);
+          alert("Какая-то херня с файлами");
+        });
   };
 
   const fetcher = async () => {
@@ -21,6 +74,7 @@ const AlbumsUDCard = ({ id }) => {
     response.data.price_include = JSON.parse(response.data.price_include);
     return response.data;
   };
+
   const { data, error } = useSWR(albumsApiUrl, fetcher);
 
   if (error) return <div>failed to load</div>;
@@ -76,70 +130,65 @@ const AlbumsUDCard = ({ id }) => {
       type: "file",
     },
   ];
-  // Fix this!
-  let preIndex = 0;
-  requiredData.map(({ type }) => {
-    if (type === "file") preIndex += 1;
-  });
 
   const optionalData = [
     {
-      inputs: [...Array(data.separation - preIndex).keys()].map((i) => {
+      inputs: [...Array(data.separation - 4).keys()].map((i) => {
         return [
           {
             type: "file",
             placeholder: `Обложка ${i}*`,
-            name: `${i + preIndex}_file`,
+            name: "file",
           },
         ];
       }),
       title: "Обложки",
       sampleIndex: 0,
-      files: true,
     },
     {
-      inputs: [...Array(data.files_quantity - data.separation).keys()].map(
-        (i) => {
-          return [
-            {
-              type: "file",
-              placeholder: `Фото ${i}*`,
-              name: `${i + preIndex}_file`,
-            },
-          ];
-        }
-      ),
+      inputs: [
+        ...Array(
+          data.files_quantity - data.separation > 0
+            ? data.files_quantity - data.separation
+            : 0
+        ).keys(),
+      ].map((i) => {
+        return [
+          {
+            type: "file",
+            placeholder: `Фото ${i}*`,
+            name: "file",
+          },
+        ];
+      }),
       title: "Фото",
       sampleIndex: 1,
-      files: true,
     },
     {
       inputs: data.model_description.map((value, index) => {
         return [
           {
             placeholder: `Описание ${index}*`,
-            name: `model_description_${index}`,
+            name: "additional_description",
             value: value,
           },
         ];
       }),
       title: "Описание",
       sampleIndex: 2,
-      files: false,
     },
     {
       inputs: data.price_include.map((value, index) => {
         return [
           {
             placeholder: `В стоимость входит ${index}*`,
-            name: `price_include_${index}`,
+            name: "price_include",
             value: value,
           },
         ];
       }),
       title: "В стоимость входит",
       sampleIndex: 3,
-      files: false,
     },
   ];
 
@@ -149,26 +198,26 @@ const AlbumsUDCard = ({ id }) => {
         {
           type: "file",
           placeholder: `Обложка ${i}*`,
-          name: `${i + preIndex}_file`,
+          name: "file",
         },
       ],
       [
         {
           type: "file",
           placeholder: `Фото ${i}*`,
-          name: `${i + preIndex}_file`,
+          name: "file",
         },
       ],
       [
         {
           placeholder: `Описание ${i}*`,
-          name: `model_description_${i}`,
+          name: "additional_description",
         },
       ],
       [
         {
           placeholder: `В стоимость входит ${i}*`,
-          name: `price_include_${i}`,
+          name: "price_include",
         },
       ],
     ][sampleIndex];
@@ -183,8 +232,8 @@ const AlbumsUDCard = ({ id }) => {
         blockSample={getBlock}
         handleSend={handleUpdate}
         handleDelete={() => {}}
-        indexes={indexes}
-        setIndexes={setIndexes}
+        defaultSeparation={data.separation}
+        deleteFileAPIUrl={albumsApiFileUrl}
       />
     </div>
   );

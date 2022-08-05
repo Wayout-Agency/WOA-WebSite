@@ -4,6 +4,7 @@ import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useState } from "react";
 import { useRouter } from "next/router";
+
 const AlbumsCreateCard = () => {
   const [separation, setSeparation] = useState(4);
   const router = useRouter();
@@ -80,7 +81,7 @@ const AlbumsCreateCard = () => {
     <div className={styles.albumsWrapper}>
       <h2 className={panelStyles.title}>Добавление карточки</h2>
       <AdminCreateForm
-        required_data={[
+        requiredData={[
           { placeholder: "Название", name: "title" },
           { placeholder: "Описание модели", name: "description" },
           { placeholder: "Цена актуальная", name: "new_price", type: "number" },
@@ -96,7 +97,7 @@ const AlbumsCreateCard = () => {
           { placeholder: "Фото 1", name: "2_file", type: "file" },
           { placeholder: "Видеофайл", name: "3_file", type: "file" },
         ]}
-        optional_data={[
+        optionalData={[
           { inputs: [], title: "Обложки", sampleIndex: 0 },
           { inputs: [], title: "Фото", sampleIndex: 1 },
           { inputs: [], title: "Описание", sampleIndex: 2 },

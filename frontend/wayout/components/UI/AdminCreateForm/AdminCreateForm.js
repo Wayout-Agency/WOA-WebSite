@@ -4,20 +4,20 @@ import RequiredData from "./RequiredData";
 import OptionalData from "./OptionalData";
 import OnSubmit from "./OnSubmit";
 const AdminCreateForm = ({
-  required_data,
-  optional_data,
+  requiredData,
+  optionalData,
   blockSample,
   handleSend,
   handleDelete,
   separation,
   setSeparation,
 }) => {
-  const [inputs, setInputs] = useState(optional_data);
+  const [inputs, setInputs] = useState(optionalData);
 
   return (
     <div className={styles.formWrapper}>
       <form>
-        <RequiredData required_data={required_data} />
+        <RequiredData requiredData={requiredData} />
         <OptionalData
           separation={separation}
           inputs={inputs}
@@ -25,7 +25,11 @@ const AdminCreateForm = ({
           setSeparation={setSeparation}
           blockSample={blockSample}
         />
-        <OnSubmit handleDelete={handleDelete} handleSend={handleSend} />
+        <OnSubmit
+          handleDelete={handleDelete}
+          handleSend={handleSend}
+          separation={separation}
+        />
       </form>
     </div>
   );
