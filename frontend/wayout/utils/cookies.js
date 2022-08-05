@@ -1,5 +1,5 @@
 export const setCookie = (name, value) => {
-  document.cookie = name + "=" + value;
+  document.cookie = `${name}=${value}; path=/admin`;
 };
 
 export const getCookie = (name) => {
@@ -7,8 +7,4 @@ export const getCookie = (name) => {
     const parts = v.split("=");
     return parts[0] === name ? decodeURIComponent(parts[1]) : r;
   }, "");
-};
-
-export const deleteCookie = (name) => {
-  setCookie(name, "");
 };
