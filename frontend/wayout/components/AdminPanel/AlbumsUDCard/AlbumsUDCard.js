@@ -56,10 +56,10 @@ const AlbumsUDCard = ({ id }) => {
       console.log(e);
       alert("Какая-то херня с данными");
     });
-
+    let separation = newSeparation
     if (indexes)
       await client
-        .put(albumsApiFileUrl, form.formData, { params: { indexes } })
+        .put(albumsApiFileUrl, form.formData, { params: { indexes,  separation} })
         .catch((e) => {
           console.log(e);
           alert("Какая-то херня с файлами");

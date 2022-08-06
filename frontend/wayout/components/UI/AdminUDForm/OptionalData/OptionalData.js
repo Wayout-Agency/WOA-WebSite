@@ -1,7 +1,7 @@
 import styles from "./OptionalData.module.scss";
 import Input from "../../Input";
 import Image from "next/image";
-
+import { rootWayoutAPI } from "services/wayoutApi";
 const OptionalData = ({
   optionalInputs,
   setOptionalInputs,
@@ -28,13 +28,13 @@ const OptionalData = ({
         [...formElementsArray.filter((input) => input.type === "file")].map(
           async (el, index) => {
             if (el.placeholder === placeholder) {
+              if (title === "Обложки" && separation) {
+                handleSend(e, separation - 1);
+              }
               let indexes = `${index}`;
               await client
                 .delete(deleteFileAPIUrl, { params: { indexes } })
                 .catch((_) => alert("Хз почему но файлик не удалился"));
-              if (title === "Обложки" && separation) {
-                handleSend(e, separation - 1);
-              }
             }
           }
         );
