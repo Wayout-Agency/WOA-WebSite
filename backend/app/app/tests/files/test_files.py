@@ -13,7 +13,7 @@ async def test_upload_file(
     init_media()
     tokens = create_auth_pair
     response = sync_client.post(
-        f"/api/v1/albums/7878/file/",
+        "/api/v1/files/albums/7878/",
         files={"files": ("file.jpg", open(path, "rb"), "image/jpg")},
         headers={"Authorization": f"Bearer {tokens.access}"},
     )
@@ -26,13 +26,13 @@ async def test_upload_file(
 
 @pytest.mark.anyio
 async def test_get_file(sync_client: TestClient):
-    response = sync_client.get(f"/api/v1/albums/7878/file/0/")
+    response = sync_client.get("/api/v1/files/albums/7878/0/")
     assert response.status_code == HTTPStatus.OK
 
 
 @pytest.mark.anyio
 async def test_get_nonexistent_file(sync_client: TestClient):
-    response = sync_client.get(f"/api/v1/albums/7878/file/1337/")
+    response = sync_client.get("/api/v1/files/albums/7878/1337/")
     assert response.status_code == HTTPStatus.BAD_REQUEST
 
 
@@ -45,7 +45,7 @@ async def test_change_file(
 ):
     tokens = create_auth_pair
     response = sync_client.put(
-        f"/api/v1/albums/7878/file/",
+        "/api/v1/files/albums/7878/",
         files={"files": ("file.jpg", open(path, "rb"), "image/jpg")},
         params={"indexes": 0},
         headers={"Authorization": f"Bearer {tokens.access}"},
@@ -58,7 +58,7 @@ async def test_change_file(
 async def test_delete_file(sync_client: TestClient, create_auth_pair: TokenPair):
     tokens = create_auth_pair
     response = sync_client.delete(
-        f"/api/v1/albums/7878/file/",
+        "/api/v1/files/albums/7878/",
         headers={"Authorization": f"Bearer {tokens.access}"},
     )
     assert response.status_code == HTTPStatus.OK
@@ -71,7 +71,7 @@ async def test_delete_file(sync_client: TestClient, create_auth_pair: TokenPair)
 @pytest.mark.anyio
 async def test_upload_file_without_token(sync_client: TestClient, path: str):
     response = sync_client.post(
-        f"/api/v1/albums/7878/file/",
+        "/api/v1/files/albums/7878/",
         files={"files": ("file.jpg", open(path, "rb"), "image/jpg")},
     )
     assert response.status_code == HTTPStatus.FORBIDDEN
@@ -80,7 +80,7 @@ async def test_upload_file_without_token(sync_client: TestClient, path: str):
 @pytest.mark.anyio
 async def test_change_file_without_token(sync_client: TestClient, path: str):
     response = sync_client.put(
-        f"/api/v1/albums/7878/file/",
+        "/api/v1/files/albums/7878/",
         files={"files": ("file.jpg", open(path, "rb"), "image/jpg")},
         params={"indexes": 0},
     )
@@ -89,5 +89,5 @@ async def test_change_file_without_token(sync_client: TestClient, path: str):
 
 @pytest.mark.anyio
 async def test_delete_file_without_token(sync_client: TestClient):
-    response = sync_client.delete(f"/api/v1/albums/7878/file/")
+    response = sync_client.delete("/api/v1/files/albums/7878/")
     assert response.status_code == HTTPStatus.FORBIDDEN

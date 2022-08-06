@@ -2,16 +2,9 @@ from typing import List
 
 from api.deps import check_root_user
 from core.config import get_settings
-from core.file_manager import (
-    delete_files,
-    get_filename,
-    get_files_info,
-    save_files,
-    update_files,
-)
+from core.file_manager import get_files_info
 from crud.crud_album import album
-from fastapi import APIRouter, Depends, UploadFile, status
-from fastapi.responses import FileResponse
+from fastapi import APIRouter, Depends, status
 from schemas.album import (
     AlbumBaseData,
     AlbumBaseFull,
@@ -57,39 +50,3 @@ async def update_album(id: int, schema: UpdateAlbum, _=Depends(check_root_user))
 @router.delete("/{id}/", response_model=DeleteAlbum, status_code=status.HTTP_200_OK)
 async def delete_album(id: int, _=Depends(check_root_user)):
     return await album.delete(id)
-
-
-@router.get("/{id}/file/{file_id}/")
-async def get_file(id: int, file_id: int):
-    return FileResponse(
-        (
-            settings.UPLOAD_DIRECTORY
-            / "albums"
-            / str(id)
-            / get_filename("albums", id, file_id)
-        )
-    )
-
-
-@router.post("/{id}/file/", status_code=status.HTTP_201_CREATED)
-async def upload_files(id: int, files: List[UploadFile], _=Depends(check_root_user)):
-    await save_files(files, "albums", id)
-    return {"success": True}
-
-
-@router.put("/{id}/file/")
-async def change_files(
-    id: int,
-    indexes: str,
-    files: List[UploadFile],
-    separation: int = 0,
-    _=Depends(check_root_user),
-):
-    await update_files(files, "albums", id, indexes, separation)
-    return {"success": True}
-
-
-@router.delete("/{id}/file/")
-def remove_files(id: int, indexes: str | None = None, _=Depends(check_root_user)):
-    delete_files("albums", id, indexes)
-    return {"success": True}

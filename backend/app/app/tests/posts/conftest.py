@@ -1,4 +1,3 @@
-import os
 import random
 from string import ascii_lowercase
 
@@ -84,8 +83,3 @@ async def create_auth_pair() -> TokenPair:
     tokens = create_new_pair()
     await token.create(rand_login, tokens.refresh)
     return tokens
-
-
-@pytest.fixture()
-def path() -> str:
-    return rf"{os.path.dirname(os.path.abspath(__file__))}/example/img0.jpg"
