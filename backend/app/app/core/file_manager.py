@@ -24,7 +24,7 @@ def init_media():
 async def _save_file(file: UploadFile, file_path: str, filename):
     try:
         files = os.listdir(file_path)
-        if files and filename != files[int(filename[0])]:
+        if int(filename[0]) <= len(files) - 1 and filename != files[int(filename[0])]:
             os.remove(file_path / files[int(filename[0])])
         async with aiofiles.open(file_path / filename, "wb") as out_file:
             await out_file.write(await file.read())
