@@ -65,11 +65,22 @@ async def save_files(files: List[UploadFile], dy_type: str, id: int):
         raise Errors.bad_req
 
 
-async def update_files(files: List[UploadFile], dy_type: str, id: int, indexes: str):
+async def update_files(
+    files: List[UploadFile], dy_type: str, id: int, indexes: str, separation: int = 0
+):
     files = _rename_files(files, indexes)
+    files_path = settings.UPLOAD_DIRECTORY / dy_type / str(id)
+    if separation:
+        current_files = os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))[
+            separation:
+        ]
+        for file in current_files:
+            extension = file.split(".")[1]
+            os.rename(
+                files_path / file, files_path / f"{int(file[0]) + 1}_file.{extension}"
+            )
     for file in files:
-        file_path = settings.UPLOAD_DIRECTORY / dy_type / str(id)
-        await _save_file(file, file_path / file.filename)
+        await _save_file(file, files_path / file.filename)
 
 
 def _update_file_order_after_delete(dy_type: str, id: int):

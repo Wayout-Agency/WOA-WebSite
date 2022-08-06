@@ -79,9 +79,13 @@ async def upload_files(id: int, files: List[UploadFile], _=Depends(check_root_us
 
 @router.put("/{id}/file/")
 async def change_files(
-    id: int, indexes: str, files: List[UploadFile], _=Depends(check_root_user)
+    id: int,
+    indexes: str,
+    files: List[UploadFile],
+    separation: int = 0,
+    _=Depends(check_root_user),
 ):
-    await update_files(files, "albums", id, indexes)
+    await update_files(files, "albums", id, indexes, separation)
     return {"success": True}
 
 
