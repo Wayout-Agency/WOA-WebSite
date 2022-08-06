@@ -16,7 +16,9 @@ def init_media():
     try:
         os.mkdir(settings.UPLOAD_DIRECTORY)
         for directory in ("albums", "cases", "articles"):
-            os.mkdir(settings.UPLOAD_DIRECTORY / directory)
+            Path(settings.UPLOAD_DIRECTORY / directory).mkdir(
+                parents=True, exist_ok=True
+            )
     except FileExistsError:
         pass
 
@@ -24,8 +26,11 @@ def init_media():
 async def _save_file(file: UploadFile, file_path: str, filename):
     try:
         files = os.listdir(file_path)
-        if int(filename[0]) <= len(files) - 1 and filename != files[int(filename[0])]:
-            os.remove(file_path / files[int(filename[0])])
+        if int(filename[0]) <= len(files) - 1:
+            _, ext1 = os.path.splitext(files[int(filename[0])])
+            _, ext2 = os.path.splitext(filename)
+            if ext1 != ext2:
+                os.remove(file_path / files[int(filename[0])])
         async with aiofiles.open(file_path / filename, "wb") as out_file:
             await out_file.write(await file.read())
     except FileNotFoundError:
@@ -73,19 +78,19 @@ async def update_files(
     files: List[UploadFile], dy_type: str, id: int, indexes: str, separation: int = 0
 ):
     try:
-        files = _rename_files(files, indexes)
+        renamed_files = _rename_files(files, indexes)
         files_path = settings.UPLOAD_DIRECTORY / dy_type / str(id)
         if separation:
             current_files = os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))[
                 separation:
             ]
-            for file in current_files:
-                extension = file.split(".")[1]
+            for file in current_files[::-1]:
+                _, extension = os.path.splitext(file)
                 os.rename(
                     files_path / file,
-                    files_path / f"{int(file[0]) + 1}_file.{extension}",
+                    files_path / f"{int(file[0]) + 1}_file{extension}",
                 )
-        for file in files:
+        for file in renamed_files:
             await _save_file(file, files_path, file.filename)
     except FileExistsError:
         raise Errors.bad_req
@@ -95,8 +100,8 @@ def _update_file_order_after_delete(dy_type: str, id: int):
     files = os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))
     files_dir = settings.UPLOAD_DIRECTORY / dy_type / str(id)
     for i in range(len(files)):
-        extension = files[i].split(".")[1]
-        os.rename(files_dir / files[i], files_dir / f"{i}_file.{extension}")
+        _, extension = os.path.splitext(files[i])
+        os.rename(files_dir / files[i], files_dir / f"{i}_file{extension}")
 
 
 def delete_files(dy_type: str, id: int, indexes: str | None):
