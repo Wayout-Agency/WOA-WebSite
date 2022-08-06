@@ -1,5 +1,5 @@
-import styles from "./AlbumsUDCard.module.scss";
-import panelStyles from "../AdminPanel.module.scss";
+import styles from "./UDCard.module.scss";
+import panelStyles from "../../AdminPanel.module.scss";
 import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";
 import AdminUDForm from "@/components/UI/AdminUDForm";

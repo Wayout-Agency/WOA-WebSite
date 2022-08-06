@@ -1,6 +1,6 @@
 import AdminLayout from "@/components/AdminPanel/AdminLayout";
 import { useRouter } from "next/router";
-import AlbumsUDCard from "@/components/AdminPanel/AlbumsUDCard";
+import AlbumsUDCard from "@/components/AdminPanel/Albums/UDCard";
 const UpdateDeleteCard = () => {
   const { query } = useRouter();
   return (

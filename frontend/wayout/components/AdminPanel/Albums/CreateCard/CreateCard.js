@@ -1,5 +1,5 @@
-import styles from "./AlbumsCreateCard.module.scss";
-import panelStyles from "../AdminPanel.module.scss";
+import styles from "./CreateCard.module.scss";
+import panelStyles from "../../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useState } from "react";
