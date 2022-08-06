@@ -1,4 +1,4 @@
-import styles from "./UDCard.module.scss";
+import styles from "../Albums.module.scss";
 import panelStyles from "../../AdminPanel.module.scss";
 import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";

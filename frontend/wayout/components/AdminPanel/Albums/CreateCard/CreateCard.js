@@ -1,4 +1,4 @@
-import styles from "./CreateCard.module.scss";
+import styles from "../Albums.module.scss";
 import panelStyles from "../../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
