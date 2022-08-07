@@ -6,8 +6,8 @@ import AdminUDForm from "@/components/UI/AdminUDForm";
 
 const AlbumsUDCard = ({ id }) => {
   const albumsApiUrl = `/albums/${id}/`;
-  const albumsApiFileUrl = `${albumsApiUrl}file/`;
-
+  const albumsApiFileUrl = `/files${albumsApiUrl}`;
+  
   const handleUpdate = async (e, newSeparation) => {
     e.preventDefault();
 

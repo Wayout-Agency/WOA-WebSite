@@ -58,7 +58,7 @@ const AlbumsCreateCard = () => {
         });
 
       await client
-        .post(`/albums/${data_response.id}/file/`, form.formData)
+        .post(`/files/albums/${data_response.id}/`, form.formData)
         .then((_) => {
           router.push("/admin/albums/");
         })

@@ -46,7 +46,7 @@ const JournalCreateCase = () => {
           alert("Чёт пошло по бороде c данными");
         });
       await client
-        .post(`/posts/cases/${data_response.value.id}/file/`, form.formData)
+        .post(`/files/cases/${data_response.value.id}/`, form.formData)
         .then((_) => {
           router.push("/admin/journal/");
         })
