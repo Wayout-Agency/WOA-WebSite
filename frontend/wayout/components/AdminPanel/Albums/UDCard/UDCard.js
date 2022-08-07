@@ -1,5 +1,4 @@
-import styles from "../Albums.module.scss";
-import panelStyles from "../../AdminPanel.module.scss";
+import styles from "../../AdminPanel.module.scss";
 import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";
 import AdminUDForm from "@/components/UI/AdminUDForm";
@@ -225,7 +224,7 @@ const AlbumsUDCard = ({ id }) => {
 
   return (
     <div className={styles.albumsWrapper}>
-      <h2 className={panelStyles.title}>Редактирование карточки №{id}</h2>
+      <h2 className={styles.title}>Редактирование карточки №{id}</h2>
       <AdminUDForm
         required_data={requiredData}
         optional_data={optionalData}

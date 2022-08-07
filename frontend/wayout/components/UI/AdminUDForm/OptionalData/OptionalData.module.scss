@@ -1,10 +1,12 @@
-.optionalTitle {
+.optionalTitle,
+.subTitle {
   font-weight: 400;
   font-size: 35px;
   line-height: 40px;
   letter-spacing: 0.015em;
   margin-bottom: 50px;
 }
+
 .optionalTitle,
 .optionalBtn {
   margin: 0;
@@ -22,7 +24,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 
 .addInput {
   margin-bottom: 25px;

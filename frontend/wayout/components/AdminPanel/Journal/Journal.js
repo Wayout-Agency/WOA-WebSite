@@ -1,5 +1,4 @@
-import journalStyles from "./../Albums/Albums.module.scss";
-import panelStyles from "../AdminPanel.module.scss";
+import styles from "../AdminPanel.module.scss";
 import wayoutAPI from "services/wayoutApi";
 import useSWR from "swr";
 import Products from "../Albums/Products";
@@ -24,8 +23,8 @@ const Journal = () => {
   if (!(cases.data && articles.data)) return <></>;
 
   return (
-    <div className={journalStyles.albumsWrapper}>
-      <h2 className={panelStyles.title}>Журнал</h2>
+    <div className={styles.albumsWrapper}>
+      <h2 className={styles.title}>Журнал</h2>
       <Products
         productTitle=""
         productType="Кейс"

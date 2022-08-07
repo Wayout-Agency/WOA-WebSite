@@ -1,5 +1,4 @@
-import styles from "./Albums.module.scss";
-import panelStyles from "../AdminPanel.module.scss";
+import styles from "../AdminPanel.module.scss";
 import wayoutAPI from "services/wayoutApi";
 import useSWR from "swr";
 
@@ -34,7 +33,7 @@ const Albums = () => {
 
   return (
     <div className={styles.albumsWrapper}>
-      <h2 className={panelStyles.title}>Альбомы</h2>
+      <h2 className={styles.title}>Альбомы</h2>
       <Products
         productTitle="Товары"
         productType="Карточку"

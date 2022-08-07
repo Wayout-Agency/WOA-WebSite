@@ -1,4 +1,5 @@
-.optionalTitle {
+.optionalTitle,
+.subTitle {
   font-weight: 400;
   font-size: 35px;
   line-height: 40px;
@@ -22,7 +23,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 
 .addInput {
   margin-bottom: 25px;

@@ -1,5 +1,4 @@
-import styles from "../../Albums/Albums.module.scss";
-import panelStyles from "../../AdminPanel.module.scss";
+import styles from "../../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useRouter } from "next/router";
@@ -46,7 +45,7 @@ const CreateQuestionService = ({ type }) => {
 
   return (
     <div className={styles.albumsWrapper}>
-      <h2 className={panelStyles.title}>Добавление {title}</h2>
+      <h2 className={styles.title}>Добавление {title}</h2>
       <AdminCreateForm
         requiredData={[
           { placeholder: title_placeholder, name: "title" },

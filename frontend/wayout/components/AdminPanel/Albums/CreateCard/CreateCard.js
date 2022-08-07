@@ -1,5 +1,4 @@
-import styles from "../Albums.module.scss";
-import panelStyles from "../../AdminPanel.module.scss";
+import styles from "../../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useState } from "react";
@@ -79,7 +78,7 @@ const AlbumsCreateCard = () => {
 
   return (
     <div className={styles.albumsWrapper}>
-      <h2 className={panelStyles.title}>Добавление карточки</h2>
+      <h2 className={styles.title}>Добавление карточки</h2>
       <AdminCreateForm
         requiredData={[
           { placeholder: "Название", name: "title" },
