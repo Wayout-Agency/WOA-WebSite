@@ -18,13 +18,17 @@ const AdminCreateForm = ({
     <div className={styles.formWrapper}>
       <form>
         <RequiredData requiredData={requiredData} />
-        <OptionalData
-          separation={separation}
-          inputs={inputs}
-          setInputs={setInputs}
-          setSeparation={setSeparation}
-          blockSample={blockSample}
-        />
+        {optionalData ? (
+          <OptionalData
+            separation={separation}
+            inputs={inputs}
+            setInputs={setInputs}
+            setSeparation={setSeparation}
+            blockSample={blockSample}
+          />
+        ) : (
+          <></>
+        )}
         <OnSubmit
           handleDelete={handleDelete}
           handleSend={handleSend}

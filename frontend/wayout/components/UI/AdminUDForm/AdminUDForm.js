@@ -24,15 +24,19 @@ const AdminUDForm = ({
           requiredInputs={requiredInputs}
           setRequiredInputs={setRequiredInputs}
         />
-        <OptionalData
-          deleteFileAPIUrl={deleteFileAPIUrl}
-          optionalInputs={optionalInputs}
-          setOptionalInputs={setOptionalInputs}
-          separation={separation}
-          setSeparation={setSeparation}
-          blockSample={blockSample}
-          handleSend={handleSend}
-        />
+        {optionalInputs ? (
+          <OptionalData
+            deleteFileAPIUrl={deleteFileAPIUrl}
+            optionalInputs={optionalInputs}
+            setOptionalInputs={setOptionalInputs}
+            separation={separation}
+            setSeparation={setSeparation}
+            blockSample={blockSample}
+            handleSend={handleSend}
+          />
+        ) : (
+          <></>
+        )}
         <OnSubmit
           handleDelete={handleDelete}
           handleSend={handleSend}
