@@ -25,7 +25,7 @@ def init_media():
 
 async def _save_file(file: UploadFile, file_path: str, filename):
     try:
-        files = os.listdir(file_path)
+        files = sorted(os.listdir(file_path))
         if int(filename[0]) <= len(files) - 1:
             _, ext1 = os.path.splitext(files[int(filename[0])])
             _, ext2 = os.path.splitext(filename)
@@ -81,9 +81,9 @@ async def update_files(
         renamed_files = _rename_files(files, indexes)
         files_path = settings.UPLOAD_DIRECTORY / dy_type / str(id)
         if separation:
-            current_files = os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))[
-                separation:
-            ]
+            current_files = sorted(
+                os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))
+            )[separation:]
             for file in current_files[::-1]:
                 _, extension = os.path.splitext(file)
                 os.rename(
@@ -97,7 +97,7 @@ async def update_files(
 
 
 def _update_file_order_after_delete(dy_type: str, id: int):
-    files = os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))
+    files = sorted(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))
     files_dir = settings.UPLOAD_DIRECTORY / dy_type / str(id)
     for i in range(len(files)):
         _, extension = os.path.splitext(files[i])
