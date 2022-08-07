@@ -5,16 +5,16 @@ import OptionalData from "./OptionalData";
 import OnSubmit from "./OnSubmit";
 
 const AdminUDForm = ({
-  required_data,
-  optional_data,
+  requiredData,
+  optionalData,
   blockSample,
   handleSend,
   handleDelete,
   defaultSeparation,
   deleteFileAPIUrl,
 }) => {
-  const [optionalInputs, setOptionalInputs] = useState(optional_data);
-  const [requiredInputs, setRequiredInputs] = useState(required_data);
+  const [optionalInputs, setOptionalInputs] = useState(optionalData);
+  const [requiredInputs, setRequiredInputs] = useState(requiredData);
   const [separation, setSeparation] = useState(defaultSeparation);
 
   return (

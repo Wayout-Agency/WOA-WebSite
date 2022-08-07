@@ -2,11 +2,12 @@ import styles from "../../AdminPanel.module.scss";
 import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";
 import AdminUDForm from "@/components/UI/AdminUDForm";
-
+import { useRouter } from "next/router";
 const AlbumsUDCard = ({ id }) => {
   const albumsApiUrl = `/albums/${id}/`;
   const albumsApiFileUrl = `/files${albumsApiUrl}`;
-  
+  const router = useRouter();
+
   const handleUpdate = async (e, newSeparation) => {
     e.preventDefault();
 
@@ -55,14 +56,36 @@ const AlbumsUDCard = ({ id }) => {
       console.log(e);
       alert("Какая-то херня с данными");
     });
-    let separation = newSeparation
+    let separation = data.separation === newSeparation ? 0 : newSeparation - 1;
     if (indexes)
       await client
-        .put(albumsApiFileUrl, form.formData, { params: { indexes,  separation} })
+        .put(albumsApiFileUrl, form.formData, {
+          params: { indexes, separation },
+        })
+        .then((_) => {
+          window.location.reload();
+        })
         .catch((e) => {
           console.log(e);
           alert("Какая-то херня с файлами");
         });
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    const client = await rootWayoutAPI();
+    await client.delete(albumsApiUrl).catch((_) => {
+      alert("Чет даные не удаляются(");
+    });
+    await client
+      .delete(albumsApiFileUrl)
+      .then(() => {
+        router.push("/admin/albums/");
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("Чет даные не удаляются(");
+      });
   };
 
   const fetcher = async () => {
@@ -230,7 +253,7 @@ const AlbumsUDCard = ({ id }) => {
         optional_data={optionalData}
         blockSample={getBlock}
         handleSend={handleUpdate}
-        handleDelete={() => {}}
+        handleDelete={handleDelete}
         defaultSeparation={data.separation}
         deleteFileAPIUrl={albumsApiFileUrl}
       />
