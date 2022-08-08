@@ -88,7 +88,7 @@ const OptionalData = ({
                 ({ type, placeholder, value, name }, blockInputIndex) => {
                   return (
                     <Input
-                      key={blockIndex}
+                      key={name + blockIndex}
                       type={type}
                       placeholder={placeholder}
                       value={value}
