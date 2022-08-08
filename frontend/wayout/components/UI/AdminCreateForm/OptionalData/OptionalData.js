@@ -9,7 +9,6 @@ const OptionalData = ({
   setSeparation,
   blockSample,
 }) => {
-  
   const removeBlock = (e, index, title) => {
     e.preventDefault();
     let current_data = [...inputs];
@@ -60,7 +59,7 @@ const OptionalData = ({
               return block.map(({ type, placeholder, name }) => {
                 return (
                   <Input
-                    key={index}
+                    key={name + index}
                     type={type}
                     placeholder={placeholder}
                     className={styles.addInput}
