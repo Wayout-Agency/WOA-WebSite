@@ -3,6 +3,7 @@ import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";
 import AdminUDForm from "@/components/UI/AdminUDForm";
 import { useRouter } from "next/router";
+
 const AlbumsUDCard = ({ id }) => {
   const albumsApiUrl = `/albums/${id}/`;
   const albumsApiFileUrl = `/files${albumsApiUrl}`;
@@ -52,8 +53,7 @@ const AlbumsUDCard = ({ id }) => {
     };
     const client = await rootWayoutAPI();
 
-    await client.put(albumsApiUrl, newData).catch((e) => {
-      console.log(e);
+    await client.put(albumsApiUrl, newData).catch(() => {
       alert("Какая-то херня с данными");
     });
     let separation = data.separation === newSeparation ? 0 : newSeparation - 1;
@@ -62,11 +62,10 @@ const AlbumsUDCard = ({ id }) => {
         .put(albumsApiFileUrl, form.formData, {
           params: { indexes, separation },
         })
-        .then((_) => {
+        .then(() => {
           window.location.reload();
         })
-        .catch((e) => {
-          console.log(e);
+        .catch(() => {
           alert("Какая-то херня с файлами");
         });
   };
@@ -74,7 +73,7 @@ const AlbumsUDCard = ({ id }) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     const client = await rootWayoutAPI();
-    await client.delete(albumsApiUrl).catch((_) => {
+    await client.delete(albumsApiUrl).catch(() => {
       alert("Чет даные не удаляются(");
     });
     await client
@@ -82,8 +81,7 @@ const AlbumsUDCard = ({ id }) => {
       .then(() => {
         router.push("/admin/albums/");
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
         alert("Чет даные не удаляются(");
       });
   };

@@ -27,8 +27,8 @@ const CreateQuestionService = ({ type }) => {
       const client = await rootWayoutAPI();
       await client
         .post("/questions-services/", data)
-        .then((_) => router.push("/admin/albums/"))
-        .catch((_) => {
+        .then(() => router.push("/admin/albums/"))
+        .catch(() => {
           alert("Чёт пошло по бороде c данными");
         });
     } catch (_) {

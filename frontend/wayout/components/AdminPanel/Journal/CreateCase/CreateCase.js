@@ -3,7 +3,7 @@ import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useRouter } from "next/router";
 
-const JournalCreateCase = () => {
+const CreateCase = () => {
   const router = useRouter();
   const handleSend = async (e) => {
     e.preventDefault();
@@ -41,15 +41,15 @@ const JournalCreateCase = () => {
       const data_response = await client
         .post("posts/cases/", data)
         .then((res) => res.data)
-        .catch((_) => {
+        .catch(() => {
           alert("Чёт пошло по бороде c данными");
         });
       await client
         .post(`/files/cases/${data_response.value.id}/`, form.formData)
-        .then((_) => {
+        .then(() => {
           router.push("/admin/journal/");
         })
-        .catch((_) => {
+        .catch(() => {
           alert("Чёт пошло по бороде c файлами");
         });
     } catch (_) {
@@ -120,4 +120,4 @@ const JournalCreateCase = () => {
     </div>
   );
 };
-export default JournalCreateCase;
+export default CreateCase;

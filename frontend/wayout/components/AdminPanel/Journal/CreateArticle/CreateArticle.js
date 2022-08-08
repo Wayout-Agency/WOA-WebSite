@@ -54,19 +54,18 @@ const CreateArticle = () => {
       const data_response = await client
         .post("posts/articles/", data)
         .then((res) => res.data)
-        .catch((_) => {
+        .catch(() => {
           alert("Чёт пошло по бороде c данными");
         });
       await client
         .post(`/files/articles/${data_response.value.id}/`, form.formData)
-        .then((_) => {
+        .then(() => {
           router.push("/admin/journal/");
         })
-        .catch((_) => {
+        .catch(() => {
           alert("Чёт пошло по бороде c файлами");
         });
-    } catch (e) {
-      console.log(e);
+    } catch (_) {
       alert(
         "Не все инпуты заполнены, а если и все, то дополнительные данные тоже должны быть!"
       );

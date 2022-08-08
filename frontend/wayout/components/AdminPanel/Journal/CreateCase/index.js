@@ -1,3 +1,3 @@
-import JournalCreateCase from "./CreateCase";
+import CreateCase from "./CreateCase";
 
-export default JournalCreateCase;
+export default CreateCase;

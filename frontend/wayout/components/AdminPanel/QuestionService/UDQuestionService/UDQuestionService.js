@@ -28,7 +28,7 @@ const UDQuestionService = ({ id }) => {
       await client
         .put(questionServiceApiUrl, newData)
         .then(() => window.location.reload())
-        .catch((_) => {
+        .catch(() => {
           alert("Чёт пошло по бороде c данными");
         });
     } catch (_) {
@@ -44,7 +44,7 @@ const UDQuestionService = ({ id }) => {
     await client
       .delete(questionServiceApiUrl)
       .then(() => router.push("/admin/albums/"))
-      .catch((_) => {
+      .catch(() => {
         alert("Чет даные не удаляются(");
       });
   };
@@ -59,7 +59,7 @@ const UDQuestionService = ({ id }) => {
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>Loading...</div>;
-  console.log(data);
+
   return (
     <div className={styles.albumsWrapper}>
       <h2 className={styles.title}>Редактирование №{id}</h2>

@@ -60,17 +60,16 @@ const UDArticle = ({ id }) => {
       }
 
       const client = await rootWayoutAPI();
-      await client.put(articleApiUrl, data).catch((_) => {
+      await client.put(articleApiUrl, data).catch(() => {
         alert("Чёт пошло по бороде c данными");
       });
       if (indexes) {
-        console.log(indexes);
         await client
           .put(articleApiFileUrl, form.formData, { params: { indexes } })
-          .then((_) => {
+          .then(() => {
             window.location.reload();
           })
-          .catch((_) => {
+          .catch(() => {
             alert("Чёт пошло по бороде c файлами");
           });
       }
@@ -84,7 +83,7 @@ const UDArticle = ({ id }) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     const client = await rootWayoutAPI();
-    await client.delete(articleApiUrl).catch((_) => {
+    await client.delete(articleApiUrl).catch(() => {
       alert("Чет даные не удаляются(");
     });
     await client
@@ -92,8 +91,7 @@ const UDArticle = ({ id }) => {
       .then(() => {
         router.push("/admin/journal/");
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
         alert("Чет даные не удаляются(");
       });
   };

@@ -52,16 +52,16 @@ const AlbumsCreateCard = () => {
       const data_response = await client
         .post("/albums/", data)
         .then((res) => res.data)
-        .catch((_) => {
+        .catch(() => {
           alert("Чёт пошло по бороде c данными");
         });
 
       await client
         .post(`/files/albums/${data_response.id}/`, form.formData)
-        .then((_) => {
+        .then(() => {
           router.push("/admin/albums/");
         })
-        .catch((_) => {
+        .catch(() => {
           alert("Чёт пошло по бороде c файлами");
         });
     } catch (_) {
