@@ -3,6 +3,7 @@ import wayoutAPI, { rootWayoutAPI } from "services/wayoutApi";
 import useSWR from "swr";
 import AdminUDForm from "@/components/UI/AdminUDForm";
 import { useRouter } from "next/router";
+import { blockSample, requiredData, requestData } from "../cardUtils";
 
 const AlbumsUDCard = ({ id }) => {
   const albumsApiUrl = `/albums/${id}/`;
@@ -40,17 +41,9 @@ const AlbumsUDCard = ({ id }) => {
       }
     });
 
-    let newData = {
-      title: form.formElements["title"].value,
-      description: form.formElements["description"].value,
-      new_price: form.formElements["new_price"].value,
-      old_price: form.formElements["old_price"].value,
-      sale_text: form.formElements["sale_text"].value,
-      slug: form.formElements["slug"].value,
-      price_include: JSON.stringify(form.price_include),
-      model_description: JSON.stringify(form.model_description),
-      separation: newSeparation,
-    };
+    let newData = requestData(form);
+    newData.separation = newSeparation;
+
     const client = await rootWayoutAPI();
 
     await client.put(albumsApiUrl, newData).catch(() => {
@@ -100,56 +93,10 @@ const AlbumsUDCard = ({ id }) => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
-  const requiredData = [
-    { placeholder: "Название", name: "title", value: data.title },
-    {
-      placeholder: "Описание модели",
-      name: "description",
-      value: data.description,
-    },
-    {
-      placeholder: "Цена акутальная",
-      name: "new_price",
-      type: "number",
-      value: data.new_price,
-    },
-    {
-      placeholder: "Цена старая",
-      name: "old_price",
-      type: "number",
-      value: data.old_price,
-    },
-    {
-      placeholder: "Текст про скидку",
-      name: "sale_text",
-      value: data.sale_text,
-    },
-    {
-      placeholder: "Ссылка (транслит)",
-      name: "slug",
-      value: data.slug,
-    },
-    {
-      placeholder: "Главное фото (Превью)",
-      name: "0_file",
-      type: "file",
-    },
-    {
-      placeholder: "Обложка 0",
-      name: "1_file",
-      type: "file",
-    },
-    {
-      placeholder: "Фото 1",
-      name: "2_file",
-      type: "file",
-    },
-    {
-      placeholder: "Видеофайл",
-      name: "3_file",
-      type: "file",
-    },
-  ];
+  const requiredUpdateData = requiredData.map((el) => {
+    if (el.type !== "file") el.value = data[el.name];
+    return el;
+  });
 
   const optionalData = [
     {
@@ -212,44 +159,13 @@ const AlbumsUDCard = ({ id }) => {
     },
   ];
 
-  const getBlock = (i, sampleIndex) => {
-    return [
-      [
-        {
-          type: "file",
-          placeholder: `Обложка ${i}*`,
-          name: "file",
-        },
-      ],
-      [
-        {
-          type: "file",
-          placeholder: `Фото ${i}*`,
-          name: "file",
-        },
-      ],
-      [
-        {
-          placeholder: `Описание ${i}*`,
-          name: "additional_description",
-        },
-      ],
-      [
-        {
-          placeholder: `В стоимость входит ${i}*`,
-          name: "price_include",
-        },
-      ],
-    ][sampleIndex];
-  };
-
   return (
     <div className={styles.albumsWrapper}>
       <h2 className={styles.title}>Редактирование карточки №{id}</h2>
       <AdminUDForm
-        required_data={requiredData}
-        optional_data={optionalData}
-        blockSample={getBlock}
+        requiredData={requiredUpdateData}
+        optionalData={optionalData}
+        blockSample={blockSample}
         handleSend={handleUpdate}
         handleDelete={handleDelete}
         defaultSeparation={data.separation}

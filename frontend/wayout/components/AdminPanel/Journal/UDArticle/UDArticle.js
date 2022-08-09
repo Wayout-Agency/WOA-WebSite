@@ -3,6 +3,7 @@ import { rootWayoutAPI } from "services/wayoutApi";
 import AdminUDForm from "@/components/UI/AdminUDForm";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { blockSample, requestData, requiredData } from "../articleUtils";
 
 const UDArticle = ({ id }) => {
   const router = useRouter();
@@ -43,26 +44,18 @@ const UDArticle = ({ id }) => {
         });
       });
 
-      let data = {
-        value: {
-          title: form.formElements["title"].value,
-          author: form.formElements["author"].value,
-          created_at: form.formElements["created_at"].value,
-          time_to_read: form.formElements["time_to_read"].value,
-          slug: form.formElements["slug"].value,
-          introduction: form.formElements["introduction"].value,
-          blocks: JSON.stringify(blocksArray),
-        },
-      };
-
-      if (!Object.values(data).every((item) => item)) {
+      if (
+        !Object.values(requestData(form, blocksArray)).every((item) => item)
+      ) {
         throw "Not all values exists";
       }
 
       const client = await rootWayoutAPI();
-      await client.put(articleApiUrl, data).catch(() => {
-        alert("Чёт пошло по бороде c данными");
-      });
+      await client
+        .put(articleApiUrl, requestData(form, blocksArray))
+        .catch(() => {
+          alert("Чёт пошло по бороде c данными");
+        });
       if (indexes) {
         await client
           .put(articleApiFileUrl, form.formData, { params: { indexes } })
@@ -109,92 +102,52 @@ const UDArticle = ({ id }) => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
+  const requiredUpdateData = requiredData.map((el) => {
+    if (el.type !== "file") el.value = data[el.name];
+    return el;
+  });
+
+  const optionalData = [
+    {
+      inputs: data.blocks.map(({ video_caption, subtitle, text }, i) => {
+        return [
+          {
+            type: "file",
+            placeholder: `Добавить фото/видео ${i}`,
+            name: `file_${i}`,
+          },
+          {
+            type: "text",
+            placeholder: `Подпись к фото/видео ${i}`,
+            name: `video_caption_${i}`,
+            value: video_caption,
+          },
+          {
+            type: "text",
+            placeholder: `Подзаголовок ${i}`,
+            name: `subtitle_${i}`,
+            value: subtitle,
+          },
+          {
+            type: "text",
+            placeholder: `Текст ${i}`,
+            name: `text_${i}`,
+            value: text,
+          },
+        ];
+      }),
+      title: "Блоки",
+      sampleIndex: 0,
+    },
+  ];
+
   return (
     <div className={styles.albumsWrapper}>
       <h2 className={styles.title}>Редактирование статьи №{id}</h2>
       <AdminUDForm
-        requiredData={[
-          { placeholder: "Название", name: "title", value: data.title },
-          { placeholder: "Имя автора", name: "author", value: data.author },
-          {
-            placeholder: "Дата публикации",
-            name: "created_at",
-            type: "date",
-            value: data.created_at,
-          },
-          {
-            placeholder: "Время прочтения",
-            name: "time_to_read",
-            type: "number",
-            value: data.time_to_read,
-          },
-          { placeholder: "Ссылка (транслит)", name: "slug", value: data.slug },
-          {
-            placeholder: "Текст 0 (Вступление)",
-            name: "introduction",
-            type: "text",
-            value: data.introduction,
-          },
-        ]}
-        optionalData={[
-          {
-            inputs: data.blocks.map(({ video_caption, subtitle, text }, i) => {
-              return [
-                {
-                  type: "file",
-                  placeholder: `Добавить фото/видео ${i}`,
-                  name: `file_${i}`,
-                },
-                {
-                  type: "text",
-                  placeholder: `Подпись к фото/видео ${i}`,
-                  name: `video_caption__${i}`,
-                  value: video_caption,
-                },
-                {
-                  type: "text",
-                  placeholder: `Подзаголовок ${i}`,
-                  name: `subtitle_${i}`,
-                  value: subtitle,
-                },
-                {
-                  type: "text",
-                  placeholder: `Текст ${i}`,
-                  name: `text_${i}`,
-                  value: text,
-                },
-              ];
-            }),
-            title: "Блоки",
-            sampleIndex: 0,
-          },
-        ]}
-        blockSample={(i, sampleIndex) => {
-          return [
-            [
-              {
-                type: "file",
-                placeholder: `Добавить фото/видео ${i}`,
-                name: `file_${i}`,
-              },
-              {
-                type: "text",
-                placeholder: `Подпись к фото/видео ${i}`,
-                name: `video_caption__${i}`,
-              },
-              {
-                type: "text",
-                placeholder: `Подзаголовок ${i}`,
-                name: `subtitle_${i}`,
-              },
-              {
-                type: "text",
-                placeholder: `Текст ${i}`,
-                name: `text_${i}`,
-              },
-            ],
-          ][sampleIndex];
-        }}
+        requiredData={requiredUpdateData}
+        optionalData={optionalData}
+        blockSample={blockSample}
         handleSend={handleUpdate}
         handleDelete={handleDelete}
       />

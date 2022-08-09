@@ -2,6 +2,7 @@ import styles from "../../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useRouter } from "next/router";
+import { blockSample, requestData, requiredData } from "../caseUtils";
 
 const CreateCase = () => {
   const router = useRouter();
@@ -21,25 +22,13 @@ const CreateCase = () => {
         }
       });
 
-      let data = {
-        value: {
-          title: form.formElements["title"].value,
-          description: form.formElements["description"].value,
-          created_at: form.formElements["created_at"].value,
-          time_to_read: form.formElements["time_to_read"].value,
-          slug: form.formElements["slug"].value,
-          task: form.formElements["task"].value,
-          process: form.formElements["process"].value,
-        },
-      };
-
-      if (!Object.values(data).every((item) => item)) {
+      if (!Object.values(requestData(form)).every((item) => item)) {
         throw "Not all values exists";
       }
 
       const client = await rootWayoutAPI();
       const data_response = await client
-        .post("posts/cases/", data)
+        .post("posts/cases/", requestData(form))
         .then((res) => res.data)
         .catch(() => {
           alert("Чёт пошло по бороде c данными");
@@ -68,52 +57,9 @@ const CreateCase = () => {
     <div className={styles.albumsWrapper}>
       <h2 className={styles.title}>Добавление кейса</h2>
       <AdminCreateForm
-        requiredData={[
-          { placeholder: "Название", name: "title" },
-          {
-            placeholder: "Описание проекта (серый текст)",
-            name: "description",
-          },
-          {
-            placeholder: "Дата публикации",
-            name: "created_at",
-            type: "date",
-          },
-          {
-            placeholder: "Время прочтения",
-            name: "time_to_read",
-            type: "number",
-          },
-          { placeholder: "Ссылка (транслит)", name: "slug" },
-          {
-            placeholder: "Главное фото (Превью и Большое при нажатии)",
-            name: "file_0",
-            type: "file",
-          },
-          { placeholder: "Задача", name: "task" },
-          { placeholder: "Фото 2", name: "file_1", type: "file" },
-          { placeholder: "Фото вертикальное 1", name: "file_2", type: "file" },
-          {
-            placeholder: "Фото вертикальное 2",
-            name: "file_3",
-            type: "file",
-          },
-          { placeholder: "Фото 3 Превью", name: "file_4", type: "file" },
-          { placeholder: "Процесс", name: "process" },
-          { placeholder: "Фото 4", name: "file_5", type: "file" },
-        ]}
+        requiredData={requiredData}
         optionalData={[{ inputs: [], title: "Фото 3", sampleIndex: 0 }]}
-        blockSample={(i, sampleIndex) => {
-          return [
-            [
-              {
-                type: "file",
-                placeholder: `Слайд ${i}*`,
-                name: `file_${6 + i}`,
-              },
-            ],
-          ][sampleIndex];
-        }}
+        blockSample={blockSample}
         handleSend={handleSend}
         handleDelete={handleDelete}
       />

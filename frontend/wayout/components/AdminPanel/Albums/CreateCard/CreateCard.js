@@ -3,6 +3,7 @@ import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { blockSample, requestData, requiredData } from "../cardUtils";
 
 const AlbumsCreateCard = () => {
   const [separation, setSeparation] = useState(4);
@@ -31,26 +32,17 @@ const AlbumsCreateCard = () => {
         }
       });
 
-      let data = {
-        title: form.formElements["title"].value,
-        description: form.formElements["description"].value,
-        new_price: form.formElements["new_price"].value,
-        old_price: form.formElements["old_price"].value,
-        sale_text: form.formElements["sale_text"].value,
-        slug: form.formElements["slug"].value,
-        price_include: JSON.stringify(form.price_include),
-        model_description: JSON.stringify(form.model_description),
-        separation: separation,
-      };
+      let createData = requestData(form);
+      createData.separation = separation;
 
-      if (!Object.values(data).every((item) => item)) {
+      if (!Object.values(createData).every((item) => item)) {
         throw "Not all values exists";
       }
 
       const client = await rootWayoutAPI();
 
       const data_response = await client
-        .post("/albums/", data)
+        .post("/albums/", createData)
         .then((res) => res.data)
         .catch(() => {
           alert("Чёт пошло по бороде c данными");
@@ -80,58 +72,14 @@ const AlbumsCreateCard = () => {
     <div className={styles.albumsWrapper}>
       <h2 className={styles.title}>Добавление карточки</h2>
       <AdminCreateForm
-        requiredData={[
-          { placeholder: "Название", name: "title" },
-          { placeholder: "Описание модели", name: "description" },
-          { placeholder: "Цена актуальная", name: "new_price", type: "number" },
-          { placeholder: "Цена старая", name: "old_price", type: "number" },
-          { placeholder: "Текст про скидку", name: "sale_text" },
-          { placeholder: "Ссылка (транслит)", name: "slug" },
-          {
-            placeholder: "Главное фото (Превью)",
-            name: "0_file",
-            type: "file",
-          },
-          { placeholder: "Обложка 0", name: "1_file", type: "file" },
-          { placeholder: "Фото 1", name: "2_file", type: "file" },
-          { placeholder: "Видеофайл", name: "3_file", type: "file" },
-        ]}
+        requiredData={requiredData}
         optionalData={[
           { inputs: [], title: "Обложки", sampleIndex: 0 },
           { inputs: [], title: "Фото", sampleIndex: 1 },
           { inputs: [], title: "Описание", sampleIndex: 2 },
           { inputs: [], title: "В стоимость входит", sampleIndex: 3 },
         ]}
-        blockSample={(i, sampleIndex) => {
-          return [
-            [
-              {
-                type: "file",
-                placeholder: `Обложка ${i}*`,
-                name: `1_file_${i}`,
-              },
-            ],
-            [
-              {
-                type: "file",
-                placeholder: `Фото ${i}*`,
-                name: `2_file_${i}`,
-              },
-            ],
-            [
-              {
-                placeholder: `Описание ${i}*`,
-                name: "additional_description",
-              },
-            ],
-            [
-              {
-                placeholder: `В стоимость входит ${i}*`,
-                name: "price_include",
-              },
-            ],
-          ][sampleIndex];
-        }}
+        blockSample={blockSample}
         handleSend={handleSend}
         handleDelete={handleDelete}
         separation={separation}

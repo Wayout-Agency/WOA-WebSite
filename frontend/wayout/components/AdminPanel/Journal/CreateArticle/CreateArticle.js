@@ -2,6 +2,7 @@ import styles from "../../AdminPanel.module.scss";
 import { rootWayoutAPI } from "services/wayoutApi";
 import AdminCreateForm from "@/components/UI/AdminCreateForm";
 import { useRouter } from "next/router";
+import { blockSample, requestData, requiredData } from "../articleUtils";
 
 const CreateArticle = () => {
   const router = useRouter();
@@ -34,25 +35,15 @@ const CreateArticle = () => {
         });
       });
 
-      let data = {
-        value: {
-          title: form.formElements["title"].value,
-          author: form.formElements["author"].value,
-          created_at: form.formElements["created_at"].value,
-          time_to_read: form.formElements["time_to_read"].value,
-          slug: form.formElements["slug"].value,
-          introduction: form.formElements["introduction"].value,
-          blocks: JSON.stringify(blocksArray),
-        },
-      };
-
-      if (!Object.values(data).every((item) => item)) {
+      if (
+        !Object.values(requestData(form, blocksArray)).every((item) => item)
+      ) {
         throw "Not all values exists";
       }
 
       const client = await rootWayoutAPI();
       const data_response = await client
-        .post("posts/articles/", data)
+        .post("posts/articles/", requestData(form, blocksArray))
         .then((res) => res.data)
         .catch(() => {
           alert("Чёт пошло по бороде c данными");
@@ -81,53 +72,9 @@ const CreateArticle = () => {
     <div className={styles.albumsWrapper}>
       <h2 className={styles.title}>Добавление статьи</h2>
       <AdminCreateForm
-        requiredData={[
-          { placeholder: "Название", name: "title" },
-          { placeholder: "Имя автора", name: "author" },
-          {
-            placeholder: "Дата публикации",
-            name: "created_at",
-            type: "date",
-          },
-          {
-            placeholder: "Время прочтения",
-            name: "time_to_read",
-            type: "number",
-          },
-          { placeholder: "Ссылка (транслит)", name: "slug" },
-          {
-            placeholder: "Текст 0 (Вступление)",
-            name: "introduction",
-            type: "text",
-          },
-        ]}
+        requiredData={requiredData}
         optionalData={[{ inputs: [], title: "Блоки", sampleIndex: 0 }]}
-        blockSample={(i, sampleIndex) => {
-          return [
-            [
-              {
-                type: "file",
-                placeholder: `Добавить фото/видео ${i}`,
-                name: `file_${i}`,
-              },
-              {
-                type: "text",
-                placeholder: `Подпись к фото/видео ${i}`,
-                name: `video_caption__${i}`,
-              },
-              {
-                type: "text",
-                placeholder: `Подзаголовок ${i}`,
-                name: `subtitle_${i}`,
-              },
-              {
-                type: "text",
-                placeholder: `Текст ${i}`,
-                name: `text_${i}`,
-              },
-            ],
-          ][sampleIndex];
-        }}
+        blockSample={blockSample}
         handleSend={handleSend}
         handleDelete={handleDelete}
       />
