@@ -1,0 +1,42 @@
+.video {
+  border-radius: var(--radius);
+}
+
+.playText {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
+  letter-spacing: 0.015em;
+  margin-right: 12px;
+}
+
+.time {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
+  text-align: right;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+.videoWrapper {
+  margin-top: 50px;
+  margin-left: -50px;
+  margin-right: -50px;
+}
+.controls,
+.play {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.play {
+  margin-right: 15px;
+}
+.controls {
+  margin: 23px 50px;
+  margin-bottom: 0;
+}
+.playIcon {
+  cursor: pointer;
+}
