@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+/public/static/video
+
 # next.js
 /.next/
 /out/

@@ -7,6 +7,7 @@
   --navLinkActive: #652fff;
   --fontFamily: Arial, Helvetica, sans-serif;
   --h2Size: 35px;
+  --radius: 15px;
 }
 
 html,
@@ -25,7 +26,7 @@ body {
 }
 main {
   flex: 1 1 auto;
-  padding: 0 50px;
+  margin: 0 50px;
 }
 h1,
 h2,
@@ -77,4 +78,25 @@ input[type="file" i]::-webkit-file-upload-button {
   background-color: #000;
   color: #fff;
   font-family: var(--fontFamily);
+}
+
+progress {
+  width: 100%;
+  border: none;
+  height: 2px;
+  cursor: pointer;
+}
+progress::-webkit-progress-bar {
+  background-color: #fff;
+}
+progress::-webkit-progress-value {
+  background-color: #000;
+}
+
+progress::-moz-progress-bar {
+  background-color: #000;
+}
+
+video {
+  cursor: pointer;
 }
