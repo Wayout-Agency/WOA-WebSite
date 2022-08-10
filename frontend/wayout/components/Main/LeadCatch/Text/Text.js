@@ -35,7 +35,7 @@ const Text = () => {
       />
     </div>
   ) : (
-    <Skeleton w/>
+    <Skeleton width={798} height={530} style={{ borderRadius: "15px" }} />
   );
 };
 
