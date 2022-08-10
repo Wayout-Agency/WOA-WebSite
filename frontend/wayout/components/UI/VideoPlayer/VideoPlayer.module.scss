@@ -8,6 +8,7 @@
   line-height: 26px;
   letter-spacing: 0.015em;
   margin-right: 12px;
+  user-select: none;
 }
 
 .time {
@@ -32,11 +33,12 @@
 }
 .play {
   margin-right: 15px;
+  cursor: pointer;
 }
 .controls {
   margin: 23px 50px;
   margin-bottom: 0;
 }
 .playIcon {
-  cursor: pointer;
+  user-select: none;
 }

@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 
 const VideoPlayer = ({ filename, autoPlay = false, className = "" }) => {
   const [time, setTime] = useState("");
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(autoPlay);
   const [muted, setMute] = useState(autoPlay);
   const video = useRef(null);
   const progress = useRef(null);
@@ -80,7 +80,7 @@ const VideoPlayer = ({ filename, autoPlay = false, className = "" }) => {
         onClick={startStopVideo}
       />
       <div className={styles.controls}>
-        <div className={styles.play}>
+        <div className={styles.play} onClick={setVolume}>
           <span className={styles.playText}>ZVYK</span>
           <Image
             className={styles.playIcon}
@@ -90,7 +90,6 @@ const VideoPlayer = ({ filename, autoPlay = false, className = "" }) => {
             width="30px"
             height="30px"
             layout="fixed"
-            onClick={setVolume}
           />
         </div>
         <progress max="100" ref={progress} onClick={rewind}></progress>
