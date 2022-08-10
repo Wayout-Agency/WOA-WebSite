@@ -11,9 +11,7 @@ from schemas.user import CreateUser
 
 @pytest.fixture()
 def get_question_service() -> CreateQuestionService:
-    return CreateQuestionService(
-        title="Question", text="Question text", type=QSType.question.value
-    )
+    return CreateQuestionService(title="Question", text="Question text", type=QSType.question.value)
 
 
 @pytest.fixture()

@@ -14,9 +14,7 @@ async def test_login(client: AsyncClient, user_data: UserTestModel):
 
 
 @pytest.mark.anyio
-async def test_login_invalid_creditionals(
-    client: AsyncClient, user_data: UserTestModel
-):
+async def test_login_invalid_creditionals(client: AsyncClient, user_data: UserTestModel):
     await user.create(user_data.user_in_db)
     user_data.user_in_request.password = "Invalid password"
     response = await client.post("/api/v1/token/", json=dict(user_data.user_in_request))

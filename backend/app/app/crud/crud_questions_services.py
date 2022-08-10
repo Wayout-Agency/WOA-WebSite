@@ -52,9 +52,7 @@ class CRUDQuestionService(CRUDBase):
         except ValidationError:
             raise Errors.valid_error
 
-    async def update(
-        self, id: int, schema: UpdateQuestionService
-    ) -> QuestionServiceBase:
+    async def update(self, id: int, schema: UpdateQuestionService) -> QuestionServiceBase:
         try:
             await self.model.filter(id=id).update(**schema.dict())
             return await self.get_by_id(id)

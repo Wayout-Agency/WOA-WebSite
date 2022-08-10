@@ -8,9 +8,7 @@ from schemas.token import TokenPair
 
 
 @pytest.mark.anyio
-async def test_update_album(
-    client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair
-):
+async def test_update_album(client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair):
     tokens: TokenPair = create_auth_pair
     album_obj = await album.create(get_album_data)
     album_obj.title = "Updated test title"
@@ -24,9 +22,7 @@ async def test_update_album(
 
 
 @pytest.mark.anyio
-async def test_create_album(
-    client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair
-):
+async def test_create_album(client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair):
     tokens = create_auth_pair
     album_obj = get_album_data
     response = await client.post(
@@ -39,9 +35,7 @@ async def test_create_album(
 
 
 @pytest.mark.anyio
-async def test_delete_album(
-    client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair
-):
+async def test_delete_album(client: AsyncClient, get_album_data: CreateAlbum, create_auth_pair: TokenPair):
     tokens: TokenPair = create_auth_pair
     album_obj = await album.create(get_album_data)
     response = await client.delete(
@@ -52,26 +46,20 @@ async def test_delete_album(
 
 
 @pytest.mark.anyio
-async def test_create_album_without_token(
-    client: AsyncClient, get_album_data: CreateAlbum
-):
+async def test_create_album_without_token(client: AsyncClient, get_album_data: CreateAlbum):
     response = await client.post("/api/v1/albums/", json=dict(get_album_data))
     assert response.status_code == int(HTTPStatus.FORBIDDEN)
 
 
 @pytest.mark.anyio
-async def test_update_album_without_token(
-    client: AsyncClient, get_album_data: CreateAlbum
-):
+async def test_update_album_without_token(client: AsyncClient, get_album_data: CreateAlbum):
     album_obj = await album.create(get_album_data)
     response = await client.put(f"/api/v1/albums/{album_obj.id}/", json=dict(album_obj))
     assert response.status_code == int(HTTPStatus.FORBIDDEN)
 
 
 @pytest.mark.anyio
-async def test_delete_album_without_token(
-    client: AsyncClient, get_album_data: CreateAlbum
-):
+async def test_delete_album_without_token(client: AsyncClient, get_album_data: CreateAlbum):
     album_obj = await album.create(get_album_data)
     response = await client.delete(f"/api/v1/albums/{album_obj.id}/")
     assert response.status_code == int(HTTPStatus.FORBIDDEN)

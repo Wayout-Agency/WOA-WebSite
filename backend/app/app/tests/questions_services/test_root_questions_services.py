@@ -59,9 +59,7 @@ async def test_delete_question_service(
 async def test_create_question_service_without_token(
     client: AsyncClient, get_question_service: CreateQuestionService
 ):
-    response = await client.post(
-        "/api/v1/questions-services/", json=dict(get_question_service)
-    )
+    response = await client.post("/api/v1/questions-services/", json=dict(get_question_service))
     assert response.status_code == int(HTTPStatus.FORBIDDEN)
 
 

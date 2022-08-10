@@ -9,7 +9,7 @@ class Case(Model):
     description = fields.CharField(max_length=200)
     created_at = fields.DateField()
     time_to_read = fields.SmallIntField()
-    slug = fields.CharField(max_length=200)
+    slug = fields.CharField(max_length=200, unique=True)
     task = fields.CharField(max_length=500)
     process = fields.CharField(max_length=500)
 

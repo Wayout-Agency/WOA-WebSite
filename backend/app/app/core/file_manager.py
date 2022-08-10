@@ -16,9 +16,7 @@ def init_media():
     try:
         Path(settings.UPLOAD_DIRECTORY).mkdir(parents=True, exist_ok=True)
         for directory in ("albums", "cases", "articles"):
-            Path(settings.UPLOAD_DIRECTORY / directory).mkdir(
-                parents=True, exist_ok=True
-            )
+            Path(settings.UPLOAD_DIRECTORY / directory).mkdir(parents=True, exist_ok=True)
     except FileExistsError:
         pass
 
@@ -55,9 +53,7 @@ def get_files_info(dy_type: str, id: int) -> int:
 
 def get_filename(dy_type: str, id: int, file_id: int) -> str:
     try:
-        name = sorted(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))[
-            file_id
-        ]
+        name = sorted(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))[file_id]
         return name
     except (FileNotFoundError, IndexError):
         raise Errors.bad_req
@@ -74,16 +70,12 @@ async def save_files(files: List[UploadFile], dy_type: str, id: int):
         raise Errors.bad_req
 
 
-async def update_files(
-    files: List[UploadFile], dy_type: str, id: int, indexes: str, separation: int = 0
-):
+async def update_files(files: List[UploadFile], dy_type: str, id: int, indexes: str, separation: int = 0):
     try:
         renamed_files = _rename_files(files, indexes)
         files_path = settings.UPLOAD_DIRECTORY / dy_type / str(id)
         if separation:
-            current_files = sorted(
-                os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id))
-            )[separation:]
+            current_files = sorted(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))[separation:]
             for file in current_files[::-1]:
                 _, extension = os.path.splitext(file)
                 os.rename(

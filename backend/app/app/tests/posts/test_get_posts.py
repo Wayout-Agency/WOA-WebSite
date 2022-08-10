@@ -23,7 +23,7 @@ async def test_get_all_articles(client: AsyncClient, db_article_data: CreatePost
 
 
 @pytest.mark.anyio
-async def test_get_one_case(client: AsyncClient, db_case_data: CreatePost):
+async def test_get_one_case_by_id(client: AsyncClient, db_case_data: CreatePost):
     obj: PostBaseData = await post.create(PostType.case, db_case_data)
     response = await client.get(f"/api/v1/posts/{PostType.case.value}/{obj.value.id}/")
     assert response.status_code == int(HTTPStatus.OK)
@@ -31,10 +31,24 @@ async def test_get_one_case(client: AsyncClient, db_case_data: CreatePost):
 
 
 @pytest.mark.anyio
-async def test_get_one_article(client: AsyncClient, db_article_data: CreatePost):
+async def test_get_one_case_by_slug(client: AsyncClient, db_case_data: CreatePost):
+    obj: PostBaseData = await post.create(PostType.case, db_case_data)
+    response = await client.get(f"/api/v1/posts/{PostType.case.value}/{obj.value.slug}/")
+    assert response.status_code == int(HTTPStatus.OK)
+    assert obj.value.title == response.json()["value"]["title"]
+
+
+@pytest.mark.anyio
+async def test_get_one_article_by_id(client: AsyncClient, db_article_data: CreatePost):
     obj: PostBaseData = await post.create(PostType.article, db_article_data)
-    response = await client.get(
-        f"/api/v1/posts/{PostType.article.value}/{obj.value.id}/"
-    )
+    response = await client.get(f"/api/v1/posts/{PostType.article.value}/{obj.value.id}/")
+    assert response.status_code == int(HTTPStatus.OK)
+    assert obj.value.title == response.json()["value"]["title"]
+
+
+@pytest.mark.anyio
+async def test_get_one_article_by_slug(client: AsyncClient, db_article_data: CreatePost):
+    obj: PostBaseData = await post.create(PostType.article, db_article_data)
+    response = await client.get(f"/api/v1/posts/{PostType.article.value}/{obj.value.slug}/")
     assert response.status_code == int(HTTPStatus.OK)
     assert obj.value.title == response.json()["value"]["title"]

@@ -17,7 +17,7 @@ def get_album_data() -> CreateAlbum:
         new_price=100,
         old_price=90,
         sale_text="text",
-        slug="slug",
+        slug="".join(random.choice(ascii_lowercase) for _ in range(10)),
         price_include="text",
         model_description="desc",
         separation=0,

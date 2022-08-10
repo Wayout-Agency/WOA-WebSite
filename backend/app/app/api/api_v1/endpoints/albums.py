@@ -36,9 +36,9 @@ async def create_album(schema: CreateAlbum, _=Depends(check_root_user)):
     return await album.create(schema)
 
 
-@router.get("/{id}/", response_model=AlbumBaseFull)
-async def get_album(id: int):
-    obj = await album.get_by_id(id)
+@router.get("/{get_type}/", response_model=AlbumBaseFull)
+async def get_album(get_type: str):
+    obj = await album.get(get_type)
     return {**dict(obj), "files_quantity": get_files_info("albums", obj.id)}
 
 

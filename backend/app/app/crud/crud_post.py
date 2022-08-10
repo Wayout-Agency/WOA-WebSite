@@ -5,7 +5,7 @@ from crud.base import CRUDBase
 from models.articles import Article, GetArticle
 from models.cases import Case, GetCase
 from schemas.post import CreatePost, DeletePost, PostBaseData, PostType, UpdatePost
-from tortoise.exceptions import DoesNotExist, ValidationError
+from tortoise.exceptions import DoesNotExist, IntegrityError, ValidationError
 
 
 class PostTool(NamedTuple):
@@ -30,7 +30,7 @@ class CRUDPost(CRUDBase):
             return PostBaseData(
                 value=await model.get_post_model.from_tortoise_orm(model_obj)
             )
-        except ValidationError:
+        except (ValidationError, IntegrityError):
             raise Errors.valid_error
 
     async def get_all(self, post_type: PostType) -> List[PostBaseData]:
@@ -41,10 +41,13 @@ class CRUDPost(CRUDBase):
             for model_obj in model_objs
         ]
 
-    async def get_by_id(self, post_type: PostType, id: int) -> PostBaseData:
+    async def get(self, post_type: PostType, get_type: str) -> PostBaseData:
         model: PostTool = self._get_model(post_type)
-        try:
-            model_obj = await model.post_model.get(id=id)
+        try:   
+            if get_type.isdigit():
+                model_obj = await model.post_model.get(id=int(get_type))
+            else:
+                model_obj = await model.post_model.get(slug=get_type)
             return PostBaseData(
                 value=await model.get_post_model.from_tortoise_orm(model_obj)
             )
@@ -56,7 +59,7 @@ class CRUDPost(CRUDBase):
     ) -> PostBaseData:
         model: PostTool = self._get_model(post_type)
         await model.post_model.filter(id=id).update(**schema.dict()["value"])
-        return await self.get_by_id(post_type, id)
+        return await self.get(post_type, str(id))
 
     async def delete(self, post_type: PostType, id: int) -> DeletePost:
         model: PostTool = self._get_model(post_type)
