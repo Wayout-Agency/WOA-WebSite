@@ -1,9 +1,7 @@
-import useSWR from "swr";
 import styles from "./Main.module.scss";
-import wayoutAPI from "services/wayoutApi";
 import MainTitle from "../UI/MainTitle/";
 import VideoPlayer from "../UI/VideoPlayer";
-
+import LeadCatch from "./LeadCatch";
 const Main = () => {
   return (
     <>
@@ -16,6 +14,7 @@ const Main = () => {
         }
       />
       <VideoPlayer filename={"main.mp4"} autoPlay={true} />
+      <LeadCatch />
     </>
   );
 };
