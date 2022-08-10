@@ -7,9 +7,7 @@ from schemas.token import TokenPair
 
 
 @pytest.mark.anyio
-async def test_upload_file(
-    sync_client: TestClient, path: str, create_auth_pair: TokenPair
-):
+async def test_upload_file(sync_client: TestClient, path: str, create_auth_pair: TokenPair):
     init_media()
     tokens = create_auth_pair
     response = sync_client.post(
@@ -40,9 +38,7 @@ async def test_get_nonexistent_file(sync_client: TestClient):
 
 
 @pytest.mark.anyio
-async def test_change_file(
-    sync_client: TestClient, path: str, create_auth_pair: TokenPair
-):
+async def test_change_file(sync_client: TestClient, path: str, create_auth_pair: TokenPair):
     tokens = create_auth_pair
     response = sync_client.put(
         "/api/v1/files/albums/7878/",

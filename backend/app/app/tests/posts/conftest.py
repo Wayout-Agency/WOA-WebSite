@@ -19,7 +19,7 @@ def json_сase_data():
             "description": "Case test description",
             "created_at": "2022-07-14",
             "time_to_read": 10,
-            "slug": "Article test slug",
+            "slug": "".join(random.choice(ascii_lowercase) for _ in range(10)),
             "task": "Case test task",
             "process": "Case test process",
         }
@@ -34,7 +34,7 @@ def db_case_data() -> CreatePost:
             description="Case test description",
             created_at="2022-07-14",
             time_to_read=10,
-            slug="Case test slug",
+            slug="".join(random.choice(ascii_lowercase) for _ in range(10)),
             task="Case test task",
             process="Case test process",
         )
@@ -49,7 +49,7 @@ def json_article_data():
             "author": "Article test author",
             "created_at": "2022-07-14",
             "time_to_read": 10,
-            "slug": "Article test slug",
+            "slug": "".join(random.choice(ascii_lowercase) for _ in range(10)),
             "introduction": "Article test introduction text",
             "blocks": "Article test block",
         }
@@ -64,7 +64,7 @@ def db_article_data() -> CreatePost:
             author="Article test author",
             created_at="2022-07-14",
             time_to_read=10,
-            slug="Article test slug",
+            slug="".join(random.choice(ascii_lowercase) for _ in range(10)),
             introduction="Article test text",
             blocks="Article test block",
         )
