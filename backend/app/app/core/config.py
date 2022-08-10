@@ -29,11 +29,7 @@ class Settings(BaseSettings):
     DB_HOST: str = environ["DB_HOST"]
     DB_PORT: int = environ["DB_PORT"]
 
-    UPLOAD_DIRECTORY = (
-        environ["UPLOAD_DIRECTORY"]
-        if environ.get("UPLOAD_DIRECTORY")
-        else BASEDIR / "media"
-    )
+    UPLOAD_DIRECTORY = environ["UPLOAD_DIRECTORY"] if environ.get("UPLOAD_DIRECTORY") else BASEDIR / "media"
 
 
 @lru_cache()

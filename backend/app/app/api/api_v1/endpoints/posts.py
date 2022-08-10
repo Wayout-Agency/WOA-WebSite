@@ -41,18 +41,14 @@ async def get_all(post_type: PostType):
     )
 
 
-@router.post(
-    "/{post_type}/", response_model=PostBaseData, status_code=status.HTTP_201_CREATED
-)
-async def create_post(
-    schema: CreatePost, post_type: PostType, _=Depends(check_root_user)
-):
+@router.post("/{post_type}/", response_model=PostBaseData, status_code=status.HTTP_201_CREATED)
+async def create_post(schema: CreatePost, post_type: PostType, _=Depends(check_root_user)):
     return await post.create(post_type, schema)
 
 
-@router.get("/{post_type}/{id}/", response_model=PostBaseFull)
-async def get_post(id: int, post_type: PostType):
-    obj = await post.get_by_id(post_type, id)
+@router.get("/{post_type}/{get_type}/", response_model=PostBaseFull)
+async def get_post(get_type: str, post_type: PostType):
+    obj = await post.get(post_type, get_type)
     return {
         "value": {
             **dict(obj.value),
@@ -62,9 +58,7 @@ async def get_post(id: int, post_type: PostType):
 
 
 @router.put("/{post_type}/{id}/", response_model=PostBaseData)
-async def update_post(
-    id: int, schema: UpdatePost, post_type: PostType, _=Depends(check_root_user)
-):
+async def update_post(id: int, schema: UpdatePost, post_type: PostType, _=Depends(check_root_user)):
     return await post.update(post_type, id, schema)
 
 

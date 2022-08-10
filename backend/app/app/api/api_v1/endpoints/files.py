@@ -20,19 +20,12 @@ class FileType(Enum):
 @router.get("/{file_type}/{id}/{file_id}/")
 async def get_file(file_type: FileType, id: int, file_id: int):
     return FileResponse(
-        (
-            settings.UPLOAD_DIRECTORY
-            / file_type.value
-            / str(id)
-            / get_filename("albums", id, file_id)
-        )
+        (settings.UPLOAD_DIRECTORY / file_type.value / str(id) / get_filename("albums", id, file_id))
     )
 
 
 @router.post("/{file_type}/{id}/", status_code=status.HTTP_201_CREATED)
-async def upload_files(
-    file_type: FileType, id: int, files: List[UploadFile], _=Depends(check_root_user)
-):
+async def upload_files(file_type: FileType, id: int, files: List[UploadFile], _=Depends(check_root_user)):
     await save_files(files, file_type.value, id)
     return {"success": True}
 
@@ -51,8 +44,6 @@ async def change_files(
 
 
 @router.delete("/{file_type}/{id}/")
-def remove_files(
-    file_type: FileType, id: int, indexes: str | None = None, _=Depends(check_root_user)
-):
+def remove_files(file_type: FileType, id: int, indexes: str | None = None, _=Depends(check_root_user)):
     delete_files(file_type.value, id, indexes)
     return {"success": True}
