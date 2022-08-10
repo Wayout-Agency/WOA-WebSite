@@ -8,6 +8,11 @@
   --fontFamily: Arial, Helvetica, sans-serif;
   --h2Size: 35px;
   --radius: 15px;
+  --error: #d64f4f;
+}
+
+input:focus::placeholder {
+  color: var(--text) !important;
 }
 
 html,

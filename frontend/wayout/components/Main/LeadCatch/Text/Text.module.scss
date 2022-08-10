@@ -1,0 +1,24 @@
+.textWrapper {
+  display: flex;
+  height: 100%;
+  padding-bottom: 70px;
+  position: relative;
+  margin-left: -39px;
+}
+.leadCatchText {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 90px;
+  line-height: 95px;
+  width: 700px;
+  margin-top: 60px;
+}
+.percent {
+  z-index: -1;
+}
+.percentFloat {
+  align-self: flex-end;
+  position: absolute;
+  right: 5px;
+  bottom: -20px;
+}

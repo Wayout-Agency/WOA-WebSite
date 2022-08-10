@@ -1,0 +1,10 @@
+.formWrapper {
+  margin-right: 29px;
+  margin-left: 50px;
+}
+.error {
+  border-color: var(--error) !important;
+}
+.error::placeholder {
+  color: var(--error) !important;
+}
