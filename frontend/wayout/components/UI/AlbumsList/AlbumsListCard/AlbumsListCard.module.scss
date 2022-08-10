@@ -1,0 +1,44 @@
+.albumWrapper {
+  cursor: pointer;
+}
+
+.hover {
+  transition: all 0.5s ease-in-out;
+}
+
+.albumWrapper:hover .hover {
+  color: var(--purple);
+}
+
+.albumImg {
+  border-radius: var(--radius);
+  object-fit: cover;
+  text-align: center;
+}
+
+.imgWrapper {
+  width: 350px;
+  height: 407px;
+  position: relative;
+}
+.infoWrapper {
+  margin-top: 15px;
+}
+.priceWrapper {
+  display: flex;
+  margin-top: 7px;
+}
+.newPrice,
+.oldPrice {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
+}
+.newPrice {
+  margin-right: 9px;
+}
+.oldPrice {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
