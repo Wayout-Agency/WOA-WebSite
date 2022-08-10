@@ -1,7 +1,4 @@
 import styles from "./Form.module.scss";
-import useSWR from "swr";
-import wayoutAPI from "services/wayoutApi";
-import Image from "next/image";
 import { useState } from "react";
 import RoundInput from "@/components/UI/RoundInput";
 import RoundSendButton from "@/components/UI/RoundSendButton";
