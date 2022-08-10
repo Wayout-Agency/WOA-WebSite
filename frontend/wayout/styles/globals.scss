@@ -9,10 +9,14 @@
   --h2Size: 35px;
   --radius: 15px;
   --error: #d64f4f;
+  --purple: #652fff;
 }
 
 input:focus::placeholder {
   color: var(--text) !important;
+}
+img {
+  pointer-events: none;
 }
 
 html,
@@ -55,6 +59,13 @@ h2 {
   font-weight: 400;
   font-size: 35px;
   line-height: 40px;
+  letter-spacing: 0.015em;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
   letter-spacing: 0.015em;
 }
 

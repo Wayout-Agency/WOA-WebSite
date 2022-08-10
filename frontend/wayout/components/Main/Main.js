@@ -2,6 +2,7 @@ import styles from "./Main.module.scss";
 import MainTitle from "../UI/MainTitle/";
 import VideoPlayer from "../UI/VideoPlayer";
 import LeadCatch from "./LeadCatch";
+import MainAlbumsList from "./MainAlbumsList";
 const Main = () => {
   return (
     <>
@@ -15,6 +16,7 @@ const Main = () => {
       />
       <VideoPlayer filename={"main.mp4"} autoPlay={true} />
       <LeadCatch />
+      <MainAlbumsList />
     </>
   );
 };
