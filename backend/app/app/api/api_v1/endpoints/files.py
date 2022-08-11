@@ -20,7 +20,7 @@ class FileType(Enum):
 @router.get("/{file_type}/{id}/{file_id}/")
 async def get_file(file_type: FileType, id: int, file_id: int):
     return FileResponse(
-        (settings.UPLOAD_DIRECTORY / file_type.value / str(id) / get_filename("albums", id, file_id))
+        (settings.UPLOAD_DIRECTORY / file_type.value / str(id) / get_filename(file_type.value, id, file_id))
     )
 
 
