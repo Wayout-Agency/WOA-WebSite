@@ -4,7 +4,7 @@ import VideoPlayer from "../UI/VideoPlayer";
 import Clients from "../UI/Clients";
 import LeadCatch from "./LeadCatch";
 import MainAlbumsList from "./MainAlbumsList";
-
+import Graduation from "./Graduation";
 const Main = () => {
   return (
     <>
@@ -20,6 +20,7 @@ const Main = () => {
       <LeadCatch />
       <MainAlbumsList />
       <Clients />
+      <Graduation />
     </>
   );
 };
