@@ -1,0 +1,39 @@
+.clientsWrapper {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.title {
+  margin-bottom: 24px;
+}
+.clientCardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.moreWrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.moreText {
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+  border-bottom: 3px solid;
+  height: 40px;
+}
+.moreImg {
+  margin-left: 249px;
+  position: relative;
+  top: 5px;
+  right: 75px;
+  transition: all 0.5s ease-in-out;
+}
+
+.moreWrapper:hover .moreImg {
+  right: 50px;
+}

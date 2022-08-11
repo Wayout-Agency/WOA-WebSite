@@ -1,0 +1,30 @@
+.cardWrapper {
+  cursor: pointer;
+  position: relative;
+}
+
+.imgWrapper {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.img {
+  transition: all 0.5s ease;
+  border-radius: var(--radius);
+}
+
+.cardWrapper:hover .img {
+  transform: scale(1.05);
+}
+
+.hover {
+  transition: all 0.5s ease-in-out;
+}
+
+.cardWrapper:hover .hover {
+  color: var(--purple);
+}
+
+.description {
+  opacity: 0.3;
+}
