@@ -35,7 +35,7 @@ class CRUDPost(CRUDBase):
 
     async def get_all(self, post_type: PostType) -> List[PostBaseData]:
         model: PostTool = self._get_model(post_type)
-        model_objs = await model.post_model.all()
+        model_objs = await model.post_model.all().order_by('-created_at')
         return [
             PostBaseData(value=await model.get_post_model.from_tortoise_orm(model_obj))
             for model_obj in model_objs
