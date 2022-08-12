@@ -4,23 +4,19 @@ import useSWR from "swr";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ClientCard from "./ClientCard";
-import config from "config";
 import Image from "next/future/image";
 import Link from "next/link";
 
 const Clients = () => {
-  const casesApiUrl = "/posts/cases/";
+  const casesApiUrl = "/posts/cases/?quantity=3";
 
   const fetcher = async () => {
     const widthData = [622, 544, 380];
     const response = await wayoutAPI.get(casesApiUrl);
-    response.data.sort((a, b) => {
-      return new Date(b.value.created_at) - new Date(a.value.created_at);
-    });
     widthData.map((width, index) => {
       response.data[index].value.width = width;
     });
-    return response.data.slice(0, 3);
+    return response.data;
   };
 
   const { data, error } = useSWR(casesApiUrl, fetcher);
@@ -31,7 +27,7 @@ const Clients = () => {
     <div className={styles.clientsWrapper}>
       <h2 className={styles.title}>Клиенты</h2>
       <div className={styles.clientCardsWrapper}>
-        {data ? (
+        {data && data.length > 2 ? (
           data.map(({ value }, index) => {
             return (
               <ClientCard

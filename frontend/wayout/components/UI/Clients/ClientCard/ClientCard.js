@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "./ClientCard.module.scss";
 import Image from "next/future/image";
-import { useState } from "react";
 import config from "config";
 
 const ClientCard = ({
@@ -27,7 +26,7 @@ const ClientCard = ({
           />
         </div>
 
-        <h3 className={styles.hover}>
+        <h3 className={`${styles.hover} ${styles.title}`}>
           {title + " "}
           <span className={styles.description}>
             {description ? description : ""}
