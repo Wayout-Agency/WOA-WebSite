@@ -13,7 +13,6 @@ const Journal = () => {
 
   const fetcher = async () => {
     const response = await wayoutAPI.get(articlesApiUrl);
-    console.log(response.data);
     return response.data;
   };
   const { data, error } = useSWR(articlesApiUrl, fetcher);
@@ -52,7 +51,7 @@ const Journal = () => {
           <div className={styles.smallImgWrapper}>
             {data.slice(1, 3).map(({ value }) => {
               return (
-                <Link href={`/journal/articles/${value.slug}`}>
+                <Link href={`/journal/articles/${value.slug}`} key={value.id}>
                   <div className={styles.smallImgItemWrapper}>
                     <div
                       className={styles.imgWrapper}
