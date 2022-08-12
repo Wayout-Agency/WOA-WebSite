@@ -26,7 +26,7 @@ router = APIRouter()
 
 
 @router.get("/{post_type}/", response_model=List[PostBaseFull])
-async def get_all(post_type: PostType):
+async def get_all(post_type: PostType, quantity: int | None = None):
     objs = await post.get_all(post_type)
     return list(
         map(
@@ -38,7 +38,7 @@ async def get_all(post_type: PostType):
             },
             objs,
         )
-    )
+    )[:quantity]
 
 
 @router.post("/{post_type}/", response_model=PostBaseData, status_code=status.HTTP_201_CREATED)
