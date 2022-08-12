@@ -1,0 +1,57 @@
+.journalWrapper {
+  margin: 100px 0;
+}
+.title {
+  margin-bottom: 25px;
+}
+.postTitile {
+  margin-top: 15px;
+}
+.smallImgTitle {
+  margin-left: 23px;
+  width: 60%;
+}
+.imgWrapper > span {
+  border-radius: var(--radius);
+}
+.smallImgWrapper {
+  width: 45%;
+}
+.imgWrapper {
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  border-radius: var(--radius);
+}
+.imgWrapper:hover .img {
+  transform: scale(1.05);
+}
+
+.img {
+  transition: all 0.5s ease-in-out;
+  border-radius: var(--radius);
+}
+
+.smallImgItemWrapper {
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.bigImgWrapper {
+  cursor: pointer;
+}
+
+.bigImgWrapper {
+  width: 45%;
+}
+
+.articlesWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.span {
+  opacity: 0.3;
+  position: relative;
+  top: 7px;
+}
