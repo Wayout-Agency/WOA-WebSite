@@ -5,6 +5,7 @@ import Clients from "../UI/Clients";
 import LeadCatch from "./LeadCatch";
 import MainAlbumsList from "./MainAlbumsList";
 import Graduation from "./Graduation";
+import Journal from "./Journal";
 const Main = () => {
   return (
     <>
@@ -21,6 +22,7 @@ const Main = () => {
       <MainAlbumsList />
       <Clients />
       <Graduation />
+      <Journal />
     </>
   );
 };
