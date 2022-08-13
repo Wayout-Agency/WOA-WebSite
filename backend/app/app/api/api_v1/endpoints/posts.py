@@ -27,7 +27,7 @@ router = APIRouter()
 
 @router.get("/{post_type}/", response_model=List[PostBaseFull])
 async def get_all(post_type: PostType, quantity: int | None = None, exclude: int | None = None):
-    objs = await post.get_all(post_type)
+    objs = await post.get_all(post_type, exclude)
     return list(
         map(
             lambda obj: {
