@@ -36,7 +36,7 @@ class CRUDPost(CRUDBase):
     async def get_all(self, post_type: PostType, exclude: int | None) -> List[PostBaseData]:
         model: PostTool = self._get_model(post_type)
         if exclude:
-            model_objs = await model.post_model.all().order_by('-created_at').exclude(id=exclude)
+            model_objs = await model.post_model.all().order_by('-created_at').exclude(slug=exclude)
         else:
             model_objs = await model.post_model.all().order_by('-created_at')
         return [
