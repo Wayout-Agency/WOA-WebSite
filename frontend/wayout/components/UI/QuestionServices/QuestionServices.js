@@ -20,12 +20,16 @@ const QuestionServices = ({ QSType = "question" }) => {
     });
     return response.data;
   };
+
+  const click = (index) => {
+    isActive[index] = !isActive[index];
+    setIsActive([...isActive]);
+  };
+
   const { data, error } = useSWR(questionServiceApiUrl, fetcher);
 
   if (error) throw "Error";
-  if (!data) return <></>;
 
-  
   return (
     <div className={styles.QSWrapper}>
       <h2 className={styles.QSTitle}>Вопросы</h2>
@@ -36,10 +40,7 @@ const QuestionServices = ({ QSType = "question" }) => {
               <div
                 key={index}
                 className={styles.QSItem}
-                onClick={() => {
-                  isActive[index] = !isActive[index];
-                  setIsActive([...isActive]);
-                }}
+                onClick={() => click(index)}
               >
                 <Title title={title} isActive={isActive[index]} />
                 <Text text={text} isActive={isActive[index]} />

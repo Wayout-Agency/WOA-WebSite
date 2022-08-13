@@ -8,11 +8,11 @@ const Text = ({ text, isActive }) => {
     if (isActive) return ref.scrollHeight + "px";
     return "0";
   };
-  
+
   return (
     <div
       ref={refWrapper}
-      className={`${styles.textWrapper}`}
+      className={styles.textWrapper}
       style={{ maxHeight: getMaxHeight() }}
     >
       <h3 className={`${styles.text}`}>{text}</h3>
