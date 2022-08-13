@@ -33,9 +33,12 @@ class CRUDPost(CRUDBase):
         except (ValidationError, IntegrityError):
             raise Errors.valid_error
 
-    async def get_all(self, post_type: PostType) -> List[PostBaseData]:
+    async def get_all(self, post_type: PostType, exclude: int | None) -> List[PostBaseData]:
         model: PostTool = self._get_model(post_type)
-        model_objs = await model.post_model.all().order_by('-created_at')
+        if exclude:
+            model_objs = await model.post_model.all().order_by('-created_at').exclude(id=exclude)
+        else:
+            model_objs = await model.post_model.all().order_by('-created_at')
         return [
             PostBaseData(value=await model.get_post_model.from_tortoise_orm(model_obj))
             for model_obj in model_objs
