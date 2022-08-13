@@ -8,8 +8,12 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import config from "config";
 import clientsStyles from "../../UI/Clients/Clients.module.scss";
-const Journal = () => {
-  const articlesApiUrl = "/posts/articles/?quantity=3";
+const Journal = ({
+  journalTitle = "Журнал",
+  postUrl = "/posts/articles/?quantity=3",
+  link = "articles",
+}) => {
+  const articlesApiUrl = postUrl;
 
   const fetcher = async () => {
     const response = await wayoutAPI.get(articlesApiUrl);
@@ -21,10 +25,10 @@ const Journal = () => {
 
   return (
     <div className={styles.journalWrapper}>
-      <h2 className={styles.title}>Журнал</h2>
+      <h2 className={styles.title}>{journalTitle}</h2>
       {data && data.length > 2 ? (
         <div className={styles.articlesWrapper}>
-          <Link href={`/journal/articles/${data[0].value.slug}`}>
+          <Link href={`/journal/${link}/${data[0].value.slug}`}>
             <div className={styles.bigImgWrapper}>
               <div
                 className={styles.imgWrapper}
@@ -32,7 +36,7 @@ const Journal = () => {
               >
                 <Image
                   layout="fill"
-                  src={`${config.apiUrl}/files/articles/${data[0].value.id}/0/`}
+                  src={`${config.apiUrl}/files/${link}/${data[0].value.id}/0/`}
                   className={styles.img}
                 />
               </div>
@@ -51,7 +55,7 @@ const Journal = () => {
           <div className={styles.smallImgWrapper}>
             {data.slice(1, 3).map(({ value }) => {
               return (
-                <Link href={`/journal/articles/${value.slug}`} key={value.id}>
+                <Link href={`/journal/${link}/${value.slug}`} key={value.id}>
                   <div className={styles.smallImgItemWrapper}>
                     <div
                       className={styles.imgWrapper}
@@ -59,7 +63,7 @@ const Journal = () => {
                     >
                       <Image
                         layout="fill"
-                        src={`${config.apiUrl}/files/articles/${value.id}/0/`}
+                        src={`${config.apiUrl}/files/${link}/${value.id}/0/`}
                         className={styles.img}
                       />
                     </div>
@@ -70,7 +74,8 @@ const Journal = () => {
                         {value.created_at.slice(8) +
                           "." +
                           value.created_at.slice(5, 7) +
-                          ".22"}
+                          "." +
+                          value.created_at.slice(2, 4)}
                       </span>
                     </h3>
                   </div>

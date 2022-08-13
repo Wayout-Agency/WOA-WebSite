@@ -1,0 +1,59 @@
+.mainImgWrapper {
+  margin-right: -50px;
+  margin-left: -50px;
+  margin-top: 50px;
+}
+
+.mainImg {
+  width: 100%;
+  object-fit: cover;
+}
+.img {
+  border-radius: 25px;
+  width: 100%;
+  object-fit: cover;
+}
+.textWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+.text {
+  width: 1019px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+}
+.imgWrapper,
+.btnWrapper {
+  margin-top: 100px;
+}
+.verticalWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.vertImg {
+  width: 48.5%;
+  position: relative;
+}
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.dateShareWrapper {
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dateShareText {
+  font-weight: 400;
+  font-size: 35px;
+  letter-spacing: 0.015em;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
