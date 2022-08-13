@@ -33,7 +33,7 @@ class CRUDPost(CRUDBase):
         except (ValidationError, IntegrityError):
             raise Errors.valid_error
 
-    async def get_all(self, post_type: PostType, exclude: int | None) -> List[PostBaseData]:
+    async def get_all(self, post_type: PostType, exclude: str | None) -> List[PostBaseData]:
         model: PostTool = self._get_model(post_type)
         if exclude:
             model_objs = await model.post_model.all().order_by('-created_at').exclude(slug=exclude)
