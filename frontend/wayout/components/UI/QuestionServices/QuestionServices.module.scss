@@ -1,0 +1,34 @@
+.QSWrapper {
+  margin-top: 100px;
+}
+
+.QSTitle {
+  margin-bottom: 30px;
+}
+.QStitleWrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.QSItem {
+  margin-bottom: 28px;
+}
+.textWrapper {
+  overflow: hidden;
+  width: 940px;
+  transition: all 0.5s ease-in-out;
+}
+.text {
+  opacity: 0.3;
+  transition: all 0.3s ease-in-out;
+}
+.plusImg {
+  pointer-events: all;
+  user-select: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.activePlus {
+  transform: rotate(45deg);
+}
