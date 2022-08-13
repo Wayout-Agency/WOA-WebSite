@@ -3,7 +3,7 @@ import MainTitle from "../UI/MainTitle";
 import Clients from "../UI/Clients";
 import AlbumsList from "../UI/AlbumsList";
 import QuestionServices from "../UI/QuestionServices";
-
+import Process from "./Process";
 const Albums = () => {
   return (
     <>
@@ -14,6 +14,10 @@ const Albums = () => {
       <div className={styles.QSWrapper}>
         <QuestionServices QSType="question" />
       </div>
+      <div className={styles.clientsWrapper}>
+        <Clients />
+      </div>
+      <Process />
     </>
   );
 };
