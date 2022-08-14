@@ -10,6 +10,7 @@
   --radius: 15px;
   --error: #d64f4f;
   --purple: #652fff;
+  --fullWidth: 100vw;
 }
 
 input:focus::placeholder {
@@ -32,7 +33,20 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 1650px) {
+    main {
+      margin: 0 calc((100vw - 1560px) / 2);
+    }
+    header > nav {
+      padding: 24px calc((100vw - 1560px) / 2);
+    }
+    footer {
+      padding: 65px calc((100vw - 1560px) / 2);
+    }
+  }
 }
+
 main {
   flex: 1 1 auto;
   margin: 0 50px;
