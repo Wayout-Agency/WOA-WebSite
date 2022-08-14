@@ -25,10 +25,12 @@ const Footer = () => {
                 </a>
               </Link>{" "}
             </p>
-            <p
-              className={`${styles.privacyPolicy} ${styles.privacyPolicyText}`}
-            >
-              Не является публичной офертой.
+            <p className={styles.privacyPolicy}>
+              <Link href="/offer">
+                <a className={styles.privacyPolicyLink}>
+                  Условия оферты.
+                </a>
+              </Link>
             </p>
           </div>
           <p className={styles.copyright}>© ИП Бабаян Денис Маркович, 2022</p>
