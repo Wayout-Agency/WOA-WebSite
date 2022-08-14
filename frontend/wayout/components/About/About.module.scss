@@ -1,0 +1,80 @@
+.videoWrapper {
+  margin-top: 50px;
+}
+.numbersWrapper,
+.infoTeamWrapper,
+.teamWrapper {
+  margin-top: 100px;
+}
+.infoTeamWrapper {
+  margin-bottom: 100px;
+}
+
+.numbersContent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.number {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
+  letter-spacing: 0.015em;
+  width: 50%;
+  margin-top: 8px;
+}
+.aboutCardWrapper {
+  width: 350px;
+  height: 490px;
+  margin-bottom: 50px;
+}
+.aboutCardImg {
+  border-radius: var(--radius);
+  font-style: normal;
+}
+.aboutCardTitle {
+  margin-top: 15px;
+}
+.aboutCardRole {
+  margin-top: 7px;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
+}
+
+.cardsWrapper {
+  margin-top: 25px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.infoTeamText {
+  margin-top: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
+  letter-spacing: 0.015em;
+}
+.infoTeam {
+  width: 43%;
+  margin-bottom: 100px;
+}
+.infoTeamTextWrapper,
+.infoTeamBtnWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.infoTeamBtnWrapper {
+  align-items: center;
+}
+.infoTeamRight,
+.infoTeamBtn {
+  width: 48%;
+}
