@@ -1,0 +1,54 @@
+.recWrapper {
+  margin-top: 100px;
+}
+.top50,
+.block {
+  margin-top: 50px;
+}
+.block {
+  display: flow-root;
+}
+.imgWrapper {
+  width: 100%;
+  height: 587px;
+  position: relative;
+}
+.header {
+  float: right;
+}
+.content {
+  display: inline-block;
+  width: 100%;
+}
+.header,
+.textWrapper {
+  width: 754px;
+  float: right;
+}
+
+.subText,
+.caption {
+  margin-top: 15px;
+}
+.caption {
+  opacity: 0.3;
+}
+.articleContainer {
+  width: 1045px;
+  display: inline-block;
+}
+.articleInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 594px;
+  margin-top: 25px;
+}
+.text {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 130%;
+}
+.img {
+  border-radius: var(--radius);
+}
