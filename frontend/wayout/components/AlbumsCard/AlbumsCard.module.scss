@@ -1,0 +1,80 @@
+.mainWrapper {
+  margin: 50px 0;
+  justify-content: space-between;
+}
+
+.mainWrapper,
+.previewLeft,
+.pricesWrapper,
+.coversWrapper {
+  display: flex;
+}
+
+.previewLeft {
+  flex-direction: column;
+  width: 50%;
+}
+
+.title {
+  margin-bottom: 7px;
+}
+
+.text,
+.price,
+.saleText {
+  font-weight: 400;
+}
+
+.text {
+  font-size: 23px;
+  line-height: 26px;
+  letter-spacing: 0.015em;
+}
+
+.desc {
+  width: 431px;
+  margin-bottom: 252px;
+}
+
+.coversWrapper {
+  margin-top: 8px;
+}
+
+.coverWrapper {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  margin-right: 15px;
+  border-radius: 50%;
+}
+
+.cover {
+  cursor: pointer;
+  pointer-events: all;
+  border-radius: 50%;
+}
+
+.coverWrapper:hover {
+  outline: var(--navLinkActive) solid 2px;
+  outline-offset: 1.5px;
+}
+
+.price {
+  font-size: 35px;
+  margin-top: 35px;
+  line-height: 40.25px;
+}
+
+.oldPrice {
+  margin-left: 15px;
+  opacity: 20%;
+  text-decoration: line-through;
+}
+
+.saleText {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.015em;
+  margin-top: 8px;
+  margin-bottom: 35px;
+}
