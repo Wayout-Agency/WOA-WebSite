@@ -4,7 +4,6 @@ import { default as ExpImage } from "next/future/image";
 import { useState, useRef } from "react";
 
 const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
-  
   const [playerState, setPlayerState] = useState({
     time: "0:00 / 0:00",
     playing: autoPlay,
@@ -101,7 +100,11 @@ const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
           <source src={filePath} type="video/mp4" />
         </video>
       </div>
-      <div className={styles.controls}>
+      <div
+        className={`${styles.controls} ${
+          fullSize ? null : styles.videoWrapperDef
+        }`}
+      >
         <div className={styles.play} onClick={setVolume}>
           <span className={styles.playText}>ZVYK</span>
           <Image
