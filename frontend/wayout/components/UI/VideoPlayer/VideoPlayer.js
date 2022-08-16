@@ -1,99 +1,130 @@
 import styles from "./VideoPlayer.module.scss";
 import Image from "next/image";
+import { default as ExpImage } from "next/future/image";
 import { useState, useRef } from "react";
 
-const VideoPlayer = ({ filename, autoPlay = false, className = "" }) => {
-  const [time, setTime] = useState("");
-  const [playing, setPlaying] = useState(autoPlay);
-  const [muted, setMute] = useState(autoPlay);
-  const video = useRef(null);
+const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
+  
+  const [playerState, setPlayerState] = useState({
+    time: "0:00 / 0:00",
+    playing: autoPlay,
+    muted: autoPlay,
+    progress: 0,
+  });
   const progress = useRef(null);
+  const video = useRef(null);
 
-  const startStopVideo = () => {
-    const current_video = video.current;
-    if (!playing) {
-      current_video.play();
-      setPlaying(true);
+  const togglePlay = () => {
+    if (!playerState.playing) {
+      video.current.play();
     } else {
-      current_video.pause();
-      setPlaying(false);
+      video.current.pause();
     }
+    setPlayerState({ ...playerState, playing: !playerState.playing });
   };
 
   const setVolume = () => {
-    const current_video = video.current;
-    if (muted) {
-      setMute(false);
-      current_video.volume = 1;
-      return;
-    }
-    setMute(true);
+    const ref_video = video.current;
+    setPlayerState({ ...playerState, muted: !playerState.muted });
+    ref_video.volume = ref_video.volume ? 1 : 0;
   };
 
-  const fixedNumber = (number) => {
+  const _fixedNumber = (number) => {
     return number < 10 ? `0${number}` : `${number}`;
   };
 
-  const formatTime = (seconds) => {
-    return `${Math.floor(seconds / 60)}:${fixedNumber(
+  const _formatTime = (seconds) => {
+    return `${Math.floor(seconds / 60)}:${_fixedNumber(
       Math.floor(seconds % 60)
     )}`;
   };
 
-  const onPlay = () => {
-    const current_video = video.current;
-    const current_progress = progress.current;
+  const handleVideoProgress = (event) => {
+    setPlayerState({
+      ...playerState,
+      progress: Number(event.target.value),
+    });
+  };
 
-    current_progress.value =
-      (100 * current_video.currentTime) / current_video.duration;
+  const handleOnTimeUpdate = () => {
+    const ref_video = video.current;
+    const currentProgress = (100 * ref_video.currentTime) / ref_video.duration;
 
-    const currentTime = Number(current_video.currentTime.toFixed());
-
-    let duration = `${Math.floor(current_video.duration / 60)}:${fixedNumber(
-      Math.floor(current_video.duration % 60)
+    const currentTime = Number(ref_video.currentTime.toFixed());
+    let duration = `${Math.floor(ref_video.duration / 60)}:${_fixedNumber(
+      Math.floor(ref_video.duration % 60)
     )}`;
 
-    setTime(formatTime(currentTime) + " / " + duration);
+    setPlayerState({
+      ...playerState,
+      progress: currentProgress,
+      time: _formatTime(currentTime) + " / " + duration,
+    });
   };
 
   const rewind = (e) => {
-    const current_video = video.current;
-    const current_progress = progress.current;
-    current_progress.value =
-      (100 * e.nativeEvent.offsetX) / current_progress.offsetWidth;
-    current_video.currentTime =
-      (current_video.duration * e.nativeEvent.offsetX) /
-      current_progress.offsetWidth;
+    setPlayerState({
+      ...playerState,
+      progress: (100 * e.nativeEvent.offsetX) / progress.current.offsetWidth,
+    });
+    video.current.currentTime =
+      (video.current.duration * e.nativeEvent.offsetX) /
+      progress.current.offsetWidth;
   };
 
   return (
-    <div className={`${styles.videoWrapper} ${className}`}>
-      <video
-        onTimeUpdate={onPlay}
-        autoPlay={autoPlay}
-        muted={muted}
-        loop
-        ref={video}
-        className={styles.video}
-        src={`/static/video/${filename}`}
-        style={{ width: "100%", height: "100%" }}
-        onClick={startStopVideo}
-      />
+    <div className={fullSize ? styles.videoWrapper : styles.videoWrapperDef}>
+      <div className={styles.playWrap}>
+        <div className={styles.playBtnWrapper} onClick={togglePlay}>
+          {!playerState.playing ? (
+            <ExpImage
+              src={"/static/img/play.svg"}
+              width={94}
+              height={109}
+              className={styles.playBtn}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
+        <video
+          loop
+          onTimeUpdate={handleOnTimeUpdate}
+          autoPlay={autoPlay}
+          muted={playerState.muted}
+          ref={video}
+          onClick={togglePlay}
+          className={styles.video}
+          style={{ width: "100%", height: "100%" }}
+          onLoadedMetadata={handleOnTimeUpdate}
+        >
+          <source src={filePath} type="video/mp4" />
+        </video>
+      </div>
       <div className={styles.controls}>
         <div className={styles.play} onClick={setVolume}>
           <span className={styles.playText}>ZVYK</span>
           <Image
             className={styles.playIcon}
             src={
-              muted ? `/static/img/volume_off.svg` : `/static/img/volume_on.svg`
+              playerState.muted
+                ? `/static/img/volume_off.svg`
+                : `/static/img/volume_on.svg`
             }
             width="30px"
             height="30px"
             layout="fixed"
           />
         </div>
-        <progress max="100" ref={progress} onClick={rewind}></progress>
-        <p className={styles.time}>{time}</p>
+        <progress
+          min="0"
+          max="100"
+          value={playerState.progress}
+          onClick={rewind}
+          ref={progress}
+          onChange={handleVideoProgress}
+        ></progress>
+        <p className={styles.time}>{playerState.time}</p>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import VideoPlayer from "@/components/UI/VideoPlayer";
 
 const Block = ({ id, caption, subtitle, text, fileId }) => {
   const getFile = () => {
-    const videoTypes = ["mp4", "mov"];
+    const videoTypes = ["mp4", "mov", "webm"];
     let xhr = new XMLHttpRequest();
     xhr.open(
       "OPTIONS",
@@ -18,23 +18,21 @@ const Block = ({ id, caption, subtitle, text, fileId }) => {
 
   return (
     <div className={styles.block}>
-      <div className={styles.fileWrapper}>
-        {getFile() ? (
-          <VideoPlayer
-            filePath={`${config.apiUrl}/files/articles/${id}/${fileId}/`}
-            fullSize={false}
+      {getFile() ? (
+        <VideoPlayer
+          filePath={`${config.apiUrl}/files/articles/${id}/${fileId}/`}
+          fullSize={false}
+        />
+      ) : (
+        <div className={styles.imgWrapper}>
+          <Image
+            layout="fill"
+            src={`${config.apiUrl}/files/articles/${id}/${fileId}/`}
+            className={styles.img}
           />
-        ) : (
-          <div className={styles.imgWrapper}>
-            <Image
-              layout="fill"
-              src={`${config.apiUrl}/files/articles/${id}/${fileId}/`}
-              className={styles.img}
-            />
-          </div>
-        )}
-        <p className={`${styles.text} ${styles.caption}`}> — {caption}</p>
-      </div>
+        </div>
+      )}
+      <p className={`${styles.text} ${styles.caption}`}> — {caption}</p>
       <div className={`${styles.textWrapper} ${styles.top50}`}>
         <h2>{subtitle}</h2>
         <p className={`${styles.text} ${styles.subText}`}>{text}</p>

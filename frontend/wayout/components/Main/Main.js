@@ -17,7 +17,7 @@ const Main = () => {
           </span>
         }
       />
-      <VideoPlayer filename={"main.mp4"} autoPlay={true} />
+      <VideoPlayer filePath={"/static/video/main.mp4"} autoPlay={true} />
       <LeadCatch />
       <MainAlbumsList />
       <Clients />

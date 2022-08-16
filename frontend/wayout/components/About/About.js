@@ -2,7 +2,6 @@ import styles from "./About.module.scss";
 
 import MainTitle from "../UI/MainTitle";
 import RoundSendButton from "../UI/RoundSendButton";
-import { useRouter } from "next/router";
 import VideoPlayer from "../UI/VideoPlayer";
 import { numbers, team } from "./aboutData";
 import AboutCard from "./AboutCard";
@@ -11,7 +10,7 @@ const About = () => {
     <>
       <MainTitle text={"Об агенстве"} />
       <div className={styles.videoWrapper}>
-        <VideoPlayer filename={"main.mp4"} autoPlay={false} />
+        <VideoPlayer filePath={"/static/video/main.mp4"} autoPlay={false} />
       </div>
       <div className={styles.numbersWrapper}>
         <h2>Цифры</h2>
