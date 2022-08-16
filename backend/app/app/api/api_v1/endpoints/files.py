@@ -1,3 +1,4 @@
+import os
 from enum import Enum
 from typing import List
 
@@ -15,6 +16,12 @@ class FileType(Enum):
     albums = "albums"
     cases = "cases"
     articles = "articles"
+
+
+@router.options("/{file_type}/{id}/{file_id}/")
+def get_file_type(file_type: FileType, id: int, file_id: int):
+    _, extension = os.path.splitext(get_filename(file_type.value, id, file_id))
+    return {'extension': extension[1:len(extension)]}
 
 
 @router.get("/{file_type}/{id}/{file_id}/")
