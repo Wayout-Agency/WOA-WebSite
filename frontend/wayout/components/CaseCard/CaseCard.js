@@ -16,7 +16,7 @@ const CaseCard = ({ slug }) => {
 
   const fetcher = async () => {
     const response = await wayoutAPI.get(caseApiUrl);
-    return response.data;
+    return response.data.value;
   };
 
   const copyText = (e) => {
@@ -32,10 +32,10 @@ const CaseCard = ({ slug }) => {
 
   return data ? (
     <>
-      <MainTitle text={data.value.title} description={data.value.description} />
+      <MainTitle text={data.title} description={data.description} />
       <div className={styles.mainImgWrapper}>
         <Image
-          src={`${config.apiUrl}/files/cases/${data.value.id}/0/`}
+          src={`${config.apiUrl}/files/cases/${data.id}/0/`}
           layout="fill"
           className={`${styles.mainImg} ${styles.img}`}
           width={1600}
@@ -45,11 +45,11 @@ const CaseCard = ({ slug }) => {
       </div>
       <div className={styles.textWrapper}>
         <h2>Задача</h2>
-        <p className={styles.text}>{data.value.task}</p>
+        <p className={styles.text}>{data.task}</p>
       </div>
       <div className={styles.imgWrapper}>
         <Image
-          src={`${config.apiUrl}/files/cases/${data.value.id}/1/`}
+          src={`${config.apiUrl}/files/cases/${data.id}/1/`}
           layout="fill"
           className={styles.img}
           width={1600}
@@ -59,7 +59,7 @@ const CaseCard = ({ slug }) => {
       </div>
       <div className={`${styles.imgWrapper} ${styles.verticalWrapper}`}>
         <Image
-          src={`${config.apiUrl}/files/cases/${data.value.id}/2/`}
+          src={`${config.apiUrl}/files/cases/${data.id}/2/`}
           layout="fill"
           className={`${styles.img} ${styles.vertImg}`}
           width={720}
@@ -67,7 +67,7 @@ const CaseCard = ({ slug }) => {
           priority={true}
         />
         <Image
-          src={`${config.apiUrl}/files/cases/${data.value.id}/3/`}
+          src={`${config.apiUrl}/files/cases/${data.id}/3/`}
           layout="fill"
           className={`${styles.img} ${styles.vertImg}`}
           width={720}
@@ -78,11 +78,11 @@ const CaseCard = ({ slug }) => {
       <div className={styles.sliderWrapper}></div>
       <div className={styles.textWrapper}>
         <h2>Процесс</h2>
-        <p className={styles.text}>{data.value.process}</p>
+        <p className={styles.text}>{data.process}</p>
       </div>
       <div className={styles.imgWrapper}>
         <Image
-          src={`${config.apiUrl}/files/cases/${data.value.id}/5/`}
+          src={`${config.apiUrl}/files/cases/${data.id}/5/`}
           layout="fill"
           className={styles.img}
           width={1600}
@@ -94,11 +94,11 @@ const CaseCard = ({ slug }) => {
         <RoundSendButton value={"Хочу такую же съемку"} />
         <div className={styles.dateShareWrapper}>
           <p className={styles.dateShareText}>
-            {data.value.created_at.slice(8) +
+            {data.created_at.slice(8) +
               "." +
-              data.value.created_at.slice(5, 7) +
+              data.created_at.slice(5, 7) +
               "." +
-              data.value.created_at.slice(0, 4)}
+              data.created_at.slice(0, 4)}
           </p>
           <a href="" className={styles.dateShareText} onClick={copyText}>
             Поделиться кейсом
