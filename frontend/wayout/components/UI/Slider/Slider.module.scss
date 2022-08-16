@@ -1,0 +1,27 @@
+.arrowsWrapper {
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
+.slider {
+  border-radius: 25px;
+}
+
+.slide {
+  object-fit: cover;
+}
+
+.arrowsWrapper {
+  display: flex;
+}
+
+.arrow {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.preloadedImages {
+  display: none;
+}
