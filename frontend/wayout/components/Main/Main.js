@@ -6,6 +6,7 @@ import LeadCatch from "./LeadCatch";
 import MainAlbumsList from "./MainAlbumsList";
 import Graduation from "./Graduation";
 import Journal from "./Journal";
+import FadeIn from "../UI/Animations/";
 const Main = () => {
   return (
     <>
@@ -17,12 +18,18 @@ const Main = () => {
           </span>
         }
       />
-      <VideoPlayer filePath={"/static/video/main.mp4"} autoPlay={true} />
-      <LeadCatch />
-      <MainAlbumsList />
-      <Clients />
-      <Graduation />
-      <Journal />
+      <FadeIn>
+        <VideoPlayer filePath={"/static/video/main.mp4"} autoPlay={true} />
+      </FadeIn>
+      <FadeIn>
+        <div>
+          <LeadCatch />
+          <MainAlbumsList />
+          <Clients />
+          <Graduation />
+          <Journal />
+        </div>
+      </FadeIn>
     </>
   );
 };

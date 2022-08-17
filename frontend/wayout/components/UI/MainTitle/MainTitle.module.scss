@@ -1,9 +1,25 @@
-.title {
+.grayTitle {
+  color: #b3b3b3;
+}
+.rowTitle,
+.rowLetter {
   font-weight: 400;
   font-size: 90px;
   line-height: 103px;
+  position: relative;
+  display: inline-block;
+}
+.title {
   margin-top: 50px;
 }
-.grayTitle {
-  opacity: 0.3;
+.bannerRow {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.rowCol {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }

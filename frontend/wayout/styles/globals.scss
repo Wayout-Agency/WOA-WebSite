@@ -33,17 +33,17 @@ body {
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 1650px) {
-    main {
-      margin: 0 calc((100vw - 1540px) / 2);
-    }
-    header > nav {
-      padding: 24px calc((100vw - 1540px) / 2);
-    }
-    footer {
-      padding: 65px calc((100vw - 1540px) / 2);
-    }
-  }
+  // @media (min-width: 1650px) {
+  //   main {
+  //     margin: 0 calc((100vw - 1540px) / 2);
+  //   }
+  //   header > nav {
+  //     padding: 24px calc((100vw - 1540px) / 2);
+  //   }
+  //   footer {
+  //     padding: 65px calc((100vw - 1540px) / 2);
+  //   }
+  // }
 }
 
 main {
