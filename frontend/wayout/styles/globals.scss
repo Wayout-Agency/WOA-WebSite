@@ -33,15 +33,47 @@ body {
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 1650px) {
+  @media (min-width: 1625px) {
     main {
-      margin: 0 calc((100vw - 1540px) / 2);
+      margin: 0 calc((100vw - 1540px) / 2) !important;
     }
     header > nav {
       padding: 24px calc((100vw - 1540px) / 2);
     }
     footer {
       padding: 65px calc((100vw - 1540px) / 2);
+    }
+  }
+
+  @media (max-width: 1625px) {
+    input[type="submit"]:hover {
+      color: var(--navLinkActive);
+    }
+    main {
+      margin: 0 40px;
+    }
+    header > nav {
+      padding: 24px 40px;
+    }
+    footer {
+      padding: 65px 40px;
+    }
+
+    #case_1 {
+      right: 0 !important;
+    }
+  }
+  @media (min-width: 320px) {
+    -webkit-tap-highlight-color: transparent;
+    
+    #case_1 {
+      top: 266px;
+      right: 50px;
+    }
+
+    #case_2 {
+      margin-top: 142px;
+      left: 72px;
     }
   }
 }
@@ -88,6 +120,12 @@ li {
 *:after {
   box-sizing: border-box;
   margin-top: 0;
+}
+*::selection {
+  background: var(--purple); /* Safari */
+}
+::-moz-selection {
+  background: var(--purple); /* Firefox */
 }
 
 body {
@@ -137,6 +175,7 @@ progress::-moz-progress-bar {
 video {
   cursor: pointer;
 }
+<<<<<<< HEAD
 
 li {
   list-style-type: "— ";
@@ -144,23 +183,4 @@ li {
 
 ul {
   margin: 0;
-}
-// For future in adaptive
-
-// #case_0 > span {
-//   width: 150px !important;
-// }
-
-// #case_0 {
-//   width: 150px !important;
-// }
-
-#case_1 {
-  top: 266px;
-  right: 50px;
-}
-
-#case_2 {
-  margin-top: 142px;
-  left: 72px;
 }

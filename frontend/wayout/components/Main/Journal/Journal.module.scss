@@ -17,6 +17,9 @@
 .smallImgWrapper {
   width: 50%;
   margin-left: 50px;
+  @media (max-width: 1625px) {
+    width: 40%;
+  }
 }
 .imgWrapper {
   transition: all 0.5s ease-in-out;
@@ -44,6 +47,9 @@
 
 .bigImgWrapper {
   width: 50%;
+  @media (max-width: 1625px) {
+    width: 60%;
+  }
 }
 
 .articlesWrapper {
@@ -55,4 +61,10 @@
   opacity: 0.3;
   position: relative;
   top: 7px;
+}
+.moreImg {
+  @media (max-width: 1625px) {
+    margin: 0;
+    right: 0;
+  }
 }

@@ -30,10 +30,7 @@ const Journal = ({
         <div className={styles.articlesWrapper}>
           <Link href={`/journal/${link}/${data[0].value.slug}`}>
             <div className={styles.bigImgWrapper}>
-              <div
-                className={styles.imgWrapper}
-                style={{ width: 750, height: 500 }}
-              >
+              <div className={styles.imgWrapper} style={{ height: 500 }}>
                 <Image
                   layout="fill"
                   src={`${config.apiUrl}/files/${link}/${data[0].value.id}/0/`}
@@ -89,7 +86,7 @@ const Journal = ({
               >
                 <p className={clientsStyles.moreText}>Смотреть больше</p>
                 <ImageRaw
-                  className={clientsStyles.moreImg}
+                  className={`${clientsStyles.moreImg} ${styles.moreImg}`}
                   width={66}
                   height={28}
                   src={"/static/img/arrow.svg"}

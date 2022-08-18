@@ -26,6 +26,10 @@
 .active {
   color: var(--navLinkActive);
 }
-.link:hover {
-  color: var(--navLinkActive);
+.nav {
+  @media (max-width: 1625px) {
+    .link:hover {
+      color: var(--navLinkActive);
+    }
+  }
 }

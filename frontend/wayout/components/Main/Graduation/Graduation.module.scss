@@ -5,6 +5,9 @@
   position: relative;
   cursor: pointer;
   border-radius: 25px;
+  @media (max-width: 1625px) {
+    height: 630px;
+  }
 }
 .bgWrapper > span {
   border-radius: 25px;

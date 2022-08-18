@@ -31,7 +31,7 @@ const Text = () => {
         width={178}
         height={230}
         layout="raw"
-        className={`${styles.percent} ${styles.percentFloat}`}
+        className={styles.percentFloat}
       />
     </div>
   ) : (

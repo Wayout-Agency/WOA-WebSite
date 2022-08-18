@@ -5,6 +5,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import AlbumsListCard from "./AlbumsListCard";
 import config from "config";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const AlbumsList = () => {
   const albumsApiUrl = "/albums/";
@@ -19,20 +21,25 @@ const AlbumsList = () => {
   if (error) throw "Error";
 
   return data ? (
-    <div className={styles.albumsListWrapper}>
+    <Swiper
+      className={styles.albumsListWrapper}
+      slidesPerView={"auto"}
+      spaceBetween={33}
+    >
       {data.map((album) => {
         return (
-          <AlbumsListCard
-            title={album.title}
-            oldPrice={album.old_price}
-            newPrice={album.new_price}
-            previewUrl={`${config.apiUrl}/files/albums/${album.id}/0/`}
-            slug={album.slug}
-            key={album.id}
-          />
+          <SwiperSlide className={styles.slide} key={album.id}>
+            <AlbumsListCard
+              title={album.title}
+              oldPrice={album.old_price}
+              newPrice={album.new_price}
+              previewUrl={`${config.apiUrl}/files/albums/${album.id}/0/`}
+              slug={album.slug}
+            />
+          </SwiperSlide>
         );
       })}
-    </div>
+    </Swiper>
   ) : (
     <Skeleton width={"100%"} height={490} style={{ borderRadius: "15px" }} />
   );

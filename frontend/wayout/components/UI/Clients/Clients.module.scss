@@ -31,6 +31,10 @@
   top: 5px;
   right: 75px;
   transition: all 0.5s ease-in-out;
+  @media (max-width: 1625px) {
+    right: 0;
+    margin-left: 143px;
+  }
 }
 
 .moreWrapper:hover .moreImg {

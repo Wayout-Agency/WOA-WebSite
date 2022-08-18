@@ -4,6 +4,9 @@
   padding-bottom: 70px;
   position: relative;
   margin-left: -39px;
+  @media (max-width: 1625px) {
+    margin: 0;
+  }
 }
 .leadCatchText {
   font-style: normal;
@@ -12,8 +15,12 @@
   line-height: 95px;
   width: 700px;
   margin-top: 60px;
+  @media (max-width: 1625px) {
+    width: 660px;
+  }
 }
-.percent {
+.percent,
+.percentFloat {
   z-index: -1;
 }
 .percentFloat {
@@ -21,4 +28,16 @@
   position: absolute;
   right: 5px;
   bottom: -20px;
+  @media (max-width: 1625px) {
+    right: 60px;
+    bottom: -8px;
+  }
+}
+.percent {
+  @media (max-width: 1625px) {
+    position: absolute;
+    width: 69px;
+    top: -16px;
+    left: -30px;
+  }
 }

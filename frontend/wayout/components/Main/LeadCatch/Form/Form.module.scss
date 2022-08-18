@@ -1,6 +1,9 @@
 .formWrapper {
   margin-right: 29px;
   margin-left: 50px;
+  @media (max-width: 1625px) {
+    margin: 0;
+  }
 }
 .error {
   border-color: var(--error) !important;

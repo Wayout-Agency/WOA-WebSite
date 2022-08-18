@@ -24,6 +24,11 @@
   margin-top: 50px;
   margin-left: -50px;
   margin-right: -50px;
+
+  @media (max-width: 1625px) {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
 }
 
 .controls,
