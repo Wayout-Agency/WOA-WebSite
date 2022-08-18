@@ -45,10 +45,13 @@ body {
     }
   }
 
-  @media (max-width: 1625px) {
+  @media (min-width: 1625px) {
     input[type="submit"]:hover {
       color: var(--navLinkActive);
     }
+  }
+
+  @media (max-width: 1625px) {
     main {
       margin: 0 40px;
     }
@@ -65,7 +68,7 @@ body {
   }
   @media (min-width: 320px) {
     -webkit-tap-highlight-color: transparent;
-    
+
     #case_1 {
       top: 266px;
       right: 50px;
@@ -175,7 +178,6 @@ progress::-moz-progress-bar {
 video {
   cursor: pointer;
 }
-<<<<<<< HEAD
 
 li {
   list-style-type: "— ";
