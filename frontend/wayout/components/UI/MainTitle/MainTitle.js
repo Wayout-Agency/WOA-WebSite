@@ -5,8 +5,8 @@ const MainTitle = ({ text, className, description }) => {
   return (
     <motion.h1
       className={`${className} ${styles.title} ${styles.rowLetter}`}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       {text}{" "}

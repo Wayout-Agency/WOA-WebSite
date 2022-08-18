@@ -22,13 +22,13 @@ const Main = () => {
         <VideoPlayer filePath={"/static/video/main.mp4"} autoPlay={true} />
       </FadeIn>
       <FadeIn>
-        <div>
+        <>
           <LeadCatch />
           <MainAlbumsList />
           <Clients />
           <Graduation />
           <Journal />
-        </div>
+        </>
       </FadeIn>
     </>
   );
