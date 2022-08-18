@@ -2,6 +2,7 @@ import styles from "./VideoPlayer.module.scss";
 import Image from "next/image";
 import { default as ExpImage } from "next/future/image";
 import { useState, useRef } from "react";
+import Skeleton from "react-loading-skeleton";
 
 const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
   const [playerState, setPlayerState] = useState({
@@ -73,62 +74,68 @@ const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
 
   return (
     <div className={fullSize ? styles.videoWrapper : styles.videoWrapperDef}>
-      <div className={styles.playWrap}>
-        <div className={styles.playBtnWrapper} onClick={togglePlay}>
-          {!playerState.playing ? (
-            <ExpImage
-              src={"/static/img/play.svg"}
-              width={94}
-              height={109}
-              className={styles.playBtn}
-            />
-          ) : (
-            <></>
-          )}
-        </div>
-        <video
-          loop
-          onTimeUpdate={handleOnTimeUpdate}
-          autoPlay={autoPlay}
-          muted={playerState.muted}
-          ref={video}
-          onClick={togglePlay}
-          className={styles.video}
-          style={{ width: "100%", height: "100%" }}
-          onLoadedMetadata={handleOnTimeUpdate}
-        >
-          <source src={filePath} type="video/mp4" />
-        </video>
-      </div>
-      <div
-        className={`${styles.controls} ${
-          fullSize ? null : styles.videoWrapperDef
-        }`}
-      >
-        <div className={styles.play} onClick={setVolume}>
-          <span className={styles.playText}>ZVYK</span>
-          <Image
-            className={styles.playIcon}
-            src={
-              playerState.muted
-                ? `/static/img/volume_off.svg`
-                : `/static/img/volume_on.svg`
-            }
-            width="30px"
-            height="30px"
-            layout="fixed"
-          />
-        </div>
-        <progress
-          min="0"
-          max="100"
-          value={playerState.progress}
-          onClick={rewind}
-          ref={progress}
-          onChange={handleVideoProgress}
-        ></progress>
-        <p className={styles.time}>{playerState.time}</p>
-      </div>
+      {filePath ? (
+        <>
+          <div className={styles.playWrap}>
+            <div className={styles.playBtnWrapper} onClick={togglePlay}>
+              {!playerState.playing ? (
+                <ExpImage
+                  src={"/static/img/play.svg"}
+                  width={94}
+                  height={109}
+                  className={styles.playBtn}
+                />
+              ) : (
+                <></>
+              )}
+            </div>
+            <video
+              loop
+              onTimeUpdate={handleOnTimeUpdate}
+              autoPlay={autoPlay}
+              muted={playerState.muted}
+              ref={video}
+              onClick={togglePlay}
+              className={styles.video}
+              style={{ width: "100%", height: "100%" }}
+              onLoadedMetadata={handleOnTimeUpdate}
+            >
+              <source src={filePath} type="video/mp4" />
+            </video>
+          </div>
+          <div
+            className={`${styles.controls} ${
+              fullSize ? null : styles.videoWrapperDef
+            }`}
+          >
+            <div className={styles.play} onClick={setVolume}>
+              <span className={styles.playText}>ZVYK</span>
+              <Image
+                className={styles.playIcon}
+                src={
+                  playerState.muted
+                    ? `/static/img/volume_off.svg`
+                    : `/static/img/volume_on.svg`
+                }
+                width="30px"
+                height="30px"
+                layout="fixed"
+              />
+            </div>
+            <progress
+              min="0"
+              max="100"
+              value={playerState.progress}
+              onClick={rewind}
+              ref={progress}
+              onChange={handleVideoProgress}
+            ></progress>
+            <p className={styles.time}>{playerState.time}</p>
+          </div>
+        </>
+      ) : (
+        <Skeleton borderRadius={15} width="100%" height={800} />
+      )}
     </div>
   );
 };
