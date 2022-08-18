@@ -75,7 +75,8 @@ h2 {
   letter-spacing: 0.015em;
 }
 
-h3 {
+h3,
+li {
   font-weight: 400;
   font-size: 23px;
   line-height: 26px;
@@ -137,6 +138,13 @@ video {
   cursor: pointer;
 }
 
+li {
+  list-style-type: "— ";
+}
+
+ul {
+  margin: 0;
+}
 // For future in adaptive
 
 // #case_0 > span {

@@ -32,7 +32,9 @@ const QuestionServices = ({ QSType = "question" }) => {
 
   return (
     <div className={styles.QSWrapper}>
-      <h2 className={styles.QSTitle}>Вопросы</h2>
+      <h2 className={styles.QSTitle}>
+        {QSType === "question" ? "Вопросы" : "Дополнительные услуги"}
+      </h2>
       <div className={styles.QSContentWrapper}>
         {data && data.length > 0 ? (
           data.map(({ title, text }, index) => {

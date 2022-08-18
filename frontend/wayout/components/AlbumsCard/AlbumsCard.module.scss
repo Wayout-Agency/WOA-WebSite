@@ -1,17 +1,26 @@
 .mainWrapper {
   margin: 50px 0;
+}
+
+.mainWrapper,
+.preview,
+.previewLeft,
+.pricesWrapper,
+.coversWrapper,
+.productDescWrapper {
+  display: flex;
+}
+
+.preview {
   justify-content: space-between;
 }
 
 .mainWrapper,
-.previewLeft,
-.pricesWrapper,
-.coversWrapper {
-  display: flex;
+.previewLeft {
+  flex-direction: column;
 }
 
 .previewLeft {
-  flex-direction: column;
   width: 50%;
 }
 
@@ -19,16 +28,8 @@
   margin-bottom: 7px;
 }
 
-.text,
-.price,
 .saleText {
   font-weight: 400;
-}
-
-.text {
-  font-size: 23px;
-  line-height: 26px;
-  letter-spacing: 0.015em;
 }
 
 .desc {
@@ -59,10 +60,8 @@
   outline-offset: 1.5px;
 }
 
-.price {
-  font-size: 35px;
+.pricesWrapper {
   margin-top: 35px;
-  line-height: 40.25px;
 }
 
 .oldPrice {
@@ -77,4 +76,16 @@
   letter-spacing: 0.015em;
   margin-top: 8px;
   margin-bottom: 35px;
+}
+
+.productDescWrapper {
+  margin-top: 47px;
+}
+
+.modelDesc {
+  width: 50%;
+}
+
+.videoReviewWrapper {
+  margin-top: 100px;
 }
