@@ -2,4 +2,8 @@
   text-decoration: underline;
   text-decoration-thickness: 6px;
   text-underline-offset: 8px;
+  @media (max-width: 1280px) {
+    text-decoration-thickness: 4px;
+    text-underline-offset: 5px;
+  }
 }

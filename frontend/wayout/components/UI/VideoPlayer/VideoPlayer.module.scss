@@ -29,6 +29,11 @@
     margin-left: -40px;
     margin-right: -40px;
   }
+  
+  @media (max-width: 1280px) {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
 }
 
 .controls,

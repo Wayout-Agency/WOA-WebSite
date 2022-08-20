@@ -5,8 +5,20 @@
   padding: 24px 50px;
   padding-bottom: 19px;
   padding-right: 20px;
+  @media (max-width: 1625px) {
+    .link:hover {
+      color: var(--navLinkActive);
+    }
+  }
+  @media (max-width: 1280px) {
+    align-items: center;
+  }
 }
-
+.logoImg {
+  @media (max-width: 1280px) {
+    width: 168px;
+  }
+}
 .links {
   display: flex;
   justify-content: space-between;
@@ -26,10 +38,27 @@
 .active {
   color: var(--navLinkActive);
 }
-.nav {
-  @media (max-width: 1625px) {
-    .link:hover {
-      color: var(--navLinkActive);
-    }
-  }
+
+.burgerWrapper {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+// .line1, .line2{
+//   transition: transform 0.5s;
+// }
+.line1 {
+  transform: translateY(-5px);
+}
+.line2 {
+  transform: translateY(5px);
+}
+.clicked1 {
+  transform: rotate(-45deg);
+}
+.clicked2 {
+  transform: translateY(-3px) rotate(45deg);
 }

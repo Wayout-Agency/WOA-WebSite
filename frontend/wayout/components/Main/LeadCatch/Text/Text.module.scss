@@ -7,6 +7,9 @@
   @media (max-width: 1625px) {
     margin: 0;
   }
+  @media (max-width: 1280px) {
+    padding-bottom: 25px;
+  }
 }
 .leadCatchText {
   font-style: normal;
@@ -17,6 +20,12 @@
   margin-top: 60px;
   @media (max-width: 1625px) {
     width: 660px;
+  }
+  @media (max-width: 1280px) {
+    width: 80%;
+    font-size: 60px;
+    line-height: 69px;
+    margin-top: 100px;
   }
 }
 .percent,
@@ -32,6 +41,11 @@
     right: 60px;
     bottom: -8px;
   }
+  @media (max-width: 1280px) {
+    width: 107px;
+    right: 0;
+    bottom: -2px;
+  }
 }
 .percent {
   @media (max-width: 1625px) {
@@ -39,5 +53,10 @@
     width: 69px;
     top: -16px;
     left: -30px;
+  }
+  @media (max-width: 1280px) {
+    width: 63px;
+    top: 160px;
+    left: 580px;
   }
 }

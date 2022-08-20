@@ -1,0 +1,47 @@
+.menu {
+  position: fixed;
+  left: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 3;
+  transition: all 0.4s;
+  padding: 0 20px;
+}
+
+.show {
+  left: 0;
+}
+.link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 39px;
+  color: #000000;
+}
+
+.navigationWrapper,
+.socialLinksWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 120px;
+}
+.socialLinksWrapper {
+  margin-top: 15px;  
+}
+.linkWrapper {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.linkSocial {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+.socialTitle {
+  margin-top: 20px;
+}

@@ -81,7 +81,7 @@ const Journal = ({
             })}
             <Link href={"/journal/"}>
               <div
-                className={clientsStyles.moreWrapper}
+                className={ `${clientsStyles.moreWrapper} ${styles.moreWrapper}`}
                 style={{ marginTop: 100 }}
               >
                 <p className={clientsStyles.moreText}>Смотреть больше</p>

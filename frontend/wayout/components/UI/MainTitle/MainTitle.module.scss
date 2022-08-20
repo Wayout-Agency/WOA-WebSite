@@ -8,6 +8,10 @@
   line-height: 103px;
   position: relative;
   display: inline-block;
+  @media (max-width: 1280px) {
+    font-size: 60px;
+    line-height: 69px;
+  }
 }
 .title {
   margin-top: 50px;

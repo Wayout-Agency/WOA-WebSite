@@ -8,6 +8,9 @@
   @media (max-width: 1625px) {
     height: 630px;
   }
+  @media (max-width: 1280px) {
+    height: 517px;
+  }
 }
 .bgWrapper > span {
   border-radius: 25px;
@@ -38,6 +41,9 @@
   font-size: 90px;
   line-height: 95px;
   color: #ffffff;
+  @media (max-width: 1280px) {
+    font-size: 60px;
+  }
 }
 .watch {
   font-style: normal;
@@ -46,4 +52,5 @@
   line-height: 40px;
   letter-spacing: 0.015em;
   color: #ffffff;
+  
 }
