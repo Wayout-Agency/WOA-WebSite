@@ -21,7 +21,6 @@
   font-size: 23px;
   line-height: 26px;
   letter-spacing: 0.015em;
-  margin-bottom: 8px;
 }
 
 .footerData {
@@ -38,7 +37,7 @@
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.015em;
-  opacity: 0.4;
+  color: #b3b3b3;
 }
 .privacyPolicy {
   width: 318px;
@@ -51,4 +50,7 @@
 }
 .privacyPolicyText {
   margin-top: 3px;
+}
+.margin {
+  margin-bottom: 8px;
 }
