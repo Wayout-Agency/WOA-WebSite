@@ -10,7 +10,7 @@ import config from "config";
 import Journal from "../Main/Journal";
 import { useRouter } from "next/router";
 import FadeIn from "../UI/Animations/";
-
+import Slider from "../UI/Slider";
 const CaseCard = ({ slug }) => {
   const router = useRouter();
   const caseApiUrl = slug ? `/posts/cases/${slug}/` : null;
@@ -78,7 +78,8 @@ const CaseCard = ({ slug }) => {
               priority={true}
             />
           </div>
-          <div className={styles.sliderWrapper}></div>
+          <div className={styles.sliderWrapper}>
+          </div>
           <div className={styles.textWrapper}>
             <h2>Процесс</h2>
             <p className={styles.text}>{data.process}</p>

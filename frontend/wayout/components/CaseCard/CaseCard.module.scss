@@ -2,6 +2,14 @@
   margin-right: -50px;
   margin-left: -50px;
   margin-top: 50px;
+  @media (max-width: 1650px) {
+    margin-right: -40px;
+    margin-left: -40px;
+  }
+  @media (max-width: 1280px) {
+    margin-right: -20px;
+    margin-left: -20px;
+  }
 }
 
 .mainImg {
@@ -17,6 +25,9 @@
   display: flex;
   justify-content: space-between;
   margin-top: 100px;
+  @media (max-width: 1280px) {
+    margin-top: 50px;
+  }
 }
 .text {
   width: 1019px;
@@ -25,10 +36,24 @@
   font-size: 35px;
   line-height: 40px;
   letter-spacing: 0.015em;
+  @media (max-width: 1280px) {
+    width: 70%;
+  }
+}
+.img {
+  @media (max-width: 1650px) {
+    height: 622px;
+  }
+  @media (max-width: 1280px) {
+    height: 508px;
+  }
 }
 .imgWrapper,
 .btnWrapper {
   margin-top: 100px;
+  @media (max-width: 1280px) {
+    margin-top: 50px;
+  }
 }
 .verticalWrapper {
   display: flex;
@@ -38,6 +63,12 @@
 .vertImg {
   width: 48.5%;
   position: relative;
+  @media (max-width: 1650px) {
+    height: 720px !important;
+  }
+  @media (max-width: 1280px) {
+    height: 590px !important;
+  }
 }
 .btnWrapper {
   display: flex;
