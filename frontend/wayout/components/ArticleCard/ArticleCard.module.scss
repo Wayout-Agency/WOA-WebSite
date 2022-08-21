@@ -24,6 +24,10 @@
 .textWrapper {
   width: 754px;
   float: right;
+  @media (max-width: 1280px) {
+    float: left;
+    margin-left: 72px;
+  }
 }
 
 .subText,
@@ -36,6 +40,12 @@
 .articleContainer {
   width: 1045px;
   display: inline-block;
+  @media (max-width: 1625px) {
+    width: 1200px;
+  }
+  @media (max-width: 1280px) {
+    width: 100%
+  }
 }
 .articleInfo {
   display: flex;
@@ -51,4 +61,21 @@
 }
 .img {
   border-radius: var(--radius);
+}
+
+.shareWrapper {
+  margin-top: 50px;
+}
+.dateShareText {
+  float: right;
+  font-weight: 400;
+  font-size: 35px;
+  letter-spacing: 0.015em;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+  @media (max-width: 1280px) {
+    float: left;
+    margin-left: 72px;
+  }
 }

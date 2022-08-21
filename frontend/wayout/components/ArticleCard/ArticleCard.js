@@ -68,6 +68,11 @@ const ArticleCard = ({ slug }) => {
               );
             })}
           </div>
+          <div className={styles.shareWrapper}>
+            <a href="" className={styles.dateShareText} onClick={copyText}>
+              Поделиться
+            </a>
+          </div>
         </div>
         <div className={styles.recWrapper}>
           <Journal
