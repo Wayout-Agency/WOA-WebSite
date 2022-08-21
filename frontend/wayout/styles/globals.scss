@@ -105,9 +105,20 @@ body {
       width: 311px !important;
       left: 59px !important;
     }
-    
-    main{
+
+    main {
       margin-top: 70px;
+    }
+    @media (max-width: 1024px) {
+      #case_1 {
+        position: static;
+        margin-top: 50px !important;
+        float: right;
+      }
+      #case_2 {
+        position: static;
+        margin-top: 595px !important;
+      }
     }
   }
   @media (min-width: 320px) {

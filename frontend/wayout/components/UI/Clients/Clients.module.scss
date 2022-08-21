@@ -9,6 +9,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
+  @media (max-width: 1024px) {
+    display: block;
+  }
 }
 .moreWrapper {
   cursor: pointer;
@@ -18,6 +21,9 @@
   margin-bottom: 40px;
   @media (max-width: 1280px) {
     margin-bottom: 70px;
+  }
+  @media (max-width: 1024px) {
+    justify-content: flex-end;
   }
 }
 .moreText {
@@ -37,6 +43,9 @@
   @media (max-width: 1625px) {
     right: 0;
     margin-left: 143px;
+  }
+  @media (max-width: 1024px) {
+    margin-left: 28px;
   }
 }
 

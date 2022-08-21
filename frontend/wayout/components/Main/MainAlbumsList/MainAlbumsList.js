@@ -19,7 +19,8 @@ const MainAlbumsList = () => {
         </div>
       </Link>
 
-      <AlbumsList />
+        <AlbumsList />
+
     </div>
   );
 };

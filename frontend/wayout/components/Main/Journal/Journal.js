@@ -55,7 +55,7 @@ const Journal = ({
                 <Link href={`/journal/${link}/${value.slug}`} key={value.id}>
                   <div className={styles.smallImgItemWrapper}>
                     <div
-                      className={styles.imgWrapper}
+                      className={styles.imgSWrapper}
                       style={{ width: 183, height: 164 }}
                     >
                       <Image

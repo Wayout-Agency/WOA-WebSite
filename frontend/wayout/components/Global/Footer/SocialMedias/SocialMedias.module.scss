@@ -4,4 +4,7 @@
 }
 .socialWrapper {
   margin-right: 140px;
+  @media (max-width: 1024px) {
+    margin-right: 50px;
+  }
 }

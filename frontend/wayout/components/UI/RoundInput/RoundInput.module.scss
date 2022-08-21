@@ -1,4 +1,10 @@
 .roundInput {
   margin-bottom: 25px;
   border-radius: var(--radius);
+  @media (max-width: 1024px) {
+    margin-bottom: 15px;
+    padding: 22px 32px !important;
+    padding-bottom: 20px !important;
+    height: 80px;
+  }
 }

@@ -7,6 +7,9 @@
 
 .footerInfo {
   width: 90%;
+  @media (max-width: 1024px) {
+    width: 98%;
+  }
 }
 .footerTitle {
   font-size: var(--h2Size);
@@ -44,6 +47,9 @@
 }
 .copyright {
   margin-right: 190px;
+  @media (max-width: 1024px) {
+    margin-right: 50px;
+  }
 }
 .privacyPolicyLink {
   border-bottom: 1px solid;
