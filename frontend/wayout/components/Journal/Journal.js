@@ -13,12 +13,21 @@ import FadeIn from "../UI/Animations/";
 const Journal = () => {
   const [data, setData] = useState([]);
   const [head, setHead] = useState({});
+
   const casesApiUrl = "/posts/cases/";
   const articlesApiUrl = "/posts/articles/";
 
   useEffect(() => {
+    let percentages = [20, 20, 56, 20, 56, 20, 48, 48];
+
+    if (window.innerWidth < 1650)
+      percentages = [23, 23, 49, 23, 49, 23, 49, 49];
+    
+    if (window.innerWidth < 1280)
+      percentages = [23, 49, 49, 23, 23, 23, 23, 23];
+    
+
     const fetchData = async () => {
-      const width = [20, 20, 56, 20, 56, 20, 48, 48];
       let resData = [];
       const casesResponse = await wayoutAPI.get(casesApiUrl);
       const articlesResponse = await wayoutAPI.get(articlesApiUrl);
@@ -34,9 +43,12 @@ const Journal = () => {
       resData.sort((a, b) => {
         return new Date(b.created_at) - new Date(a.created_at);
       });
-      for (let i = 0; i <= resData.length; i += 7) {
-        resData.slice(i, i + 7).map((obj, index) => (obj.width = width[index]));
+      for (let i = 0; i <= resData.length; i += 8) {
+        resData
+          .slice(i, i + 8)
+          .map((obj, index) => (obj.width = percentages[index]));
       }
+      console.log(resData);
       setData(resData);
     };
 
