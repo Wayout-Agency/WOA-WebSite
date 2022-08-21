@@ -22,10 +22,9 @@ const Journal = () => {
 
     if (window.innerWidth < 1650)
       percentages = [23, 23, 49, 23, 49, 23, 49, 49];
-    
+
     if (window.innerWidth < 1280)
-      percentages = [23, 49, 49, 23, 23, 23, 23, 23];
-    
+      percentages = [33, 64, 64, 33, 33, 64, 64, 33];
 
     const fetchData = async () => {
       let resData = [];
