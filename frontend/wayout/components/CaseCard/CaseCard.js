@@ -47,7 +47,7 @@ const CaseCard = ({ slug }) => {
             />
           </div>
           <div className={styles.textWrapper}>
-            <h2>Задача</h2>
+            <h2 className={styles.subtitle}>Задача</h2>
             <p className={styles.text}>{data.task}</p>
           </div>
           <div className={styles.imgWrapper}>
@@ -78,10 +78,9 @@ const CaseCard = ({ slug }) => {
               priority={true}
             />
           </div>
-          <div className={styles.sliderWrapper}>
-          </div>
+          <div className={styles.sliderWrapper}></div>
           <div className={styles.textWrapper}>
-            <h2>Процесс</h2>
+            <h2 className={styles.subtitle}>Процесс</h2>
             <p className={styles.text}>{data.process}</p>
           </div>
           <div className={styles.imgWrapper}>

@@ -39,6 +39,21 @@
   @media (max-width: 1280px) {
     width: 70%;
   }
+  @media (max-width: 1024px) {
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 26px;
+    letter-spacing: 0.015em;
+    width: 75%;
+  }
+}
+.subtitle {
+  @media (max-width: 1024px) {
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 26px;
+    letter-spacing: 0.015em;
+  }
 }
 .img {
   @media (max-width: 1650px) {
@@ -46,6 +61,9 @@
   }
   @media (max-width: 1280px) {
     height: 508px;
+  }
+  @media (max-width: 1024px) {
+    height: 393px;
   }
 }
 .imgWrapper,
@@ -68,6 +86,9 @@
   }
   @media (max-width: 1280px) {
     height: 590px !important;
+  }
+  @media (max-width: 1024px) {
+    height: 456px !important;
   }
 }
 .btnWrapper {
