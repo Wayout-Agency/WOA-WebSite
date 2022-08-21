@@ -18,6 +18,9 @@
   overflow: hidden;
   width: 940px;
   transition: all 0.5s ease-in-out;
+  @media (max-width: 1024px) {
+    width: 700px;
+  }
 }
 .text {
   opacity: 0.3;
