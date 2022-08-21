@@ -54,7 +54,7 @@ const ArticleCard = ({ slug }) => {
               <p className={styles.text}>{data.introduction}</p>
             </div>
           </div>
-          <div className={`${styles.content} ${styles.top50}`}>
+          <div className={styles.content}>
             {data.blocks.map(({ video_caption, subtitle, text }, index) => {
               return (
                 <Block
