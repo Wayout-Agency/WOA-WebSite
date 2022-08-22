@@ -1,9 +1,15 @@
 .recWrapper {
   margin-top: 100px;
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
 }
 .top50,
 .block {
   margin-top: 50px;
+  @media (max-width: 800px) {
+    margin-top: 25px ;
+  }
 }
 .block {
   display: flow-root;
@@ -17,6 +23,9 @@
   }
   @media (max-width: 1024px) {
     height: 453px;
+  }
+  @media (max-width: 800px) {
+    height: 270px;
   }
 }
 .header {
@@ -38,6 +47,10 @@
     float: left;
     margin-left: 0;
   }
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-top: 25px ;
+  }
 }
 
 .subText,
@@ -45,7 +58,7 @@
   margin-top: 15px;
 }
 .caption {
-  opacity: 0.3;
+  color: var(--gray);
 }
 .articleContainer {
   width: 1045px;
@@ -63,11 +76,19 @@
   justify-content: space-between;
   width: 594px;
   margin-top: 25px;
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-top: 20px ;
+  }
 }
 .text {
   font-weight: 400;
   font-size: 23px;
   line-height: 130%;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 .img {
   border-radius: var(--radius);
@@ -75,6 +96,10 @@
 
 .shareWrapper {
   margin-top: 50px;
+  @media (max-width: 800px) {
+    margin-top: 25px;
+  }
+  
 }
 .dateShareText {
   float: right;
@@ -92,5 +117,11 @@
   @media (max-width: 1024px) {
     float: left;
     margin: 0;
+  }
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 1.5px;
   }
 }
