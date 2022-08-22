@@ -84,7 +84,7 @@ const Journal = ({
                 className={ `${clientsStyles.moreWrapper} ${styles.moreWrapper}`}
                 style={{ marginTop: 100 }}
               >
-                <p className={clientsStyles.moreText}>Смотреть больше</p>
+                <p className={clientsStyles.moreText}>Читать больше</p>
                 <ImageRaw
                   className={`${clientsStyles.moreImg} ${styles.moreImg}`}
                   width={66}

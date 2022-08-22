@@ -26,6 +26,9 @@ const Journal = () => {
     if (window.innerWidth < 1280)
       percentages = [33, 64, 64, 33, 33, 64, 64, 33];
 
+    if (window.innerWidth < 800)
+      percentages = [49, 49, 100, 49, 49, 100, 49, 49];
+
     const fetchData = async () => {
       let resData = [];
       const casesResponse = await wayoutAPI.get(casesApiUrl);

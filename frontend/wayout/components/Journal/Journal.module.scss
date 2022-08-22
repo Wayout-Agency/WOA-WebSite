@@ -25,6 +25,9 @@
     padding: 40px 40px;
     padding-bottom: 50px;
   }
+  @media (max-width: 800px) {
+    padding: 50px 15px;
+  }
 }
 .headerImg,
 .imgWrapper {
@@ -46,6 +49,9 @@
   @media (max-width: 1024px) {
     height: 427px;
   }
+  @media (max-width: 800px) {
+    height: 234px;
+  }
 }
 .headerImg {
   height: 100%;
@@ -66,6 +72,12 @@
     padding-right: 20px;
     padding-bottom: 50px;
   }
+  @media (max-width: 800px) {
+    padding: 25px 15px;
+    .more:hover .arrow {
+      left: 0;
+    }
+  }
 }
 
 .title,
@@ -78,9 +90,15 @@
 .more {
   color: #fff;
 }
+
 .title {
   @media (max-width: 1280px) {
     line-height: 60px !important;
+  }
+  @media (max-width: 800px) {
+    width: 100% !important;
+    font-size: 30px !important;
+    line-height: 34px !important;
   }
 }
 .more {
@@ -101,10 +119,17 @@
   @media (max-width: 1024px) {
     height: 314px;
   }
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+    height: 254px;
+  }
 }
 
 .imgBlockWrapper > span {
   border-radius: var(--radius);
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
 }
 
 .imgBlockWrapper:hover .img {
@@ -115,6 +140,9 @@
   object-fit: cover;
   width: 100%;
   transition: all 0.5s ease-in-out;
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
 }
 .block {
   margin-bottom: 50px;
