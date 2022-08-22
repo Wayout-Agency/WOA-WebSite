@@ -22,7 +22,7 @@ const BurgerMenu = ({ click, setClick }) => {
               >
                 {title}
               </a>
-              <ExpImage width={46} height={20} src={"/static/img/arrow.svg"} />
+              <ExpImage width={46} height={20} src={"/static/img/arrow.svg"} className={styles.arrow}/>
             </div>
           </Link>
         ))}
