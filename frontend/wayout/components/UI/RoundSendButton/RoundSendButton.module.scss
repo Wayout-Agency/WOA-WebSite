@@ -8,6 +8,6 @@
   }
   @media (max-width: 800px) {
     height: 60px;
-    border-radius: 7px;
+    border-radius: var(--mobileRadius);
   }
 }

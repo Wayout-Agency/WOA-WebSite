@@ -28,6 +28,9 @@
 }
 .imgWrapper > span {
   border-radius: var(--radius);
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
 }
 .smallImgWrapper {
   width: 50%;
@@ -61,7 +64,7 @@
     height: 385px !important;
   }
   @media (max-width: 800px) {
-    border-radius: 7px;
+    border-radius: var(--mobileRadius);
     height: 254px !important;
   }
 }
@@ -72,7 +75,7 @@
     height: 265px !important;
   }
   @media (max-width: 800px) {
-    border-radius: 7px;
+    border-radius: var(--mobileRadius);
     height: 254px !important;
   }
 }
@@ -84,8 +87,8 @@
   object-fit: cover;
   transition: all 0.5s ease-in-out;
   border-radius: var(--radius);
-  @media (max-width: 1024px) {
-    border-radius: 7px;
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
   }
 }
 
@@ -108,9 +111,6 @@
 
 .bigImgWrapper {
   cursor: pointer;
-}
-
-.bigImgWrapper {
   width: 50%;
   @media (max-width: 1625px) {
     width: 60%;

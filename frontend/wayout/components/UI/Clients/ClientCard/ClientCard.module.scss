@@ -10,7 +10,7 @@
   justify-content: center;
   border-radius: var(--radius);
   @media (max-width: 800px) {
-    border-radius: 7px;
+    border-radius: var(--mobileRadius);
   }
 }
 
@@ -19,7 +19,7 @@
   transition: all 0.5s ease;
   border-radius: var(--radius);
   @media (max-width: 800px) {
-    border-radius: 7px;
+    border-radius: var(--mobileRadius);
   }
 }
 

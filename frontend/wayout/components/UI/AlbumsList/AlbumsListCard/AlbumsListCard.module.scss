@@ -14,6 +14,9 @@
   border-radius: var(--radius);
   object-fit: cover;
   text-align: center;
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
 }
 
 .imgWrapper {
