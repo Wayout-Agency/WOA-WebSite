@@ -1,8 +1,14 @@
 .journalWrapper {
   margin: 100px 0;
+  @media (max-width: 800px) {
+    margin: 50px 0;
+  }
 }
 .title {
   margin-bottom: 25px;
+  @media (max-width: 800px) {
+    margin-bottom: 15px;
+  }
 }
 .postTitile {
   margin-top: 15px;
@@ -42,6 +48,9 @@
   @media (max-width: 1024px) {
     margin-top: 50px;
   }
+  @media (max-width: 800px) {
+    margin-top: 25px;
+  }
 }
 .imgWrapper,
 .imgSWrapper {
@@ -51,12 +60,20 @@
   @media (max-width: 1024px) {
     height: 385px !important;
   }
+  @media (max-width: 800px) {
+    border-radius: 7px;
+    height: 254px !important;
+  }
 }
 
 .imgSWrapper {
   @media (max-width: 1024px) {
     width: 100% !important;
     height: 265px !important;
+  }
+  @media (max-width: 800px) {
+    border-radius: 7px;
+    height: 254px !important;
   }
 }
 .imgWrapper:hover .img {
@@ -83,6 +100,9 @@
   @media (max-width: 1024px) {
     flex-direction: column;
     width: 48%;
+  }
+  @media (max-width: 800px) {
+    margin-bottom: 25px;
   }
 }
 

@@ -10,6 +10,7 @@
   --radius: 15px;
   --error: #d64f4f;
   --purple: #652fff;
+  --gray: #b3b3b3;
 }
 
 input:focus::placeholder {
@@ -82,6 +83,7 @@ body {
   @media (max-width: 1280px) {
     main {
       margin: 0 20px;
+      margin-top: 70px;
     }
     header > nav {
       padding: 14px 20px;
@@ -105,10 +107,6 @@ body {
       width: 311px !important;
       left: 59px !important;
     }
-
-    main {
-      margin-top: 70px;
-    }
     @media (max-width: 1024px) {
       #case_1 {
         position: static;
@@ -120,6 +118,40 @@ body {
         margin-top: 595px !important;
       }
     }
+  }
+
+  @media (max-width: 800px) {
+    main {
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+    #case_0 > div,
+    #case_0 {
+      width: 311px !important;
+      height: 200px;
+    }
+    #case_1 > div,
+    #case_1 {
+      width: 284px !important;
+      height: 183px;
+    }
+    #case_2 > div,
+    #case_2 {
+      width: 240px !important;
+      height: 169px;
+    }
+    #case_1 {
+      margin-top: 94px !important;
+    }
+    #case_2 {
+      margin-top: 390px !important;
+    }
+    footer {
+      padding: 65px 15px;
+      padding-top: 50px;
+      padding-bottom: 35px;
+    }
+
   }
   @media (min-width: 320px) {
     -webkit-tap-highlight-color: transparent;
@@ -153,6 +185,10 @@ h2 {
   font-size: 35px;
   line-height: 40px;
   letter-spacing: 0.015em;
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
 }
 
 h3,
@@ -161,6 +197,10 @@ li {
   font-size: 23px;
   line-height: 26px;
   letter-spacing: 0.015em;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 }
 
 *,

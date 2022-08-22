@@ -4,11 +4,19 @@
   align-items: flex-start;
   justify-content: space-between;
 }
-
+.socialWrapper {
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
+}
 .footerInfo {
   width: 90%;
   @media (max-width: 1024px) {
     width: 98%;
+  }
+  @media (max-width: 800px) {
+    flex-direction: column;
+    width: 100%;
   }
 }
 .footerTitle {
@@ -17,6 +25,10 @@
   letter-spacing: 0.015em;
   font-weight: 400;
   margin-bottom: 15px;
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
 }
 
 .footerText {
@@ -24,6 +36,10 @@
   font-size: 23px;
   line-height: 26px;
   letter-spacing: 0.015em;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 }
 
 .footerData {
@@ -32,6 +48,12 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 75px;
+  @media (max-width: 800px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 30px;
+  }
 }
 
 .privacyPolicy,
@@ -40,7 +62,7 @@
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.015em;
-  color: #b3b3b3;
+  color: var(--gray);
 }
 .privacyPolicy {
   width: 318px;
@@ -49,6 +71,9 @@
   margin-right: 190px;
   @media (max-width: 1024px) {
     margin-right: 50px;
+  }
+  @media (max-width: 1024px) {
+    margin-top: 15px;
   }
 }
 .privacyPolicyLink {

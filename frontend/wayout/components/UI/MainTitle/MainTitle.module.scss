@@ -12,6 +12,11 @@
     font-size: 60px;
     line-height: 69px;
   }
+  @media (max-width: 800px) {
+    font-size: 30px;
+    line-height: 34px;
+    width: 350px;
+  }
 }
 .title {
   margin-top: 50px;

@@ -20,6 +20,10 @@
   width: 350px;
   height: 407px;
   position: relative;
+  @media (max-width: 800px) {
+    width: 225px !important;
+    height: 260px !important;
+  }
 }
 .infoWrapper {
   margin-top: 15px;
@@ -34,11 +38,15 @@
   font-weight: 400;
   font-size: 23px;
   line-height: 26px;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 }
 .newPrice {
   margin-right: 9px;
 }
 .oldPrice {
   text-decoration: line-through;
-  opacity: 0.3;
+  color: var(--gray);
 }

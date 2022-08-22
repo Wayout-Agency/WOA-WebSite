@@ -14,14 +14,24 @@
   @media (max-width: 1024px) {
     height: 399px;
   }
+  @media (max-width: 800px) {
+    height: 268px;
+    margin-top: 50px;
+  }
 }
 .bgWrapper > span {
   border-radius: 25px;
+  @media (max-width: 800px) {
+    border-radius: 7px;
+  }
 }
 .bgImg {
   overflow: hidden;
   border-radius: 25px;
   z-index: -1;
+  @media (max-width: 800px) {
+    border-radius: 7px;
+  }
 }
 
 .bgImg {
@@ -47,6 +57,10 @@
   @media (max-width: 1280px) {
     font-size: 60px;
   }
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
 }
 .watch {
   font-style: normal;
@@ -55,5 +69,10 @@
   line-height: 40px;
   letter-spacing: 0.015em;
   color: #ffffff;
-  
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+    font-size: 20px;
+    line-height: 23px;
+  }
 }

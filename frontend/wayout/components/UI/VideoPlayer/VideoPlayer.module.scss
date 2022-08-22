@@ -1,5 +1,8 @@
 .video {
   border-radius: var(--radius);
+  @media (max-width: 800px) {
+    border-radius: 7px;
+  }
 }
 
 .playText {
@@ -29,10 +32,15 @@
     margin-left: -40px;
     margin-right: -40px;
   }
-  
+
   @media (max-width: 1280px) {
     margin-left: -20px;
     margin-right: -20px;
+  }
+  @media (max-width: 800px) {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 25px;
   }
 }
 
@@ -49,6 +57,19 @@
 .controls {
   margin: 23px 50px;
   margin-bottom: 0;
+  @media (max-width: 1625px) {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  @media (max-width: 1280px) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  @media (max-width: 800px) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 .playIcon {
   user-select: none;

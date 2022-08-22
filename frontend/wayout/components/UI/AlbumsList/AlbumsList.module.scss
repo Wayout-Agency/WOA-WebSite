@@ -4,8 +4,14 @@
   @media (max-width: 1280px) {
     overflow: visible !important;
   }
-
+  @media (max-width: 800px) {
+    height: 100%;
+  }
 }
 .slide {
   width: 350px !important;
+  @media (max-width: 800px) {
+    width: 225px !important;
+    height: 100%;
+  }
 }

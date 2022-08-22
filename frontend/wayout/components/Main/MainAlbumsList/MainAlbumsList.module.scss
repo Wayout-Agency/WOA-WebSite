@@ -11,12 +11,19 @@
   @media (max-width: 1280px) {
     margin-top: 100px;
   }
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
 }
 
 .img {
   position: relative;
   right: 25px;
   transition: all 0.5s ease-in-out;
+  @media (max-width: 800px) {
+    width: 49px;
+    right: 0;
+  }
 }
 .mainAlbumsListHeader:hover .img {
   right: 0;

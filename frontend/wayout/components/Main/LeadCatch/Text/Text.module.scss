@@ -13,6 +13,9 @@
   @media (max-width: 1024px) {
     padding-bottom: 20px;
   }
+  @media (max-width: 800px) {
+    padding-bottom: 15px;
+  }
 }
 .leadCatchText {
   font-style: normal;
@@ -33,6 +36,12 @@
   @media (max-width: 1024px) {
     width: 90%;
   }
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 65px;
+    width: 90%;
+  }
 }
 .percent,
 .percentFloat {
@@ -43,6 +52,7 @@
   position: absolute;
   right: 5px;
   bottom: -20px;
+  
   @media (max-width: 1625px) {
     right: 60px;
     bottom: -8px;
@@ -55,6 +65,14 @@
   @media (max-width: 1024px) {
     right: 0;
     bottom: 60px;
+  }
+  @media (max-width: 800px) {
+    z-index: 2;
+    width: 49px;
+    height: 63px;
+    right: 20px;
+    top: 50px;
+    transform: rotate(10deg);
   }
 }
 .percent {
@@ -72,5 +90,12 @@
   @media (max-width: 1024px) {
     top: 220px;
     left: 230px;
+  }
+  @media (max-width: 800px) {
+    z-index: 2;
+    width: 36px;
+    height: 46px;
+    top: 105px;
+    left: 260px;
   }
 }
