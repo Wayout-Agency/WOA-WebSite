@@ -110,15 +110,15 @@ const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
           >
             <div className={styles.play} onClick={setVolume}>
               <span className={styles.playText}>ZVYK</span>
-              <Image
+              <ExpImage
                 className={styles.playIcon}
                 src={
                   playerState.muted
                     ? `/static/img/volume_off.svg`
                     : `/static/img/volume_on.svg`
                 }
-                width="30px"
-                height="30px"
+                width={30}
+                height={30}
                 layout="fixed"
               />
             </div>

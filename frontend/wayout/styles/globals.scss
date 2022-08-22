@@ -126,6 +126,9 @@ body {
       margin-right: 15px;
       margin-left: 15px;
     }
+    header > nav {
+      padding: 14px 15px;
+    }
     #case_0 > div,
     #case_0 {
       width: 311px !important;
@@ -152,7 +155,32 @@ body {
       padding-top: 50px;
       padding-bottom: 35px;
     }
+  }
+  @media (max-width: 480px) {
+    main {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    header > nav {
+      padding: 14px 10px;
+    }
+    footer {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    #case_0 > div,
+    #case_0 {
+      width: 272px !important;
+    }
+    #case_1 > div,
+    #case_1 {
+      width: 249px !important;
 
+    }
+    #case_2 > div,
+    #case_2 {
+      width: 229px !important;
+    }
   }
   @media (min-width: 320px) {
     -webkit-tap-highlight-color: transparent;
@@ -251,7 +279,7 @@ progress {
   cursor: pointer;
 }
 progress::-webkit-progress-bar {
-  background-color: #fff;
+  background-color: var(--gray);
 }
 progress::-webkit-progress-value {
   background-color: #000;

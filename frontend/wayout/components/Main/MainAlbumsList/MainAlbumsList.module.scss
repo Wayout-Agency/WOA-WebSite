@@ -27,4 +27,7 @@
 }
 .mainAlbumsListHeader:hover .img {
   right: 0;
+  @media (max-width: 480px) {
+    right: 0; 
+  }
 }

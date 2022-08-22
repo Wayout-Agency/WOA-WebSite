@@ -13,4 +13,7 @@
     height: 50px;
     border-radius: var(--mobileRadius);
   }
+  @media (max-width: 480px) {
+      border: 1px solid !important;
+  }
 }

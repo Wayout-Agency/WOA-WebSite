@@ -66,6 +66,9 @@
 }
 .privacyPolicy {
   width: 318px;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 }
 .copyright {
   margin-right: 190px;

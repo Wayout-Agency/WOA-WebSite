@@ -17,6 +17,9 @@
     line-height: 34px;
     width: 350px;
   }
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 }
 .title {
   margin-top: 50px;

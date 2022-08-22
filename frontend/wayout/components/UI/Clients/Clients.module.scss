@@ -35,6 +35,9 @@
     margin-top: 90px;
     margin-bottom: 0;
   }
+  @media (max-width: 480px) {
+    justify-content: space-between;
+  }
 }
 .moreText {
   font-weight: 400;
@@ -48,6 +51,10 @@
     line-height: 28px;
     border-bottom: 3px solid;
     height: 30px;
+  }
+  @media (max-width: 480px) {
+    border-bottom: 2px solid;
+    height: 28px;
   }
 }
 .moreImg {
@@ -67,8 +74,14 @@
     top: 3px;
     width: 46px;
   }
+  @media (max-width: 480px) {
+    margin: 0;
+  }
 }
 
 .moreWrapper:hover .moreImg {
   right: 50px;
+  @media (max-width: 800px) {
+    right: 0 !important;
+  }
 }
