@@ -1,9 +1,15 @@
 .QSWrapper {
   margin-top: 100px;
+  @media (max-width: 800px) {
+    margin-top: 25px;
+  }
 }
 
 .QSTitle {
   margin-bottom: 30px;
+  @media (max-width: 800px) {
+    margin-bottom: 7px;
+  }
 }
 .QStitleWrapper {
   cursor: pointer;
@@ -13,6 +19,9 @@
 }
 .QSItem {
   margin-bottom: 28px;
+  @media (max-width: 800px) {
+    margin-bottom: 15px;
+  }
 }
 .textWrapper {
   overflow: hidden;
@@ -20,6 +29,9 @@
   transition: all 0.5s ease-in-out;
   @media (max-width: 1024px) {
     width: 700px;
+  }
+  @media (max-width: 800px) {
+    width: 420px;
   }
 }
 .text {
@@ -30,6 +42,10 @@
   pointer-events: all;
   user-select: none;
   transition: all 0.3s ease-in-out;
+  @media (max-width: 800px) {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .activePlus {

@@ -1,0 +1,15 @@
+.albumsListWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.cardWrapper{
+  margin-bottom: 25px;
+}
+.card{
+  @media (max-width: 800px) {
+    width: 218px !important;
+  }
+}

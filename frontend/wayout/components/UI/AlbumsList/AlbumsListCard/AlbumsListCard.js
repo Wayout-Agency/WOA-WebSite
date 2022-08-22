@@ -1,11 +1,11 @@
 import styles from "./AlbumsListCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-const AlbumsListCard = ({ title, newPrice, oldPrice, previewUrl, slug }) => {
+const AlbumsListCard = ({ title, newPrice, oldPrice, previewUrl, slug, className}) => {
   return (
     <Link href={`/albums/${slug}`}>
       <div className={styles.albumWrapper}>
-        <div className={styles.imgWrapper}>
+        <div className={`${className} ${styles.imgWrapper}`}>
           <Image
             layout="fill"
             src={previewUrl}
