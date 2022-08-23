@@ -25,7 +25,18 @@ const Clients = () => {
 
   return (
     <div className={styles.clientsWrapper}>
-      <h2 className={styles.title}>Клиенты</h2>
+      <Link href={"/journal/"}>
+        <div className={styles.clientsHeader}>
+          <h2 className={styles.title}>Клиенты</h2>
+          <Image
+            className={styles.img}
+            width={66}
+            height={28}
+            src={"/static/img/arrow.svg"}
+            layout="raw"
+          />
+        </div>
+      </Link>
       <div className={styles.clientCardsWrapper}>
         {data && data.length > 2 ? (
           data.map(({ value }, index) => {

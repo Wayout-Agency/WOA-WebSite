@@ -25,7 +25,18 @@ const Journal = ({
 
   return (
     <div className={styles.journalWrapper}>
-      <h2 className={styles.title}>{journalTitle}</h2>
+      <Link href={"/journal/"}>
+        <div className={styles.journalHeader}>
+          <h2>{journalTitle}</h2>
+          <ImageRaw
+            className={clientsStyles.img}
+            width={66}
+            height={28}
+            src={"/static/img/arrow.svg"}
+            layout="raw"
+          />
+        </div>
+      </Link>
       {data && data.length > 2 ? (
         <div className={styles.articlesWrapper}>
           <Link href={`/journal/${link}/${data[0].value.slug}`}>
@@ -81,7 +92,7 @@ const Journal = ({
             })}
             <Link href={"/journal/"}>
               <div
-                className={ `${clientsStyles.moreWrapper} ${styles.moreWrapper}`}
+                className={`${clientsStyles.moreWrapper} ${styles.moreWrapper}`}
                 style={{ marginTop: 100 }}
               >
                 <p className={clientsStyles.moreText}>Читать больше</p>

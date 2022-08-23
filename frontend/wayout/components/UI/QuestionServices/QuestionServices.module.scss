@@ -8,7 +8,7 @@
 .QSTitle {
   margin-bottom: 30px;
   @media (max-width: 800px) {
-    margin-bottom: 7px;
+    margin-bottom: 15px;
   }
 }
 .QStitleWrapper {
@@ -31,8 +31,9 @@
     width: 700px;
   }
   @media (max-width: 800px) {
-    width: 420px;
+    width: 90%;
   }
+  
 }
 .text {
   opacity: 0.3;

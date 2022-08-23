@@ -4,12 +4,19 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
+  @media (max-width: 370px) {
+    justify-content: flex-start;
+  }
 }
-.cardWrapper{
+.cardWrapper {
   margin-bottom: 25px;
-}
-.card{
   @media (max-width: 800px) {
     width: 218px !important;
+  }
+  @media (max-width: 480px) {
+    width: 172px !important;
+  }
+  @media (max-width: 370px) {
+    width: 100% !important;
   }
 }

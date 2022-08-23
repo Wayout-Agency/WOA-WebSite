@@ -1,7 +1,7 @@
 import styles from "./AlbumsListMobile.module.scss";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import AlbumsListCard from "../AlbumsListCard";
+import AlbumsListMobileCard from "./AlbumsListCardMobile";
 import config from "config";
 
 const AlbumsList = ({ data }) => {
@@ -10,7 +10,7 @@ const AlbumsList = ({ data }) => {
       {data.map((album) => {
         return (
           <div className={styles.cardWrapper}>
-            <AlbumsListCard
+            <AlbumsListMobileCard
               title={album.title}
               oldPrice={album.old_price}
               newPrice={album.new_price}
