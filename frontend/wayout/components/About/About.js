@@ -66,7 +66,7 @@ const About = () => {
                 800: {
                   spaceBetween: 33,
                 },
-                320: {
+                270: {
                   spaceBetween: 15,
                 },
               }}

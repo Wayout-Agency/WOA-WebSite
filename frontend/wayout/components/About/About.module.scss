@@ -1,23 +1,35 @@
 .videoWrapper {
   margin-top: 50px;
+  @media (max-width: 800px) {
+    margin-top: 25px;
+  }
 }
 .numbersWrapper,
 .infoTeamWrapper,
 .teamWrapper {
   margin-top: 100px;
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
 }
-.infoTeamWrapper {
+.infoTeamWrapper,
+.infoTeam {
   margin-bottom: 100px;
+  @media (max-width: 800px) {
+    width: 100% !important;
+    margin-bottom: 50px;
+  }
 }
 
-.numbersContent, .controls {
+.numbersContent,
+.controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin-top: 15px;
 }
-.controls{
+.controls {
   margin-top: 0;
   margin-bottom: 25px;
 }
@@ -29,24 +41,42 @@
   letter-spacing: 0.015em;
   width: 50%;
   margin-top: 8px;
+  @media (max-width: 800px) {
+    width: 100%;
+    font-size: 20px;
+    line-height: 23px;
+  }
+  @media (max-width: 480px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 }
 .aboutCardWrapper {
   width: 350px;
   height: 490px;
-  margin-bottom: 50px;
+  @media (max-width: 800px) {
+    width: fit-content;
+    height: fit-content;
+  }
+}
+.imgWrapper {
+  width: 350px;
+  height: 407px;
+  position: relative;
+  @media (max-width: 800px) {
+    width: 40vw;
+    height: 50vw;
+  }
 }
 .aboutCardImg {
   border-radius: var(--radius);
-  font-style: normal;
+  object-fit: cover;
+  @media (max-width: 480px) {
+    border-radius: var(--mobileRadius);
+  }
 }
 .aboutCardTitle {
   margin-top: 15px;
-}
-.aboutCardRole {
-  margin-top: 7px;
-  font-weight: 400;
-  font-size: 23px;
-  line-height: 26px;
 }
 
 .cardsWrapper {
@@ -57,33 +87,71 @@
   flex-wrap: wrap;
 }
 
-.infoTeamText {
-  margin-top: 15px;
+.infoTeamText,
+.aboutCardRole {
   font-style: normal;
   font-weight: 400;
   font-size: 23px;
   line-height: 26px;
   letter-spacing: 0.015em;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+.aboutCardRole {
+  margin-top: 7px;
+  @media (max-width: 800px) {
+    margin-top: 3px;
+  }
+}
+.infoTeamText {
+  margin-top: 15px;
+  @media (max-width: 800px) {
+    margin-top: 7px;
+  }
 }
 .infoTeam {
   width: 43%;
-  margin-bottom: 100px;
 }
 .infoTeamTextWrapper,
 .infoTeamBtnWrapper {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 }
 .infoTeamBtnWrapper {
   align-items: center;
+  @media (max-width: 800px) {
+    margin-top: 50px;
+    align-items: flex-start;
+  }
+
 }
 .infoTeamRight,
 .infoTeamBtn {
   width: 48%;
 }
+.infoTeamBtn {
+  @media (max-width: 800px) {
+    margin-top: 15px;
+  }
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+}
+.infoTeamRight {
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 100%;
+  }
+}
 .slide {
   width: fit-content !important;
+  height: fit-content !important;
 }
 
 .arrowsWrapper {
@@ -93,8 +161,11 @@
 .arrow {
   cursor: pointer;
   pointer-events: all;
+  @media (max-width: 800px) {
+    width: 46px;
+  }
 }
-.swiper{
+.swiper {
   @media (max-width: 1280px) {
     overflow: visible;
   }
