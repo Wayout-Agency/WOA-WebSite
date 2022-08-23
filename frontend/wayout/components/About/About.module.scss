@@ -10,12 +10,16 @@
   margin-bottom: 100px;
 }
 
-.numbersContent {
+.numbersContent, .controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin-top: 15px;
+}
+.controls{
+  margin-top: 0;
+  margin-bottom: 25px;
 }
 .number {
   font-style: normal;
@@ -77,4 +81,21 @@
 .infoTeamRight,
 .infoTeamBtn {
   width: 48%;
+}
+.slide {
+  width: fit-content !important;
+}
+
+.arrowsWrapper {
+  display: flex;
+}
+
+.arrow {
+  cursor: pointer;
+  pointer-events: all;
+}
+.swiper{
+  @media (max-width: 1280px) {
+    overflow: visible;
+  }
 }

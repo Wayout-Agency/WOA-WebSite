@@ -6,7 +6,14 @@ import VideoPlayer from "../UI/VideoPlayer";
 import { numbers, team } from "./aboutData";
 import AboutCard from "./AboutCard";
 import FadeIn from "../UI/Animations/";
+import ExpImage from "next/future/image";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef } from "react";
+import "swiper/css";
+
 const About = () => {
+  const swiperRef = useRef(null);
   return (
     <>
       <MainTitle text={"Об агенстве"} />
@@ -28,20 +35,55 @@ const About = () => {
             </div>
           </div>
           <div className={styles.teamWrapper}>
-            <h2>Команда</h2>
-            <div className={styles.cardsWrapper}>
+            <div className={styles.controls}>
+              <h2>Команда</h2>
+              <div className={styles.arrowsWrapper}>
+                <ExpImage
+                  className={styles.arrow}
+                  onClick={() => swiperRef.current.swiper.slidePrev()}
+                  width={66}
+                  height={28}
+                  style={{ transform: "scale(-1)", marginRight: "30px" }}
+                  src={"/static/img/arrow.svg"}
+                  layout="raw"
+                />
+                <ExpImage
+                  className={styles.arrow}
+                  onClick={() => swiperRef.current.swiper.slideNext()}
+                  width={66}
+                  height={28}
+                  src={"/static/img/arrow.svg"}
+                  layout="raw"
+                />
+              </div>
+            </div>
+            <Swiper
+              className={styles.swiper}
+              ref={swiperRef}
+              slidesPerView={"auto"}
+              spaceBetween={33}
+              breakpoints={{
+                800: {
+                  spaceBetween: 33,
+                },
+                320: {
+                  spaceBetween: 15,
+                },
+              }}
+            >
               {team.map(({ name, role, isSuper }, index) => {
                 return (
-                  <AboutCard
-                    key={index}
-                    name={name}
-                    role={role}
-                    isSuper={isSuper}
-                    index={index}
-                  />
+                  <SwiperSlide key={index} className={styles.slide}>
+                    <AboutCard
+                      name={name}
+                      role={role}
+                      isSuper={isSuper}
+                      index={index}
+                    />
+                  </SwiperSlide>
                 );
               })}
-            </div>
+            </Swiper>
           </div>
           <div className={styles.infoTeamWrapper}>
             <div className={styles.infoTeamTextWrapper}>

@@ -8,12 +8,12 @@ export const numbers = [
 ];
 
 export const team = [
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
-  {name: 'Денис Б.', role: 'Основатель проекта', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
+  {name: 'Ден Х.', role: 'Крутой дизайнер', isSuper: false},
 ]

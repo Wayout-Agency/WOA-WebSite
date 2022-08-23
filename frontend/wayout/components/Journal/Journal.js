@@ -50,7 +50,6 @@ const Journal = () => {
           .slice(i, i + 8)
           .map((obj, index) => (obj.width = percentages[index]));
       }
-      console.log(resData);
       setData(resData);
     };
 
