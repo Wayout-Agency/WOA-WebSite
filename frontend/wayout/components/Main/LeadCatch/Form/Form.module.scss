@@ -4,6 +4,9 @@
   @media (max-width: 1625px) {
     margin: 0;
   }
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 }
 .error {
   border-color: var(--error) !important;

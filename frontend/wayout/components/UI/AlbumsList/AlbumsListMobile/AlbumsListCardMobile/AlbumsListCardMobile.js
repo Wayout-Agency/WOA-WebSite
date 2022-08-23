@@ -5,7 +5,7 @@ import Link from "next/link";
 const AlbumsListCardMobile = ({ title, newPrice, oldPrice, previewUrl, slug, className}) => {
   return (
     <Link href={`/albums/${slug}`}>
-      <div className={styles.albumWrapper}>
+      <div className={mobileStyles.albumWrapper}>
         <div className={`${className} ${mobileStyles.imgWrapper}`}>
           <Image
             layout="fill"

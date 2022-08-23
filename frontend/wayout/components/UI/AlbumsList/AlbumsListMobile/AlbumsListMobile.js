@@ -9,7 +9,6 @@ const AlbumsList = ({ data }) => {
     <div className={styles.albumsListWrapper}>
       {data.map((album) => {
         return (
-          <div className={styles.cardWrapper}>
             <AlbumsListMobileCard
               title={album.title}
               oldPrice={album.old_price}
@@ -18,7 +17,6 @@ const AlbumsList = ({ data }) => {
               slug={album.slug}
               className={styles.card}
             />
-          </div>
         );
       })}
     </div>

@@ -1,13 +1,20 @@
+.albumWrapper {
+  margin-bottom: 25px;
+  @media (max-width: 370px) {
+    width: 100% !important;
+  }
+}
 .imgWrapper {
   width: 350px;
   height: 407px;
   position: relative;
   @media (max-width: 800px) {
-    width: 225px !important;
+    width: 45vw !important;
     height: 260px !important;
   }
+
   @media (max-width: 480px) {
-    width: 172px !important;
+    width: 45vw !important;
     height: 200px !important;
   }
   @media (max-width: 370px) {
