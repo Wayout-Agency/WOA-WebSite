@@ -27,6 +27,9 @@
   @media (max-width: 800px) {
     height: 270px;
   }
+  @media (max-width: 480px) {
+    height: 200px;
+  }
 }
 .header {
   float: right;
