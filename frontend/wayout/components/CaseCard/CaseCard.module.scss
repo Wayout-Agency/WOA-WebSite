@@ -15,6 +15,10 @@
     margin-left: -15px;
     margin-top: 25px;
   }
+  @media (max-width: 480px) {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
 }
 
 .mainImg {
@@ -86,6 +90,9 @@
   @media (max-width: 800px) {
     height: 254px;
   }
+  @media (max-width: 480px) {
+    height: 200px !important;
+  }
 }
 .imgWrapper,
 .btnWrapper {
@@ -116,6 +123,9 @@
   }
   @media (max-width: 800px) {
     height: 254px !important;
+  }
+  @media (max-width: 480px) {
+    height: 200px !important;
   }
 }
 .btnWrapper {

@@ -104,7 +104,7 @@ const CaseCard = ({ slug }) => {
                   data.created_at.slice(0, 4)}
               </p>
               <a href="" className={styles.dateShareText} onClick={copyText}>
-                Поделиться кейсом
+                Поделиться
               </a>
             </div>
           </div>
