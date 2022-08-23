@@ -123,6 +123,10 @@
     border-radius: var(--mobileRadius);
     height: 254px;
   }
+
+  @media (max-width: 480px) {
+    height: 200px;
+  }
 }
 
 .imgBlockWrapper > span {
@@ -147,6 +151,9 @@
 .block {
   margin-bottom: 50px;
   cursor: pointer;
+  @media (max-width: 480px) {
+    margin-bottom: 25px;
+  }
 }
 .btn {
   background-color: #fff !important;
