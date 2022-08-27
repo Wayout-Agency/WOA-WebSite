@@ -3,6 +3,8 @@ import { useState } from "react";
 import RoundInput from "@/components/UI/RoundInput";
 import RoundSendButton from "@/components/UI/RoundSendButton";
 import { onPhoneKeyDown, onPhoneInput, onPhonePaste } from "utils/phoneinput";
+import Link from "next/link";
+
 const Form = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -53,6 +55,14 @@ const Form = () => {
         />
         <RoundSendButton value={"Отправить"} />
       </form>
+      <div className={styles.policy}>
+        Нажимая кнопку “Отправить” вы соглашаетесь с
+        <Link href="/policy">
+          <span style={{ textDecoration: "underline", cursor: "pointer" }}>
+            политикой обработки данных.
+          </span>
+        </Link>
+      </div>
     </div>
   );
 };
