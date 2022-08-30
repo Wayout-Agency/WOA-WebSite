@@ -7,13 +7,15 @@ import { numbers, team } from "./aboutData";
 import AboutCard from "./AboutCard";
 import FadeIn from "../UI/Animations/";
 import ExpImage from "next/future/image";
-
+import { useAppContext } from "../AppWrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef } from "react";
 import "swiper/css";
-
+import { disableBodyScroll } from "body-scroll-lock";
 const About = () => {
   const swiperRef = useRef(null);
+  const { setOrder, setShow } = useAppContext();
+  setOrder(true);
   return (
     <>
       <MainTitle text={"Об агенстве"} />
@@ -112,7 +114,14 @@ const About = () => {
                 </p>
               </div>
               <div className={styles.infoTeamBtn}>
-                <RoundSendButton value={"Написать"} />
+                <RoundSendButton
+                  value={"Написать"}
+                  onClick={() => {
+                    setShow(true);
+                    const element = document.querySelector("#__next");
+                    disableBodyScroll(element);
+                  }}
+                />
               </div>
             </div>
           </div>

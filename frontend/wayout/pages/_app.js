@@ -1,11 +1,14 @@
 import "../styles/globals.scss";
 import Layout from "@/components/Global/Layout";
+import AppWrapper from "@/components/AppWrapper";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AppWrapper>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AppWrapper>
   );
 };
 

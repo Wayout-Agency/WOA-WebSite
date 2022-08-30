@@ -9,14 +9,16 @@ import Link from "next/link";
 import clientsStyles from "../UI/Clients/Clients.module.scss";
 import Card from "./Card";
 import FadeIn from "../UI/Animations/";
+import { useAppContext } from "../AppWrapper";
+import { disableBodyScroll } from "body-scroll-lock";
 
 const Journal = () => {
   const [data, setData] = useState([]);
   const [head, setHead] = useState({});
-
+  const { setShow, setOrder } = useAppContext();
   const casesApiUrl = "/posts/cases/";
   const articlesApiUrl = "/posts/articles/";
-
+  setOrder(false);
   useEffect(() => {
     let percentages = [20, 20, 56, 20, 56, 20, 48, 48];
 
@@ -105,7 +107,15 @@ const Journal = () => {
               />
             );
           })}
-          <RoundSendButton value={"Заказать съемку"} className={styles.btn} />
+          <RoundSendButton
+            value={"Заказать съемку"}
+            className={styles.btn}
+            onClick={() => {
+              setShow(true);
+              const element = document.querySelector("#__next");
+              disableBodyScroll(element);
+            }}
+          />
         </div>
       </FadeIn>
     </>

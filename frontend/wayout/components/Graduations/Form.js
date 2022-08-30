@@ -4,6 +4,7 @@ import RoundInput from "../UI/RoundInput";
 import RoundSendButton from "../UI/RoundSendButton";
 import { onPhoneKeyDown, onPhoneInput, onPhonePaste } from "utils/phoneinput";
 import Link from "next/link";
+import wayoutAPI from "services/wayoutApi";
 
 const Form = () => {
   const [members, setMembers] = useState("");
@@ -22,7 +23,7 @@ const Form = () => {
     setPhoneError(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!members || !name || !phone) {
       if (!members) setMembersError(true);
@@ -30,13 +31,29 @@ const Form = () => {
       if (!phone) setPhoneError(true);
       return;
     }
-    console.log(members, phone, name);
+    if (phone.startsWith("+")) {
+      if (phone.length != 18) {
+        setPhoneError(true);
+        console.log(phone);
+        return;
+      }
+    }
+    if (phone.length < 17) {
+      setPhoneError(true);
+      return;
+    }
+
+    const data = { name: name, phone: phone, quantity: members };
+    await wayoutAPI.post("/emails/offer/", { email: data }).catch(() => {
+      alert(
+        "Наш сервис временно недоступен, но вы можете связаться с нами любым другим способом"
+      );
+    });
     clearForm();
   };
 
   return (
     <>
-      {/* FIXME: submit doesn't work */}
       <form onSubmit={handleSubmit} style={{ marginTop: 50 }}>
         <RoundInput
           placeholder="Кол-во участников"
@@ -74,7 +91,7 @@ const Form = () => {
         <RoundSendButton value={"Отправить"} />
       </form>
       <div className={styles.policy}>
-        Нажимая кнопку “Отправить” вы соглашаетесь с
+        Нажимая кнопку “Отправить” вы соглашаетесь с{" "}
         <Link href="/policy">
           <span style={{ textDecoration: "underline", cursor: "pointer" }}>
             политикой обработки данных.

@@ -21,7 +21,9 @@ const Header = ({ click, setClick, width }) => {
 
   return (
     <header
-      className={`${styles.header} ${shouldHideHeader ? styles.hidden : null}`}
+      className={`${styles.header} ${
+        width < 1280 ? (shouldHideHeader ? styles.hidden : null) : null
+      }`}
     >
       <Navbar click={click} setClick={setClick} width={width} />
     </header>

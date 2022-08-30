@@ -10,14 +10,17 @@ import VideoPlayer from "../UI/VideoPlayer";
 import QuestionServices from "../UI/QuestionServices";
 import Skeleton from "react-loading-skeleton";
 import FadeIn from "../UI/Animations/";
-
+import { useAppContext } from "../AppWrapper";
+import { disableBodyScroll } from "body-scroll-lock";
 const range = (start, end) => {
   const length = end - start;
   return Array.from({ length }, (_, i) => start + i);
 };
 
 const AlbumsCard = ({ type }) => {
-  const albumUrl = `albums/${type}/`;
+  const albumUrl = type ? `albums/${type}/` : null;
+  const { setShow, setOrder } = useAppContext();
+  setOrder(false);
   const [media, setMedia] = useState({
     filesUrl: "",
     coversIds: [],
@@ -28,7 +31,7 @@ const AlbumsCard = ({ type }) => {
     const album = await wayoutAPI.get(albumUrl);
     return album.data;
   };
-  const { data, _ } = useSWR(albumUrl, fetchAlbum);
+  const { data } = useSWR(albumUrl, fetchAlbum);
 
   useEffect(() => {
     if (data) {
@@ -123,7 +126,14 @@ const AlbumsCard = ({ type }) => {
             ) : (
               <></>
             )}
-            <RoundSendButton value="Заказать" />
+            <RoundSendButton
+              value="Заказать"
+              onClick={() => {
+                setShow(true);
+                const element = document.querySelector("#__next");
+                disableBodyScroll(element);
+              }}
+            />
           </div>
           <div>
             <Slider

@@ -4,7 +4,7 @@ import RoundInput from "@/components/UI/RoundInput";
 import RoundSendButton from "@/components/UI/RoundSendButton";
 import { onPhoneKeyDown, onPhoneInput, onPhonePaste } from "utils/phoneinput";
 import Link from "next/link";
-
+import wayoutAPI from "services/wayoutApi";
 const Form = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -18,15 +18,31 @@ const Form = () => {
     setPhoneError(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !phone) {
       if (!name) setNameError(true);
       if (!phone) setPhoneError(true);
       return;
     }
+    if (phone.startsWith("+")) {
+      if (phone.length != 18) {
+        setPhoneError(true);
+        console.log(phone);
+        return;
+      }
+    }
+    if (phone.length < 17) {
+      setPhoneError(true);
+      return;
+    }
 
-    console.log(phone, name);
+    const data = { name: name, phone: phone };
+    await wayoutAPI.post("/emails/feedback/", { email: data }).catch(() => {
+      alert(
+        "Наш сервис временно недоступен, но вы можете связаться с нами любым другим способом"
+      );
+    });
     clearForm();
   };
   return (
@@ -56,7 +72,7 @@ const Form = () => {
         <RoundSendButton value={"Отправить"} />
       </form>
       <div className={styles.policy}>
-        Нажимая кнопку “Отправить” вы соглашаетесь с
+        Нажимая кнопку “Отправить” вы соглашаетесь с{" "}
         <Link href="/policy">
           <span style={{ textDecoration: "underline", cursor: "pointer" }}>
             политикой обработки данных.

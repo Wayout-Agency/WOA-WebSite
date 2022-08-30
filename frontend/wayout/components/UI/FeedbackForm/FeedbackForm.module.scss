@@ -1,0 +1,155 @@
+.feedbackFormWrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  transition: opacity 0.6s ease-in-out;
+  opacity: 0;
+  z-index: 4;
+  position: fixed;
+  left: -100%;
+  cursor: pointer;
+}
+.showWrapper {
+  transition: opacity 0.6s ease-in-out;
+  opacity: 0.6;
+  left: 0;
+}
+
+.showForm {
+  transition: all 0.6s ease-in-out;
+  right: 0 !important;
+}
+.feedbackForm {
+  position: fixed;
+  right: -100%;
+  width: 50vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 5;
+  transition: all 0.6s ease-in-out;
+  padding-left: 50px;
+  padding-right: 100px;
+}
+
+.header {
+  margin-top: 50px;
+  font-weight: 400;
+  font-size: 90px;
+  line-height: 94px;
+  color: #ffffff;
+  width: 1px;
+}
+.form {
+  margin-top: 100px;
+  width: 30vw;
+}
+.sendWrapper {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  cursor: pointer;
+}
+.sendText {
+  transition: all 0.4s ease-in-out;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+  height: 39.5px;
+  border-bottom: 2px solid;
+  color: var(--gray);
+}
+.sendImg {
+  transition: all 0.4s ease-in-out;
+  position: relative;
+  right: 25px;
+  opacity: 0.7;
+}
+.alert {
+  font-size: 23px;
+  line-height: 26px;
+  letter-spacing: 0.015em;
+  color: #fff;
+}
+.errorText {
+  color: var(--error);
+  float: right;
+  margin-top: 7px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.feedbackInput {
+  transition: all 0.3s;
+  border: none !important;
+  background-color: #000 !important;
+  margin: 0 !important;
+  border-bottom: 2px solid #fff !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  padding-bottom: 7px !important;
+  color: #fff !important;
+  outline: none !important;
+}
+.feedbackInput::placeholder {
+  transition: all 0.3s;
+  color: var(--gray) !important;
+  opacity: 1 !important;
+}
+.showErrorText {
+  opacity: 1;
+}
+.error {
+  border-color: var(--error) !important;
+}
+
+.error::placeholder {
+  color: var(--error) !important;
+}
+
+.inputWrapper {
+  margin-bottom: 19px;
+}
+.policy {
+  transition: all 0.4s ease-in-out;
+  margin-top: 15px;
+  color: var(--gray);
+}
+
+.sendWrapper:hover .sendText {
+  color: #fff;
+}
+.sendWrapper:hover .sendImg {
+  opacity: 1;
+  right: 0;
+}
+.callback {
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+  color: #fff;
+}
+.formWrapper {
+  position: fixed;
+  transition: opacity 0.5s ease-in-out;
+}
+.submited {
+  right: -100%;
+  opacity: 0;
+}
+
+.thanksWrapper {
+  position: fixed;
+  transition: opacity 0.5s ease-in-out;
+  right: -100%;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+.showThanks {
+  position: static;
+  opacity: 1;
+}
