@@ -78,7 +78,16 @@ const CaseCard = ({ slug }) => {
               priority={true}
             />
           </div>
-          <div className={styles.sliderWrapper}></div>
+          <div className={styles.sliderWrapper}>
+            <Slider
+              imgIndexes={[
+                4,
+                ...[...Array(data.files_quantity).keys()].slice(5),
+              ]}
+              filesUrl={`${config.apiUrl}/files/cases/${data.id}/`}
+              height={775}
+            />
+          </div>
           <div className={styles.textWrapper}>
             <h2 className={styles.subtitle}>Процесс</h2>
             <p className={styles.text}>{data.process}</p>

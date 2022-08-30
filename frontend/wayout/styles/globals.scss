@@ -300,3 +300,11 @@ li {
 ul {
   margin: 0;
 }
+
+#circle1,
+#circle3,
+#circle5 {
+  @media (max-width: 800px) {
+    margin-left: auto;
+  }
+}

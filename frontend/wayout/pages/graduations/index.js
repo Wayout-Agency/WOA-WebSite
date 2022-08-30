@@ -1,3 +1,7 @@
-export default function Graduations() {
-  return <div>Graduations </div>;
-}
+import Graduations from "@/components/Graduations/graduations";
+
+const GraduationsPage = () => {
+  return <Graduations />;
+};
+
+export default GraduationsPage;

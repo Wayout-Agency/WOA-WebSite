@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ExpImage from "next/future/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./Slider.module.scss";
@@ -6,7 +7,13 @@ import Skeleton from "react-loading-skeleton";
 
 import "swiper/css";
 
-const Slider = ({ imgIndexes, filesUrl, width, height, preloadIndexes }) => {
+const Slider = ({
+  imgIndexes,
+  filesUrl,
+  width = "100%",
+  height = "100%",
+  preloadIndexes,
+}) => {
   const swiperRef = useRef(null);
   return (
     <>
@@ -24,12 +31,10 @@ const Slider = ({ imgIndexes, filesUrl, width, height, preloadIndexes }) => {
           {imgIndexes.map((id) => {
             return (
               <SwiperSlide key={id}>
-                <ExpImage
+                <Image
                   src={`${filesUrl}${id}`}
                   className={styles.slide}
-                  width={width}
-                  height={height}
-                  layout="raw"
+                  layout="fill"
                 />
               </SwiperSlide>
             );
