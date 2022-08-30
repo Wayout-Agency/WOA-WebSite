@@ -3,7 +3,7 @@ from os import environ
 from pathlib import Path
 
 from dotenv import load_dotenv
-from pydantic import BaseSettings
+from pydantic import BaseSettings, EmailStr
 
 BASEDIR = Path(__file__).resolve().parent.parent.parent.parent.parent
 
@@ -12,6 +12,7 @@ In prod use secrets.token_urlsafe(32) for SECRET_KEY
 
 In dev mode use load_dotenv(BASEDIR / "config" / ".env.dev")
 """
+load_dotenv(BASEDIR / "config" / ".env.dev")
 
 
 class Settings(BaseSettings):
@@ -30,10 +31,20 @@ class Settings(BaseSettings):
     DB_PORT: int = environ["DB_PORT"]
 
     UPLOAD_DIRECTORY = (
-        Path(environ["UPLOAD_DIRECTORY"])
-        if environ.get("UPLOAD_DIRECTORY")
-        else BASEDIR / "media"
+        Path(environ["UPLOAD_DIRECTORY"]) if environ.get("UPLOAD_DIRECTORY") else BASEDIR / "media"
     )
+
+    SMTP_TLS: bool | None = environ["SMTP_TLS"]
+    SMTP_PORT: int | None = environ["SMTP_PORT"]
+    SMTP_HOST: str | None = environ["SMTP_HOST"]
+    SMTP_USER: str | None = environ["SMTP_USER"]
+    SMTP_PASSWORD: str | None = environ["SMTP_PASSWORD"]
+    FROM_EMAIL: EmailStr | None = environ["FROM_EMAIL"]
+    FROM_NAME: str | None = environ["FROM_NAME"]
+
+    FEEDBACK_ORDER_EMAIL: str | None = environ["FEEDBACK_ORDER_EMAIL"]
+    FEEDBACK_EMAIL: str | None = environ["FEEDBACK_EMAIL"]
+    OFFER_EMAIL: str | None = environ["OFFER_EMAIL"]
 
 
 @lru_cache()
