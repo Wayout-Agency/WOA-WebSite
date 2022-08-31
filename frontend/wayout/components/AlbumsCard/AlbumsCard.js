@@ -52,11 +52,33 @@ const AlbumsCard = ({ type }) => {
   return (
     <div className={styles.mainWrapper}>
       <FadeIn>
+        <div className={styles.mobileTitle}>
+          {data ? (
+            <>
+              <h2 style={{ marginBottom: "7px" }}>{data.title}</h2>
+              <h3 className={styles.descMobile}>{data.description}</h3>
+            </>
+          ) : (
+            <>
+              <h2 style={{ marginBottom: "7px" }}>
+                <Skeleton borderRadius={15} width="50%" />
+              </h2>
+              <h3 className={styles.desc}>
+                <Skeleton borderRadius={15} count={3} />
+              </h3>
+            </>
+          )}
+        </div>
         <div className={styles.preview}>
           <div className={styles.previewLeft}>
             {data ? (
               <>
-                <h2 style={{ marginBottom: "7px" }}>{data.title}</h2>
+                <h2
+                  style={{ marginBottom: "7px" }}
+                  className={styles.previewTitle}
+                >
+                  {data.title}
+                </h2>
                 <h3 className={styles.desc}>{data.description}</h3>
               </>
             ) : (
@@ -69,7 +91,7 @@ const AlbumsCard = ({ type }) => {
                 </h3>
               </>
             )}
-            <h3>Обложка</h3>
+            <h3 className={styles.coverTitle}>Обложка</h3>
             <div className={styles.coversWrapper}>
               {data ? (
                 media.coversIds.map((id) => {
@@ -109,7 +131,9 @@ const AlbumsCard = ({ type }) => {
                   <h2>{data.new_price} рублей</h2>
                   {data.old_price ? (
                     <h2 className={styles.oldPrice}>{data.old_price} рублей</h2>
-                  ) : null}
+                  ) : (
+                    <></>
+                  )}
                 </>
               ) : (
                 <h2 style={{ width: "50%", marginBottom: "59px" }}>
@@ -121,7 +145,9 @@ const AlbumsCard = ({ type }) => {
               <>
                 {data.sale_text ? (
                   <p className={styles.saleText}>{data.sale_text}</p>
-                ) : null}
+                ) : (
+                  <></>
+                )}
               </>
             ) : (
               <></>
@@ -142,12 +168,13 @@ const AlbumsCard = ({ type }) => {
               width={700}
               height={715}
               preloadIndexes={media.coversIds.slice(1)}
+              swiperClassname={styles.swiperClass}
             />
           </div>
         </div>
         <div className={styles.productDescWrapper}>
           <div className={styles.modelDesc}>
-            <h2 style={{ marginBottom: "15px" }}>Описание модели</h2>
+            <h2 className={styles.descModelTitle}>Описание модели</h2>
             <ul>
               {data ? (
                 JSON.parse(data.model_description).map((item, index) => {
@@ -164,8 +191,8 @@ const AlbumsCard = ({ type }) => {
             </ul>
           </div>
           <div>
-            <h2 style={{ marginBottom: "15px" }}>В стоимость входит</h2>
-            <ul>
+            <h2 className={styles.descModelTitle}>В стоимость входит</h2>
+            <ul className={styles.additionally}>
               {data ? (
                 JSON.parse(data.price_include).map((item, index) => {
                   return <li key={index}>{item}</li>;
@@ -181,7 +208,7 @@ const AlbumsCard = ({ type }) => {
           </div>
         </div>
         <div className={styles.videoReviewWrapper}>
-          <h2 style={{ marginBottom: "35px" }}>Видеообзор</h2>
+          <h2 className={styles.videoTitle}>Видеообзор</h2>
           <VideoPlayer
             filePath={media.filesUrl ? media.filesUrl + 3 : undefined}
             fullSize={false}

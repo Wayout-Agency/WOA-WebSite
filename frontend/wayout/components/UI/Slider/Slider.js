@@ -13,6 +13,7 @@ const Slider = ({
   width = "100%",
   height = "100%",
   preloadIndexes,
+  swiperClassname,
 }) => {
   const swiperRef = useRef(null);
   return (
@@ -20,7 +21,7 @@ const Slider = ({
       {imgIndexes && filesUrl ? (
         <Swiper
           ref={swiperRef}
-          className={styles.slider}
+          className={`${styles.slider} ${swiperClassname}`}
           style={{ width: width, height: height }}
           grabCursor={true}
           resistanceRatio={0}
@@ -45,11 +46,10 @@ const Slider = ({
       )}
       <div className={styles.arrowsWrapper}>
         <ExpImage
-          className={styles.arrow}
+          className={`${styles.arrow} ${styles.arrowLeft}`}
           onClick={() => swiperRef.current.swiper.slidePrev()}
           width={66}
           height={28}
-          style={{ transform: "scale(-1)", marginRight: "30px" }}
           src={"/static/img/arrow.svg"}
           layout="raw"
         />

@@ -175,7 +175,6 @@ body {
     #case_1 > div,
     #case_1 {
       width: 249px !important;
-
     }
     #case_2 > div,
     #case_2 {
@@ -299,6 +298,9 @@ li {
 
 ul {
   margin: 0;
+  @media (max-width: 800px) {
+    padding-left: 25px;;
+  }
 }
 
 #circle1,
