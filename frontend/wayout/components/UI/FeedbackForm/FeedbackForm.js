@@ -1,5 +1,5 @@
 import styles from "./FeedbackForm.module.scss";
-import RoundInput from "../RoundInput";
+import Input from "../Input";
 import { onPhoneInput, onPhoneKeyDown, onPhonePaste } from "utils/phoneinput";
 import { useState } from "react";
 import ExpImage from "next/future/image";
@@ -64,8 +64,9 @@ const FeedbackForm = ({ show, setShow, order }) => {
     setSubmit(true);
     await sleep(3000);
     const element = document.querySelector("#__next");
-    enableBodyScroll(element);
     setShow(false);
+    enableBodyScroll(element);
+    await sleep(500);
     clearForm();
     setSubmit(false);
   };
@@ -85,6 +86,20 @@ const FeedbackForm = ({ show, setShow, order }) => {
       <div
         className={`${styles.feedbackForm} ${show ? styles.showForm : null}`}
       >
+        <ExpImage
+          src={"/static/img/close.svg"}
+          width={37}
+          height={37}
+          className={styles.mobileClose}
+          onClick={async () => {
+            setShow(!show);
+            const element = document.querySelector("#__next");
+            enableBodyScroll(element);
+            await sleep(500);
+            clearForm();
+            setSubmit(false);
+          }}
+        />
         <div
           className={`${styles.formWrapper} ${
             submited ? styles.submited : null
@@ -93,7 +108,7 @@ const FeedbackForm = ({ show, setShow, order }) => {
           <div className={styles.header}>Форма обратной связи.</div>
           <form className={styles.form}>
             <div className={styles.inputWrapper}>
-              <RoundInput
+              <Input
                 value={name}
                 placeholder="Ваше имя"
                 className={`${nameError ? styles.error : null} ${
@@ -113,7 +128,7 @@ const FeedbackForm = ({ show, setShow, order }) => {
               </div>
             </div>
             <div className={styles.inputWrapper}>
-              <RoundInput
+              <Input
                 type="tel"
                 placeholder="Телефон"
                 value={phone}
@@ -137,7 +152,7 @@ const FeedbackForm = ({ show, setShow, order }) => {
             </div>
             {order ? (
               <div className={styles.inputWrapper}>
-                <RoundInput
+                <Input
                   value={offer}
                   placeholder="Предложение"
                   className={`${offerError ? styles.error : null} ${

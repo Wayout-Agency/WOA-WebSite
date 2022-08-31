@@ -13,9 +13,14 @@
 .submited,
 .feedbackForm,
 .thanksWrapper {
+  @media (max-width: 1280px) {
+    width: 100vw !important;
+    // background-color: #fff !important;
+    // color: #000 !important;
+  }
+
   @media (max-width: 800px) {
     right: -200% !important;
-    width: 100vw !important;
   }
 }
 .showWrapper {
@@ -34,12 +39,23 @@
   width: 50vw;
   height: 100vh;
   background-color: #000;
-  z-index: 5;
+  z-index: 100;
   transition: all 0.6s ease-in-out;
   padding-left: 50px;
   padding-right: 100px;
+  @media (max-width: 1280px) {
+    padding: 15px 20px;
+    padding-bottom: 0;
+  }
 }
-
+.mobileClose {
+  display: none;
+  pointer-events: all;
+  @media (max-width: 1280px) {
+    display: block;
+    float: right;
+  }
+}
 .header {
   margin-top: 50px;
   font-weight: 400;
@@ -47,10 +63,24 @@
   line-height: 94px;
   color: #ffffff;
   width: 1px;
+  @media (max-width: 1280px) {
+    width: 100%;
+    font-size: 60px;
+    line-height: 103.99%;
+  }
+  @media (max-width: 800px) {
+    font-size: 30px;
+    line-height: 34px;
+    margin-top: 70px;
+  }
 }
 .form {
   margin-top: 100px;
   width: 30vw;
+  @media (max-width: 1280px) {
+    width: 100%;
+    margin-top: 50px;
+  }
 }
 .sendWrapper {
   margin-top: 50px;
@@ -68,18 +98,49 @@
   height: 39.5px;
   border-bottom: 2px solid;
   color: var(--gray);
+  @media (max-width: 1280px) {
+    color: #fff;
+  }
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+    height: 29px;
+  }
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 23px;
+    height: 24px;
+  }
 }
 .sendImg {
   transition: all 0.4s ease-in-out;
   position: relative;
   right: 25px;
   opacity: 0.7;
+  @media (max-width: 1280px) {
+    opacity: 1;
+    right: 0;
+  }
+  @media (max-width: 800px) {
+    width: 46px;
+    height: 20px;
+  }
 }
 .alert {
   font-size: 23px;
   line-height: 26px;
   letter-spacing: 0.015em;
   color: #fff;
+  @media (max-width: 1280px) {
+    margin-top: 50px;
+  }
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  @media (max-width: 480px) {
+    width: 290px;
+  }
 }
 .errorText {
   color: var(--error);
@@ -87,6 +148,10 @@
   margin-top: 7px;
   opacity: 0;
   transition: all 0.3s;
+  @media (max-width: 800px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }
 .feedbackInput {
   transition: all 0.3s;
@@ -99,6 +164,10 @@
   padding-bottom: 7px !important;
   color: #fff !important;
   outline: none !important;
+  @media (max-width: 1280px) {
+    padding: 0 !important;
+    padding-bottom: 7px !important;
+  }
 }
 .feedbackInput::placeholder {
   transition: all 0.3s;
@@ -123,6 +192,10 @@
   transition: all 0.4s ease-in-out;
   margin-top: 15px;
   color: var(--gray);
+  @media (max-width: 1280px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }
 
 .sendWrapper:hover .sendText {
@@ -137,14 +210,26 @@
   line-height: 40px;
   letter-spacing: 0.015em;
   color: #fff;
+  @media (max-width: 1280px) {
+    font-size: 24px;
+  }
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 }
 .formWrapper {
   position: fixed;
   transition: opacity 0.5s ease-in-out;
+  @media (max-width: 1280px) {
+    position: static;
+    width: 100%;
+  }
 }
 .submited {
   right: -100%;
   opacity: 0;
+  display: none;
 }
 
 .thanksWrapper {
@@ -156,6 +241,13 @@
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  @media (max-width: 1280px) {
+    display: block;
+    margin-top: 50%;
+  }
+  @media (max-width: 480px) {
+    margin-top: 80vw;
+  }
 }
 .showThanks {
   position: static;

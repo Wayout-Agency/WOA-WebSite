@@ -11,6 +11,11 @@
     margin-bottom: 15px;
   }
 }
+.title{
+  @media (max-width: 800px) {
+    width: 90%;
+  }
+}
 .QStitleWrapper {
   cursor: pointer;
   display: flex;

@@ -7,6 +7,9 @@
 
 .slider {
   border-radius: 25px;
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
 }
 
 .slide {
