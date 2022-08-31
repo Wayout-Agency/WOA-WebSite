@@ -11,10 +11,10 @@
   float: right;
   height: 120px;
   cursor: pointer;
-  opacity: 0.3;
+  color: var(--gray);
   border: 2px solid #000000;
 }
 
 .button::placeholder {
-  opacity: 0.4;
+  color: var(--gray);
 }

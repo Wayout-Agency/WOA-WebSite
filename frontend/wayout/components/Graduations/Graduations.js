@@ -4,12 +4,19 @@ import MainTitle from "../UI/MainTitle";
 import Circle from "./Circle";
 import circlesData from "./Circle/circlesData";
 import Form from "./Form";
-
+import { useState } from "react";
 const Graduations = () => {
+  const [transformWork, setTransformWork] = useState(false);
   return (
     <FadeIn>
-      <MainTitle text="Мы можем организовать ваш выпускной за 3 дня." />
-      <div className={styles.descWrapper} style={{ marginTop: "50px" }}>
+      <MainTitle
+        text={
+          <span>
+            Мы можем организовать<br></br>Ваш выпускной за 3 дня.
+          </span>
+        }
+      />
+      <div className={styles.descWrapper}>
         <h2>Подход</h2>
         <p className={styles.desc}>
           Мы уникальная команда исследователей и стратегов, работающая в
@@ -18,9 +25,13 @@ const Graduations = () => {
           маркетинговым коммуникациям.
         </p>
       </div>
-      <div className={styles.circlesWrapper}>
+      <div
+        className={styles.circlesWrapper}
+        onMouseEnter={() => setTransformWork(true)}
+        onMouseLeave={() => setTransformWork(false)}
+      >
         <div className={styles.circlesGroup}>
-          {circlesData.map(({ text, size, top, left }, index) => (
+          {circlesData.map(({ text, size, top, left, x, y}, index) => (
             <Circle
               id={index}
               text={text}
@@ -28,11 +39,14 @@ const Graduations = () => {
               top={top}
               left={left}
               key={index}
+              transformWork={transformWork}
+              x={x}
+              y={y}
             />
           ))}
         </div>
       </div>
-      <div className={styles.descWrapper} style={{ marginTop: "100px" }}>
+      <div className={styles.descWrapper}>
         <h2>Подход</h2>
         <p className={styles.desc}>
           Мы уникальная команда исследователей и стратегов, работающая в

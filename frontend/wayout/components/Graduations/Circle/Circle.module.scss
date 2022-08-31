@@ -9,6 +9,7 @@
   letter-spacing: 0.015em;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s ease-in-out;
   @media (max-width: 800px) {
     width: 48vw !important;
     height: 48vw !important;
@@ -19,3 +20,7 @@
   }
 }
 
+.disableTransform {
+  transform: none !important;
+  transition: all 0.5s ease-in-out;
+}

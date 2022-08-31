@@ -11,10 +11,14 @@ import Journal from "../Main/Journal";
 import { useRouter } from "next/router";
 import FadeIn from "../UI/Animations/";
 import Slider from "../UI/Slider";
+import { useAppContext } from "../AppWrapper";
+import { disableBodyScroll } from "body-scroll-lock";
+
 const CaseCard = ({ slug }) => {
   const router = useRouter();
   const caseApiUrl = slug ? `/posts/cases/${slug}/` : null;
-
+  const { setShow, setOrder } = useAppContext();
+  setOrder(false);
   const fetcher = async () => {
     const response = await wayoutAPI.get(caseApiUrl);
     return response.data.value;
@@ -86,6 +90,7 @@ const CaseCard = ({ slug }) => {
               ]}
               filesUrl={`${config.apiUrl}/files/cases/${data.id}/`}
               height={775}
+              swiperClassname={styles.swiper}
             />
           </div>
           <div className={styles.textWrapper}>
@@ -103,7 +108,14 @@ const CaseCard = ({ slug }) => {
             />
           </div>
           <div className={styles.btnWrapper}>
-            <RoundSendButton value={"Хочу такую же съемку"} />
+            <RoundSendButton
+              value={"Хочу такую же съемку"}
+              onClick={() => {
+                setShow(true);
+                const element = document.querySelector("#__next");
+                disableBodyScroll(element);
+              }}
+            />
             <div className={styles.dateShareWrapper}>
               <p className={styles.dateShareText}>
                 {data.created_at.slice(8) +

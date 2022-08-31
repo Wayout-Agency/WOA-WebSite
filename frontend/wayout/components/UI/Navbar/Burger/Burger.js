@@ -1,6 +1,5 @@
 import styles from "../Navbar.module.scss";
 import { default as ExpImage } from "next/future/image";
-import { useState } from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 const Burger = ({ click, setClick }) => {
   return (

@@ -256,7 +256,7 @@ input[type="file"] {
 }
 input[type="file"]:before {
   content: attr(placeholder);
-  opacity: 0.4;
+  color: var(--gray);
   padding-bottom: 10px;
 }
 input[type="file" i]::-webkit-file-upload-button {

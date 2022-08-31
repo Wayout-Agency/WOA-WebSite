@@ -1,5 +1,4 @@
 import styles from "./VideoPlayer.module.scss";
-import Image from "next/image";
 import { default as ExpImage } from "next/future/image";
 import { useState, useRef } from "react";
 import Skeleton from "react-loading-skeleton";

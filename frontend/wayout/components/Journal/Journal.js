@@ -16,9 +16,9 @@ const Journal = () => {
   const [data, setData] = useState([]);
   const [head, setHead] = useState({});
   const { setShow, setOrder } = useAppContext();
+  setOrder(false);
   const casesApiUrl = "/posts/cases/";
   const articlesApiUrl = "/posts/articles/";
-  setOrder(false);
   useEffect(() => {
     let percentages = [20, 20, 56, 20, 56, 20, 48, 48];
 

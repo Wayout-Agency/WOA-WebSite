@@ -20,7 +20,8 @@
     width: 100%;
   }
 }
-.imgWrapper > span {
+.imgWrapper > span,
+.imgSWrapper > span {
   border-radius: var(--radius);
   @media (max-width: 800px) {
     border-radius: var(--mobileRadius);
@@ -83,6 +84,9 @@
   transform: scale(1.05);
 }
 
+.imgSWrapper:hover .img {
+  transform: scale(1.05);
+}
 .img {
   object-fit: cover;
   transition: all 0.5s ease-in-out;
@@ -129,7 +133,7 @@
   }
 }
 .span {
-  opacity: 0.3;
+  color: var(--gray);
   position: relative;
   top: 7px;
 }

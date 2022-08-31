@@ -62,6 +62,7 @@
   cursor: pointer;
   pointer-events: all;
   border-radius: 50%;
+  user-select: none;
 }
 
 .coverWrapper:hover {
@@ -75,7 +76,7 @@
 
 .oldPrice {
   margin-left: 15px;
-  opacity: 20%;
+  color: var(--gray);
   text-decoration: line-through;
 }
 

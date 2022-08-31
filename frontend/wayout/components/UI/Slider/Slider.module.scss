@@ -23,6 +23,7 @@
 .arrow {
   cursor: pointer;
   pointer-events: all;
+  user-select: none;
   @media (max-width: 800px) {
     width: 46px;
     height: 19px;
