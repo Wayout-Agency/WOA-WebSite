@@ -19,7 +19,7 @@ const Footer = () => {
           <div>
             <p className={styles.privacyPolicy}>
               Информация и{" "}
-              <Link href="/lox">
+              <Link href="/policy">
                 <a className={styles.privacyPolicyLink}>
                   политика конфиденциальности.
                 </a>

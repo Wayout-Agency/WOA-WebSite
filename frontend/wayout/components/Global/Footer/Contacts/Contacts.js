@@ -6,12 +6,20 @@ const Contacts = () => {
       <h2 className={footerStyles.footerTitle}>Контакты</h2>
       <div className={styles.contactsData}>
         <div className={styles.contactsPhoneWrapper}>
-          <p className={`${footerStyles.footerText} ${styles.contactsPhone}`}>
+          <a
+            className={`${footerStyles.footerText} ${styles.contactsPhone}`}
+            href="tel:79858604455"
+          >
             +7 985 860 44 55
-          </p>
+          </a>
           <p className={styles.contactsPhoneTime}>10:00-18:00</p>
         </div>
-        <p className={footerStyles.footerText}>hello@wayout.moscow</p>
+        <a
+          className={footerStyles.footerText}
+          href="mailto:hello@wayout.moscow"
+        >
+          hello@wayout.moscow
+        </a>
       </div>
     </div>
   );

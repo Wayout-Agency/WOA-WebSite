@@ -13,7 +13,7 @@ import FadeIn from "../UI/Animations/";
 import Slider from "../UI/Slider";
 import { useAppContext } from "../AppWrapper";
 import { disableBodyScroll } from "body-scroll-lock";
-
+import Head from "next/head";
 const CaseCard = ({ slug }) => {
   const router = useRouter();
   const caseApiUrl = slug ? `/posts/cases/${slug}/` : null;
@@ -37,6 +37,9 @@ const CaseCard = ({ slug }) => {
 
   return data ? (
     <>
+      <Head>
+        <title>Кейс - {data.title}</title>
+      </Head>
       <MainTitle text={data.title} description={data.description} />
       <FadeIn>
         <>

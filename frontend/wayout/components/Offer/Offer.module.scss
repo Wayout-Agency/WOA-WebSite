@@ -17,8 +17,12 @@
   font-weight: 400;
   font-size: 23px;
   line-height: 130%;
+  margin-bottom: 25px;
 }
 .contentText {
   margin-top: 20px;
   margin-bottom: 250px;
+}
+.contentText > h2 {
+  margin-bottom: 25px;
 }
