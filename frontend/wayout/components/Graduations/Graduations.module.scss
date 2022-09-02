@@ -39,6 +39,10 @@
 }
 
 .circlesWrapper {
+  @media (min-width: 1280px) {
+    margin: 0 calc(0px - ((100vw - 1540px) / 2));
+    margin-top: 100px;
+  }
   margin-top: 100px;
   height: 60vw;
   display: flex;

@@ -41,17 +41,11 @@ body {
     main {
       margin: 0 calc((100vw - 1540px) / 2) !important;
     }
-    header > nav {
-      padding: 24px calc((100vw - 1540px) / 2);
-    }
-    footer {
-      padding: 65px calc((100vw - 1540px) / 2);
-    }
   }
 
   @media (min-width: 1280px) {
     input[type="submit"]:hover {
-      color: var(--navLinkActive);
+      color: var(--navLinkActive) !important;
     }
     #case_1 {
       top: 266px;
@@ -299,7 +293,7 @@ li {
 ul {
   margin: 0;
   @media (max-width: 800px) {
-    padding-left: 25px;;
+    padding-left: 25px;
   }
 }
 
