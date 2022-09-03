@@ -1,0 +1,28 @@
+.input {
+  padding: 32px 35px;
+  border: 2px solid var(--border);
+  width: 100%;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+  @media (max-width: 800px) {
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.015em;
+  }
+}
+
+.input::placeholder {
+  color: var(--text);
+  color: var(--gray);
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+  @media (max-width: 800px) {
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.015em;
+  }
+}

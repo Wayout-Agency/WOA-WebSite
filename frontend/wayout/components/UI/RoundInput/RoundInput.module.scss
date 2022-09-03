@@ -1,0 +1,19 @@
+.roundInput {
+  margin-bottom: 25px;
+  border-radius: var(--radius);
+  @media (max-width: 1024px) {
+    margin-bottom: 15px;
+    padding: 22px 32px !important;
+    padding-bottom: 20px !important;
+    height: 80px;
+  }
+  @media (max-width: 800px) {
+    padding: 14px 17px !important;
+    padding-bottom: 12px !important;
+    height: 50px;
+    border-radius: var(--mobileRadius);
+  }
+  @media (max-width: 480px) {
+      border: 1px solid !important;
+  }
+}

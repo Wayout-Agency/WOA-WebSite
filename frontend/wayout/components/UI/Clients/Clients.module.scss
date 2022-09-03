@@ -1,0 +1,99 @@
+.clientsWrapper {
+  margin-top: 100px;
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
+}
+.clientCardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  @media (max-width: 1024px) {
+    display: block;
+  }
+}
+.moreWrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  @media (max-width: 1280px) {
+    margin-bottom: 70px;
+  }
+  @media (max-width: 1024px) {
+    justify-content: flex-end;
+  }
+  @media (max-width: 800px) {
+    margin-top: 90px;
+    margin-bottom: 0;
+  }
+  @media (max-width: 480px) {
+    justify-content: space-between;
+  }
+}
+.moreText {
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+  border-bottom: 3px solid;
+  height: 40px;
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+    border-bottom: 3px solid;
+    height: 30px;
+  }
+  @media (max-width: 480px) {
+    border-bottom: 2px solid;
+    height: 28px;
+  }
+}
+.moreImg {
+  margin-left: 249px;
+  position: relative;
+  top: 5px;
+  right: 75px;
+  transition: all 0.5s ease-in-out;
+  @media (max-width: 1625px) {
+    right: 0;
+    margin-left: 143px;
+  }
+  @media (max-width: 1024px) {
+    margin-left: 28px;
+  }
+  @media (max-width: 800px) {
+    top: 3px;
+    width: 46px;
+  }
+  @media (max-width: 480px) {
+    margin: 0;
+  }
+}
+
+.moreWrapper:hover .moreImg {
+  right: 50px;
+  @media (max-width: 800px) {
+    right: 0 !important;
+  }
+}
+.clientsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  @media (max-width: 800px) {
+    margin-bottom: 15px;
+  }
+}
+.img {
+  display: none;
+  transition: all 0.5s ease-in-out;
+
+  @media (max-width: 800px) {
+    display: block;
+    width: 49px;
+  }
+}

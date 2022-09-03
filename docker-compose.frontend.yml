@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  wayout-frontend:
+    container_name: wayout-frontend
+    image: "wayout:frontend"
+    build:
+      context: ./frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"

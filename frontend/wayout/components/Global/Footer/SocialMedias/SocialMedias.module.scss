@@ -1,0 +1,13 @@
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+}
+.socialWrapper {
+  margin-right: 140px;
+  @media (max-width: 1024px) {
+    margin-right: 50px;
+  }
+  @media (max-width: 800px) {
+    margin-right: 100px;
+  }
+}

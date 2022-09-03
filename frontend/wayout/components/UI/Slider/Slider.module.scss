@@ -1,0 +1,42 @@
+.arrowsWrapper {
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 25px;
+  margin-right: 20px;
+}
+
+.slider {
+  border-radius: 25px;
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
+}
+
+.slide {
+  object-fit: cover;
+}
+
+.arrowsWrapper {
+  display: flex;
+}
+
+.arrow {
+  cursor: pointer;
+  pointer-events: all;
+  user-select: none;
+  @media (max-width: 800px) {
+    width: 46px;
+    height: 19px;
+    pointer-events: all !important;
+  }
+}
+.arrowLeft {
+  transform: scale(-1);
+  margin-right: 30px;
+  @media (max-width: 800px) {
+    margin-right: 20px;
+  }
+}
+.preloadedImages {
+  display: none;
+}

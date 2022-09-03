@@ -1,3 +1,5 @@
+import os
+
 from api.api_v1.api import api_router
 from core.config import get_settings
 from core.database import init_db
@@ -16,6 +18,18 @@ app = FastAPI()
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 settings = get_settings()
+
+origins = [
+    "http://127.0.0.1:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 async def catch_exceptions_middleware(request: Request, call_next):
