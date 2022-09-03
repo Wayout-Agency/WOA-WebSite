@@ -1,0 +1,44 @@
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+}
+.input {
+  font-size: 25px;
+  margin-top: 25px;
+  padding-top: 32px;
+  padding-bottom: 28px;
+  padding-left: 23px;
+  height: 50px;
+  border: 2px solid #000;
+}
+.authTitle {
+  font-weight: 400;
+  font-size: 60px;
+}
+
+.input::-webkit-input-placeholder {
+  color: var(--gray);
+  font-weight: 400;
+  font-size: 25px;
+  letter-spacing: 0.015em;
+}
+
+.inputSubmit {
+  margin-top: 25px;
+  background-color: #000;
+  height: 60px;
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 0.015em;
+  color: #fff;
+  cursor: pointer;
+}

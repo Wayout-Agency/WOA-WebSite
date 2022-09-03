@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:14.4
+    environment:
+      POSTGRES_DB: "wayout"
+      POSTGRES_USER: "wayout"
+      POSTGRES_PASSWORD: "wayout"
+    container_name: postgres_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - webnet
+
+  wayout-backend:
+    container_name: wayout-backend
+    image: "wayout:backend"
+    build: ./backend
+    ports:
+      - 8000:8000
+    volumes:
+      - media:/var/www/media/
+    depends_on:
+      - db
+    networks:
+      - webnet
+    env_file: ./config/.env
+
+  test_db:
+    image: postgres:14.4
+    environment:
+      POSTGRES_DB: "wayout_test"
+      POSTGRES_USER: "wayout_test"
+      POSTGRES_PASSWORD: "wayout_test"
+    container_name: postgres_test_db
+    ports:
+      - 7878:5432
+  
+networks:
+  webnet:
+
+volumes:
+  pgdata:
+  media:

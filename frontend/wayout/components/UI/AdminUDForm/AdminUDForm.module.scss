@@ -1,0 +1,43 @@
+.formWrapper {
+  height: 100%;
+}
+
+.requiredWrapper {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.subTitle,
+.optionalTitle {
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: 0.015em;
+  margin-bottom: 50px;
+}
+.optionalTitle,
+.optionalBtn {
+  margin: 0;
+}
+.optionalTitle {
+  font-size: 30px;
+}
+.optionalBtn {
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+}
+.optionalTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonsWrapper {
+  margin-bottom: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.addInput {
+  margin-bottom: 25px;
+}

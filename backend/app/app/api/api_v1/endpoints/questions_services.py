@@ -18,12 +18,8 @@ async def get_all():
     return await question_service.get_all()
 
 
-@router.post(
-    "/", response_model=QuestionServiceBase, status_code=status.HTTP_201_CREATED
-)
-async def create_question_service(
-    schema: CreateQuestionService, _=Depends(check_root_user)
-):
+@router.post("/", response_model=QuestionServiceBase, status_code=status.HTTP_201_CREATED)
+async def create_question_service(schema: CreateQuestionService, _=Depends(check_root_user)):
     return await question_service.create(schema)
 
 
@@ -33,14 +29,10 @@ async def get_question_service(id: int):
 
 
 @router.put("/{id}/", response_model=QuestionServiceBase)
-async def update_question_service(
-    id: int, schema: UpdateQuestionService, _=Depends(check_root_user)
-):
+async def update_question_service(id: int, schema: UpdateQuestionService, _=Depends(check_root_user)):
     return await question_service.update(id, schema)
 
 
-@router.delete(
-    "/{id}/", response_model=DeleteQuestionService, status_code=status.HTTP_200_OK
-)
+@router.delete("/{id}/", response_model=DeleteQuestionService, status_code=status.HTTP_200_OK)
 async def delete_question_service(id: int, _=Depends(check_root_user)):
     return await question_service.delete(id)

@@ -9,7 +9,7 @@ from schemas.questions_services import (
     QuestionServiceBase,
     UpdateQuestionService,
 )
-from tortoise.exceptions import DoesNotExist
+from tortoise.exceptions import DoesNotExist, ValidationError
 
 
 class CRUDQuestionService(CRUDBase):
@@ -41,19 +41,23 @@ class CRUDQuestionService(CRUDBase):
             raise Errors.not_found
 
     async def create(self, schema: CreateQuestionService) -> QuestionServiceBase:
-        question_service = await self.model.create(**schema.dict())
-        return QuestionServiceBase(
-            title=question_service.title,
-            text=question_service.text,
-            type=question_service.type.value,
-            id=question_service.id,
-        )
+        try:
+            question_service = await self.model.create(**schema.dict())
+            return QuestionServiceBase(
+                title=question_service.title,
+                text=question_service.text,
+                type=question_service.type.value,
+                id=question_service.id,
+            )
+        except ValidationError:
+            raise Errors.valid_error
 
-    async def update(
-        self, id: int, schema: UpdateQuestionService
-    ) -> QuestionServiceBase:
-        await self.model.filter(id=id).update(**schema.dict())
-        return await self.get_by_id(id)
+    async def update(self, id: int, schema: UpdateQuestionService) -> QuestionServiceBase:
+        try:
+            await self.model.filter(id=id).update(**schema.dict())
+            return await self.get_by_id(id)
+        except ValidationError:
+            raise Errors.valid_error
 
     async def delete(self, id: int) -> DeleteQuestionService:
         await self.model.filter(id=id).delete()

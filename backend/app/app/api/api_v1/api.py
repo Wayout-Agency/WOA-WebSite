@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from .endpoints import albums, lead, posts, questions_services, tokens
+from .endpoints import albums, emails, files, lead, posts, questions_services, tokens
 
 api_router = APIRouter()
 api_router.include_router(tokens.router, prefix="/token", tags=["token"])
@@ -10,3 +10,5 @@ api_router.include_router(posts.router, prefix="/posts", tags=["post"])
 api_router.include_router(
     questions_services.router, prefix="/questions-services", tags=["questions_services"]
 )
+api_router.include_router(files.router, prefix="/files", tags=["files"])
+api_router.include_router(emails.router, prefix="/emails", tags=["emails"])

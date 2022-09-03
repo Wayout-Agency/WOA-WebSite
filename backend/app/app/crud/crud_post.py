@@ -4,8 +4,8 @@ from core.errors import Errors
 from crud.base import CRUDBase
 from models.articles import Article, GetArticle
 from models.cases import Case, GetCase
-from schemas.post import CreatePost, DeletePost, PostBase, PostType, UpdatePost
-from tortoise.exceptions import DoesNotExist
+from schemas.post import CreatePost, DeletePost, PostBaseData, PostType, UpdatePost
+from tortoise.exceptions import DoesNotExist, IntegrityError, ValidationError
 
 
 class PostTool(NamedTuple):
@@ -23,24 +23,35 @@ class CRUDPost(CRUDBase):
             case _:
                 raise Errors.not_found
 
-    async def create(self, post_type: PostType, schema: CreatePost) -> PostBase:
+    async def create(self, post_type: PostType, schema: CreatePost) -> PostBaseData:
         model: PostTool = self._get_model(post_type)
-        model_obj = await model.post_model.create(**schema.dict()["value"])
-        return PostBase(value=await model.get_post_model.from_tortoise_orm(model_obj))
+        try:
+            model_obj = await model.post_model.create(**schema.dict()["value"])
+            return PostBaseData(
+                value=await model.get_post_model.from_tortoise_orm(model_obj)
+            )
+        except (ValidationError, IntegrityError):
+            raise Errors.valid_error
 
-    async def get_all(self, post_type: PostType) -> List[PostBase]:
+    async def get_all(self, post_type: PostType, exclude: str | None) -> List[PostBaseData]:
         model: PostTool = self._get_model(post_type)
-        model_objs = await model.post_model.all()
+        if exclude:
+            model_objs = await model.post_model.all().order_by('-created_at').exclude(slug=exclude)
+        else:
+            model_objs = await model.post_model.all().order_by('-created_at')
         return [
-            PostBase(value=await model.get_post_model.from_tortoise_orm(model_obj))
+            PostBaseData(value=await model.get_post_model.from_tortoise_orm(model_obj))
             for model_obj in model_objs
         ]
 
-    async def get_by_id(self, post_type: PostType, id: int) -> PostBase:
+    async def get(self, post_type: PostType, get_type: str) -> PostBaseData:
         model: PostTool = self._get_model(post_type)
-        try:
-            model_obj = await model.post_model.get(id=id)
-            return PostBase(
+        try:   
+            if get_type.isdigit():
+                model_obj = await model.post_model.get(id=int(get_type))
+            else:
+                model_obj = await model.post_model.get(slug=get_type)
+            return PostBaseData(
                 value=await model.get_post_model.from_tortoise_orm(model_obj)
             )
         except DoesNotExist:
@@ -48,10 +59,10 @@ class CRUDPost(CRUDBase):
 
     async def update(
         self, post_type: PostType, id: int, schema: UpdatePost
-    ) -> PostBase:
+    ) -> PostBaseData:
         model: PostTool = self._get_model(post_type)
         await model.post_model.filter(id=id).update(**schema.dict()["value"])
-        return await self.get_by_id(post_type, id)
+        return await self.get(post_type, str(id))
 
     async def delete(self, post_type: PostType, id: int) -> DeletePost:
         model: PostTool = self._get_model(post_type)

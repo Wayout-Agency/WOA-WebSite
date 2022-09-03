@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from this import d
 
 
 class Album(BaseModel):
@@ -10,10 +11,15 @@ class Album(BaseModel):
     slug: str
     price_include: str
     model_description: str
+    separation: int
 
 
-class AlbumBase(Album):
+class AlbumBaseData(Album):
     id: int
+
+
+class AlbumBaseFull(AlbumBaseData):
+    files_quantity: int
 
 
 class CreateAlbum(Album):

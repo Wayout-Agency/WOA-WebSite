@@ -43,3 +43,8 @@ class Errors(NamedTuple):
         status_code=status.HTTP_400_BAD_REQUEST,
         detail="Files with this id does not exist",
     )
+
+    valid_error = HTTPException(
+        status_code=status.HTTP_400_BAD_REQUEST,
+        detail="Validation error",
+    )

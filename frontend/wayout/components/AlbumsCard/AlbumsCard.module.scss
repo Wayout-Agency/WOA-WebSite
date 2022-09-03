@@ -1,0 +1,168 @@
+.mainWrapper {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  @media (max-width: 800px) {
+    margin-bottom: 50px;
+  }
+}
+
+.mainWrapper,
+.preview,
+.previewLeft,
+.pricesWrapper,
+.coversWrapper,
+.productDescWrapper {
+  display: flex;
+}
+
+.preview {
+  justify-content: space-between;
+  @media (max-width: 1280px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.mainWrapper,
+.previewLeft {
+  flex-direction: column;
+}
+
+.previewLeft {
+  width: 50%;
+  @media (max-width: 1280px) {
+    width: 100%;
+  }
+}
+
+.title {
+  margin-bottom: 7px;
+}
+
+.desc {
+  width: 431px;
+  margin-bottom: 252px;
+  @media (max-width: 1280px) {
+    display: none;
+  }
+}
+
+.coversWrapper {
+  margin-top: 8px;
+}
+
+.coverWrapper {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  margin-right: 15px;
+  border-radius: 50%;
+}
+
+.cover {
+  cursor: pointer;
+  pointer-events: all;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.coverWrapper:hover {
+  outline: var(--navLinkActive) solid 2px;
+  outline-offset: 1.5px;
+}
+
+.pricesWrapper {
+  margin-top: 35px;
+}
+
+.oldPrice {
+  margin-left: 15px;
+  color: var(--gray);
+  text-decoration: line-through;
+}
+
+.saleText {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.015em;
+  margin-top: 8px;
+  margin-bottom: 35px;
+  font-weight: 400;
+  @media (max-width: 1024px) {
+    margin-bottom: 25px;
+  }
+}
+
+.productDescWrapper {
+  margin-top: 50px;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+}
+
+.modelDesc {
+  width: 50%;
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+.descModelTitle {
+  margin-bottom: 15px;
+  @media (max-width: 480px) {
+    margin-bottom: 7px;
+  }
+}
+.videoReviewWrapper {
+  margin-top: 100px;
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
+}
+.videoTitle{
+  margin-bottom: 35px;
+  @media (max-width: 800px) {
+    margin-bottom: 15px;
+  }
+}
+.swiperClass {
+  @media (max-width: 1625px) {
+    width: 514px !important;
+  }
+  @media (max-width: 1280px) {
+    width: 100% !important;
+  }
+  @media (max-width: 1024px) {
+    height: 553px !important;
+  }
+  @media (max-width: 800px) {
+    height: 508px !important;
+  }
+  @media (max-width: 480px) {
+    height: 400px !important;
+  }
+}
+.mobileTitle,
+.descMobile {
+  display: none;
+  @media (max-width: 1280px) {
+    display: block;
+  }
+}
+.previewTitle {
+  @media (max-width: 1280px) {
+    display: none;
+  }
+}
+.descMobile {
+  margin-bottom: 25px;
+}
+.coverTitle {
+  @media (max-width: 800px) {
+    font-size: 20px;
+  }
+}
+.additionally{
+  margin-bottom: 7px;
+}

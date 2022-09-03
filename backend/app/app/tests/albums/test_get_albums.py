@@ -15,8 +15,16 @@ async def test_get_all(client: AsyncClient, get_album_data: CreateAlbum):
 
 
 @pytest.mark.anyio
-async def test_get_one(client: AsyncClient, get_album_data: CreateAlbum):
+async def test_get_one_by_id(client: AsyncClient, get_album_data: CreateAlbum):
     album_obj = await album.create(get_album_data)
     response = await client.get(f"/api/v1/albums/{album_obj.id}/")
     assert response.status_code == int(HTTPStatus.OK)
-    assert dict(album_obj) == dict(response.json())
+    assert {**dict(album_obj), "files_quantity": 0} == dict(response.json())
+
+
+@pytest.mark.anyio
+async def test_get_one_by_slug(client: AsyncClient, get_album_data: CreateAlbum):
+    album_obj = await album.create(get_album_data)
+    response = await client.get(f"/api/v1/albums/{album_obj.slug}/")
+    assert response.status_code == int(HTTPStatus.OK)
+    assert {**dict(album_obj), "files_quantity": 0} == dict(response.json())

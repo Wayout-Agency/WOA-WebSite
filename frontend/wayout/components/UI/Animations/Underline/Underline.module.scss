@@ -1,0 +1,25 @@
+.underline {
+  color: #fff;
+  width: fit-content;
+  overflow: hidden;
+  transition: background-size 0.4s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.hiddenUnderline {
+  position: absolute;
+  transform: translate(0px, 100%);
+}
+.text {
+  transform: translate(0px, 0%);
+}
+.underline:hover .text {
+  transition: transform 0.4s;
+  transform: translate(0px, -100%);
+}
+.underline:hover .hiddenUnderline {
+  transition: transform 0.4s;
+  transform: translate(0px, 0%);
+}

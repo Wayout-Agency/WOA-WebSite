@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/UI/*": ["components/UI/*"],
+      "@/AdminPanel/*": ["components/AdminPanel/*"],
+      "@/Article/*": ["components/Article/*"],
+      "@/Case/*": ["components/Case/*"],
+      "@/Global/*": ["components/Global/*"],
+      "@/Main/*": ["components/Main/*"]
+    }
+  }
+}

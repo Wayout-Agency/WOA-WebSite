@@ -10,9 +10,10 @@ class Album(Model):
     new_price = fields.IntField()
     old_price = fields.IntField()
     sale_text = fields.CharField(max_length=300)
-    slug = fields.CharField(max_length=200)
+    slug = fields.CharField(max_length=200, unique=True)
     price_include = fields.CharField(max_length=500)
     model_description = fields.CharField(max_length=500)
+    separation = fields.SmallIntField()
 
     def __str__(self):
         return self.title

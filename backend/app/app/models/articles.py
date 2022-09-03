@@ -9,7 +9,7 @@ class Article(Model):
     author = fields.CharField(max_length=200)
     created_at = fields.DateField()
     time_to_read = fields.SmallIntField()
-    slug = fields.CharField(max_length=200)
+    slug = fields.CharField(max_length=200, unique=True)
     introduction = fields.TextField()
     blocks = fields.TextField()
 

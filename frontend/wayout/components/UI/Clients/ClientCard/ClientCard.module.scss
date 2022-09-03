@@ -1,0 +1,47 @@
+.cardWrapper {
+  cursor: pointer;
+  position: relative;
+}
+
+.imgWrapper {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
+}
+
+.img {
+  object-fit: cover;
+  transition: all 0.5s ease;
+  border-radius: var(--radius);
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
+}
+
+.cardWrapper:hover .img {
+  transform: scale(1.05);
+}
+
+.hover {
+  transition: all 0.5s ease-in-out;
+}
+
+.cardWrapper:hover .hover {
+  color: var(--purple);
+}
+
+.description {
+  color: var(--gray);
+}
+
+.title {
+  margin-top: 15px;
+  @media (max-width: 800px) {
+    margin-top: 7px;
+  }
+}
