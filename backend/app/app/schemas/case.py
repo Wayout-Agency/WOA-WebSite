@@ -13,8 +13,12 @@ class Case(BaseModel):
     process: str
 
 
-class CaseBase(Case):
+class CaseBaseData(Case):
     id: int
+
+
+class CaseBaseFull(CaseBaseData):
+    files_quantity: int
 
 
 class CreateCase(Case):

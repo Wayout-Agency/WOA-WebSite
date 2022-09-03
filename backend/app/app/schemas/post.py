@@ -15,8 +15,12 @@ class Post(BaseModel):
     value: Article | Case
 
 
-class PostBase(BaseModel):
-    value: ArticleBase | CaseBase
+class PostBaseData(BaseModel):
+    value: ArticleBaseData | CaseBaseData
+
+
+class PostBaseFull(BaseModel):
+    value: ArticleBaseFull | CaseBaseFull
 
 
 class UpdatePost(BaseModel):

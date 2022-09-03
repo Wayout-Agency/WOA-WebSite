@@ -1,0 +1,27 @@
+.formWrapper {
+  margin-right: 29px;
+  margin-left: 50px;
+  @media (max-width: 1625px) {
+    margin: 0;
+  }
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+}
+
+.error {
+  border-color: var(--error) !important;
+}
+
+.error::placeholder {
+  color: var(--error) !important;
+}
+
+.policy {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.015em;
+  color: var(--gray);
+  display: inline-block;
+}

@@ -5,7 +5,9 @@ __pycache__/
 
 # C extensions
 *.so
-
+data
+data/
+letsencrypt/
 # Distribution / packaging
 .Python
 build/
@@ -103,6 +105,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.dev
 .venv
 env/
 venv/

@@ -1,0 +1,130 @@
+.recWrapper {
+  margin-top: 100px;
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
+}
+.top50,
+.block {
+  margin-top: 50px;
+  @media (max-width: 800px) {
+    margin-top: 25px ;
+  }
+}
+.block {
+  display: flow-root;
+}
+.imgWrapper {
+  width: 100%;
+  height: 587px;
+  position: relative;
+  @media (max-width: 1280px) {
+    height: 556px;
+  }
+  @media (max-width: 1024px) {
+    height: 453px;
+  }
+  @media (max-width: 800px) {
+    height: 270px;
+  }
+  @media (max-width: 480px) {
+    height: 200px;
+  }
+}
+.header {
+  float: right;
+}
+.content {
+  display: inline-block;
+  width: 100%;
+}
+.header,
+.textWrapper {
+  width: 754px;
+  float: right;
+  @media (max-width: 1280px) {
+    float: left;
+    margin-left: 72px;
+  }
+  @media (max-width: 1024px) {
+    float: left;
+    margin-left: 0;
+  }
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-top: 25px ;
+  }
+}
+
+.subText,
+.caption {
+  margin-top: 15px;
+}
+.caption {
+  color: var(--gray);
+}
+.articleContainer {
+  width: 1045px;
+  display: inline-block;
+  @media (max-width: 1625px) {
+    width: 1200px;
+  }
+  @media (max-width: 1280px) {
+    width: 100%;
+  }
+}
+.articleInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 594px;
+  margin-top: 25px;
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-top: 20px ;
+  }
+}
+.text {
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 130%;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.img {
+  border-radius: var(--radius);
+}
+
+.shareWrapper {
+  margin-top: 50px;
+  @media (max-width: 800px) {
+    margin-top: 25px;
+  }
+  
+}
+.dateShareText {
+  float: right;
+  font-weight: 400;
+  font-size: 35px;
+  letter-spacing: 0.015em;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+  @media (max-width: 1280px) {
+    float: left;
+    margin-left: 72px;
+  }
+
+  @media (max-width: 1024px) {
+    float: left;
+    margin: 0;
+  }
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 1.5px;
+  }
+}

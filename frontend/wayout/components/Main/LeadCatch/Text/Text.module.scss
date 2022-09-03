@@ -1,0 +1,114 @@
+.textWrapper {
+  display: flex;
+  height: 100%;
+  padding-bottom: 70px;
+  position: relative;
+  margin-left: -39px;
+  @media (max-width: 1625px) {
+    margin: 0;
+  }
+  @media (max-width: 1280px) {
+    padding-bottom: 25px;
+  }
+  @media (max-width: 1024px) {
+    padding-bottom: 20px;
+  }
+  @media (max-width: 800px) {
+    padding-bottom: 15px;
+    width: 100%;
+  }
+}
+.leadCatchText {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 90px;
+  line-height: 95px;
+  width: 700px;
+  margin-top: 60px;
+  @media (max-width: 1625px) {
+    width: 660px;
+  }
+  @media (max-width: 1280px) {
+    width: 80%;
+    font-size: 60px;
+    line-height: 69px;
+    margin-top: 100px;
+  }
+  @media (max-width: 1024px) {
+    width: 90%;
+  }
+  @media (max-width: 800px) {
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 65px;
+    width: 90%;
+  }
+  @media (max-width: 480px) {
+    line-height: 26px;
+    width:  100%;
+  }
+}
+.percent,
+.percentFloat {
+  z-index: -1;
+}
+.percentFloat {
+  align-self: flex-end;
+  position: absolute;
+  right: 5px;
+  bottom: -20px;
+  
+  @media (max-width: 1625px) {
+    right: 60px;
+    bottom: -8px;
+  }
+  @media (max-width: 1280px) {
+    width: 107px;
+    right: 0;
+    bottom: -2px;
+  }
+  @media (max-width: 1024px) {
+    right: 0;
+    bottom: 60px;
+  }
+  @media (max-width: 800px) {
+    z-index: 2;
+    width: 49px;
+    height: 63px;
+    right: 20px;
+    top: 50px;
+    transform: rotate(10deg);
+  }
+  @media (max-width: 480px) {
+    right: 10px;
+    top: 100px;
+    transform: rotate(15deg);
+  }
+}
+.percent {
+  @media (max-width: 1625px) {
+    position: absolute;
+    width: 69px;
+    top: -16px;
+    left: -30px;
+  }
+  @media (max-width: 1280px) {
+    width: 63px;
+    top: 160px;
+    left: 580px;
+  }
+  @media (max-width: 1024px) {
+    top: 220px;
+    left: 230px;
+  }
+  @media (max-width: 800px) {
+    z-index: 2;
+    width: 36px;
+    height: 46px;
+    top: 105px;
+    left: 260px;
+  }
+  @media (max-width: 480px) {
+    top: 30px;
+  }
+}

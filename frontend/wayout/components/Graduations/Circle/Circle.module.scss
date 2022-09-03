@@ -1,0 +1,26 @@
+.circle {
+  display: flex;
+  position: absolute;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 26px;
+  letter-spacing: 0.015em;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  @media (max-width: 800px) {
+    width: 48vw !important;
+    height: 48vw !important;
+    margin-bottom: -20vw;
+    margin-top: -2vw;
+    font-size: 16px;
+    position: static;
+  }
+}
+
+.disableTransform {
+  transform: none !important;
+  transition: all 0.5s ease-in-out;
+}

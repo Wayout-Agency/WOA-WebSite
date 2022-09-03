@@ -13,8 +13,12 @@ class Article(BaseModel):
     blocks: str
 
 
-class ArticleBase(Article):
+class ArticleBaseData(Article):
     id: int
+
+
+class ArticleBaseFull(ArticleBaseData):
+    files_quantity: int
 
 
 class CreateArticle(Article):

@@ -1,0 +1,14 @@
+.leadCatchWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 39px;
+  
+  @media (max-width: 1625px) {
+    margin: 0;
+  }
+
+  @media (max-width: 1280px) {
+    flex-direction: column;
+  }
+}
