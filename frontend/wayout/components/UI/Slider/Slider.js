@@ -36,6 +36,7 @@ const Slider = ({
                   src={`${filesUrl}${id}`}
                   className={styles.slide}
                   layout="fill"
+                  alt={`slider-img-${id}`}
                 />
               </SwiperSlide>
             );
@@ -52,6 +53,7 @@ const Slider = ({
           height={28}
           src={"/static/img/arrow.svg"}
           layout="raw"
+          alt="left-arrow"
         />
         <ExpImage
           className={styles.arrow}
@@ -60,6 +62,7 @@ const Slider = ({
           height={28}
           src={"/static/img/arrow.svg"}
           layout="raw"
+          alt="right-arrow"
         />
       </div>
       {/* Crap solution for preloading unselected slides. Couldn't find anything that works for Next.JS */}
@@ -73,6 +76,7 @@ const Slider = ({
               height={height}
               layout="raw"
               key={id}
+              alt={`preload-img-${id}`}
             />
           );
         })

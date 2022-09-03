@@ -23,6 +23,7 @@ const ClientCard = ({
             width={width}
             className={styles.img}
             layout="raw"
+            alt={`client-card-${caseId}`}
           />
         </div>
 

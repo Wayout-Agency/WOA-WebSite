@@ -1,4 +1,4 @@
-import Graduations from "@/components/Graduations/graduations";
+import Graduations from "@/components/Graduations/Graduations";
 import Head from "next/head";
 const GraduationsPage = () => {
   return (

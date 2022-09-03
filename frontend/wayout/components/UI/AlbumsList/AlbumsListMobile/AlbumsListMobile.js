@@ -16,6 +16,7 @@ const AlbumsList = ({ data }) => {
               previewUrl={`${config.apiUrl}/files/albums/${album.id}/0/`}
               slug={album.slug}
               className={styles.card}
+              key={album.id}
             />
         );
       })}

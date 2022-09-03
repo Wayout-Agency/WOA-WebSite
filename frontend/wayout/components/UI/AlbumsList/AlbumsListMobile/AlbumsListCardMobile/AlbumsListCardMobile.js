@@ -1,8 +1,15 @@
 import styles from "../../AlbumsListCard/AlbumsListCard.module.scss";
-import mobileStyles from './AlbumsListCardMobile.module.scss'
+import mobileStyles from "./AlbumsListCardMobile.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-const AlbumsListCardMobile = ({ title, newPrice, oldPrice, previewUrl, slug, className}) => {
+const AlbumsListCardMobile = ({
+  title,
+  newPrice,
+  oldPrice,
+  previewUrl,
+  slug,
+  className,
+}) => {
   return (
     <Link href={`/albums/${slug}`}>
       <div className={mobileStyles.albumWrapper}>
@@ -12,6 +19,7 @@ const AlbumsListCardMobile = ({ title, newPrice, oldPrice, previewUrl, slug, cla
             src={previewUrl}
             className={styles.albumImg}
             draggable={false}
+            alt={`album-${slug}`}
           />
         </div>
         <div className={mobileStyles.infoWrapper}>

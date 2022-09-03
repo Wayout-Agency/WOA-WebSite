@@ -34,6 +34,7 @@ const Journal = ({
             height={28}
             src={"/static/img/arrow.svg"}
             layout="raw"
+            alt="arrow"
           />
         </div>
       </Link>
@@ -46,6 +47,7 @@ const Journal = ({
                   layout="fill"
                   src={`${config.apiUrl}/files/${link}/${data[0].value.id}/0/`}
                   className={styles.img}
+                  alt="big-journal-img"
                 />
               </div>
               <h3 className={styles.postTitile}>
@@ -73,6 +75,7 @@ const Journal = ({
                         layout="fill"
                         src={`${config.apiUrl}/files/${link}/${value.id}/0/`}
                         className={styles.img}
+                        alt={`small-journal-img-${value.id}`}
                       />
                     </div>
                     <h3 className={styles.smallImgTitle}>

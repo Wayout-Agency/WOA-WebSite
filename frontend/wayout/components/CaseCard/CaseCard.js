@@ -51,6 +51,7 @@ const CaseCard = ({ slug }) => {
               width={1600}
               height={775}
               priority={true}
+              alt={`case-preview`}
             />
           </div>
           <div className={styles.textWrapper}>
@@ -65,6 +66,7 @@ const CaseCard = ({ slug }) => {
               width={1600}
               height={775}
               priority={true}
+              alt='case-img-1'
             />
           </div>
           <div className={`${styles.imgWrapper} ${styles.verticalWrapper}`}>
@@ -75,6 +77,7 @@ const CaseCard = ({ slug }) => {
               width={720}
               height={1015}
               priority={true}
+              alt='case-img-2'
             />
             <Image
               src={`${config.apiUrl}/files/cases/${data.id}/3/`}
@@ -83,6 +86,7 @@ const CaseCard = ({ slug }) => {
               width={720}
               height={1015}
               priority={true}
+              alt='case-img-3'
             />
           </div>
           <div className={styles.sliderWrapper}>
@@ -108,6 +112,7 @@ const CaseCard = ({ slug }) => {
               width={1600}
               height={775}
               priority={true}
+              alt='case-img-5'
             />
           </div>
           <div className={styles.btnWrapper}>

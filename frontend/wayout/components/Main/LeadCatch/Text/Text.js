@@ -23,6 +23,7 @@ const Text = () => {
         height={120}
         layout="raw"
         className={styles.percent}
+        alt="percent"
       />
 
       <p className={styles.leadCatchText}>{data.value}</p>
@@ -32,6 +33,7 @@ const Text = () => {
         height={230}
         layout="raw"
         className={styles.percentFloat}
+        alt="percent-float"
       />
     </div>
   ) : (

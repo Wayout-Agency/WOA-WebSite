@@ -103,7 +103,7 @@ const AlbumsCard = ({ type }) => {
               <h3 className={styles.coverTitle}>Обложка</h3>
               <div className={styles.coversWrapper}>
                 {data ? (
-                  media.coversIds.map((id) => {
+                  media.coversIds.map((id, index) => {
                     return (
                       <div className={styles.coverWrapper} key={id}>
                         <Image
@@ -117,6 +117,7 @@ const AlbumsCard = ({ type }) => {
                           className={styles.cover}
                           draggable={false}
                           layout="fill"
+                          alt={`cover-${index + 1}`}
                         />
                       </div>
                     );

@@ -45,13 +45,23 @@ const OptionalData = ({
                   }}
                   className={styles.optionalBtn}
                 >
-                  <Image src={"/static/img/plus.svg"} height={55} width={55} />
+                  <Image
+                    src={"/static/img/plus.svg"}
+                    height={55}
+                    width={55}
+                    alt="plus"
+                  />
                 </button>
                 <button
                   onClick={(e) => removeBlock(e, index, title)}
                   className={styles.optionalBtn}
                 >
-                  <Image src={"/static/img/minus.svg"} height={50} width={50} />
+                  <Image
+                    src={"/static/img/minus.svg"}
+                    height={50}
+                    width={50}
+                    alt="minus"
+                  />
                 </button>
               </div>
             </div>

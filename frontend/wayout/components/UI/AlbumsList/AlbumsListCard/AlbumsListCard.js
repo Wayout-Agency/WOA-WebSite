@@ -11,6 +11,7 @@ const AlbumsListCard = ({ title, newPrice, oldPrice, previewUrl, slug, className
             src={previewUrl}
             className={styles.albumImg}
             draggable={false}
+            alt={`album-${slug}`}
           />
         </div>
         <div className={styles.infoWrapper}>

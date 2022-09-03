@@ -69,6 +69,7 @@ const Journal = () => {
               src={"/static/img/journal_background.jpg"}
               width={1600}
               height={632}
+              alt="journal-header-background"
             />
           </div>
         </FadeIn>
@@ -88,6 +89,7 @@ const Journal = () => {
                   height={28}
                   src={"/static/img/white_arrow.svg"}
                   layout="raw"
+                  alt="arrow"
                 />
               </div>
             </Link>

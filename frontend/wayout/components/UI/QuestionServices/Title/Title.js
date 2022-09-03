@@ -10,6 +10,7 @@ const Title = ({ title, isActive }) => {
         width={39}
         height={39}
         className={`${isActive ? styles.activePlus : null} ${styles.plusImg}`}
+        alt="plus"
       />
     </div>
   );

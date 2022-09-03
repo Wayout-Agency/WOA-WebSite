@@ -29,6 +29,7 @@ const Block = ({ id, caption, subtitle, text, fileId }) => {
             layout="fill"
             src={`${config.apiUrl}/files/articles/${id}/${fileId}/`}
             className={styles.img}
+            alt={`article-img-${fileId}`}
           />
         </div>
       )}

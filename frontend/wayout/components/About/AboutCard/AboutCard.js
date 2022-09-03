@@ -8,7 +8,8 @@ const AboutCard = ({ name, role, isSuper, index }) => {
         <Image
           src={`/static/img/team/team_${index}.jpeg`}
           className={styles.aboutCardImg}
-          layout='fill'
+          layout="fill"
+          alt={`team-member-${index + 1}`}
         />
       </div>
       <h3 className={styles.aboutCardTitle}>{name}</h3>
