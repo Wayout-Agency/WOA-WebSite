@@ -25,7 +25,7 @@ const Journal = ({
     <div className={styles.journalWrapper}>
       <Link href={"/journal/"}>
         <div className={styles.journalHeader}>
-          <h2>{journalTitle}</h2>
+          <h2 className={styles.title}>{journalTitle}</h2>
           <ImageRaw
             className={clientsStyles.img}
             width={66}
