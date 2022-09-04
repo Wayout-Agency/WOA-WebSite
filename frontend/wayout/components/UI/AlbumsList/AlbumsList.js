@@ -19,7 +19,7 @@ const AlbumsList = ({ mobile = false }) => {
 
   const { data } = useSWR(albumsApiUrl, fetcher);
 
-  return data ? (
+  return data && data.length ? (
     mobile ? (
       <AlbumsListMobile data={data} />
     ) : (
