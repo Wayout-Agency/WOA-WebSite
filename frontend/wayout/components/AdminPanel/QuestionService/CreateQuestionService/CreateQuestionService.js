@@ -11,7 +11,7 @@ const CreateQuestionService = ({ type }) => {
 
   const handleSend = async (e) => {
     e.preventDefault();
-    let formElements = document.forms[0].elements;
+    let formElements = document.forms[1].elements;
 
     try {
       let data = {
@@ -40,7 +40,7 @@ const CreateQuestionService = ({ type }) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    document.forms[0].reset();
+    document.forms[1].reset();
   };
 
   return (

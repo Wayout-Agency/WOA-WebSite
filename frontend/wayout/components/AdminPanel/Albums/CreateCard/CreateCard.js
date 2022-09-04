@@ -12,8 +12,8 @@ const AlbumsCreateCard = () => {
     e.preventDefault();
 
     let form = {
-      formElementsArray: [...document.forms[0].elements],
-      formElements: document.forms[0].elements,
+      formElementsArray: [...document.forms[1].elements],
+      formElements: document.forms[1].elements,
       price_include: [],
       model_description: [],
       formData: new FormData(),
@@ -65,7 +65,7 @@ const AlbumsCreateCard = () => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    document.forms[0].reset();
+    document.forms[1].reset();
   };
 
   return (

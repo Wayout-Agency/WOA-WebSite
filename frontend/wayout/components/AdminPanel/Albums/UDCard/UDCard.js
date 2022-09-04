@@ -14,8 +14,8 @@ const AlbumsUDCard = ({ id }) => {
     e.preventDefault();
 
     let form = {
-      formElementsArray: [...document.forms[0].elements],
-      formElements: document.forms[0].elements,
+      formElementsArray: [...document.forms[1].elements],
+      formElements: document.forms[1].elements,
       price_include: [],
       model_description: [],
       formData: new FormData(),

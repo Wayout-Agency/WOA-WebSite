@@ -11,7 +11,7 @@ const UDQuestionService = ({ id }) => {
 
   const handleSend = async (e) => {
     e.preventDefault();
-    let formElements = document.forms[0].elements;
+    let formElements = document.forms[1].elements;
 
     try {
       let newData = {
