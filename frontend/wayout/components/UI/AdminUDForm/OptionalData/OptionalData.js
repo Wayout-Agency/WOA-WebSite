@@ -20,7 +20,7 @@ const OptionalData = ({
     }
 
     const client = await rootWayoutAPI();
-    let formElementsArray = [...document.forms[0].elements];
+    let formElementsArray = [...document.forms[1].elements];
     let lastElement = currentData[index].inputs.at(-1);
 
     lastElement.map(({ type, placeholder }) => {

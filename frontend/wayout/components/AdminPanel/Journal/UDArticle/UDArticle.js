@@ -15,8 +15,8 @@ const UDArticle = ({ id }) => {
     e.preventDefault();
 
     let form = {
-      formElementsArray: [...document.forms[0].elements],
-      formElements: document.forms[0].elements,
+      formElementsArray: [...document.forms[1].elements],
+      formElements: document.forms[1].elements,
       formData: new FormData(),
     };
 
