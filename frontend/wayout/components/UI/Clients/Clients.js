@@ -19,9 +19,7 @@ const Clients = () => {
     return response.data;
   };
 
-  const { data, error } = useSWR(casesApiUrl, fetcher);
-
-  if (error) throw "Error";
+  const { data } = useSWR(casesApiUrl, fetcher);
 
   return (
     <div className={styles.clientsWrapper}>

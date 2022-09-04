@@ -17,9 +17,7 @@ const AlbumsList = ({ mobile = false }) => {
     return response.data;
   };
 
-  const { data, error } = useSWR(albumsApiUrl, fetcher);
-
-  if (error) throw "Error";
+  const { data } = useSWR(albumsApiUrl, fetcher);
 
   return data ? (
     mobile ? (

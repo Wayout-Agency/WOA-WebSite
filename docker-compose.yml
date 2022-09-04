@@ -10,13 +10,6 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-  portainer:
-    image: portainer/portainer
-    privileged: true
-    volumes:
-      - './data:/data'
-      - '/var/run/docker.sock:/var/run/docker.sock'
-    restart: unless-stopped
 networks:
   default:
     external:

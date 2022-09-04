@@ -12,8 +12,7 @@ const Text = () => {
     const response = await wayoutAPI.get(leadCatchApiUrl);
     return response.data;
   };
-  const { data, error } = useSWR(leadCatchApiUrl, fetcher);
-  if (error) throw "Error";
+  const { data } = useSWR(leadCatchApiUrl, fetcher);
 
   return data ? (
     <div className={styles.textWrapper}>

@@ -19,9 +19,7 @@ const Journal = ({
     const response = await wayoutAPI.get(articlesApiUrl);
     return response.data;
   };
-  const { data, error } = useSWR(articlesApiUrl, fetcher);
-
-  if (error) throw "Error";
+  const { data } = useSWR(articlesApiUrl, fetcher);
 
   return (
     <div className={styles.journalWrapper}>

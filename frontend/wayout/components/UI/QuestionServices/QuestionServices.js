@@ -26,9 +26,7 @@ const QuestionServices = ({ QSType = "question" }) => {
     setIsActive([...isActive]);
   };
 
-  const { data, error } = useSWR(questionServiceApiUrl, fetcher);
-
-  if (error) throw "Error";
+  const { data } = useSWR(questionServiceApiUrl, fetcher);
 
   return (
     <div className={styles.QSWrapper}>
