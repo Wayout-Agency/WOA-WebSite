@@ -95,6 +95,7 @@
 }
 .img {
   border-radius: var(--radius);
+  object-fit: cover;
 }
 
 .shareWrapper {
