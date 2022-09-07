@@ -11,7 +11,7 @@ import { useAppContext } from "../AppWrapper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef } from "react";
 import "swiper/css";
-import { disableBodyScroll } from "body-scroll-lock";
+import { disablePageScroll } from 'scroll-lock';
 const About = () => {
   const swiperRef = useRef(null);
   const { setOrder, setShow } = useAppContext();
@@ -118,8 +118,7 @@ const About = () => {
                   value={"Написать"}
                   onClick={() => {
                     setShow(true);
-                    const element = document.querySelector("#__next");
-                    disableBodyScroll(element);
+                    disablePageScroll()
                   }}
                 />
               </div>

@@ -1,7 +1,6 @@
 import styles from "./Graduation.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import Underline from "@/components/UI/Animations/Underline";
 const Graduation = () => {
   return (
     <Link href={"/graduations"}>
@@ -15,9 +14,7 @@ const Graduation = () => {
         />
         <div className={styles.titleWrapper}>
           <p className={styles.title}>Наши выпускные</p>
-          <Underline>
-            <p className={styles.watch}>Cмотреть</p>
-          </Underline>
+          <p className={styles.watch}>Cмотреть</p>
         </div>
       </div>
     </Link>

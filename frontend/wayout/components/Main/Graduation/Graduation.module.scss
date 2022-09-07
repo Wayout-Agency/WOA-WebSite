@@ -5,7 +5,7 @@
   position: relative;
   cursor: pointer;
   border-radius: 25px;
-  @media (max-width: 1625px) {
+  @media (max-width: 1600px) {
     height: 630px;
   }
   @media (max-width: 1280px) {
@@ -70,10 +70,19 @@
   line-height: 40px;
   letter-spacing: 0.015em;
   color: #ffffff;
+  margin-top: 10px;
+  height: 39px;
+  border-bottom: 3px solid;
   @media (max-width: 800px) {
     font-size: 24px;
     line-height: 28px;
     font-size: 20px;
     line-height: 23px;
+    border-bottom: 2px solid;
+    height: 22px;
+  }
+  @media (max-width: 480px) {
+    border-bottom: 1.5px solid;
+    height: 21px;
   }
 }

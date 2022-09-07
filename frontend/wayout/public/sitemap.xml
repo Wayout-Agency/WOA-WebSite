@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://wayout.agency/</loc>
+	<lastmod>2022-09-05T20:45:44+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://wayout.agency/albums</loc>
+	<lastmod>2022-09-05T20:45:44+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+<url>
+	<loc>https://wayout.agency/graduations</loc>
+	<lastmod>2022-09-05T20:45:44+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+<url>
+	<loc>https://wayout.agency/about</loc>
+	<lastmod>2022-09-05T20:45:44+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+<url>
+	<loc>https://wayout.agency/magazine</loc>
+	<lastmod>2022-09-05T20:45:44+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+<url>
+	<loc>https://wayout.agency/policy</loc>
+	<lastmod>2022-09-05T20:45:44+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+<url>
+	<loc>https://wayout.agency/offer</loc>
+	<lastmod>2022-09-05T20:45:44+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+</urlset>

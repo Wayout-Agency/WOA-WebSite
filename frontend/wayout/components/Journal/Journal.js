@@ -10,7 +10,7 @@ import clientsStyles from "../UI/Clients/Clients.module.scss";
 import Card from "./Card";
 import FadeIn from "../UI/Animations/";
 import { useAppContext } from "../AppWrapper";
-import { disableBodyScroll } from "body-scroll-lock";
+import { disablePageScroll } from "scroll-lock";
 
 const Journal = () => {
   const [data, setData] = useState([]);
@@ -80,7 +80,7 @@ const Journal = () => {
             text={head ? head.title : "Тут пустота"}
           />
           <FadeIn>
-            <Link href={`/journal/cases/${head ? head.slug : "empty"}`}>
+            <Link href={`/magazine/cases/${head ? head.slug : "empty"}`}>
               <div className={`${clientsStyles.moreWrapper} ${styles.more}`}>
                 <p className={clientsStyles.moreText}>Смотреть подробнее</p>
                 <ExpImage
@@ -105,7 +105,7 @@ const Journal = () => {
                 title={title}
                 filePath={`${config.apiUrl}/files/${type}/${id}/0/`}
                 width={width}
-                link={`/journal/${type}/${slug}`}
+                link={`/magazine/${type}/${slug}`}
               />
             );
           })}
@@ -114,8 +114,7 @@ const Journal = () => {
             className={styles.btn}
             onClick={() => {
               setShow(true);
-              const element = document.querySelector("#__next");
-              disableBodyScroll(element);
+              disablePageScroll();
             }}
           />
         </div>

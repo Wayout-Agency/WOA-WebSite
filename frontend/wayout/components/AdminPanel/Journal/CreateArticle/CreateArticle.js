@@ -51,7 +51,7 @@ const CreateArticle = () => {
       await client
         .post(`/files/articles/${data_response.value.id}/`, form.formData)
         .then(() => {
-          router.push("/admin/journal/");
+          router.push("/admin/magazine/");
         })
         .catch(() => {
           alert("Чёт пошло по бороде c файлами");

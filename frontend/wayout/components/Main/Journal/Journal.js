@@ -23,7 +23,7 @@ const Journal = ({
 
   return (
     <div className={styles.journalWrapper}>
-      <Link href={"/journal/"}>
+      <Link href={"/magazine/"}>
         <div className={styles.journalHeader}>
           <h2 className={styles.title}>{journalTitle}</h2>
           <ImageRaw
@@ -38,7 +38,7 @@ const Journal = ({
       </Link>
       {data && data.length > 2 ? (
         <div className={styles.articlesWrapper}>
-          <Link href={`/journal/${link}/${data[0].value.slug}`}>
+          <Link href={`/magazine/${link}/${data[0].value.slug}`}>
             <div className={styles.bigImgWrapper}>
               <div className={styles.imgWrapper} style={{ height: 500 }}>
                 <Image
@@ -63,7 +63,7 @@ const Journal = ({
           <div className={styles.smallImgWrapper}>
             {data.slice(1, 3).map(({ value }) => {
               return (
-                <Link href={`/journal/${link}/${value.slug}`} key={value.id}>
+                <Link href={`/magazine/${link}/${value.slug}`} key={value.id}>
                   <div className={styles.smallImgItemWrapper}>
                     <div
                       className={styles.imgSWrapper}
@@ -91,7 +91,7 @@ const Journal = ({
                 </Link>
               );
             })}
-            <Link href={"/journal/"}>
+            <Link href={"/magazine/"}>
               <div
                 className={`${clientsStyles.moreWrapper} ${styles.moreWrapper}`}
                 style={{ marginTop: 100 }}

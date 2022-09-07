@@ -37,7 +37,7 @@ body {
   flex-direction: column;
   overflow: hidden;
 
-  @media (min-width: 1625px) {
+  @media (min-width: 1600px) {
     main {
       margin: 0 calc((100vw - 1540px) / 2) !important;
     }
@@ -58,7 +58,7 @@ body {
     }
   }
 
-  @media (max-width: 1625px) {
+  @media (max-width: 1600px) {
     main {
       margin: 0 40px;
     }
@@ -264,7 +264,9 @@ input[type="file" i]::-webkit-file-upload-button {
   color: #fff;
   font-family: var(--fontFamily);
 }
-
+input[type="submit"] {
+  -webkit-appearance: none;
+}
 progress {
   width: 100%;
   border: none;

@@ -2,7 +2,7 @@ import styles from "./VideoPlayer.module.scss";
 import { default as ExpImage } from "next/future/image";
 import { useState, useRef } from "react";
 import Skeleton from "react-loading-skeleton";
-
+import Script from "next/script";
 const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
   const [playerState, setPlayerState] = useState({
     time: "0:00 / 0:00",
@@ -109,17 +109,29 @@ const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
           >
             <div className={styles.play} onClick={setVolume}>
               <span className={styles.playText}>ZVYK</span>
-              <ExpImage
-                className={styles.playIcon}
-                src={
-                  playerState.muted
-                    ? `/static/img/volume_off.svg`
-                    : `/static/img/volume_on.svg`
-                }
-                width={30}
-                height={30}
-                layout="fixed"
-              />
+              <div className={styles.volumeWrap}>
+                <ExpImage
+                  src={"/static/img/volume.svg"}
+                  width={12}
+                  height={20}
+                  layout="fixed"
+                />
+                {playerState.muted ? (
+                  <ExpImage
+                    src={"/static/img/on.svg"}
+                    width={11.5}
+                    height={17.5}
+                    layout="fixed"
+                  />
+                ) : (
+                  <ExpImage
+                    src={"/static/img/off.svg"}
+                    width={16}
+                    height={16}
+                    layout="fixed"
+                  />
+                )}
+              </div>
             </div>
             <progress
               min="0"

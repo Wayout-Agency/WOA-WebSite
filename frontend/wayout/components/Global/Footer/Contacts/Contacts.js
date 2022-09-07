@@ -16,9 +16,10 @@ const Contacts = () => {
         </div>
         <a
           className={footerStyles.footerText}
-          href="mailto:hello@wayout.moscow"
+          style={{ position: "relative", top: 5 }}
+          href="mailto:hello@wayout.agency"
         >
-          hello@wayout.moscow
+          hello@wayout.agency
         </a>
       </div>
     </div>

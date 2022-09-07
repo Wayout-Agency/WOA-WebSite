@@ -82,7 +82,7 @@ const UDArticle = ({ id }) => {
     await client
       .delete(articleApiFileUrl)
       .then(() => {
-        router.push("/admin/journal/");
+        router.push("/admin/magazine/");
       })
       .catch(() => {
         alert("Чет даные не удаляются(");

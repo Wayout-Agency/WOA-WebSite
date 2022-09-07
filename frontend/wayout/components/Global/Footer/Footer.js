@@ -25,11 +25,9 @@ const Footer = () => {
                 </a>
               </Link>{" "}
             </p>
-            <p className={styles.privacyPolicy}>
+            <p className={styles.privacyPolicy} style={{ marginTop: 4 }}>
               <Link href="/offer">
-                <a className={styles.privacyPolicyLink}>
-                  Условия оферты.
-                </a>
+                <a className={styles.privacyPolicyLink}>Условия оферты.</a>
               </Link>
             </p>
           </div>
