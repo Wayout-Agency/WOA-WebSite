@@ -23,7 +23,7 @@ const Clients = () => {
 
   return (
     <div className={styles.clientsWrapper}>
-      <Link href={"/journal/"}>
+      <Link href={"/magazine/"}>
         <div className={styles.clientsHeader}>
           <h2 className={styles.title}>Клиенты</h2>
           <Image
@@ -61,7 +61,7 @@ const Clients = () => {
             <Skeleton width={380} height={450} borderRadius={15} />
           </>
         )}
-        <Link href={"/journal/"}>
+        <Link href={"/magazine/"}>
           <div className={styles.moreWrapper}>
             <p className={styles.moreText}>Смотреть еще фото</p>
             <Image

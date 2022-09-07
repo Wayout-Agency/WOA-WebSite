@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import FadeIn from "../UI/Animations/";
 import Slider from "../UI/Slider";
 import { useAppContext } from "../AppWrapper";
-import { disableBodyScroll } from "body-scroll-lock";
+import { disablePageScroll } from 'scroll-lock';
 import Head from "next/head";
 const CaseCard = ({ slug }) => {
   const router = useRouter();
@@ -120,8 +120,7 @@ const CaseCard = ({ slug }) => {
               value={"Хочу такую же съемку"}
               onClick={() => {
                 setShow(true);
-                const element = document.querySelector("#__next");
-                disableBodyScroll(element);
+                disablePageScroll();
               }}
             />
             <div className={styles.dateShareWrapper}>

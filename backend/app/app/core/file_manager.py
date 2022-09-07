@@ -96,11 +96,10 @@ def _update_file_order_after_delete(dy_type: str, id: int):
         os.rename(files_dir / files[i], files_dir / f"{i}_file{extension}")
 
 
-def delete_files(dy_type: str, id: int, indexes: str | None):
+def delete_file(dy_type: str, id: int, indexes: str | None):
     if indexes:
-        files = [get_filename(dy_type, id, int(i)) for i in indexes]
-        for file in files:
-            os.remove(settings.UPLOAD_DIRECTORY / dy_type / str(id) / file)
+        file = get_filename(dy_type, id, int(indexes))
+        os.remove(settings.UPLOAD_DIRECTORY / dy_type / str(id) / file)
         _update_file_order_after_delete(dy_type, id)
     else:
         try:

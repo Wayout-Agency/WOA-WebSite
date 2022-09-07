@@ -28,13 +28,13 @@ const Journal = () => {
       <Products
         productTitle=""
         productType="Кейс"
-        productUrl="/admin/journal/case"
+        productUrl="/admin/magazine/case"
         data={cases.data.map(({ value }) => value)}
       />
       <Products
         productTitle=""
         productType="Статью"
-        productUrl="/admin/journal/article"
+        productUrl="/admin/magazine/article"
         data={articles.data.map(({ value }) => value)}
       />
     </div>

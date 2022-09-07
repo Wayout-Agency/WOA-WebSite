@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import navigation from "./navigation";
 import { motion } from "framer-motion";
-import { enableBodyScroll } from "body-scroll-lock";
+import { enablePageScroll } from "scroll-lock";
 import Burger from "./Burger";
 
 const Navbar = ({ click, setClick, width }) => {
@@ -17,8 +17,7 @@ const Navbar = ({ click, setClick, width }) => {
           className={styles.logoImg}
           onClick={() => {
             if (click) {
-              const element = document.querySelector("#__next");
-              enableBodyScroll(element);
+              enablePageScroll();
               setClick(false);
             }
           }}

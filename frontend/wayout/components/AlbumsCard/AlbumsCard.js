@@ -11,7 +11,7 @@ import QuestionServices from "../UI/QuestionServices";
 import Skeleton from "react-loading-skeleton";
 import FadeIn from "../UI/Animations/";
 import { useAppContext } from "../AppWrapper";
-import { disableBodyScroll } from "body-scroll-lock";
+import { disablePageScroll } from 'scroll-lock';
 import Head from "next/head";
 const range = (start, end) => {
   const length = end - start;
@@ -105,7 +105,7 @@ const AlbumsCard = ({ type }) => {
                 {data ? (
                   media.coversIds.map((id, index) => {
                     return (
-                      <div className={styles.coverWrapper} key={id}>
+                      <div className={`${styles.coverWrapper} ${id === media.carouselIds[0] ? styles.activeCover : null}`} key={id}>
                         <Image
                           src={`${media.filesUrl}${id}`}
                           onClick={() => {
@@ -168,8 +168,7 @@ const AlbumsCard = ({ type }) => {
                 value="Заказать"
                 onClick={() => {
                   setShow(true);
-                  const element = document.querySelector("#__next");
-                  disableBodyScroll(element);
+                  disablePageScroll();
                 }}
               />
             </div>
@@ -202,7 +201,7 @@ const AlbumsCard = ({ type }) => {
                 )}
               </ul>
             </div>
-            <div>
+            <div className={styles.modelAdditionally}>
               <h2 className={styles.descModelTitle}>В стоимость входит</h2>
               <ul className={styles.additionally}>
                 {data ? (

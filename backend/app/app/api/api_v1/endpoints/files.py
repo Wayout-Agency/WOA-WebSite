@@ -4,7 +4,7 @@ from typing import List
 
 from api.deps import check_root_user
 from core.config import get_settings
-from core.file_manager import delete_files, get_filename, save_files, update_files
+from core.file_manager import delete_file, get_filename, save_files, update_files
 from fastapi import APIRouter, Depends, UploadFile, status
 from fastapi.responses import FileResponse
 
@@ -52,5 +52,5 @@ async def change_files(
 
 @router.delete("/{file_type}/{id}/")
 def remove_files(file_type: FileType, id: int, indexes: str | None = None, _=Depends(check_root_user)):
-    delete_files(file_type.value, id, indexes)
+    delete_file(file_type.value, id, indexes)
     return {"success": True}

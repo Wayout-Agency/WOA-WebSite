@@ -2,7 +2,7 @@ import styles from "./BurgerMenu.module.scss";
 import navigation from "../Navbar/navigation";
 import socialLinks from "../../Global/Footer/SocialMedias/SocialLinks";
 import Link from "next/link";
-import { enableBodyScroll } from "body-scroll-lock";
+import { enablePageScroll } from 'scroll-lock';
 import { default as ExpImage } from "next/future/image";
 
 const BurgerMenu = ({ click, setClick }) => {
@@ -15,8 +15,7 @@ const BurgerMenu = ({ click, setClick }) => {
               <a
                 className={styles.link}
                 onClick={() => {
-                  const element = document.querySelector("#__next");
-                  enableBodyScroll(element);
+                  enablePageScroll();
                   setClick(!click);
                 }}
               >
@@ -40,8 +39,7 @@ const BurgerMenu = ({ click, setClick }) => {
             className={styles.linkSocial}
             href={path}
             onClick={() => {
-              const element = document.querySelector("#__next");
-              enableBodyScroll(element);
+              enablePageScroll();
               setClick(!click);
             }}
           >

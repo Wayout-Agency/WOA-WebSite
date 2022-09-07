@@ -1,17 +1,16 @@
 import styles from "../Navbar.module.scss";
 import { default as ExpImage } from "next/future/image";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { enablePageScroll, disablePageScroll } from "scroll-lock";
 const Burger = ({ click, setClick }) => {
   return (
     <>
       <div
         className={styles.burgerWrapper}
         onClick={() => {
-          const element = document.querySelector("#__next");
           if (!click) {
-            disableBodyScroll(element);
+            disablePageScroll();
           } else {
-            enableBodyScroll(element);
+            enablePageScroll();
           }
           setClick(!click);
         }}

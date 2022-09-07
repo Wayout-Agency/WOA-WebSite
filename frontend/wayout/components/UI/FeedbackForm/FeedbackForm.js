@@ -4,9 +4,8 @@ import { onPhoneInput, onPhoneKeyDown, onPhonePaste } from "utils/phoneinput";
 import { useState } from "react";
 import ExpImage from "next/future/image";
 import { Thanks } from "./Thanks";
-import { enableBodyScroll } from "body-scroll-lock";
 import wayoutAPI from "services/wayoutApi";
-
+import { enablePageScroll } from "scroll-lock";
 export const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
@@ -63,9 +62,8 @@ const FeedbackForm = ({ show, setShow, order }) => {
 
     setSubmit(true);
     await sleep(3000);
-    const element = document.querySelector("#__next");
     setShow(false);
-    enableBodyScroll(element);
+    enablePageScroll();
     await sleep(500);
     clearForm();
     setSubmit(false);
@@ -79,8 +77,7 @@ const FeedbackForm = ({ show, setShow, order }) => {
         }`}
         onClick={() => {
           setShow(!show);
-          const element = document.querySelector("#__next");
-          enableBodyScroll(element);
+          enablePageScroll();
         }}
       ></div>
       <div
@@ -93,8 +90,7 @@ const FeedbackForm = ({ show, setShow, order }) => {
           className={styles.mobileClose}
           onClick={async () => {
             setShow(!show);
-            const element = document.querySelector("#__next");
-            enableBodyScroll(element);
+            enablePageScroll();
             await sleep(500);
             clearForm();
             setSubmit(false);

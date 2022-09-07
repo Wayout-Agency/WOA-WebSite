@@ -3,8 +3,8 @@ export const circlesData = [
     text: "Еда",
     size: "15vw",
     left: "10vw",
-    x: 5,
-    y: 3,
+    x: 1.9,
+    y: 5.2,
   },
   {
     text: "Безопасность",
@@ -18,8 +18,8 @@ export const circlesData = [
     text: "Площадка",
     size: "15vw",
     left: "38vw",
-    x: 0,
-    y: 1,
+    x: 1,
+    y: 3,
   },
   {
     text: "Программа",
@@ -42,15 +42,15 @@ export const circlesData = [
     left: "16vw",
     top: "35vw",
     x: 1,
-    y: -1,
+    y: -2.2,
   },
   {
     text: "Подарки",
     size: "19vw",
     left: "35vw",
     top: "35vw",
-    x: 1,
-    y: -2,
+    x: 0.6,
+    y: -3,
   },
 ];
 

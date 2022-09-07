@@ -33,7 +33,7 @@
 .smallImgWrapper {
   width: 50%;
   margin-left: 50px;
-  @media (max-width: 1625px) {
+  @media (max-width: 1600px) {
     width: 40%;
   }
   @media (max-width: 1280px) {
@@ -119,7 +119,7 @@
 .bigImgWrapper {
   cursor: pointer;
   width: 50%;
-  @media (max-width: 1625px) {
+  @media (max-width: 1600px) {
     width: 60%;
   }
   @media (max-width: 1280px) {
@@ -141,7 +141,7 @@
   top: 7px;
 }
 .moreImg {
-  @media (max-width: 1625px) {
+  @media (max-width: 1600px) {
     margin: 0;
     right: 0;
   }
