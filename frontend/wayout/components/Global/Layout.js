@@ -24,20 +24,19 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Head>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-9VDQGQ3TT5"
-        ></Script>
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-9VDQGQ3TT5"
+      ></Script>
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
         window.dataLayer = window.dataLayer || []; function gtag()
         {dataLayer.push(arguments);}
         gtag('js', new Date()); gtag('config', 'G-9VDQGQ3TT5');
         `}
-        </Script>
-        <Script strategy="afterInteractive">
-          {`
+      </Script>
+      <Script id="yandex-metrika" strategy="afterInteractive">
+        {`
          (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
          var z = null;m[i].l=1*new Date();
          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -51,7 +50,8 @@ const Layout = ({ children }) => {
               webvisor:true
          });  
         `}
-        </Script>
+      </Script>
+      <Head>
         <noscript>
           <div>
             <img
