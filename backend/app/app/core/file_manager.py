@@ -2,6 +2,7 @@ import os
 import shutil
 from pathlib import Path
 from typing import List
+import glob
 
 import aiofiles
 from fastapi import UploadFile
@@ -53,8 +54,10 @@ def get_files_info(dy_type: str, id: int) -> int:
 
 def get_filename(dy_type: str, id: int, file_id: int) -> str:
     try:
-        name = sorted(os.listdir(settings.UPLOAD_DIRECTORY / dy_type / str(id)))[file_id]
-        return name
+        file = glob.glob(settings.UPLOAD_DIRECTORY / dy_type / f"{id}" / f"{file_id}.*")
+        if file:
+            return file[0]
+        raise FileNotFoundError
     except (FileNotFoundError, IndexError):
         raise Errors.bad_req
 
