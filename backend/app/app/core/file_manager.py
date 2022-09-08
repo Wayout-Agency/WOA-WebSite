@@ -54,7 +54,7 @@ def get_files_info(dy_type: str, id: int) -> int:
 
 def get_filename(dy_type: str, id: int, file_id: int) -> str:
     try:
-        file = glob.glob(settings.UPLOAD_DIRECTORY / dy_type / f"{id}" / f"{file_id}.*")
+        file = glob.glob(f"{settings.UPLOAD_DIRECTORY}/{dy_type}/{id}/{file_id}.*")
         if file:
             return file[0]
         raise FileNotFoundError
