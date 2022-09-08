@@ -39,7 +39,7 @@ def _rename_files(files: List[UploadFile], indexes: str) -> List[UploadFile]:
     list_indexes = list(map(lambda i: int(i), indexes))
     for i in range(len(files)):
         file_data = files[i].filename.split(".")
-        file_data[0] = f"{list_indexes[i]}_file"
+        file_data[0] = f"{list_indexes[i]}"
         files[i].filename = ".".join(file_data)
     return files
 
@@ -80,7 +80,7 @@ async def update_files(files: List[UploadFile], dy_type: str, id: int, indexes: 
                 _, extension = os.path.splitext(file)
                 os.rename(
                     files_path / file,
-                    files_path / f"{int(file[0]) + 1}_file{extension}",
+                    files_path / f"{int(file[0]) + 1}{extension}",
                 )
         for file in renamed_files:
             await _save_file(file, files_path, file.filename)
@@ -93,7 +93,7 @@ def _update_file_order_after_delete(dy_type: str, id: int):
     files_dir = settings.UPLOAD_DIRECTORY / dy_type / str(id)
     for i in range(len(files)):
         _, extension = os.path.splitext(files[i])
-        os.rename(files_dir / files[i], files_dir / f"{i}_file{extension}")
+        os.rename(files_dir / files[i], files_dir / f"{i}{extension}")
 
 
 def delete_file(dy_type: str, id: int, indexes: str | None):
