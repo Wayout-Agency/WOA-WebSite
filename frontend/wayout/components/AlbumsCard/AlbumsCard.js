@@ -225,7 +225,7 @@ const AlbumsCard = ({ type }) => {
               fullSize={false}
             />
           </div>
-          <div>
+          <div className={styles.qsWrapper}>
             <QuestionServices QSType="service" />
           </div>
         </FadeIn>

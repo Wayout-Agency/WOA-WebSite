@@ -1,11 +1,15 @@
 .hidden {
   transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
 }
 .header {
   @media (max-width: 1280px) {
     position: fixed;
     width: 100%;
     z-index: 100;
-    transition: all 0.4s;
+    transition: transform 0.4s;
   }
 }

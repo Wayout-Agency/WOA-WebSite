@@ -8,11 +8,11 @@ const Contacts = () => {
         <div className={styles.contactsPhoneWrapper}>
           <a
             className={`${footerStyles.footerText} ${styles.contactsPhone}`}
-            href="tel:79858604455"
+            href="tel:+79858604455"
           >
             +7 985 860 44 55
           </a>
-          <p className={styles.contactsPhoneTime}>10:00-18:00</p>
+          <p className={styles.contactsPhoneTime}>10:00-18:00 (МСК)</p>
         </div>
         <a
           className={footerStyles.footerText}

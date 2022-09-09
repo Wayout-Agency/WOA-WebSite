@@ -55,13 +55,19 @@
   width: 50px;
   position: relative;
   margin-right: 15px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
+  -khtml-border-radius: 50%;
 }
 
 .cover {
   cursor: pointer;
   pointer-events: all;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
+  -khtml-border-radius: 50%;
   user-select: none;
   object-fit: cover;
 }
@@ -182,4 +188,9 @@
 }
 .additionally {
   margin-bottom: 7px;
+}
+.qsWrapper {
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
 }

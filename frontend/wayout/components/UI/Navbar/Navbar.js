@@ -50,7 +50,6 @@ const Navbar = ({ click, setClick, width }) => {
       )}
     </nav>
   );
-  z;
 };
 
 export default Navbar;

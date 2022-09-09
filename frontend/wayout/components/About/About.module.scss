@@ -17,7 +17,7 @@
   margin-bottom: 100px;
   @media (max-width: 800px) {
     width: 100% !important;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
   }
 }
 
@@ -126,7 +126,7 @@
 .infoTeamBtnWrapper {
   align-items: center;
   @media (max-width: 800px) {
-    margin-top: 50px;
+    margin-top: 25px;
     align-items: flex-start;
   }
 
@@ -138,8 +138,6 @@
 .infoTeamBtn {
   @media (max-width: 800px) {
     margin-top: 15px;
-  }
-  @media (max-width: 480px) {
     width: 100%;
   }
 }
