@@ -31,7 +31,7 @@ const AlbumsList = ({ mobile = false }) => {
           800: {
             spaceBetween: 33,
           },
-          320: {
+          120: {
             spaceBetween: 15,
           },
         }}

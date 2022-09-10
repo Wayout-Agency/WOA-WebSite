@@ -36,7 +36,7 @@ const CreateCase = () => {
       await client
         .post(`/files/cases/${data_response.value.id}/`, form.formData)
         .then(() => {
-          router.push("/admin/journal/");
+          router.push("/admin/magazine/");
         })
         .catch(() => {
           alert("Чёт пошло по бороде c файлами");

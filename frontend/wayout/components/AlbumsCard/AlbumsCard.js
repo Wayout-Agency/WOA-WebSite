@@ -162,10 +162,10 @@ const AlbumsCard = ({ type }) => {
               </div>
               {data ? (
                 <>
-                  {data.sale_text ? (
+                  {data.sale_text.length > 2 ? (
                     <p className={styles.saleText}>{data.sale_text}</p>
                   ) : (
-                    <></>
+                    <p className={styles.saleText} style={{color: '#fff'}}>out</p>
                   )}
                 </>
               ) : (

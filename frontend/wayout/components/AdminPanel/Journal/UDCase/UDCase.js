@@ -56,7 +56,7 @@ const UDCase = ({ id }) => {
     await client
       .delete(casesApiFileUrl)
       .then(() => {
-        router.push("/admin/journal/");
+        router.push("/admin/magazine/");
       })
       .catch(() => {
         alert("Чет даные не удаляются(");

@@ -14,7 +14,7 @@ const ClientCard = ({
   height,
 }) => {
   return (
-    <Link href={`/journal/${postType}/${slug}`}>
+    <Link href={`/magazine/${postType}/${slug}`}>
       <div className={styles.cardWrapper} style={{ width: width }} id={divId}>
         <div className={styles.imgWrapper}>
           <Image

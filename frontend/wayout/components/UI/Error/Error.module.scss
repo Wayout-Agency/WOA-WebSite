@@ -5,6 +5,10 @@
   font-weight: 400;
   font-size: 90px;
   line-height: 95px;
+  @media (max-width: 800px) {
+    font-size: 50px;
+    line-height: 55px;
+  }
 }
 .errorDescription {
   margin-top: 25px;
@@ -12,10 +16,18 @@
   font-size: 35px;
   line-height: 40px;
   letter-spacing: 0.015em;
-  width: 893px;
+  width: 90vw;
+  @media (max-width: 800px) {
+    font-size: 23px;
+    line-height: 28px;
+  }
 }
 .backLink {
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 6px;
+  @media (max-width: 800px) {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3.2px;
+  }
 }
