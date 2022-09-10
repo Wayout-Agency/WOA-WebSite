@@ -7,7 +7,7 @@
 .postTitile {
   margin-top: 15px;
 }
-.title{
+.title {
   cursor: pointer;
 }
 .smallImgTitle {
@@ -59,28 +59,29 @@
   position: relative;
   border-radius: var(--radius);
   @media (max-width: 1024px) {
-    height: 385px !important;
+    width: 100% !important;
+    height: 47vw !important;
   }
   @media (max-width: 800px) {
     border-radius: var(--mobileRadius);
-    height: 254px !important;
+    height: 53vw !important;
   }
   @media (max-width: 480px) {
-    height: 200px !important;
+    height: 62vw !important;
   }
 }
 
 .imgSWrapper {
   @media (max-width: 1024px) {
     width: 100% !important;
-    height: 265px !important;
+    height: 28vw !important;
   }
   @media (max-width: 800px) {
     border-radius: var(--mobileRadius);
-    height: 254px !important;
+    height: 53vw !important;
   }
   @media (max-width: 480px) {
-    height: 200px !important;
+    height: 62vw !important;
   }
 }
 .imgWrapper:hover .img {

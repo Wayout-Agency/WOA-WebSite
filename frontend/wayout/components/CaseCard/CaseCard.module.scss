@@ -79,20 +79,11 @@
 }
 .img,
 .swiper {
-  @media (max-width: 1650px) {
-    height: 622px !important;
-  }
-  @media (max-width: 1280px) {
-    height: 508px !important;
-  }
-  @media (max-width: 1024px) {
-    height: 393px !important;
-  }
-  @media (max-width: 800px) {
-    height: 254px !important;
+  @media (max-width: 1600px) {
+    height: 49vw !important;
   }
   @media (max-width: 480px) {
-    height: 200px !important;
+    height: 62vw !important;
   }
 }
 .imgWrapper,
@@ -114,20 +105,11 @@
 .vertImg {
   width: 48.5%;
   position: relative;
-  @media (max-width: 1650px) {
-    height: 720px !important;
-  }
-  @media (max-width: 1280px) {
-    height: 590px !important;
-  }
-  @media (max-width: 1024px) {
-    height: 456px !important;
-  }
-  @media (max-width: 800px) {
-    height: 254px !important;
+  @media (max-width: 1600px) {
+    height: 56vw !important;
   }
   @media (max-width: 480px) {
-    height: 200px !important;
+    height: 63vw !important;
   }
 }
 .btnWrapper {

@@ -8,7 +8,7 @@
 .block {
   margin-top: 50px;
   @media (max-width: 800px) {
-    margin-top: 25px ;
+    margin-top: 25px;
   }
 }
 .block {
@@ -19,16 +19,10 @@
   height: 587px;
   position: relative;
   @media (max-width: 1280px) {
-    height: 556px;
-  }
-  @media (max-width: 1024px) {
-    height: 453px;
-  }
-  @media (max-width: 800px) {
-    height: 270px;
+    height: 54vw !important;
   }
   @media (max-width: 480px) {
-    height: 200px;
+    height: 62vw !important;
   }
 }
 .header {
@@ -52,7 +46,7 @@
   }
   @media (max-width: 800px) {
     width: 100%;
-    margin-top: 25px ;
+    margin-top: 25px;
   }
 }
 
@@ -81,7 +75,7 @@
   margin-top: 25px;
   @media (max-width: 800px) {
     width: 100%;
-    margin-top: 20px ;
+    margin-top: 20px;
   }
 }
 .text {
@@ -96,6 +90,9 @@
 .img {
   border-radius: var(--radius);
   object-fit: cover;
+  @media (max-width: 800px) {
+    border-radius: var(--mobileRadius);
+  }
 }
 
 .shareWrapper {
@@ -103,7 +100,6 @@
   @media (max-width: 800px) {
     margin-top: 25px;
   }
-  
 }
 .dateShareText {
   float: right;
