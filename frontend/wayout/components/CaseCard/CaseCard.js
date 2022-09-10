@@ -93,7 +93,7 @@ const CaseCard = ({ slug }) => {
             <Slider
               imgIndexes={[
                 4,
-                ...[...Array(data.files_quantity).keys()].slice(5),
+                ...[...Array(data.files_quantity).keys()].slice(6),
               ]}
               filesUrl={`${config.apiUrl}/files/cases/${data.id}/`}
               height={775}

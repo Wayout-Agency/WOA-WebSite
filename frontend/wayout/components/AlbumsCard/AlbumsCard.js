@@ -11,7 +11,7 @@ import QuestionServices from "../UI/QuestionServices";
 import Skeleton from "react-loading-skeleton";
 import FadeIn from "../UI/Animations/";
 import { useAppContext } from "../AppWrapper";
-import { disablePageScroll } from 'scroll-lock';
+import { disablePageScroll } from "scroll-lock";
 import Head from "next/head";
 const range = (start, end) => {
   const length = end - start;
@@ -105,15 +105,22 @@ const AlbumsCard = ({ type }) => {
                 {data ? (
                   media.coversIds.map((id, index) => {
                     return (
-                      <div className={`${styles.coverWrapper} ${id === media.carouselIds[0] ? styles.activeCover : null}`} key={id}>
+                      <div
+                        className={`${styles.coverWrapper} ${
+                          id === media.carouselIds[0]
+                            ? styles.activeCover
+                            : null
+                        }`}
+                        key={id}
+                        onClick={() => {
+                          setMedia({
+                            ...media,
+                            carouselIds: [id].concat(media.photoesIds),
+                          });
+                        }}
+                      >
                         <Image
                           src={`${media.filesUrl}${id}`}
-                          onClick={() => {
-                            setMedia({
-                              ...media,
-                              carouselIds: [id].concat(media.photoesIds),
-                            });
-                          }}
                           className={styles.cover}
                           draggable={false}
                           layout="fill"

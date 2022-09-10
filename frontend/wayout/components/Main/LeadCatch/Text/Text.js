@@ -18,7 +18,7 @@ const Text = () => {
     <div className={styles.textWrapper}>
       <Image
         src={"/static/img/small_percent.svg"}
-        width={120}
+        width={89}
         height={120}
         layout="raw"
         className={styles.percent}

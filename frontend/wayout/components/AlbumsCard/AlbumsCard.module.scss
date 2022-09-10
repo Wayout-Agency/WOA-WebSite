@@ -62,8 +62,6 @@
 }
 
 .cover {
-  cursor: pointer;
-  pointer-events: all;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -73,12 +71,24 @@
 }
 
 .coverWrapper:hover {
-  outline: var(--navLinkActive) solid 2px;
-  outline-offset: 1.5px;
+  box-shadow: 0 0 0 2px var(--navLinkActive);
+}
+
+.coverWrapper:after {
+  cursor: pointer;
+  pointer-events: all;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
 }
 .activeCover {
-  outline: var(--navLinkActive) solid 2px;
-  outline-offset: 1.5px;
+  box-shadow: 0 0 0 2px var(--navLinkActive);
 }
 
 .pricesWrapper {

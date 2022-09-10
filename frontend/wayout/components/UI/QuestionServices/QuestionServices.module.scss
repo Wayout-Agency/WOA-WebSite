@@ -11,7 +11,7 @@
     margin-bottom: 15px;
   }
 }
-.title{
+.title {
   @media (max-width: 800px) {
     width: 90%;
   }
@@ -38,7 +38,6 @@
   @media (max-width: 800px) {
     width: 90%;
   }
-  
 }
 .text {
   color: var(--gray);
@@ -55,5 +54,9 @@
 }
 
 .activePlus {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
