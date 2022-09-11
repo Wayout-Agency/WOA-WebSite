@@ -16,6 +16,7 @@ class OfferSchema(BaseModel):
     quantity: int
     name: str
     phone: str
+    description: str
 
 
 class EmailSchema(BaseModel):
