@@ -22,7 +22,7 @@ const About = () => {
       <FadeIn>
         <>
           <div className={styles.videoWrapper}>
-            <VideoPlayer filePath={"/static/video/main.mp4"} autoPlay={false} />
+            <VideoPlayer filePath={"/static/video/about.mp4"} autoPlay={false} />
           </div>
           <div className={styles.numbersWrapper}>
             <h2>Цифры</h2>

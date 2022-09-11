@@ -31,6 +31,7 @@
     padding: 50px 15px;
   }
 }
+
 .headerImg,
 .imgWrapper {
   width: 100%;
@@ -39,7 +40,9 @@
 .headerText {
   height: 632px;
 }
-
+.header{
+  cursor: pointer;
+}
 .imgWrapper {
   position: absolute;
   z-index: -1;

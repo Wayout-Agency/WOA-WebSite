@@ -10,6 +10,8 @@ const Form = () => {
   const [members, setMembers] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [description, setDescription] = useState("");
+  const [descriptionError, setDescriptionError] = useState(false);
   const [membersError, setMembersError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
@@ -18,6 +20,8 @@ const Form = () => {
     setMembers(0);
     setName("");
     setPhone("");
+    setDescription("");
+    setDescriptionError(false);
     setMembersError(false);
     setNameError(false);
     setPhoneError(false);
@@ -25,10 +29,11 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!members || !name || !phone) {
+    if (!members || !name || !phone || !description) {
       if (!members) setMembersError(true);
       if (!name) setNameError(true);
       if (!phone) setPhoneError(true);
+      if (!description) setDescriptionError(true);
       return;
     }
     if (phone.startsWith("+")) {
@@ -43,7 +48,12 @@ const Form = () => {
       return;
     }
 
-    const data = { name: name, phone: phone, quantity: members };
+    const data = {
+      name: name,
+      phone: phone,
+      quantity: members,
+      description: description,
+    };
     await wayoutAPI.post("/emails/offer/", { email: data }).catch(() => {
       alert(
         "Наш сервис временно недоступен, но вы можете связаться с нами любым другим способом"
@@ -87,6 +97,15 @@ const Form = () => {
           className={phoneError ? styles.error : null}
           onPaste={onPhonePaste}
           onKeyDown={onPhoneKeyDown}
+        />
+        <RoundInput
+          placeholder="Опишите Ваш выпускной"
+          value={description}
+          className={descriptionError ? styles.error : null}
+          onChange={(e) => {
+            setDescriptionError(false);
+            setDescription(e.target.value);
+          }}
         />
         <RoundSendButton value={"Отправить"} />
       </form>

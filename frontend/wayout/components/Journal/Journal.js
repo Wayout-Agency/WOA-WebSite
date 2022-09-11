@@ -60,27 +60,27 @@ const Journal = () => {
 
   return (
     <>
-      <div className={styles.header}>
-        <FadeIn>
-          <div className={styles.imgWrapper}>
-            <ExpImage
-              className={styles.headerImg}
-              layout="fill"
-              src={"/static/img/journal_background.jpg"}
-              width={1600}
-              height={632}
-              alt="journal-header-background"
-            />
-          </div>
-        </FadeIn>
-        <div className={styles.headerText}>
-          <MainTitle
-            className={styles.title}
-            color={false}
-            text={head ? head.title : "Тут пустота"}
-          />
+      <Link href={`/magazine/cases/${head ? head.slug : "empty"}`}>
+        <div className={styles.header}>
           <FadeIn>
-            <Link href={`/magazine/cases/${head ? head.slug : "empty"}`}>
+            <div className={styles.imgWrapper}>
+              <ExpImage
+                className={styles.headerImg}
+                layout="fill"
+                src={"/static/img/journal_background.jpg"}
+                width={1600}
+                height={632}
+                alt="journal-header-background"
+              />
+            </div>
+          </FadeIn>
+          <div className={styles.headerText}>
+            <MainTitle
+              className={styles.title}
+              color={false}
+              text={head ? head.title : "Тут пустота"}
+            />
+            <FadeIn>
               <div className={`${clientsStyles.moreWrapper} ${styles.more}`}>
                 <p className={clientsStyles.moreText}>Смотреть подробнее</p>
                 <ExpImage
@@ -92,10 +92,10 @@ const Journal = () => {
                   alt="arrow"
                 />
               </div>
-            </Link>
-          </FadeIn>
+            </FadeIn>
+          </div>
         </div>
-      </div>
+      </Link>
       <FadeIn>
         <div className={styles.content}>
           {data.map(({ title, id, width, type, slug }) => {
