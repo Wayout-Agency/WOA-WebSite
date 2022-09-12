@@ -28,16 +28,17 @@ const Form = () => {
     if (phone.startsWith("+")) {
       if (phone.length != 18) {
         setPhoneError(true);
-        console.log(phone);
         return;
       }
-    }
-    if (phone.length < 17) {
+    } else if (phone.length < 17) {
       setPhoneError(true);
       return;
     }
 
-    const data = { name: name, phone: phone };
+    const data = {
+      name: name,
+      phone: phone.startsWith("+") ? phone : "+7" + phone.slice(1),
+    };
     await wayoutAPI.post("/emails/feedback/", { email: data }).catch(() => {
       alert(
         "Наш сервис временно недоступен, но вы можете связаться с нами любым другим способом"
