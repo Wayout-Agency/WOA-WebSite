@@ -13,12 +13,20 @@ const Block = ({ id, caption, subtitle, text, fileId }) => {
       false
     );
     xhr.send();
-    return videoTypes.includes(JSON.parse(xhr.response).extension);
+    if (xhr.status === 400) {
+      return "nf";
+    }
+    if (videoTypes.includes(JSON.parse(xhr.response).extension)) {
+      return "fv";
+    }
+    return "fi";
   };
-
+  const file = getFile();
   return (
-    <div className={styles.block}>
-      {getFile() ? (
+    <div className={styles.block} style={!subtitle ? { marginTop: 0 } : null}>
+      {file === "nf" ? (
+        <></>
+      ) : file === "fv" ? (
         <VideoPlayer
           filePath={`${config.apiUrl}/files/articles/${id}/${fileId}/`}
           fullSize={false}
@@ -33,10 +41,21 @@ const Block = ({ id, caption, subtitle, text, fileId }) => {
           />
         </div>
       )}
-      <p className={`${styles.text} ${styles.caption}`}> — {caption}</p>
-      <div className={`${styles.textWrapper} ${styles.top50}`}>
-        <h2>{subtitle}</h2>
-        <p className={`${styles.text} ${styles.subText}`}>{text}</p>
+      {caption ? (
+        <p className={`${styles.text} ${styles.caption}`}> — {caption}</p>
+      ) : (
+        <></>
+      )}
+      <div
+        className={`${styles.textWrapper} ${styles.top50}`}
+        style={!subtitle ? { marginTop: 0 } : null}
+      >
+        {subtitle ? <h2>{subtitle}</h2> : <></>}
+        {text ? (
+          <p className={`${styles.text} ${styles.subText}`}>{text}</p>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
