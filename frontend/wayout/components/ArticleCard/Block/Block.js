@@ -23,7 +23,7 @@ const Block = ({ id, caption, subtitle, text, fileId }) => {
   };
   const file = getFile();
   return (
-    <div className={styles.block} style={!subtitle ? { marginTop: 0 } : null}>
+    <div className={styles.block} style={file === "nf" ? { marginTop: 0 } : null}>
       {file === "nf" ? (
         <></>
       ) : file === "fv" ? (
