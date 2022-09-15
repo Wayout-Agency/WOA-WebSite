@@ -20,12 +20,14 @@ const Burger = ({ click, setClick }) => {
           width={50}
           height={3}
           className={`${styles.line1} ${click ? styles.clicked1 : null}`}
+          alt={'line'}
         />
         <ExpImage
           src={"/static/img/line.svg"}
           width={50}
           height={3}
           className={`${styles.line2} ${click ? styles.clicked2 : null}`}
+          alt={'line'}
         />
       </div>
     </>

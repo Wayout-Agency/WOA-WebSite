@@ -48,6 +48,7 @@ const About = () => {
                   style={{ transform: "scale(-1)", marginRight: "30px" }}
                   src={"/static/img/arrow.svg"}
                   layout="raw"
+                  alt="arrow"
                 />
                 <ExpImage
                   className={styles.arrow}
@@ -56,6 +57,7 @@ const About = () => {
                   height={28}
                   src={"/static/img/arrow.svg"}
                   layout="raw"
+                  alt="arrow"
                 />
               </div>
             </div>

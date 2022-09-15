@@ -115,6 +115,7 @@ const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
                   width={12}
                   height={20}
                   layout="fixed"
+                  alt="volume"
                 />
                 {playerState.muted ? (
                   <ExpImage
@@ -122,6 +123,7 @@ const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
                     width={11.5}
                     height={17.5}
                     layout="fixed"
+                    alt="volume-on"
                   />
                 ) : (
                   <ExpImage
@@ -129,6 +131,7 @@ const VideoPlayer = ({ filePath, autoPlay = false, fullSize = true }) => {
                     width={16}
                     height={16}
                     layout="fixed"
+                    alt="volume-off"
                   />
                 )}
               </div>

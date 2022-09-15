@@ -103,6 +103,7 @@ const Journal = ({
                   height={28}
                   src={"/static/img/arrow.svg"}
                   layout="raw"
+                  alt="arrow"
                 />
               </div>
             </Link>

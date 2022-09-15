@@ -85,6 +85,7 @@ const FeedbackForm = ({ show, setShow, order }) => {
       >
         <ExpImage
           src={"/static/img/close.svg"}
+          alt="close"
           width={37}
           height={37}
           className={styles.mobileClose}
@@ -181,6 +182,7 @@ const FeedbackForm = ({ show, setShow, order }) => {
                 height={28}
                 src={"/static/img/light_arrow.svg"}
                 layout="raw"
+                alt="arrow"
               />
             </div>
             <div className={styles.policy}>

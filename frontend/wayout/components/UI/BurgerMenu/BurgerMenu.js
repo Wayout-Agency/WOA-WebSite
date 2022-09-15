@@ -24,6 +24,7 @@ const BurgerMenu = ({ click, setClick }) => {
                 height={20}
                 src={"/static/img/arrow.svg"}
                 className={styles.arrow}
+                alt="arrow"
               />
             </div>
           </Link>
