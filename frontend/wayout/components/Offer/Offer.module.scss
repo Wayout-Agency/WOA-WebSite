@@ -7,7 +7,35 @@
     flex-direction: column;
   }
 }
+.requisites {
+  margin-top: 50px;
+}
 
+.addition {
+  margin-top: 100px !important;
+}
+.addition,
+.requisites > h2 {
+  @media (max-width: 800px) {
+    font-size: 20px;
+    line-height: 23px;
+  }
+}
+
+.addition,
+.requisites > p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 130%;
+  @media (max-width: 800px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.addition > p {
+  margin-top: 15px;
+}
 .block,
 .header,
 .content {
