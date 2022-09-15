@@ -606,7 +606,7 @@ const Policy = () => {
             </p>
             <p>
               14.3. Актуальная версия Политики в свободном доступе расположена в
-              сети Интернет по адресу https://wayout.agency/privacy.
+              сети Интернет по адресу https://wayout.agency/policy.
             </p>
             <p>
               <br />
