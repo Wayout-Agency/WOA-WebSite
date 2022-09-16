@@ -39,12 +39,12 @@ const Form = () => {
       name: name,
       phone: phone.startsWith("+") ? phone : "+7" + phone.slice(1),
     };
+    clearForm();
     await wayoutAPI.post("/emails/feedback/", { email: data }).catch(() => {
       alert(
         "Наш сервис временно недоступен, но вы можете связаться с нами любым другим способом"
       );
     });
-    clearForm();
   };
   return (
     <div className={styles.formWrapper}>

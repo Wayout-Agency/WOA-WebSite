@@ -54,12 +54,12 @@ const Form = () => {
       quantity: members,
       description: description,
     };
+    clearForm();
     await wayoutAPI.post("/emails/offer/", { email: data }).catch(() => {
       alert(
         "Наш сервис временно недоступен, но вы можете связаться с нами любым другим способом"
       );
     });
-    clearForm();
   };
 
   return (
