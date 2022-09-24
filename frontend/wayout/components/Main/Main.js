@@ -7,14 +7,15 @@ import MainAlbumsList from "./MainAlbumsList";
 import Graduation from "./Graduation";
 import Journal from "./Journal";
 import FadeIn from "../UI/Animations/";
+import Link from "next/link";
 const Main = () => {
   return (
     <>
       <MainTitle
         text={
           <span>
-            Мы делаем школьные <span className={styles.underline}>альбомы</span>{" "}
-            и организуем <span className={styles.underline}>выпускные</span>
+            Мы делаем школьные <Link href='/albums'><span className={styles.underline}>альбомы</span></Link>{" "}
+            и организуем <Link href='/graduations'><span className={styles.underline}>выпускные</span></Link>
           </span>
         }
       />
