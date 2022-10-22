@@ -287,7 +287,7 @@ test = ["anyio[trio] (>=3.2.1,<4.0.0)", "black (==22.8.0)", "databases[sqlite] (
 
 [[package]]
 name = "fastapi-mail"
-version = "1.1.4"
+version = "1.2.0"
 description = "Simple lightweight mail library for FastApi"
 category = "main"
 optional = false
@@ -299,9 +299,10 @@ blinker = ">=1.5,<2.0"
 email-validator = ">=1.1.3,<2.0.0"
 Jinja2 = ">=3.0.1,<4.0.0"
 pydantic = ">=1.8.2,<2.0.0"
+starlette = "0.20.4"
 
 [package.extras]
-fakeredis = ["fakeredis[fakeredis] (>=1.8.2,<2.0.0)"]
+aioredis = ["aioredis[aioredis] (>=2.0.1,<3.0.0)"]
 httpx = ["httpx[httpx] (>=0.23.0,<0.24.0)"]
 
 [[package]]
@@ -927,7 +928,7 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d19eaeb4f21f7279716a25b329dd7079c49f842d6b155a0eef919c88360e5170"
+content-hash = "c832db6767be9cc0b9c51ca69fa2c6686b078270718df9e1837cc60a16c0ba1c"
 
 [metadata.files]
 aerich = [
@@ -1076,8 +1077,8 @@ fastapi = [
     {file = "fastapi-0.85.1.tar.gz", hash = "sha256:1facd097189682a4ff11cbd01334a992e51b56be663b2bd50c2c09523624f144"},
 ]
 fastapi-mail = [
-    {file = "fastapi-mail-1.1.4.tar.gz", hash = "sha256:6ff9a189f338c1a6b2236adbee1eb7930470e00bd0ae5cc382b878bca6b9d29c"},
-    {file = "fastapi_mail-1.1.4-py3-none-any.whl", hash = "sha256:bb381dd88588a2f90db7333878c66f458b470d762f3b724c3ecc92b0acbce67d"},
+    {file = "fastapi_mail-1.2.0-py3-none-any.whl", hash = "sha256:d5a1e64861f0c22a180ad6239fc18cdea10b45f0668a6234802046181f979b41"},
+    {file = "fastapi_mail-1.2.0.tar.gz", hash = "sha256:6645d76fe695012175a88155ed9011e89b45318c127fa747ebd853c8203b0360"},
 ]
 filelock = [
     {file = "filelock-3.8.0-py3-none-any.whl", hash = "sha256:617eb4e5eedc82fc5f47b6d61e4d11cb837c56cb4544e39081099fa17ad109d4"},
