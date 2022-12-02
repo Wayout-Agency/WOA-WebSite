@@ -18,7 +18,7 @@ const About = () => {
   setOrder(true);
   return (
     <>
-      <MainTitle text={"Об агенстве"} />
+      <MainTitle text={"Об агентстве"} />
       <FadeIn>
         <>
           <div className={styles.videoWrapper}>
