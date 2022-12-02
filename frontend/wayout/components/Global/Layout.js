@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
          });  
         `}
       </Script>
-      <Script>
+      <Script id="marquiz" strategy="afterInteractive">
         {`
         (function(w, d, s, o){
           var j = d.createElement(s); j.async = true; j.src = '//script.marquiz.ru/v2.js';j.onload = function() {
@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
             disableOnMobile: false
           }
         );
-      `}
+        `}
       </Script>
       <Head>
         <noscript>
