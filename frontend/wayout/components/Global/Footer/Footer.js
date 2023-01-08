@@ -31,7 +31,7 @@ const Footer = () => {
               </Link>
             </p>
           </div>
-          <p className={styles.copyright}>© ИП Бабаян Денис Маркович, 2022</p>
+          <p className={styles.copyright}>© ИП Бабаян Денис Маркович, {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>
