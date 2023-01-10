@@ -16,7 +16,7 @@ aerich = "^0.7.1"
 passlib = { extras = ["bcrypt"], version = "^1.7.4" }
 asyncpg = "^0.26.0"
 python-jose = "^3.3.0"
-colorama = "^0.4.5"
+colorama = "^0.4.6"
 python-multipart = "^0.0.5"
 slowapi = "^0.1.6"
 aiofiles = "^22.1.0"
