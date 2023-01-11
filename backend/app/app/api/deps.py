@@ -25,8 +25,8 @@ def email_client():
             MAIL_PORT=settings.SMTP_PORT,
             MAIL_SERVER=settings.SMTP_HOST,
             MAIL_FROM_NAME=settings.FROM_NAME,
-            MAIL_STARTTLS = False,
-            MAIL_SSL_TLS = True,
+            MAIL_STARTTLS = True,
+            MAIL_SSL_TLS = False,
             USE_CREDENTIALS = True,
             VALIDATE_CERTS = True,
         )
