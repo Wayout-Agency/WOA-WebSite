@@ -3,7 +3,7 @@ from enum import Enum
 from api.deps import email_client
 from core.config import get_settings
 from fastapi import APIRouter, Depends
-from fastapi_mail import FastMail, MessageSchema
+from fastapi_mail import FastMail, MessageSchema, MessageType
 from schemas.email import EmailSchema
 
 router = APIRouter()
@@ -34,6 +34,7 @@ async def send_email(
         subject=email_type.value,
         recipients=[emails_to[email_type]],
         body="\n".join([f"{key}: {value}" for key, value in dict(data.email).items()]),
+        subtype=MessageType.plain      
     )
     await email_client.send_message(message)
     return {"message": "Email has been sent"}
