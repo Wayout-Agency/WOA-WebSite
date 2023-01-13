@@ -12,7 +12,7 @@ In prod use secrets.token_urlsafe(32) for SECRET_KEY
 
 In dev mode use load_dotenv(BASEDIR / "config" / ".env.dev")
 """
-# load_dotenv(BASEDIR / "config" / ".env")
+# load_dotenv(BASEDIR / "config" / ".env.dev")
 
 
 class Settings(BaseSettings):

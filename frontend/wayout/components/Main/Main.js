@@ -27,7 +27,6 @@ const Main = () => {
           <LeadCatch />
           <MainAlbumsList />
           <Clients />
-          <Graduation />
           <Journal />
         </>
       </FadeIn>
