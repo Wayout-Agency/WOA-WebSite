@@ -13,7 +13,7 @@ class PostTool(NamedTuple):
     get_post_model: GetArticle | GetCase
 
 
-class CRUDPost(CRUDBase):
+class CRUDPost():
     def _get_model(self, post_type: PostType) -> PostTool:
         match post_type:
             case PostType.case:

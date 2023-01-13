@@ -12,7 +12,7 @@ In prod use secrets.token_urlsafe(32) for SECRET_KEY
 
 In dev mode use load_dotenv(BASEDIR / "config" / ".env.dev")
 """
-load_dotenv(BASEDIR / "config" / ".env.dev")
+# load_dotenv(BASEDIR / "config" / ".env")
 
 
 class Settings(BaseSettings):
@@ -46,6 +46,8 @@ class Settings(BaseSettings):
     FEEDBACK_EMAIL: str | None = environ["FEEDBACK_EMAIL"]
     OFFER_EMAIL: str | None = environ["OFFER_EMAIL"]
 
+    BOT_TOKEN: str | None = environ["BOT_TOKEN"]
+    USER_IDS: list | None = environ["USER_IDS"]
 
 @lru_cache()
 def get_settings() -> Settings:
