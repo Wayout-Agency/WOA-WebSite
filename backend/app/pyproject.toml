@@ -24,7 +24,7 @@ pytest = "^7.1.2"
 httpx = "^0.23.0"
 requests = "^2.28.1"
 fastapi-mail = "^1.2.0"
-aioredis = "^2.0.1"
+aiogram = "^2.24"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.20.0"
