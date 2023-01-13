@@ -10,8 +10,8 @@ RUN apt update && apt upgrade -y \
   && apt install libpq-dev \
   # Install poetry package manager
   && curl -sSL https://install.python-poetry.org | python3 - \
-  && poetry --version \
-  # Clean build cache
+  && /root/.local/bin/poetry --version \
+  # Clean build cache 
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
