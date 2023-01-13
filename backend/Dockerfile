@@ -9,7 +9,7 @@ RUN apt update && apt upgrade -y \
   # Install dependencies  \
   && apt install libpq-dev \
   # Install poetry package manager
-  && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - \
+  && curl -sSL https://install.python-poetry.org | python3 - \
   && poetry --version \
   # Clean build cache
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
