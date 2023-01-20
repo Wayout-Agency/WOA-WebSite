@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.85.1"
+fastapi = "^0.86.0"
 uvicorn = "^0.20.0"
 psycopg2-binary = "^2.9.3"
 tortoise-orm = "^0.19.2"
