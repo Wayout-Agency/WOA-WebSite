@@ -27,7 +27,7 @@ fastapi-mail = "^1.2.0"
 aiogram = "^2.24"
 
 [tool.poetry.dev-dependencies]
-pre-commit = "^2.20.0"
+pre-commit = "^3.0.2"
 mypy = "^0.991"
 black = "^22.10.0"
 flake8 = "^6.0.0"
