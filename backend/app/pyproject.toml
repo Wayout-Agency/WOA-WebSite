@@ -23,7 +23,7 @@ aiofiles = "^22.1.0"
 pytest = "^7.2.1"
 httpx = "^0.23.0"
 requests = "^2.28.1"
-fastapi-mail = "^1.2.0"
+fastapi-mail = "^1.2.5"
 aiogram = "^2.24"
 
 [tool.poetry.dev-dependencies]
