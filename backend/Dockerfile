@@ -17,4 +17,4 @@ RUN poetry install --no-dev
 
 WORKDIR /code/app/app
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7878"]
+CMD ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7878"]
