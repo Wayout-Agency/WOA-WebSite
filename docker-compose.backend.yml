@@ -20,7 +20,7 @@ services:
     image: "wayout:backend"
     build: ./backend
     ports:
-      - 8000:8000
+      - 7878:7878
     volumes:
       - media:/var/www/media/
     depends_on:
@@ -29,15 +29,15 @@ services:
       - webnet
     env_file: ./config/.env
 
-  test_db:
-    image: postgres:14.4
-    environment:
-      POSTGRES_DB: "wayout_test"
-      POSTGRES_USER: "wayout_test"
-      POSTGRES_PASSWORD: "wayout_test"
-    container_name: postgres_test_db
-    ports:
-      - 7878:5432
+  # test_db:
+  #   image: postgres:14.4
+  #   environment:
+  #     POSTGRES_DB: "wayout_test"
+  #     POSTGRES_USER: "wayout_test"
+  #     POSTGRES_PASSWORD: "wayout_test"
+  #   container_name: postgres_test_db
+  #   ports:
+  #     - 7878:5432
   
 networks:
   webnet:
