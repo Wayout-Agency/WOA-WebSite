@@ -19,9 +19,7 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 settings = get_settings()
 
-origins = [
-    "http://127.0.0.1:3000",
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -39,8 +37,8 @@ async def catch_exceptions_middleware(request: Request, call_next):
         print(ex)
         return Response(content="Something went wrong", status_code=400)
 
-app.middleware("http")(catch_exceptions_middleware)
 
+app.middleware("http")(catch_exceptions_middleware)
 
 
 @app.on_event("startup")

@@ -4,11 +4,11 @@ import MainTitle from "../UI/MainTitle";
 import RoundSendButton from "../UI/RoundSendButton";
 import VideoPlayer from "../UI/VideoPlayer";
 import { numbers, team } from "./aboutData";
-import AboutCard from "./AboutCard";
+// import AboutCard from "./AboutCard";
 import FadeIn from "../UI/Animations/";
-import ExpImage from "next/future/image";
+// import ExpImage from "next/future/image";
 import { useAppContext } from "../AppWrapper";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef } from "react";
 import "swiper/css";
 import { disablePageScroll } from 'scroll-lock';
@@ -36,7 +36,7 @@ const About = () => {
               })}
             </div>
           </div>
-          <div className={styles.teamWrapper}>
+          {/* <div className={styles.teamWrapper}>
             <div className={styles.controls}>
               <h2>Команда</h2>
               <div className={styles.arrowsWrapper}>
@@ -88,7 +88,7 @@ const About = () => {
                 );
               })}
             </Swiper>
-          </div>
+          </div> */}
           <div className={styles.infoTeamWrapper}>
             <div className={styles.infoTeamTextWrapper}>
               <div className={styles.infoTeam}>
