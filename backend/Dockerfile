@@ -9,16 +9,6 @@ RUN pip install poetry
 
 RUN apt-get update && apt-get install -y ffmpeg lame flac vorbis-tools
 
-COPY ./pyproject.toml ./poetry.lock /app/
-
-WORKDIR /app
-
-RUN \
-    # --mount=target=${POETRY_HOME},type=cache \
-    # --mount=target=${POETRY_VENV},type=cache \
-    # --mount=target=${POETRY_CACHE_DIR},type=cache\
-    poetry install
-
 COPY app /code/app
 
 WORKDIR /code/app
