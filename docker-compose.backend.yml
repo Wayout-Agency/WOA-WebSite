@@ -1,11 +1,12 @@
-version: '3.9'
+version: '3.3'
 services:
   db:
     image: postgres:14.4
-    environment:
-      POSTGRES_DB: "wayout"
-      POSTGRES_USER: "wayout"
-      POSTGRES_PASSWORD: "wayout"
+    # environment:
+    #   POSTGRES_DB: "wayout"
+    #   POSTGRES_USER: "wayout"
+    #   POSTGRES_PASSWORD: "wayout"
+    env_file: ./config/.env
     container_name: postgres_db
     volumes:
       - pgdata:/var/lib/postgresql/data
