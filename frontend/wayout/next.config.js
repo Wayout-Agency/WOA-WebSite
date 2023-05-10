@@ -4,7 +4,12 @@ const nextConfig = {
   swcMinify: true,
   experimental: { images: { allowFutureImage: true } },
   images: {
-    domains: ["localhost", "wayout-backend", "wayout.agency"],
+    domains: [
+      "localhost",
+      "wayout-backend",
+      "wayout.agency",
+      "api.wayout.agency",
+    ],
   },
 };
 

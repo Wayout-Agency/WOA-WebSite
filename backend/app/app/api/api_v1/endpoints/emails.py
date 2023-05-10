@@ -6,9 +6,10 @@ from core.alerts import alert
 from fastapi import APIRouter, Depends
 from fastapi_mail import FastMail, MessageSchema, MessageType
 from schemas.email import EmailSchema
+from logging import Logger
 
 router = APIRouter()
-
+logger = Logger(__name__)
 settings = get_settings()
 
 
@@ -41,4 +42,5 @@ async def send_email(
     try:
         await email_client.send_message(message)
     except Exception as error:
+        logger.error(error)
         await alert(f"{mail_body}\n\nError: {error}")
