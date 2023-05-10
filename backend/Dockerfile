@@ -1,22 +1,23 @@
 FROM python:3.10 as development_build
 
-ENV POETRY_NO_INTERACTION=1 \
-  POETRY_VIRTUALENVS_CREATE=false \
-  POETRY_CACHE_DIR='/var/cache/pypoetry' \
-  PATH="$PATH:/root/.poetry/bin"
-
-RUN apt update && apt upgrade -y \
-  # Install dependencies  \
-  && apt install libpq-dev \
-  # Install poetry package manager
-  && curl -sSL https://install.python-poetry.org | python3 - \
-  && /root/.local/bin/poetry --version \
-  # Clean build cache 
-  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-  && apt-get clean -y && rm -rf /var/lib/apt/lists/*
-
-
 ENV UPLOAD_DIRECTORY=/var/www/media
+ENV POETRY_HOME=/opt/poetry
+ENV POETRY_VENV=/opt/poetry-venv
+ENV POETRY_CACHE_DIR=/opt/.cache
+
+RUN pip install poetry
+
+RUN apt-get update && apt-get install -y ffmpeg lame flac vorbis-tools
+
+COPY ./pyproject.toml ./poetry.lock /app/
+
+WORKDIR /app
+
+RUN \
+    # --mount=target=${POETRY_HOME},type=cache \
+    # --mount=target=${POETRY_VENV},type=cache \
+    # --mount=target=${POETRY_CACHE_DIR},type=cache\
+    poetry install
 
 COPY app /code/app
 
